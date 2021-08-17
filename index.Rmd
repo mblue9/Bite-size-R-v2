@@ -6,18 +6,14 @@ title: "Introduction to R for Cancer Scientists"
 
 This site contains the materials for an R course run by the Bioinformatics Core
 at the Cancer Research UK Cambridge Institute.
+(Contributions : Matthew Eldridge, Chandra Chilamakuri, Mark Fernandes, Ashley Sawle, Kamal Kishore, Sergio Martinez Cuesta, Rory Stark)
 
-April -- June 2020
+October 2021
 
 ### Instructors
 
 * Chandra Chilamakuri
-* Matt Eldridge
 * Mark Fernandes
-* Kamal Kishore
-* Sergio Martinez Cuesta
-* Ashley Sawle
-* Rory Stark
 
 # Description
 
@@ -29,24 +25,13 @@ In this training course, we aim to provide a friendly introduction to R pitched
 at a beginners level but also for those who have been on R training courses
 previously and would like a refresher or to consolidate their skills.
 
-The course will be run over **6 weeks** with the following structure:
+The course will be run over **5 sessions** with the following structure:
 
-* **Online lesson each Monday at 11am** lasting 45 minutes via a video call in Microsoft Teams
+* **Lesson each day lasting 45 minutes
     * the instructor will share his/her screen featuring an RStudio window during this call
-    * this will be recorded for those who weren’t able to join the meeting or so you can replay the lesson
-* More **in-depth material** covering the concepts introduced on the Monday lesson to go through in your own time
-* A **weekly assignment** consisting of exercises to practice some of the concepts covered in that and previous weeks' lessons
-* An **online recap session each Friday at 11am** to go through the assignment and answer any questions you may have
-    * again this is expected to last around 45 minutes via a video call in Microsoft Teams
- 
-The first lesson will be on Tuesday 14 April, not the Easter Monday bank
-holiday, and thereafter every Monday for the following 5 weeks. Similarly we
-will run the Friday recap for the week of 4 – 8 May on the Thursday instead as
-8 May is the special VE Day bank holiday.
+* More **in-depth material** covering the concepts introduced in the lesson to go through in your own time
+* An **assignment** consisting of exercises to practice some of the concepts covered in that and previous lessons
 
-We will be using Microsoft Teams in running this course and members of the
-Bioinformatics Core will be available during the course for 1:1 support using
-chats and calls within Teams.
 
 # Schedule
 
