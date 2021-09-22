@@ -36,4 +36,5 @@ blockquote p,ul,ol {
   margin-top: 20px;
   margin-bottom: 20px;
   background: #cce6ff;
+  border-radius: 25px;
 }

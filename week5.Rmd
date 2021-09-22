@@ -1,5 +1,5 @@
 ---
-title: "Week 5 -- Grouping and combining data"
+title: "Session 5 -- Grouping and combining data"
 ---
 
 > #### Learning objectives
@@ -100,7 +100,7 @@ the METABRIC tumour samples to show what's going on.
 
 ![](images/group_and_summarise.png)
 
-As we saw last week, we can summarize multiple observations, e.g. the mean
+As we saw last session, we can summarize multiple observations, e.g. the mean
 expression for other genes of interest, with `summarise_at()`, this time using
 the PAM50 classification to define the groups.
 

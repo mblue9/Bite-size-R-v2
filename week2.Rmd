@@ -1,5 +1,5 @@
 ---
-title: "Week 2 -- Working with data in R"
+title: "Session 2 -- Working with data in R"
 ---
 
 > #### Learning objectives
@@ -147,9 +147,9 @@ random_numbers <- rnorm(100, mean = 0, sd = 0.5)
 
 # Vectors
 
-In week 1 we introduced **vectors**, the simplest type of data structure in R.
+In Session 1 we introduced **vectors**, the simplest type of data structure in R.
 An atomic vector is a collection of values or things of the same type in a given
-order. We created some last week using **`c()`** and the **`:`** operator.
+order. We created some last session using **`c()`** and the **`:`** operator.
 
 ```{r}
 some_numbers <- 1:10
@@ -171,7 +171,7 @@ can be in ascending or descending order and can include negative numbers.
 `including_some_negative_numbers <- -4:3`
 ```
 
-A single value is known as a **scalar**. An example from last week was the
+A single value is known as a **scalar**. An example from last session was the
 number of samples in our experiment.
 
 ```{r}
@@ -179,7 +179,7 @@ samples <- 8
 samples
 ```
 
-But as we saw last week, R doesn't treat this single value any differently;
+But as we saw last session, R doesn't treat this single value any differently;
 it is still a vector, just one that has a length of 1.
 
 ```{r}
@@ -218,7 +218,7 @@ works. You can very easily cut and paste these examples and run these in the
 console window as a way of experimenting with and learning about the function.
 
 Let's have a look at the first example from the help page for `c()`. It's
-slighly more complicated than what we did last week.
+slighly more complicated than what we did last session.
 
 ```{r}
 c(1, 7:9)
@@ -252,7 +252,7 @@ Arguments will be coerced to a common type.
 Atomic vectors must contain values that are all of the same type. A bit later
 on, we'll introduce another type of data structure that doesn't have this
 restriction -- the list. First though, a look at back at one of the exercises
-from last week's assignment in which we tried to create vectors of things
+from last session's assignment in which we tried to create vectors of things
 that are of different types.
 
 ```{r}
@@ -1195,52 +1195,7 @@ listed after the first 10 rows.
 
 ### Not trying to be too clever
 
-The other main thing that tibbles do is to curb some strange behaviours that the
-developers of R thought were a good idea at the time but which can cause some
-confusion.
-
-Let's reconsider how we created the `beatles` data frame.
-
-```{r}
-beatles <- data.frame(
-  name = c("John", "Paul", "Ringo", "George"),
-  birth_year = c(1940, 1942, 1940, 1943),
-  instrument = c("guitar", "bass", "drums", "guitar")
-)
-```
-
-What type do you think the name and instrument columns are?
-
-If you think these should be characters, think again. Or inspect these using
-`str()` or `class()`.
-
-```{r}
-str(beatles)
-```
-
-```{r}
-class(beatles$name)
-```
-
-The `data.frame()` function automatically converts character vectors into
-factors. Factors are categorical variables, i.e. have a restricted set of
-values, a controlled vocabulary if you like.
-
-Why did it do this? I never asked it to. Those vectors started as character
-vectors, why does `data.frame()` think I want these to be factors?
-
-To be fair, the instruments variable probably should be a factor but it's
-hard to see why the name would be.
-
-If you look at the help page for the `data.frame()` function, you'll see that
-you can prevent this behaviour by setting the argument `stringsAsFactors =
-FALSE`. Likewise, it is very common to see code in which this same argument is
-set to `FALSE` in the base R functions for reading tabular data from a
-tab-delimited or comma-separated value (CSV) file.
-
-Tibbles do not automatically convert character string variables to factors.
-
-Tibbles also prevent another shortcut that can lead to very unclear code, i.e.
+Tibbles can prevent another shortcut that can lead to very unclear code, i.e.
 the ability to refer to a column using a truncated form of its name.
 
 ```{r}

@@ -404,18 +404,13 @@ div.tocify {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>This site contains the materials for an R course run by the Bioinformatics Core at the Cancer Research UK Cambridge Institute.</p>
-<p>April – June 2020</p>
+<p>This site contains the materials for an R course run by the Bioinformatics Core at the Cancer Research UK Cambridge Institute. (Contributions : Matthew Eldridge, Chandra Chilamakuri, Mark Fernandes, Ashley Sawle, Kamal Kishore, Sergio Martinez Cuesta, Rory Stark)</p>
+<p>October 2021</p>
 <div id="instructors" class="section level3">
 <h3>Instructors</h3>
 <ul>
 <li>Chandra Chilamakuri</li>
-<li>Matt Eldridge</li>
 <li>Mark Fernandes</li>
-<li>Kamal Kishore</li>
-<li>Sergio Martinez Cuesta</li>
-<li>Ashley Sawle</li>
-<li>Rory Stark</li>
 </ul>
 </div>
 </div>
@@ -423,34 +418,27 @@ div.tocify {
 <h1>Description</h1>
 <p><strong>R</strong> is one of the leading programming languages in <strong>Data Science</strong> and the most widely used within CRUK CI for interacting with, analyzing and visualizing cancer biology datasets.</p>
 <p>In this training course, we aim to provide a friendly introduction to R pitched at a beginners level but also for those who have been on R training courses previously and would like a refresher or to consolidate their skills.</p>
-<p>The course will be run over <strong>6 weeks</strong> with the following structure:</p>
+<p>The course will be run over <strong>5 sessions</strong> with the following structure:</p>
 <ul>
-<li><strong>Online lesson each Monday at 11am</strong> lasting 45 minutes via a video call in Microsoft Teams
+<li>**Each session lasts between 45 to 90 minutes
 <ul>
-<li>the instructor will share his/her screen featuring an RStudio window during this call</li>
-<li>this will be recorded for those who weren’t able to join the meeting or so you can replay the lesson</li>
+<li>the instructor will share his/her screen featuring an RStudio window</li>
 </ul></li>
-<li>More <strong>in-depth material</strong> covering the concepts introduced on the Monday lesson to go through in your own time</li>
-<li>A <strong>weekly assignment</strong> consisting of exercises to practice some of the concepts covered in that and previous weeks’ lessons</li>
-<li>An <strong>online recap session each Friday at 11am</strong> to go through the assignment and answer any questions you may have
-<ul>
-<li>again this is expected to last around 45 minutes via a video call in Microsoft Teams</li>
-</ul></li>
+<li>More <strong>in-depth material</strong> covering the concepts introduced in the lesson to go through in your own time</li>
+<li>An <strong>assignment</strong> consisting of exercises to practice some of the concepts covered in that and previous lessons</li>
 </ul>
-<p>The first lesson will be on Tuesday 14 April, not the Easter Monday bank holiday, and thereafter every Monday for the following 5 weeks. Similarly we will run the Friday recap for the week of 4 – 8 May on the Thursday instead as 8 May is the special VE Day bank holiday.</p>
-<p>We will be using Microsoft Teams in running this course and members of the Bioinformatics Core will be available during the course for 1:1 support using chats and calls within Teams.</p>
 </div>
 <div id="schedule" class="section level1">
 <h1>Schedule</h1>
 <ol start="0" style="list-style-type: decimal">
-<li><p><a href="week0.html">Getting set up</a> (6 April) - installing R and RStudio</p></li>
-<li><p><a href="week1.html">Introduction to R</a> (14 April) - Interacting with R using RStudio and introducing objects, data types and functions</p></li>
-<li><p><a href="week2.html">Working with data</a> (20 April) - Creating R scripts, working with tabular data and other types of objects in R, reading data into R</p></li>
-<li><p><a href="week3.html">Data visualization with ggplot2</a> (27 April) - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data</p></li>
-<li><p><a href="week4.html">Data manipulation using dplyr</a> (4 May) - Filtering and modifying tabular data, computing summary values, faceting with ggplot2</p></li>
-<li><p><a href="week5.html">Grouping and combining data</a> (11 May) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots</p></li>
-<li><p><a href="week6.html">Restructuring data for analysis</a> (18 May) - The concept of ‘tidy data’, pivoting and separating operations, ggplot2 extras</p></li>
-<li><p><strong>Capstone project</strong> – putting it all together in a typical data analysis including:</p>
+<li><p><a href="week0.html">Getting set up</a> - installing R and RStudio</p></li>
+<li><p><a href="week1.html">Introduction to R</a> - Interacting with R using RStudio and introducing objects, data types and functions</p></li>
+<li><p><a href="week2.html">Working with data</a> - Creating R scripts, working with tabular data and other types of objects in R, reading data into R</p></li>
+<li><p><a href="week3.html">Data visualization with ggplot2</a> - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data</p></li>
+<li><p><a href="week4.html">Data manipulation using dplyr</a> - Filtering and modifying tabular data, computing summary values, faceting with ggplot2</p></li>
+<li><p><a href="week5.html">Grouping and combining data</a> - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots</p></li>
+<li><p><a href="week6.html">Restructuring data for analysis</a> - The concept of ‘tidy data’, pivoting and separating operations, ggplot2 extras</p></li>
+<li><p><strong>Option Capstone project</strong> – you should try putting it all together in a typical data analysis including:</p>
 <ul>
 <li><p>reading in a data set</p></li>
 <li><p>handling missing values</p></li>
@@ -512,7 +500,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

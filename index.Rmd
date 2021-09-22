@@ -27,29 +27,29 @@ previously and would like a refresher or to consolidate their skills.
 
 The course will be run over **5 sessions** with the following structure:
 
-* **Lesson each day lasting 45 minutes
-    * the instructor will share his/her screen featuring an RStudio window during this call
+* **Each session lasts between 45 to 90 minutes
+    * the instructor will share his/her screen featuring an RStudio window 
 * More **in-depth material** covering the concepts introduced in the lesson to go through in your own time
 * An **assignment** consisting of exercises to practice some of the concepts covered in that and previous lessons
 
 
 # Schedule
 
-0. [Getting set up](week0.html) (6 April) - installing R and RStudio
+0. [Getting set up](week0.html)  - installing R and RStudio
 
-1. [Introduction to R](week1.html) (14 April) - Interacting with R using RStudio and introducing objects, data types and functions
+1. [Introduction to R](week1.html) - Interacting with R using RStudio and introducing objects, data types and functions
 
-2. [Working with data](week2.html) (20 April) - Creating R scripts, working with tabular data and other types of objects in R, reading data into R
+2. [Working with data](week2.html)  - Creating R scripts, working with tabular data and other types of objects in R, reading data into R
 
-3. [Data visualization with ggplot2](week3.html) (27 April) - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data
+3. [Data visualization with ggplot2](week3.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data
 
-4. [Data manipulation using dplyr](week4.html) (4 May) - Filtering and modifying tabular data, computing summary values, faceting with ggplot2
+4. [Data manipulation using dplyr](week4.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2
 
-5. [Grouping and combining data](week5.html) (11 May) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots
+5. [Grouping and combining data](week5.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots
 
-6. [Restructuring data for analysis](week6.html) (18 May) - The concept of 'tidy data', pivoting and separating operations, ggplot2 extras
+6. [Restructuring data for analysis](week6.html)  - The concept of 'tidy data', pivoting and separating operations, ggplot2 extras
 
-7. **Capstone project** – putting it all together in a typical data analysis including:
+7. **Option Capstone project** – you should try putting it all together in a typical data analysis including:
 
     * reading in a data set
 
