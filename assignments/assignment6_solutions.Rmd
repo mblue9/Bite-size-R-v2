@@ -180,7 +180,7 @@ expression is affected by the copy number state of various genes through a
 series of box plot.
 
 ```{r message = FALSE}
-expression <- read_tsv("metabric_mrna_expression.txt")
+expression <- read_tsv("../data/metabric_mrna_expression.txt")
 ```
 
 The expression data is in a matrix-like format with a row for each sample and a
@@ -211,7 +211,7 @@ dataset from cBioPortal. The table read in is a subset containing rows for
 the 8 genes we've been using up till now.
 
 ```{r message = FALSE}
-copy_number_states <- read_tsv("metabric_cna.txt")
+copy_number_states <- read_tsv("../data/metabric_cna.txt")
 select(copy_number_states, 1:10)
 ```
 
@@ -327,8 +327,8 @@ in those cases where the patient tumour sample was sequenced so we'll read those
 in as well.
 
 ```{r message = FALSE}
-mutations <- read_csv("metabric_mutations.csv")
-cases_sequenced <- read_tsv("cases_nat_comm_2016.txt", col_names = "Patient_ID")
+mutations <- read_csv("../data/metabric_mutations.csv")
+cases_sequenced <- read_tsv("../data/cases_nat_comm_2016.txt", col_names = "Patient_ID")
 ```
 
 Filter the mutations table to only contain the non-silent mutations in AKT1.
