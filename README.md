@@ -1,6 +1,6 @@
----
-title: "Building R skills for Cancer Scientists"
----
+<!-- badges: start -->
+[![.github/workflows/basic_checks.yaml](https://github.com/mblue9/Bite-size-R-v2/workflows/.github/workflows/basic_checks.yaml/badge.svg)](https://github.com/mblue9/Bite-size-R-v2/actions)
+<!-- badges: end -->
 
 # Introduction
 
@@ -45,13 +45,13 @@ The course will be run over **4 sessions** with the following structure:
 
 # Schedule
 
-i. **Pre-course setup** [Getting set up](week0.html)  - installing R and RStudio
+i. **Pre-course setup** [Getting set up](https://mblue9.github.io/Bite-size-R-v2/articles/week0.html)  - installing R and RStudio
 
-1. [Introduction to this course, RStudio, R Markdown](week1.html, week1b.html) - Interacting with R using RStudio, importing data into R, generating and editing a reproducible report. 
+1. [Introduction to this course, RStudio, R Markdown](https://mblue9.github.io/Bite-size-R-v2/articles/week1.html) - Interacting with R using RStudio, importing data into R, generating and editing a reproducible report. 
 
-2. [Data visualization with ggplot2](week2.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data. 
+2. [Data visualization with ggplot2](https://mblue9.github.io/Bite-size-R-v2/articles/week2.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data. 
 
-3. [Data manipulation using dplyr](week3.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2. 
+3. [Data manipulation using dplyr](https://mblue9.github.io/Bite-size-R-v2/articles/week3.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2. 
 
-4. [Grouping, combining,and restructuring data for analysis](week4.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots. The concept of 'tidy data', pivoting and separating operations, ggplot2 extras. 
+4. [Grouping, combining,and restructuring data for analysis](https://mblue9.github.io/Bite-size-R-v2/articles/week4.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots. The concept of 'tidy data', pivoting and separating operations, ggplot2 extras. 
 
