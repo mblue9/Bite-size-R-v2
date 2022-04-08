@@ -1,0 +1,33 @@
+url: https://mblue9.github.io/Bite-size-R-v2
+
+template:
+  params:
+    bootswatch: flatly
+
+home:
+  title: "R Skills Building for Cancer Scientists"
+  type: inverse
+
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: Material
+      href: index.html
+      menu:
+        - text: "Week 0 - Getting ready"
+          href: articles/week0.html
+        - text: "Week 1 - Introduction to RStudio"
+          href: articles/week1.html
+        - text: "Week 2 - Data visualization with ggplot2"
+          href: articles/week2.html
+        - text: "Week 3 - Data manipulation using dplyr"
+          href: articles/week3.html
+        - text: "Week 4 - Grouping, combining and restructuring data for analysis"
+          href: articles/week4.html
+
+  right:
+   - icon: fa-github
+     href: https://github.com/mblue9/Bite-size-R-v2
+     

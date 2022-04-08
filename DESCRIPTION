@@ -1,0 +1,30 @@
+Package: R4CancerSci
+Title: R Skills Building for Cancer Scientists
+Version: 0.0.1
+Authors@R: 
+    person(given = "Maria",
+           family = "Doyle",
+           role = c("aut", "cre"),
+           email = "maria.doyle@petermac.org",
+           comment = c(ORCID = "0000-0003-4847-8436"))
+Description: This package is for material heavily adapted from a course run by the Bioinformatics Core at the Cancer Research UK Cambridge Institute (Contributions : Matthew Eldridge, Chandra Chilamakuri, Mark Fernandes, Ashley Sawle, Kamal Kishore, Sergio Martinez Cuesta, Rory Stark).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Suggests:
+    ggplot2
+    readr,
+    readxl,
+    dplyr,
+    tidyr,
+    lubridate,
+    tibble,
+    ggthemes,
+    knitr,
+    rmarkdown,
+    pkgdown
+URL: https://mblue9.github.io/Bite-size-R-v2/
+BugReports: https://github.com/mblue9/Bite-size-R-v2/issues/new/choose
+VignetteBuilder: knitr

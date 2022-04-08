@@ -1,5 +1,10 @@
 ---
 title: 'Getting Ready'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Ready}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 > #### Learning objectives

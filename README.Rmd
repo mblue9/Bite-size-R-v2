@@ -9,7 +9,7 @@ This site contains the materials for an R course run by Peter Mac.
 The materials were adapted from the course run by the Bioinformatics Core
 at the Cancer Research UK Cambridge Institute (Contributions : Matthew Eldridge, Chandra Chilamakuri, Mark Fernandes, Ashley Sawle, Kamal Kishore, Sergio Martinez Cuesta, Rory Stark).
 
-March 2022
+April 2022
 
 ### Instructors
 
@@ -49,9 +49,9 @@ i. **Pre-course setup** [Getting set up](week0.html)  - installing R and RStudio
 
 1. [Introduction to this course, RStudio, R Markdown](week1.html, week1b.html) - Interacting with R using RStudio, importing data into R, generating and editing a reproducible report. 
 
-2. [Data visualization with ggplot2](week1.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data. 
+2. [Data visualization with ggplot2](week2.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data. 
 
-3. [Data manipulation using dplyr](week2.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2. 
+3. [Data manipulation using dplyr](week3.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2. 
 
-4. [Grouping, combining,and restructuring data for analysis](week3.html week4.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots. The concept of 'tidy data', pivoting and separating operations, ggplot2 extras. 
+4. [Grouping, combining,and restructuring data for analysis](week4.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots. The concept of 'tidy data', pivoting and separating operations, ggplot2 extras. 
 
