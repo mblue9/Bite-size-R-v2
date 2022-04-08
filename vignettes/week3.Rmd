@@ -44,7 +44,7 @@ the observations based on one or more categorical variables.
 We'll again use the METABRIC data set to illustrate how these operations work.
 
 ```{r message = FALSE}
-metabric <- read_csv("data/metabric_clinical_and_expression_data.csv")
+metabric <- read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv")
 metabric
 ```
 
@@ -645,7 +645,7 @@ the NPI, rounds the tumour size and the resulting NPI value to 1 decimal place
 and displays the results in decreasing order of NPI.
 
 ```{r message = FALSE}
-read_csv("data/metabric_clinical_and_expression_data.csv") %>%
+read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv") %>%
   mutate(Tumour_size = Tumour_size / 10) %>%
   mutate(NPI = 0.2 * Tumour_size + Lymph_node_status + Neoplasm_histologic_grade) %>%
   mutate(Tumour_size = round(Tumour_size, digits = 1)) %>%
