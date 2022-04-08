@@ -51,7 +51,10 @@ RStudio provides us with a friendly interface to the R statistical progrmming la
 It consists of four main "Panes". These can be re-sized and moved around to suit how
 you like to work.
 
-<img src="images/Rstudioataglance.png" alt="RStudio screenshot" width="90%">
+
+```{r, echo=FALSE, out.width = "100px"}
+knitr::include_graphics("../inst/images/Rstudioataglance.png")
+```
 
 ## Editing pane
 
