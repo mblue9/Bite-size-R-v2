@@ -576,7 +576,7 @@ combined_data
 Having combined the data, we can carry out exploratory data analysis using 
 elements from both data sets.
 
-```{r box_plot_1}
+```{r box_plot}
 combined_data %>%
   filter(!is.na(PAM50), !is.na(ESR1)) %>%
   ggplot(mapping = aes(x = PAM50, y = ESR1, colour = PAM50)) +
