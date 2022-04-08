@@ -12,7 +12,7 @@ title: 'Getting Ready'
 Before starting this course you will need to ensure that your computer is set
 up with the required software.
 
-In addition, online learning requires extra screen 'real estate' and you may
+For the live online hybrid session: online learning requires extra screen 'real estate' and you may
 find it useful (but not essential) to have a dual screen setup or two devices,
 e.g. laptop and tablet/phone.
 

@@ -1,6 +1,6 @@
 
 ---
-title: "Assignment 6"
+title: "Assignment 4"
 ---
 
 This week's involves transforming two data sets in order to ask a specific
@@ -195,7 +195,7 @@ like -- be creative!
 Save the plot as a PDF using `ggsave()` and attach with the assignment when
 handing in.
 
-_There will be chocolate-based prizes awarded to any assignment handed in with a plot that is prettier than mine (bear in mind that I'm also the judge and jury -- Matt :-)_
+_There will be chocolate-based prizes awarded to any assignment handed in with a plot that is prettier than this (bear in mind that I'm also the judge and jury -- Maria :-)_
 
 ```{r}
 

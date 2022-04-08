@@ -3,121 +3,63 @@
 title: "Assignment 2"
 ---
 
----
+The week's assignment will test your ability to manipulate the METABRIC data set
+by changing the values of existing columns or adding new columns by computing
+new variables from existing ones.
 
-### Working with vectors, data frames and tibbles
+We are expecting you to use the 5 main dplyr 'verb' functions: `select()`,
+`filter()`, `arrange()`, `mutate()` and `summarize()`. Please use the pipe
+operator, `%>%`, in cases where more than one operation is required to achieve
+the outcome requested.
 
-**1. How many cars in the `mtcars` data set have 8 cylinders?**
-
-Write an R instruction to calculate this.
-
-```{r}
-
-```
-
-**2. Print out a subset of the `starwars` tibble containing just the characters with blond hair and blue eyes**
-
-```{r}
-
-```
-
-**3. Convert the values for the heights of characters in the `starwars` tibble from centimetres to metres**
-
-```{r}
-
-```
-
-What happened to the type of the height column?
-
-Convert the height column back to metres again and see if you can work out how
-to change it back to its original type.
-
-```{r}
-
+```{r message = FALSE, warning = FALSE}
+library(tidyverse)
+metabric <- read_csv("metabric_clinical_and_expression_data.csv")
 ```
 
 ---
 
-### Simulation: rolling 6-sided dice
+**1. Investigate the subset of long-surviving breast cancer patients that didn't receive chemo or radiotherapy**
 
-**4. Use the `sample()` function to simulate the rolling of a 6-sided die**
-
-If you look at the help page for `sample` you'll find there are two functions
-with the same name, one in the `base` package and the other in the `dplyr`
-package. The `sample` function in the `base` package is the one you need for
-this exercise.
-
-Count the number of sixes you get for 1000 rolls?
+First obtain the subset of patients that received neither chemotherapy or
+radiotherapy and survived for more than 20 years.
 
 ```{r}
 
 ```
 
-What number would you expect to get? Calculate this in R.
+Now look at the breakdown of these patients in terms of ER status. Count the
+numbers of ER positive and ER negative patients in this subset. Calculate the
+proportion that are ER positive.
 
 ```{r}
 
 ```
 
-Re-run the simulation a few times by clicking on the green 'Run current chunk'
-button for the code you've written. What do you notice?
-
-Re-run the simulation with a much larger sample size. Check that the number of
-sixes you obtain is much closer to the expected value.
+What does this tell us? Calculate the proportion of ER positive patients in the
+whole cohort by way of a comparison.
 
 ```{r}
 
 ```
 
-**5. Simulate the rolling of a weighted six-sided die**
+**Extension**
 
-Imagine we're running a casino and we have some weighted dice in which the
-probability of throwing a six is a bit lower than it should be if all is fair
-and square. Let's say the probability of a throwing a six is 0.1 while the
-other 5 numbers all have equal probability.
-
-Calculate the probability for throwing each of the other numbers and then,
-referring again at the help page for `sample()`, re-run the simulation using
-these probabilities. See how many sixes you get.
+Create a contingency table of the numbers of ER positive and ER negative
+patients in the two groups (untreated, long-surviving patients and all others)
+and perform a Chi-squared test or a Fisher's exact test (whichever is most
+appropriate) to determine if there is a significant difference.
 
 ```{r}
 
 ```
 
-*Hint:* use the `rep()` function to save some typing.
+_Hint: look at the help page for the function for the Chi-squared or Fisher's
+exact test to see what form the contingency table needs to take_
 
 ---
 
-### Clinical cancer data
-
-**6. How many samples in the METABRIC dataset have high cellularity but have no recorded classification with the 3-gene classifier?**
-
-```{r}
-
-```
-
-*Hint:* this is actually quite tricky -- you may want to check for missing
-values in the cellularity column as well as the column for the 3-gene
-classifier.
-
----
-
-### Working with data from an Excel spreadsheet
-
-**7. Read into R one of your own Excel spreadsheets and explore the data using `summary()`, `table()` and/or `plot()`**
-
-We haven't yet showed how to read Excel spreadsheets into R. There are more than
-package providing this capability but for this exercise use the `readxl` package
-from the tidyverse.
-
-`readxl` should have been installed as part of the tidyverse but if you find
-that's not the case, you will have to install it separately.
-
-`readxl` is not loaded as one of the core tidyverse packages when you run
-`library(tidyverse)` so you'll have to load this separately.
-
-If you don't have an Excel spreadsheet to hand, you can use the clinical
-annotation data for the NCI-60 cell line data set (https://bioinformatics-core-shared-training.github.io/r-intro/data/cellline_nci60_clinical_data.xlsx).
+**2. Which patients have spent the largest proportion of their lives dealing with breast cancer?**
 
 ```{r}
 
@@ -125,55 +67,86 @@ annotation data for the NCI-60 cell line data set (https://bioinformatics-core-s
 
 ---
 
-### Create a report for your assignment
+**3. Convert the expression values for each of the genes into standardized z-scores**
 
-Click on the 'Knit' menu at the top of this file and select either whichever
-option you prefer to create an HTML, PDF or Word document version of your
-assignment. This will run all the code chunks and "knit" the resulting
-results with the surrounding text to produce a report.
+Some genes are generally expressed at higher levels than others. This can make
+comparisons of changes between groups for a set of genes somewhat difficult,
+particularly if the expression for those genes are on very different scales. The
+expression values in our METABRIC are on a log~2~ scale which helps to reduce
+the range of values but another method for representing expression measurements
+is to standardize these to produce z-scores.
 
-#### Additional markdown features
+Standardization of a set of measurements involves subtracting the mean from each
+and dividing by the standard deviation. This will produce values with a mean of
+0 and a standard deviation of 1.
 
-**_Emphasis_**
+Create a modified version of the `metabric` data frame containing a new column
+with the standardized expression values (z-scores) for the ESR1 gene.
 
-Can use either underscores or asterisks and combination of both for both bold
-and italic emphasis.
-
-```
-*italic*   **bold**
-_italic_   __bold__
-```
-
-**_Inline Code_**
-
-Use of backticks (`).
+```{r}
 
 ```
-`mean(starwar$height)`
-```
 
-**_Horizontal Rule_**
+Check that you've done this correctly by calculating the mean and standard
+deviation of your new z-score variable.
 
-Three of more astisks or dashes.
-
-```
-*******
-
--------
-```
-
-**_Plain Code Blocks_**
-
-Plain code blocks are displayed in a fixed-width font but not evaluated.
+```{r}
 
 ```
-This text is displayed verbatim / preformatted
+
+Add another column to your modified `metabric` data frame containing a z-score
+for GATA3 and then create a scatter plot of the z-scores of GATA3 against ESR1.
+Modify your plot to facet by the PAM50 classification.
+
+```{r}
+
 ```
 
-Have a look at examples of these in the text parts of this R markdown document
-and how these are rendered when you run the knit operation.
+**Extension 1**
 
-For more features, see the help page in RStudio that can be accessed from the
-the help menu: **Help > Markdown Quick Reference**
+Standardize the expression values for all genes in a single operation using an
+anonymous function, overwriting their original values, and round the resulting
+values to 3 significant figures.
+
+```{r}
+
+```
+
+Check you have done this correctly by computing the mean and standard deviation for
+each column, again using a single operation.
+
+```{r}
+
+```
+
+To be doubly certain, you could also download the expression z-score values for
+these genes from cBioPortal.
+
+**Extension 2**
+
+Create a plot comparing the distribution of standardized expression values for
+TP53 against a normal distribution.
+
+```{r}
+
+```
+
+_Hint: use `stat_function()`_
 
 ---
+
+**4. Which Star Wars characters need to go on a diet?**
+
+Compute the body mass index (BMI) of characters in the `starwars` tibble.
+
+```{r}
+
+```
+
+Filter for human characters that are overweight (BMI > 25) and display in
+decreasing order of BMI.
+
+```{r}
+
+```
+

@@ -1,6 +1,6 @@
 name: "r-intro"
 navbar:
-  title: "<img style=\"width: 120px; float: left; margin-top: 0px; margin-right: 20px;\" src=\"images/CRUK_CI_logo.png\"/>R for Cancer Scientists&nbsp;&nbsp;&nbsp;"
+  title: "<img style=\"width: 120px; float: left; margin-top: 0px; margin-right: 20px;\" src=\"images/pmac_logo.svg\"/>R for Cancer Scientists&nbsp;&nbsp;&nbsp;"
   left:
     - text: "Contents"
       href: index.html
@@ -9,15 +9,13 @@ navbar:
           href: week0.html
         - text: "Week 1 - Introduction to R and RStudio"
           href: week1.html
-        - text: "Week 2 - Working with data in R"
-          href: week2.html
-        - text: "Week 3 - Data visualization with ggplot2"
+        - text: "Week 2 - Data visualization with ggplot2"
           href: week3.html
-        - text: "Week 4 - Data manipulation using dplyr"
+        - text: "Week 3 - Data manipulation using dplyr"
           href: week4.html
-        - text: "Week 5 - Grouping and combining data"
+        - text: "Week 4 - Grouping and combining data"
           href: week5.html
-        - text: "Week 6 - Restructuring data for analysis"
+        - text: "Week 5 - Restructuring data for analysis"
           href: week6.html
   right:
     - icon: fa-github fa-lg

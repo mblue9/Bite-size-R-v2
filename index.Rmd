@@ -1,64 +1,57 @@
 ---
-title: "Introduction to R for Cancer Scientists"
+title: "Building R skills for Cancer Scientists"
 ---
 
 # Introduction
 
-This site contains the materials for an R course run by the Bioinformatics Core
-at the Cancer Research UK Cambridge Institute.
-(Contributions : Matthew Eldridge, Chandra Chilamakuri, Mark Fernandes, Ashley Sawle, Kamal Kishore, Sergio Martinez Cuesta, Rory Stark)
+This site contains the materials for an R course run by Peter Mac.
 
-October 2021
+The materials were adapted from the course run by the Bioinformatics Core
+at the Cancer Research UK Cambridge Institute (Contributions : Matthew Eldridge, Chandra Chilamakuri, Mark Fernandes, Ashley Sawle, Kamal Kishore, Sergio Martinez Cuesta, Rory Stark).
+
+March 2022
 
 ### Instructors
 
-* Chandra Chilamakuri
-* Mark Fernandes
+* Maria Doyle, Research Computing
+* Cassie Litchfield, Bioinformatics Core
 
 # Description
 
 **R** is one of the leading programming languages in **Data Science** and the
-most widely used within CRUK CI for interacting with, analyzing and visualizing
-cancer biology datasets.
+most widely used within Peter Mac for interacting with, analyzing and visualizing cancer biology datasets. In this training, we aim to provide **a friendly next-steps R course for beginners** who have been through an introductory R training course and would like to consolidate their skills using cancer research data. It is an opportunity for increasing skills through supported practice with exercises as part of a class and to ask questions/get help.
 
-In this training course, we aim to provide a friendly introduction to R pitched
-at a beginners level but also for those who have been on R training courses
-previously and would like a refresher or to consolidate their skills.
+# Learning Objectives
 
-The course will be run over **5 sessions** with the following structure:
+By the end of this course you should be able to:  
 
-* **Each session lasts between 45 to 90 minutes
-    * the instructor will share his/her screen featuring an RStudio window 
-* More **in-depth material** covering the concepts introduced in the lesson to go through in your own time
+* Interact comfortably with R using RStudio  
+* Import/export data (e.g. Excel, csv files) into/from R  
+* Manipulate and reformat tabular data  
+* Create visualisations (scatterplots, bar charts, boxplots, histograms and line graphs for time series data)  
+* Generate reproducible reports for your analyses
+
+# This course is for you if
+
+* You've completed DataCamp's [Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (contact Maria Doyle if you need access) and are looking to build on your skills. Alternatively, previous attendance at University of Melbourne's [Introduction to R](https://gateway.research.unimelb.edu.au/events/researcher-connect#digital-skills-training) or equivalent is sufficient. 
+* You have ~1-2 hours to spend on the course each week during the 4 weeks (working through material and exercises in your own time at your own pace) and are able to attend all 4 live 1hr (recap/discussion/Q&A) sessions.
+
+The course will be run over **4 sessions** with the following structure:
+
+* **Material** covering the concepts introduced in the lesson to go through in your own time
 * An **assignment** consisting of exercises to practice some of the concepts covered in that and previous lessons
-
+* A weekly **live recap, discussion, Q&A session** lasting 1hr (hybrid format online and in-person if possible)
+* **Teams channel** for the class to ask any questions or get help in-between the live sessions
 
 # Schedule
 
-0. [Getting set up](week0.html)  - installing R and RStudio
+i. **Pre-course setup** [Getting set up](week0.html)  - installing R and RStudio
 
-1. [Introduction to R](week1.html) - Interacting with R using RStudio and introducing objects, data types and functions
+1. [Introduction to this course, RStudio, R Markdown](week1.html, week1b.html) - Interacting with R using RStudio, importing data into R, generating and editing a reproducible report. 
 
-2. [Working with data](week2.html)  - Creating R scripts, working with tabular data and other types of objects in R, reading data into R
+2. [Data visualization with ggplot2](week1.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data. 
 
-3. [Data visualization with ggplot2](week3.html)  - A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data
+3. [Data manipulation using dplyr](week2.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2. 
 
-4. [Data manipulation using dplyr](week4.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2
+4. [Grouping, combining,and restructuring data for analysis](week3.html week4.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots. The concept of 'tidy data', pivoting and separating operations, ggplot2 extras. 
 
-5. [Grouping and combining data](week5.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots
-
-6. [Restructuring data for analysis](week6.html)  - The concept of 'tidy data', pivoting and separating operations, ggplot2 extras
-
-7. **Option Capstone project** – you should try putting it all together in a typical data analysis including:
-
-    * reading in a data set
-
-    * handling missing values
-
-    * selecting and filtering subsets of interest
-
-    * creating plots
-
-    * generating summary statistics
-
-    * saving data transformed into a tidy format as a csv file for later analysis

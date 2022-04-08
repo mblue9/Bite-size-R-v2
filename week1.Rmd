@@ -126,14 +126,256 @@ The Help tab is a _massively useful_ tab which enables you to search R help inde
 
 ---
 
-# Our first look at the R language
+# Our first look at an R Markdown report
 
-Our overall goal for this course is to give you the ability to import your data into R, select a subset
+Our overall goal for this course is to give you the ability to import your data into R, format it, select a subset
 of the data most of interest for a given analysis, carry out an analysis to summarize these data and
 create visualizations of the data.
 
-So let's see an example of what we'll be learning and generate our first visualisation and report. By the end of this course we will have explained what each line of the code does. 
-[Open this R Markdown file](week1-protein_levels.Rmd)
+So let's see an example of what we'll be learning and generate our first visualisation and report. By the end of this course we should be able to explain what each line of the code does. 
+
+In RStudio top menu go to File > Open File and [open this R Markdown file](assignments/assignment1.Rmd)
+
+
+---
+
+# Packages
+
+There are thousands of R packages that extend R's core functionality to provide
+specialized functions for doing all kinds of things. There are R packages that
+provide various kinds of visualizations and plotting functions, others that let
+us manipulate data in interesting and useful ways, and still others that give us
+access to cutting-edge machine learning algorithms. Several packages have been
+developed by bioinformaticians at Peter Mac, mainly focusing on
+genomic and transcriptomic analysis methods.
+
+You need to load a package using the **`library()`** function in order to be
+able to use the functions and data sets that the package provides. We can load the core tidyverse packages in one go as follows.
+
+```{r}
+library(tidyverse)
+```
+
+The output from this command tells us which packages were loaded, one of which is `ggplot2` that provides excellent
+plotting functions for visualizing our data and will be the main focus next
+week.
+
+We also got a warning about some conflicts. This tells us that there are
+functions loaded as part of the `dplyr` package that have the same name as
+functions that are in the `stats` package. The `stats` package was already
+loaded, from when we first started our R session, and the functions referred to
+in the warning are now masked; to use these instead of their `dplyr` namesakes
+you need to specify them fully by adding the package name and `::` as shown in
+the warning message.
+
+## Installing packages
+
+If you got the following error message when trying to load the tidyverse, then
+you haven't yet installed it.
+
+```
+> library(tidyverse)
+Error in library(tidyverse) : there is no package called ‘tidyverse’
+```
+
+Installing packages should be relatively straightforward using the
+`install.packages()` function.
+
+```{r eval = FALSE}
+install.packages("tidyverse")
+```
+
+If you're using R at a regular console within a terminal window, i.e. not
+RStudio, you may be asked to select one of several mirrors of the CRAN R package
+repository hosted at different locations around the world.
+
+For some packages you may be asked to choose between a binary and a source
+package, particularly if the latest version of the package is only available in
+source form and that package contains code written in another language such as
+C. This could be a problem if you don't have a C compiler installed on your
+computer.
+
+---
+
+# Importing data into R
+
+Another of the tidyverse packages loaded when we ran `library(tidyverse)` is the
+`readr` package, which provides functions for reading tabular data into a tibble
+and writing tibbles to tab-delmited and comma-separated value (CSV) files.
+
+For example, the clinical data for the METABRIC breast cancer dataset generated
+at CRUK CI can be downloaded as a tab-delimited file from
+[cBioPortal](https://www.cbioportal.org/study/clinicalData?id=brca_metabric).
+Targeted sequencing was performed for 2509 primary breast tumours, along with
+548 matched normals, using a panel of 173 of the most frequently mutated breast
+cancer genes as part of the METABRIC study
+([Pereira *et al.*, Nature Communications 7:11479, 2016](https://www.ncbi.nlm.nih.gov/pubmed/27161491)).
+
+This file contains information in tabular form in which values are separated by
+tab characters so we'll use the **`read_tsv()`** to read these data.
+
+```{r}
+metabric <- read_tsv("data/brca_metabric_clinical_data.tsv")
+```
+
+`read_tsv()` prints a message telling us which types it has assigned to each of
+the columns it has read, although in this case the table has quite a lot of
+columns and it only outputs details about the first few.
+
+If we print the clinical data set we can see that `read_tsv()` created a tibble.
+
+```{r}
+metabric
+```
+
+```{block type = "rmdblock"}
+**`read_csv()`** and **`read_tsv()`**
+  
+`read_csv()` reads data from a comma-separated value (CSV) file into a tibble.
+`read_tsv()` is the equivalent function that works on tab-delimited files.
+
+These functions expect the first line to contain column names and try to make
+sensible guesses at the type of data in each column. You can change this by
+specifying various arguments, e.g. to skip comment lines beginning with a
+specific character (e.g. "#") or to tell the function what the column types
+are.
+
+patients <- read_csv("patients.csv")
+```
+
+We are now in a position to explore these data. We can see all column names with R's built-in **`colnames()`**.
+
+```{r}
+colnames(metabric)
+```
+
+We can access individual columns with `table_name$column_name`, for example `metabric$Chemotherapy`
+
+```{r}
+metabric$Chemotherapy
+```
+
+We can use R's built-in **`table()`** function to count the number of patients in this cohort that had
+chemotherapy and those that did not.
+
+```{r}
+table(metabric$Chemotherapy)
+```
+
+We can summarize the numbers of mutations found per patient using R's built-in **`summary()`** function.
+
+```{r}
+summary(metabric$`Mutation Count`)
+```
+
+Note that several of the column names have multiple words separated by spaces.
+We have to use backticks ( **`** ) to refer to column names such as these.
+
+We can create a scatter plot to see if there is any relationship between the age
+of the patient at diagnosis of breast cancer and the Nottingham prognostic index
+(whatever that is) using R's built-in **`plot()`** function.
+
+```{r metabric_plot}
+plot(metabric$`Age at Diagnosis`, metabric$`Nottingham prognostic index`,
+     xlab = "Age at diagnosis", ylab = "Nottingham prognostic index")
+```
+
+Hmm, what a horrible looking plot. Thank goodness we're moving on to
+**`ggplot2`** next week.
+
+## Working directory
+
+When reading in the METABRIC dataset we specified the file using a relative
+path, `data/brca_metabric_clinical_data.tsv`. This is relative to the current
+working directory and is in the `data` subdirectory within our working
+directory. The **`getwd()`** function will tell you what the current working
+directory is.
+
+```{r eval = FALSE}
+getwd()
+```
+
+If you open RStudio by clicking on its icon in the task bar or its entry in the
+start menu, your working directory will probably be your home folder.
+
+You can specify a full path for the file you want to read, which is also known
+as an absolute path.
+
+You can explicitly set your working directory using **`setwd()`**.
+
+```{r eval = FALSE}
+setwd("/Users/matt/projects/20200116_JB_amplicon_sequencing")
+```
+
+If you're running an R script from a terminal window (by typing something like
+`Rscript my_script.R` at the command prompt) your working directory will be the
+directory in which you run the script (i.e. the one in which you issue the
+Rscript command). In this case you will probably want to read files from
+locations that are relative to the directory in which you run the script.
+
+If you're writing an R script in RStudio you can set the working directory to be
+the same directory as that which contains your script file using the menu:
+**Session > Set Working Directory > To Source File Location**. You can also
+navigate to the directory of your choosing in the Files tab pane and set this to
+be the working directory by clicking on the **More** menu button and selecting
+**Set As Working Directory**.
+
+---
+
+# Missing values
+
+The METABRIC clinical dataset has some missing values. If you look back to the
+table we printed out earlier you can see 2 missing values for mutation counts
+within the first 10 rows. We can specified rows of a column to view with **`[firstrow:lastrow]`**.
+
+```{r}
+metabric$`Mutation Count`[1:10]
+```
+
+```{block type = "rmdblock"}
+**Missing values** (**`NA`**)
+
+Missing values in R are represented as **`NA`**, which stands for 'not available'.
+```
+
+The `summary()` function reported that there are 152 missing mutation counts.
+`summary()` reports the mean and median values for the remaining observations,
+i.e. those for which a mutation count *is* available. Not all functions do this
+though.
+
+```{r}
+mean(metabric$`Mutation Count`)
+```
+
+The `mean()` function, for example, takes a different approach in how it treats
+missing values. It returns `NA`, i.e. a missing value, because it takes the view
+that it cannot compute a mean for a set of values where some are not available.
+You can specify the argument `na.rm = TRUE` when calling `mean()` to instruct it
+to ignore the missing values and calculate the mean of the remaining values.
+
+```{r}
+mean(metabric$`Mutation Count`, na.rm = TRUE)
+```
+
+There are many such functions in R that would be similarly affected by missing
+values and which offer the `na.rm` argument.
+
+You can test for missing values using the `is.na()` function.
+
+```{r}
+first_ten_mutation_counts <- metabric$`Mutation Count`[1:10]
+is.na(first_ten_mutation_counts)
+```
+
+One final handy tip: summing the result of `is.na()` will count the number of
+missing values in a vector.
+
+```{r}
+sum(is.na(metabric$`Mutation Count`))
+```
+
+Can you see why this works? *(hint: look at what kind of vector `sum()` expects
+and think about how a logical vector will be coerced into such a type)*.
 
 ---
 
@@ -144,6 +386,10 @@ In this session we have covered the following concepts:
 * The RStudio environment and the functions associated with each pane
 * Generating a visualisation and report using R
 * Editing code to update visualisations and reports
+* How to write R code in scripts that can saved and re-run at a later date
+* How to install and use packages that extend R's basic functionality
+* How to read tabular data into R
+* Missing values and how R handles these
 
 We also cover how to work within an R markdown document and run code therein in this
 week's assignment.
@@ -153,6 +399,3 @@ week's assignment.
 # Assignment
 
 Assignment: [assignment1.Rmd](assignments/assignment1.Rmd)
-
-Solutions: [assignment1_walkthrough.Rmd](assignments/assignment1_walkthrough.Rmd)
-and [assignment1_solutions.html](assignments/assignment1_solutions.html)

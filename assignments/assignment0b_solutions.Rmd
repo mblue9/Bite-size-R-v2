@@ -3,13 +3,29 @@
 title: "Assignment 2"
 ---
 
-
 ### Clinical cancer data
 
 **6. How many samples in the METABRIC dataset have high cellularity but have no recorded classification with the 3-gene classifier?**
 
 ```{r}
+metabric <- read_tsv("brca_metabric_clinical_data.tsv")
+metabric
 
+table(metabric$Cellularity)
+table(metabric$`3-Gene classifier subtype`)
+
+sum(metabric$Cellularity == "High")
+sum(metabric$Cellularity == "High" & !is.na(metabric$Cellularity))
+sum(metabric$Cellularity == "High", na.rm = TRUE)
+
+sum(is.na(metabric$`3-Gene classifier subtype`))
+
+sum(metabric$Cellularity == "High" & !is.na(metabric$Cellularity) & is.na(metabric$`3-Gene classifier subtype`))
+
+sum(metabric$Cellularity == "High" & is.na(metabric$`3-Gene classifier subtype`), na.rm = TRUE)
+
+# note dplyr filter that we'll introduce in a couple of weeks is much easier and
+# handles the missing value more like how we'd expect
 ```
 
 *Hint:* this is actually quite tricky -- you may want to check for missing
@@ -36,7 +52,25 @@ If you don't have an Excel spreadsheet to hand, you can use the clinical
 annotation data for the NCI-60 cell line data set (https://bioinformatics-core-shared-training.github.io/r-intro/data/cellline_nci60_clinical_data.xlsx).
 
 ```{r}
+library(readxl)
 
+nci60 <- read_excel("cellline_nci60_clinical_data.xlsx", na = "NA")
+# need to comment on the na argument when reading data in (blanks assigned to NA
+# by default, not "NA" strings)
+
+nci60
+
+# summary of each variable
+summary(nci60)
+
+# note that categorical variables are not factors so would need converting
+# using as.factor() or for this to be specified when reading the data in
+# nevertheless we can run table() on these
+table(nci60$`Cancer Type`)
+
+# scatter plot to see if there is a relationship between the number of point
+# mutations and the fraction of the genome altered
+plot(nci60$`Mutation Count`, nci60$`Fraction Genome Altered`)
 ```
 
 ---
@@ -70,7 +104,7 @@ Use of backticks (`).
 
 **_Horizontal Rule_**
 
-Three of more asterisks or dashes.
+Three of more astisks or dashes.
 
 ```
 *******
