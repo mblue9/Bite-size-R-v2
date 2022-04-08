@@ -596,7 +596,7 @@ scales used on the x and y axes, and choosing colours.
 Adding titles and subtitles to a plot and changing the x- and y-axis labels is
 very straightforward using the `labs()` function.
 
-```{r scatter_plot_1}
+```{r scatter_plot}
 plot <- ggplot(data = metabric, mapping = aes(x = GATA3, y = ESR1, colour = ER_status)) +
   geom_point(size = 0.6, alpha = 0.5) +
   geom_smooth(method = "lm") +

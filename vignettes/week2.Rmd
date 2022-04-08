@@ -487,7 +487,9 @@ arguments we've used below.
 
 ```{r message = FALSE, warning = FALSE}
 library(readxl)
-transport_use <- read_excel("https://zenodo.org/record/6426303/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx",
+# because it's an Excel file located in the web need to download then import
+download.file("https://zenodo.org/record/6426303/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx", destfile = "2020-04-26_COVID-19_Press_Conference_Data.xlsx")
+transport_use <- read_excel("2020-04-26_COVID-19_Press_Conference_Data.xlsx",
                             sheet = "Transport use",
                             col_names = c("date", "transport_type", "percentage"),
                             col_types = c("date", "text", "numeric"),
