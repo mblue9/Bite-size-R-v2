@@ -108,7 +108,7 @@ metabric %>%
 The following schematic contains another example using a simplified subset of
 the METABRIC tumour samples to show what's going on.
 
-![](images/group_and_summarise.png)
+![](../inst/images/group_and_summarise.png)
 
 As we saw last session, we can summarize multiple observations, e.g. the mean
 expression for other genes of interest, with `summarise_at()`, this time using
@@ -359,7 +359,7 @@ can combine the two data frames into a single data frame by matching rows in the
 first data frame with those in the second data frame that share the same value
 of variable V1.
 
-![dplyr left join](images/dplyr_left_join.png)
+![dplyr left join](../inst/images/dplyr_left_join.png)
 
 `left_join()` returns all rows from the first data frame regardless of whether
 there is a match in the second data frame. Rows with no match are included in
@@ -402,7 +402,7 @@ right_join(band_members, band_instruments, by = "name")
 Another joining operation is the "inner join" in which only observations that
 are common to both data frames are included.
 
-![dplyr inner join](images/dplyr_inner_join.png)
+![dplyr inner join](../inst/images/dplyr_inner_join.png)
 
 ```{r}
 inner_join(band_members, band_instruments, by = "name")
@@ -421,7 +421,7 @@ appear in the combined table. A `full_join` will return all rows and all columns
 from the two tables and where there are no matching values, `NA` values are used
 to fill in the missing values.
 
-![dplyr full join](images/dplyr_full_join.png)
+![dplyr full join](../inst/images/dplyr_full_join.png)
 
 ```{r}
 full_join(band_members, band_instruments, by = "name")
@@ -955,7 +955,7 @@ A tidy data set is a data frame (or table) for which the following are true:
 2. Each **observation** has its own row
 3. Each **value** has its own cell
 
-![](images/tidy_data.png)
+![](../inst/images/tidy_data.png)
 
 A **variable** contains all values that measure the same underlying attribute
 (like height, temperature, duration) across units.
@@ -1033,7 +1033,7 @@ number of columns.
 
 `table4a_long <- pivot_longer(table4a, c("1999", "2000"), names_to = "year", values_to = "cases")`
 
-![](images/pivot_longer.png)
+![](../inst/images/pivot_longer.png)
 
 **`pivot_wider(data, names_from = name, values_from = value)`**
 

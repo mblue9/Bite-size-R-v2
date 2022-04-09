@@ -60,7 +60,9 @@ knitr::include_graphics("../inst/images/Rstudioataglance.png")
 
 By default the top left-hand pane is one for creating, editing & running R scripts.
 
-<img src="images/Rstudio_scripting.png" alt="RStudio edit pane screenshot" width="90%">
+```{r, echo=FALSE, out.width = "100px"}
+knitr::include_graphics("../inst/images/Rstudio_scripting.png")
+```
 
 A script is an R program that you have written. A good practice is for that script to
 perform only one role in your analysis workflow and so you may have several R scripts which you call, in a particular sequence, to analyse your data.
@@ -74,7 +76,11 @@ As well as R scripts, there are many types of RStudio document including Markdow
 
 Coming down the screen to the bottom left-hand pane we find the console window. This is where we can find output produced by running our R scripts.
 
-<img src="images/Rstudio_console.png" alt="Rstudio screenshot" width="90%">
+
+```{r, echo=FALSE, out.width = "100px"}
+knitr::include_graphics("../inst/images/Rstudio_console.png")
+```
+
 
 We can also try out snippets of R code here. Those of you who have only used graphical interfaces like Windows or MacOS where you click on commands using a mouse may find this aspect of R somewhat different. We type in commands to R using the command line.
 
@@ -116,7 +122,11 @@ There are other tabs on this pane but we shall not be covering these on this cou
 
 Next we move to the top right-hand corner pane. Here we have even more tabs (of which we will only consider two Environment and History).
 
-<img src="images/Rstudio_env.png" alt="Rstudio screenshot" width="80%">
+
+```{r, echo=FALSE, out.width = "100px"}
+knitr::include_graphics("../inst/images/Rstudio_console.png")
+```
+
 
 Environment keeps track on R variables which we create (more on those later) and their contents. History is like a tally role of all the R commands we have entered in our session.
 
@@ -124,7 +134,11 @@ Environment keeps track on R variables which we create (more on those later) and
 
 Our final bottom right-hand pane also has several tabs. The Files tab is a file explorer that enable us to move around our directories and select which files we wish to work on. We can also change the default working directory that Rstudio will use.
 
-<img src="images/Rstudio_filexpl.png" alt="Rstudio screenshot" width="80%">
+
+```{r, echo=FALSE, out.width = "100px"}
+knitr::include_graphics("../inst/images/Rstudio_filexpl.png")
+```
+
 
 The Plots tab is where any graphs that we create in R will appear. We can move through them using the arrow buttons and the export button will convert them to different graphics formats e.g. for publication in a paper or for the web.
 
