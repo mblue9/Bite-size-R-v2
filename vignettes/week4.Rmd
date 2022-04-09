@@ -2,7 +2,7 @@
 title: "Session 4 -- Grouping, combining and restructuring data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Grouping, combining and restructuring data}
+  %\VignetteIndexEntry{Session 4 -- Grouping, combining and restructuring data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

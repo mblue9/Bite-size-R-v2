@@ -2,7 +2,7 @@
 title: "Session 1 -- Introduction to RStudio"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to RStudio}
+  %\VignetteIndexEntry{Session 1 -- Introduction to RStudio}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

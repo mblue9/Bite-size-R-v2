@@ -2,7 +2,7 @@
 title: "Session 3 -- Data manipulation with dplyr"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Data manipulation with dplyr}
+  %\VignetteIndexEntry{Session 3 -- Data manipulation with dplyr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
