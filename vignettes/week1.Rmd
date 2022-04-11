@@ -245,7 +245,7 @@ This file contains information in tabular form in which values are separated by
 tab characters so we'll use the **`read_tsv()`** to read these data.
 
 ```{r}
-metabric <- read_tsv("https://zenodo.org/record/6426303/files/brca_metabric_clinical_data.tsv")
+metabric <- read_tsv("https://zenodo.org/record/6450144/files/brca_metabric_clinical_data.tsv")
 ```
 
 `read_tsv()` prints a message telling us which types it has assigned to each of
@@ -315,7 +315,7 @@ Hmm, what a horrible looking plot. Thank goodness we're moving on to
 
 ## Working directory
 
-When importing the METABRIC dataset we specified the file using a URL `https://zenodo.org/record/6426303/files/brca_metabric_clinical_data.tsv`
+When importing the METABRIC dataset we specified the file using a URL `https://zenodo.org/record/6450144/files/brca_metabric_clinical_data.tsv`
 as it's located on the web. If you have a file on your computer you can specify the path to where it is located. For example, if we paste the URL above into our web browser we can download the file and then import it.
 
 ```{r eval = FALSE}

@@ -46,7 +46,7 @@ To demonstrate how these grouping and combining functions work and to illustrate
 customization of plots, we'll again use the METABRIC data set.
 
 ```{r message = FALSE}
-metabric <- read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv")
+metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv")
 metabric
 ```
 
@@ -290,7 +290,7 @@ observations in different rows for a single observational unit, in this case
 several mutations detected in each tumour sample.
 
 ```{r message = FALSE}
-mutations <- read_csv("https://zenodo.org/record/6426303/files/metabric_mutations.csv")
+mutations <- read_csv("https://zenodo.org/record/6450144/files/metabric_mutations.csv")
 select(mutations, Patient_ID, Chromosome, Position = Start_Position, Ref = Reference_Allele, Alt = Tumor_Seq_Allele1, Type = Variant_Type, Gene)
 ```
 
@@ -551,7 +551,7 @@ We first read the clinical data into R and then just select a small number of
 columns to make it easier to see what is going on when combining the data.
 
 ```{r message = FALSE}
-clinical_data <- read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_data.csv")
+clinical_data <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_data.csv")
 clinical_data <- select(clinical_data, Patient_ID, ER_status, PAM50)
 clinical_data
 ```
@@ -560,7 +560,7 @@ We then read in the mRNA expression data that was downloaded separately from
 [cBioPortal](https://www.cbioportal.org/study/summary?id=brca_metabric).
 
 ```{r message = FALSE}
-mrna_expression_data <- read_tsv("https://zenodo.org/record/6426303/files/metabric_mrna_expression.txt")
+mrna_expression_data <- read_tsv("https://zenodo.org/record/6450144/files/metabric_mrna_expression.txt")
 mrna_expression_data
 ```
 
@@ -1199,7 +1199,7 @@ tidier format to open up different avenues for exploring the data.
 We'll first load the table and then select just the columns we're going to need.
 
 ```{r message = FALSE}
-metabric <- read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv") %>%
+metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv") %>%
   select(Patient_ID, ER_status, ESR1:MLPH)
 metabric
 ```
@@ -1299,8 +1299,8 @@ The table in question is
 
 ```{r message = FALSE}
 library(readxl)
-# because it's an Excel file located in the web need to download then import
-download.file("https://zenodo.org/record/6426303/files/41467_2018_4619_MOESM11_ESM.xlsx", destfile = "41467_2018_4619_MOESM11_ESM.xlsx")
+# because it's an Excel file located on the web need to download then import
+download.file("https://zenodo.org/record/6450144/files/41467_2018_4619_MOESM11_ESM.xlsx", destfile = "41467_2018_4619_MOESM11_ESM.xlsx")
 protein_levels <- read_excel("41467_2018_4619_MOESM11_ESM.xlsx", skip = 1)
 select(protein_levels, `Uniprot Accession`, `Gene Name`, ends_with("rep01"))
 ```
@@ -1505,7 +1505,7 @@ Integrative cluster breast cancer subtypes.
 # read in the METABRIC data, convert the Integrative_cluster variable into a
 # categorical variable with the levels in the correct order, and select just
 # the columns and rows we're going to use
-metabric <- read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv") %>%
+metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv") %>%
   mutate(Integrative_cluster = factor(Integrative_cluster, levels = c("1", "2", "3", "4ER-", "4ER+", "5", "6", "7", "8", "9", "10"))) %>%
   mutate(`3-gene_classifier` = replace_na(`3-gene_classifier`, "Unclassified")) %>%
   select(Patient_ID, ER_status, PR_status, `3-gene_classifier`, Integrative_cluster, ESR1) %>%

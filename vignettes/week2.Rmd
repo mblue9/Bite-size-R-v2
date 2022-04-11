@@ -55,7 +55,7 @@ column we'll have to use backticks, e.g. ``metabric$`3-gene_classifier` ``.
 
 ```{r message = FALSE}
 library(tidyverse)
-metabric <- read_csv("https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv")
+metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv")
 metabric
 ```
 
@@ -487,8 +487,8 @@ arguments we've used below.
 
 ```{r message = FALSE, warning = FALSE}
 library(readxl)
-# because it's an Excel file located in the web need to download then import
-download.file("https://zenodo.org/record/6426303/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx", destfile = "2020-04-26_COVID-19_Press_Conference_Data.xlsx")
+# because it's an Excel file located on the web need to download then import
+download.file("https://zenodo.org/record/6450144/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx", destfile = "2020-04-26_COVID-19_Press_Conference_Data.xlsx")
 transport_use <- read_excel("2020-04-26_COVID-19_Press_Conference_Data.xlsx",
                             sheet = "Transport use",
                             col_names = c("date", "transport_type", "percentage"),
