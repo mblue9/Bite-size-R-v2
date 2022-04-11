@@ -10,11 +10,10 @@ Which proteins change in abundance in the breast cancer cell line, MCF-7, with t
 
 ### Packages
 
-We will use the **tidyverse**, **readxl** packages for data import, wrangling and visualization.
+We will use the **tidyverse** collection of packages for data import, wrangling and visualization.
 
 ```{r load-packages, warning=FALSE, message=FALSE}
 library(tidyverse)
-library(readxl)
 ```
 
 ### Data
@@ -24,7 +23,7 @@ It is the abundance of proteins in a breast cancer cell line (MCF-7) at
 various time points after treatment with the drug tamoxifen, measured using mass spectrometry. In the chunk below we import the Excel file containing the data, skipping the first header row.
 
 ```{r message=FALSE}
-protein_levels <- read_excel("data/41467_2018_4619_MOESM11_ESM.xlsx", skip = 1)
+protein_levels <- read_csv("https://zenodo.org/record/6450144/files/41467_2018_4619_MOESM11_ESM.csv", skip = 1)
 ```
 
 ## Protein levels after treatment with tamoxifen
@@ -53,10 +52,7 @@ protein_levels %>%
 ```
 
 1. Click Knit to generate a html report containing the plot.  
-2. We can easily change which proteins are being plotted by changing the threshold the code above `filter`s for. Try changing:  
-i. the filter to `> 0.75`  then Knit again.
-ii. the filter to `` `log2FC(2h/veh)` `` < -0.58 then Knit again.
-
+2. We can easily change which proteins are being plotted by changing the threshold the code above `filter`s for. Try changing the filter to `> 0.75`  then Knit again.
 
 ## References
 

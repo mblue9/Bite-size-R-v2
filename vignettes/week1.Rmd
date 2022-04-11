@@ -10,8 +10,7 @@ vignette: >
 > #### Aims
 >
 > * To introduce RStudio which we will be using to write R code in this course
-> * To generate a first visualisation and report
-> * To demonstrate editing code to update visualisations and reports
+> * To demonstrate generating a visualisation and report
 > * To review some basic R commands
 >
 > #### Learning objectives
@@ -157,8 +156,16 @@ create visualizations of the data.
 
 So let's see an example of what we'll be learning and generate our first visualisation and report. By the end of this course we should be able to explain what each line of the code does. 
 
-In RStudio top menu go to File > Open File and [open this R Markdown file](assignments/assignment1.Rmd)
+```{r echo = FALSE}
+xfun::embed_file('../inst/example-report.Rmd')
+```
 
+ * Download the example report file in the link above
+ * In your RStudio top menu go to File > Open File and open the example report file 
+ * Click the Knit button to generate the report
+ * Try out the exercise to edit the file.
+
+Next we'll explain some of the things you can see in the file.
 
 ---
 
@@ -308,10 +315,15 @@ Hmm, what a horrible looking plot. Thank goodness we're moving on to
 
 ## Working directory
 
-When reading in the METABRIC dataset we specified the file using a relative
-path, `https://zenodo.org/record/6426303/files/brca_metabric_clinical_data.tsv`. This is relative to the current
-working directory and is in the `data` subdirectory within our working
-directory. The **`getwd()`** function will tell you what the current working
+When importing the METABRIC dataset we specified the file using a URL `https://zenodo.org/record/6426303/files/brca_metabric_clinical_data.tsv`
+as it's located on the web. If you have a file on your computer you can specify the path to where it is located. For example, if we paste the URL above into our web browser we can download the file and then import it.
+
+```{r eval = FALSE}
+# assumes file is in our Downloads folder, "~" means our home directory e.g./home/maria
+metabric_downloaded <- read_tsv("~/Downloads/")
+```
+
+The **`getwd()`** function will tell you what the current working
 directory is.
 
 ```{r eval = FALSE}
@@ -330,18 +342,17 @@ You can explicitly set your working directory using **`setwd()`**.
 setwd("/Users/matt/projects/20200116_JB_amplicon_sequencing")
 ```
 
-If you're running an R script from a terminal window (by typing something like
-`Rscript my_script.R` at the command prompt) your working directory will be the
-directory in which you run the script (i.e. the one in which you issue the
-Rscript command). In this case you will probably want to read files from
-locations that are relative to the directory in which you run the script.
+If you're working with an R Markdown report (Rmd file) your working directory will be the directory in which the report is located. In this case you will probably want to read files from
+locations that are relative to the directory in which you run the report.
 
-If you're writing an R script in RStudio you can set the working directory to be
-the same directory as that which contains your script file using the menu:
+If you're writing an R report in RStudio, you can set the working directory to be
+the same directory as that which contains your file using the menu:
 **Session > Set Working Directory > To Source File Location**. You can also
 navigate to the directory of your choosing in the Files tab pane and set this to
 be the working directory by clicking on the **More** menu button and selecting
 **Set As Working Directory**.
+
+Alternatively (and better) you can create an RStudio Project (File > New Project) as described [here](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) to automatically keep track of and set the working directory.
 
 ---
 
@@ -408,8 +419,6 @@ In this session we have covered the following concepts:
 
 * The RStudio environment and the functions associated with each pane
 * Generating a visualisation and report using R
-* Editing code to update visualisations and reports
-* How to write R code in scripts that can saved and re-run at a later date
 * How to install and use packages that extend R's basic functionality
 * How to read tabular data into R
 * Missing values and how R handles these
