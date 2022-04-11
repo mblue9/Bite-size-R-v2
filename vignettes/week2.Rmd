@@ -800,4 +800,6 @@ In this session we have covered the following concepts:
 
 # Assignment
 
-Assignment: [assignment3.Rmd](assignments/assignment3.Rmd)
+```{r echo = FALSE}
+xfun::embed_file('../assignments/assignment2.Rmd')
+```

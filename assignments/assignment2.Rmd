@@ -1,12 +1,12 @@
 
 ---
-title: "Assignment 1"
+title: "Assignment 2"
 ---
 
 The week's assignment will test your ability to create various different types
 of plot. It includes some extension exercises which you can consider optional.
 
-```{r message = FALSE, warning = FALSE}
+```{r eval = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 metabric <- read_csv("metabric_clinical_and_expression_data.csv")
 ```

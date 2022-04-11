@@ -1,5 +1,5 @@
 <!-- badges: start -->
-[![.github/workflows/basic_checks.yaml](https://github.com/mblue9/Bite-size-R-v2/workflows/.github/workflows/basic_checks.yaml/badge.svg)](https://github.com/mblue9/Bite-size-R-v2/actions)
+[![.github/workflows/basic_checks.yaml](https://github.com/mblue9/Bite-size-R-v2/actions/workflows/basic_checks.yaml/badge.svg?branch=master)](https://github.com/mblue9/Bite-size-R-v2/actions/workflows/basic_checks.yaml)
 <!-- badges: end -->
 
 # Introduction

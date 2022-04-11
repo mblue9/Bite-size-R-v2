@@ -1,6 +1,6 @@
 
 ---
-title: "Assignment 4"
+title: "Assignment 4b"
 ---
 
 This week's involves transforming two data sets in order to ask a specific
@@ -19,7 +19,7 @@ gene expression.
 The clinical data, gene expression values and mutation data were all downloaded
 from [cBioPortal](https://www.cbioportal.org/study/summary?id=brca_metabric).
 
-```{r message = FALSE}
+```{r eval = FALSE, message = FALSE}
 library(tidyverse)
 ```
 
@@ -34,6 +34,7 @@ format in another data frame available as part of the **tidyr** package, named
 `who`.
 
 ```{r}
+library(tidyr)
 who
 ```
 
@@ -73,7 +74,7 @@ _Hint 2: separating two of the variables is a bit tricky because there is no sep
 Recreate the first 3 columns of `table1`, containing a small subset of the WHO
 tuberculosis data set, from your tidy version of `who`.
 
-```{r}
+```{r eval = FALSE}
 select(table1, 1:3)
 ```
 
@@ -117,7 +118,7 @@ number states into separate data frames. The aim is to see how the gene
 expression is affected by the copy number state of various genes through a
 series of box plot.
 
-```{r message = FALSE}
+```{r eval = FALSE, message = FALSE}
 expression <- read_tsv("metabric_mrna_expression.txt")
 ```
 
@@ -145,7 +146,7 @@ of the copy number table you obtain if you download the complete METABRIC
 dataset from cBioPortal. The table read in is a subset containing rows for
 the 8 genes we've been using up till now.
 
-```{r message = FALSE}
+```{r eval = FALSE, message = FALSE}
 copy_number_states <- read_tsv("metabric_cna.txt")
 select(copy_number_states, 1:10)
 ```
@@ -218,7 +219,7 @@ We'll first need to read the mutation data into R and we're only interested
 in those cases where the patient tumour sample was sequenced so we'll read those
 in as well.
 
-```{r message = FALSE}
+```{r eval = FALSE, message = FALSE}
 mutations <- read_csv("metabric_mutations.csv")
 cases_sequenced <- read_tsv("cases_nat_comm_2016.txt", col_names = "Patient_ID")
 ```

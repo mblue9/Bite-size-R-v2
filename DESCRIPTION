@@ -26,6 +26,7 @@ Suggests:
     readxl,
     lubridate,
     ggthemes,
+    xfun,
     knitr,
     rmarkdown,
     pkgdown

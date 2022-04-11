@@ -3,6 +3,10 @@
 title: "Assignment 2"
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ### Clinical cancer data
 
 **6. How many samples in the METABRIC dataset have high cellularity but have no recorded classification with the 3-gene classifier?**

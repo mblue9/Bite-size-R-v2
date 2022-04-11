@@ -9,9 +9,10 @@ vignette: >
 
 > #### Aims
 >
-> * To introduce RStudio that we will be using, to write R code, in this course
+> * To introduce RStudio which we will be using to write R code in this course
 > * To generate a first visualisation and report
 > * To demonstrate editing code to update visualisations and reports
+> * To review some basic R commands
 >
 > #### Learning objectives
 >
@@ -47,21 +48,21 @@ This document (RMarkdown a .Rmd file) is a case in point.
 
 # RStudio  a brief tour
 
-RStudio provides us with a friendly interface to the R statistical progrmming language.
+RStudio provides us with a friendly interface to the R statistical programming language.
 It consists of four main "Panes". These can be re-sized and moved around to suit how
 you like to work.
 
 
-```{r, echo=FALSE, out.width = "100px"}
-knitr::include_graphics("../inst/images/Rstudioataglance.png")
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/Rstudioataglance.png")
 ```
 
 ## Editing pane
 
 By default the top left-hand pane is one for creating, editing & running R scripts.
 
-```{r, echo=FALSE, out.width = "100px"}
-knitr::include_graphics("../inst/images/Rstudio_scripting.png")
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/Rstudio_scripting.png")
 ```
 
 A script is an R program that you have written. A good practice is for that script to
@@ -77,8 +78,8 @@ As well as R scripts, there are many types of RStudio document including Markdow
 Coming down the screen to the bottom left-hand pane we find the console window. This is where we can find output produced by running our R scripts.
 
 
-```{r, echo=FALSE, out.width = "100px"}
-knitr::include_graphics("../inst/images/Rstudio_console.png")
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/Rstudio_console.png")
 ```
 
 
@@ -123,8 +124,8 @@ There are other tabs on this pane but we shall not be covering these on this cou
 Next we move to the top right-hand corner pane. Here we have even more tabs (of which we will only consider two Environment and History).
 
 
-```{r, echo=FALSE, out.width = "100px"}
-knitr::include_graphics("../inst/images/Rstudio_console.png")
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/Rstudio_console.png")
 ```
 
 
@@ -135,8 +136,8 @@ Environment keeps track on R variables which we create (more on those later) and
 Our final bottom right-hand pane also has several tabs. The Files tab is a file explorer that enable us to move around our directories and select which files we wish to work on. We can also change the default working directory that Rstudio will use.
 
 
-```{r, echo=FALSE, out.width = "100px"}
-knitr::include_graphics("../inst/images/Rstudio_filexpl.png")
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/Rstudio_filexpl.png")
 ```
 
 
@@ -420,4 +421,6 @@ week's assignment.
 
 # Assignment
 
-Assignment: [assignment1.Rmd](assignments/assignment1.Rmd)
+```{r echo = FALSE}
+xfun::embed_file('../assignments/assignment1.Rmd')
+```

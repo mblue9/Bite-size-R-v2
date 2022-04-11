@@ -18,7 +18,7 @@ clinical data that you should by now be quite familiar with. This table does not
 contain the additional mRNA expression columns we've used in previous
 assignments.
 
-```{r message = FALSE, warning = FALSE}
+```{r eval = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 metabric <- read_csv("metabric_clinical_data.csv")
 # convert the Integrative_cluster variable into a categorical variable with
@@ -29,7 +29,7 @@ metabric <- mutate(metabric, Integrative_cluster = factor(Integrative_cluster, l
 The second table contains the mutations that were detected in each patient
 tumour sample.
 
-```{r}
+```{r eval = FALSE}
 mutations <- read_csv("metabric_mutations.csv")
 mutations
 ```
@@ -40,7 +40,7 @@ were detected. For one of the exercises we need to know which patients were
 sequenced, so we'll also read the case list of samples that were sequenced and
 add a column indicating this in the clinical data table.
 
-```{r}
+```{r eval = FALSE}
 cases_sequenced <- read_tsv("cases_nat_comm_2016.txt", col_names = "Patient_ID")
 metabric <- mutate(metabric, Sequenced = Patient_ID %in% cases_sequenced$Patient_ID)
 count(metabric, Sequenced)

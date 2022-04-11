@@ -1,29 +1,14 @@
 
 ---
-title: "Assignment 2"
+title: "Assignment 1"
 ---
 
-
-### Clinical cancer data
-
-**6. How many samples in the METABRIC dataset have high cellularity but have no recorded classification with the 3-gene classifier?**
-
-```{r}
-
-```
-
-*Hint:* this is actually quite tricky -- you may want to check for missing
-values in the cellularity column as well as the column for the 3-gene
-classifier.
-
----
 
 ### Working with data from an Excel spreadsheet
 
-**7. Read into R one of your own Excel spreadsheets and explore the data using `summary()`, `table()` and/or `plot()`**
+**Read into R one of your own Excel spreadsheets and explore the data using `summary()`, `table()` and/or `plot()`**
 
-We haven't yet showed how to read Excel spreadsheets into R. There are more than
-package providing this capability but for this exercise use the `readxl` package
+We haven't yet showed how to read Excel spreadsheets into R. There are several package providing this capability but for this exercise use the `readxl` package
 from the tidyverse.
 
 `readxl` should have been installed as part of the tidyverse but if you find
@@ -91,5 +76,19 @@ and how these are rendered when you run the knit operation.
 
 For more features, see the help page in RStudio that can be accessed from the
 the help menu: **Help > Markdown Quick Reference**
+
+---
+
+### Advanced: Clinical cancer data
+
+**How many samples in the METABRIC dataset have high cellularity but have no recorded classification with the 3-gene classifier?**
+
+```{r}
+
+```
+
+*Hint:* this is actually quite tricky -- you may want to check for missing
+values in the cellularity column as well as the column for the 3-gene
+classifier.
 
 ---

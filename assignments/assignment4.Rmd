@@ -1,6 +1,6 @@
 
 ---
-title: "Assignment 2"
+title: "Assignment 4"
 ---
 
 The week's assignment will test your ability to manipulate the METABRIC data set
@@ -12,7 +12,7 @@ We are expecting you to use the 5 main dplyr 'verb' functions: `select()`,
 operator, `%>%`, in cases where more than one operation is required to achieve
 the outcome requested.
 
-```{r message = FALSE, warning = FALSE}
+```{r eval = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 metabric <- read_csv("metabric_clinical_and_expression_data.csv")
 ```
