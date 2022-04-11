@@ -97,11 +97,12 @@
 <blockquote>
 <h4 id="aims">Aims</h4>
 <ul>
-<li>To introduce RStudio that we will be using, to write R code, in this
+<li>To introduce RStudio which we will be using to write R code in this
 course</li>
 <li>To generate a first visualisation and report</li>
 <li>To demonstrate editing code to update visualisations and
 reports</li>
+<li>To review some basic R commands</li>
 </ul>
 <h4 id="learning-objectives">Learning objectives</h4>
 <ul>
@@ -147,15 +148,15 @@ cross-platform.</p></li>
 <h2 id="rstudio-a-brief-tour">RStudio a brief tour<a class="anchor" aria-label="anchor" href="#rstudio-a-brief-tour"></a>
 </h2>
 <p>RStudio provides us with a friendly interface to the R statistical
-progrmming language. It consists of four main “Panes”. These can be
+programming language. It consists of four main “Panes”. These can be
 re-sized and moved around to suit how you like to work.</p>
-<p><img src="../inst/images/Rstudioataglance.png" width="100px"></p>
+<p><img src="images/Rstudioataglance.png" width="100%"></p>
 <div class="section level3">
 <h3 id="editing-pane">Editing pane<a class="anchor" aria-label="anchor" href="#editing-pane"></a>
 </h3>
 <p>By default the top left-hand pane is one for creating, editing &amp;
 running R scripts.</p>
-<p><img src="../inst/images/Rstudio_scripting.png" width="100px"></p>
+<p><img src="images/Rstudio_scripting.png" width="100%"></p>
 <p>A script is an R program that you have written. A good practice is
 for that script to perform only one role in your analysis workflow and
 so you may have several R scripts which you call, in a particular
@@ -174,7 +175,7 @@ documents to name but a few possible outcomes.</p>
 <p>Coming down the screen to the bottom left-hand pane we find the
 console window. This is where we can find output produced by running our
 R scripts.</p>
-<p><img src="../inst/images/Rstudio_console.png" width="100px"></p>
+<p><img src="images/Rstudio_console.png" width="100%"></p>
 <p>We can also try out snippets of R code here. Those of you who have
 only used graphical interfaces like Windows or MacOS where you click on
 commands using a mouse may find this aspect of R somewhat different. We
@@ -215,7 +216,7 @@ on this course.</p>
 <p>Next we move to the top right-hand corner pane. Here we have even
 more tabs (of which we will only consider two Environment and
 History).</p>
-<p><img src="../inst/images/Rstudio_console.png" width="100px"></p>
+<p><img src="images/Rstudio_console.png" width="100%"></p>
 <p>Environment keeps track on R variables which we create (more on those
 later) and their contents. History is like a tally role of all the R
 commands we have entered in our session.</p>
@@ -227,7 +228,7 @@ commands we have entered in our session.</p>
 is a file explorer that enable us to move around our directories and
 select which files we wish to work on. We can also change the default
 working directory that Rstudio will use.</p>
-<p><img src="../inst/images/Rstudio_filexpl.png" width="100px"></p>
+<p><img src="images/Rstudio_filexpl.png" width="100%"></p>
 <p>The Plots tab is where any graphs that we create in R will appear. We
 can move through them using the arrow buttons and the export button will
 convert them to different graphics formats e.g. for publication in a
@@ -761,7 +762,7 @@ therein in this week’s assignment.</p>
 <div class="section level2">
 <h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
 </h2>
-<p>Assignment: <a href="assignments/assignment1.Rmd">assignment1.Rmd</a></p>
+<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMSIKLS0tCgoKIyMjIFdvcmtpbmcgd2l0aCBkYXRhIGZyb20gYW4gRXhjZWwgc3ByZWFkc2hlZXQKCioqUmVhZCBpbnRvIFIgb25lIG9mIHlvdXIgb3duIEV4Y2VsIHNwcmVhZHNoZWV0cyBhbmQgZXhwbG9yZSB0aGUgZGF0YSB1c2luZyBgc3VtbWFyeSgpYCwgYHRhYmxlKClgIGFuZC9vciBgcGxvdCgpYCoqCgpXZSBoYXZlbid0IHlldCBzaG93ZWQgaG93IHRvIHJlYWQgRXhjZWwgc3ByZWFkc2hlZXRzIGludG8gUi4gVGhlcmUgYXJlIHNldmVyYWwgcGFja2FnZSBwcm92aWRpbmcgdGhpcyBjYXBhYmlsaXR5IGJ1dCBmb3IgdGhpcyBleGVyY2lzZSB1c2UgdGhlIGByZWFkeGxgIHBhY2thZ2UKZnJvbSB0aGUgdGlkeXZlcnNlLgoKYHJlYWR4bGAgc2hvdWxkIGhhdmUgYmVlbiBpbnN0YWxsZWQgYXMgcGFydCBvZiB0aGUgdGlkeXZlcnNlIGJ1dCBpZiB5b3UgZmluZAp0aGF0J3Mgbm90IHRoZSBjYXNlLCB5b3Ugd2lsbCBoYXZlIHRvIGluc3RhbGwgaXQgc2VwYXJhdGVseS4KCmByZWFkeGxgIGlzIG5vdCBsb2FkZWQgYXMgb25lIG9mIHRoZSBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyB3aGVuIHlvdSBydW4KYGxpYnJhcnkodGlkeXZlcnNlKWAgc28geW91J2xsIGhhdmUgdG8gbG9hZCB0aGlzIHNlcGFyYXRlbHkuCgpJZiB5b3UgZG9uJ3QgaGF2ZSBhbiBFeGNlbCBzcHJlYWRzaGVldCB0byBoYW5kLCB5b3UgY2FuIHVzZSB0aGUgY2xpbmljYWwKYW5ub3RhdGlvbiBkYXRhIGZvciB0aGUgTkNJLTYwIGNlbGwgbGluZSBkYXRhIHNldCAoaHR0cHM6Ly9iaW9pbmZvcm1hdGljcy1jb3JlLXNoYXJlZC10cmFpbmluZy5naXRodWIuaW8vci1pbnRyby9kYXRhL2NlbGxsaW5lX25jaTYwX2NsaW5pY2FsX2RhdGEueGxzeCkuCgpgYGB7cn0KCmBgYAoKLS0tCgojIyMgQ3JlYXRlIGEgcmVwb3J0IGZvciB5b3VyIGFzc2lnbm1lbnQKCkNsaWNrIG9uIHRoZSAnS25pdCcgbWVudSBhdCB0aGUgdG9wIG9mIHRoaXMgZmlsZSBhbmQgc2VsZWN0IGVpdGhlciB3aGljaGV2ZXIKb3B0aW9uIHlvdSBwcmVmZXIgdG8gY3JlYXRlIGFuIEhUTUwsIFBERiBvciBXb3JkIGRvY3VtZW50IHZlcnNpb24gb2YgeW91cgphc3NpZ25tZW50LiBUaGlzIHdpbGwgcnVuIGFsbCB0aGUgY29kZSBjaHVua3MgYW5kICJrbml0IiB0aGUgcmVzdWx0aW5nCnJlc3VsdHMgd2l0aCB0aGUgc3Vycm91bmRpbmcgdGV4dCB0byBwcm9kdWNlIGEgcmVwb3J0LgoKIyMjIyBBZGRpdGlvbmFsIG1hcmtkb3duIGZlYXR1cmVzCgoqKl9FbXBoYXNpc18qKgoKQ2FuIHVzZSBlaXRoZXIgdW5kZXJzY29yZXMgb3IgYXN0ZXJpc2tzIGFuZCBjb21iaW5hdGlvbiBvZiBib3RoIGZvciBib3RoIGJvbGQKYW5kIGl0YWxpYyBlbXBoYXNpcy4KCmBgYAoqaXRhbGljKiAgICoqYm9sZCoqCl9pdGFsaWNfICAgX19ib2xkX18KYGBgCgoqKl9JbmxpbmUgQ29kZV8qKgoKVXNlIG9mIGJhY2t0aWNrcyAoYCkuCgpgYGAKYG1lYW4oc3RhcndhciRoZWlnaHQpYApgYGAKCioqX0hvcml6b250YWwgUnVsZV8qKgoKVGhyZWUgb2YgbW9yZSBhc3Rlcmlza3Mgb3IgZGFzaGVzLgoKYGBgCioqKioqKioKCi0tLS0tLS0KYGBgCgoqKl9QbGFpbiBDb2RlIEJsb2Nrc18qKgoKUGxhaW4gY29kZSBibG9ja3MgYXJlIGRpc3BsYXllZCBpbiBhIGZpeGVkLXdpZHRoIGZvbnQgYnV0IG5vdCBldmFsdWF0ZWQuCgpgYGAKVGhpcyB0ZXh0IGlzIGRpc3BsYXllZCB2ZXJiYXRpbSAvIHByZWZvcm1hdHRlZApgYGAKCkhhdmUgYSBsb29rIGF0IGV4YW1wbGVzIG9mIHRoZXNlIGluIHRoZSB0ZXh0IHBhcnRzIG9mIHRoaXMgUiBtYXJrZG93biBkb2N1bWVudAphbmQgaG93IHRoZXNlIGFyZSByZW5kZXJlZCB3aGVuIHlvdSBydW4gdGhlIGtuaXQgb3BlcmF0aW9uLgoKRm9yIG1vcmUgZmVhdHVyZXMsIHNlZSB0aGUgaGVscCBwYWdlIGluIFJTdHVkaW8gdGhhdCBjYW4gYmUgYWNjZXNzZWQgZnJvbSB0aGUKdGhlIGhlbHAgbWVudTogKipIZWxwID4gTWFya2Rvd24gUXVpY2sgUmVmZXJlbmNlKioKCi0tLQoKIyMjIEFkdmFuY2VkOiBDbGluaWNhbCBjYW5jZXIgZGF0YQoKKipIb3cgbWFueSBzYW1wbGVzIGluIHRoZSBNRVRBQlJJQyBkYXRhc2V0IGhhdmUgaGlnaCBjZWxsdWxhcml0eSBidXQgaGF2ZSBubyByZWNvcmRlZCBjbGFzc2lmaWNhdGlvbiB3aXRoIHRoZSAzLWdlbmUgY2xhc3NpZmllcj8qKgoKYGBge3J9CgpgYGAKCipIaW50OiogdGhpcyBpcyBhY3R1YWxseSBxdWl0ZSB0cmlja3kgLS0geW91IG1heSB3YW50IHRvIGNoZWNrIGZvciBtaXNzaW5nCnZhbHVlcyBpbiB0aGUgY2VsbHVsYXJpdHkgY29sdW1uIGFzIHdlbGwgYXMgdGhlIGNvbHVtbiBmb3IgdGhlIDMtZ2VuZQpjbGFzc2lmaWVyLgoKLS0tCg==" download="assignment1.Rmd">Download assignment1.Rmd</a></p>
 </div>
   </div>
 
