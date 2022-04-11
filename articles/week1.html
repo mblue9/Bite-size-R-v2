@@ -99,9 +99,7 @@
 <ul>
 <li>To introduce RStudio which we will be using to write R code in this
 course</li>
-<li>To generate a first visualisation and report</li>
-<li>To demonstrate editing code to update visualisations and
-reports</li>
+<li>To demonstrate generating a visualisation and report</li>
 <li>To review some basic R commands</li>
 </ul>
 <h4 id="learning-objectives">Learning objectives</h4>
@@ -252,7 +250,15 @@ data and create visualizations of the data.</p>
 <p>So let’s see an example of what we’ll be learning and generate our
 first visualisation and report. By the end of this course we should be
 able to explain what each line of the code does.</p>
-<p>In RStudio top menu go to File &gt; Open File and <a href="assignments/assignment1.Rmd">open this R Markdown file</a></p>
+<p><a href="data:text/x-markdown;base64,LS0tCnRpdGxlOiAiUHJvdGVpbiBsZXZlbHMgaW4gYnJlYXN0IGNhbmNlciBjZWxscyB0cmVhdGVkIHdpdGggdGFtb3hpZmVuIgphdXRob3I6ICJNYXJpYSBEb3lsZSIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgSW50cm9kdWN0aW9uCgpXaGljaCBwcm90ZWlucyBjaGFuZ2UgaW4gYWJ1bmRhbmNlIGluIHRoZSBicmVhc3QgY2FuY2VyIGNlbGwgbGluZSwgTUNGLTcsIHdpdGggdGFtb3hpZmVuIHRyZWF0bWVudD8gSG93IGRvIHRoZWlyIGxldmVscyBjaGFuZ2Ugd2l0aCB0cmVhdG1lbnQgdGltZT8gQW5zd2VyaW5nIHRoZXNlIHF1ZXN0aW9ucyAoYXQgYSBoaWdoIGxldmVsKSBpcyB0aGUgZm9jdXMgb2YgdGhpcyBhbmFseXNpcy4KCiMjIyBQYWNrYWdlcwoKV2Ugd2lsbCB1c2UgdGhlICoqdGlkeXZlcnNlKiogY29sbGVjdGlvbiBvZiBwYWNrYWdlcyBmb3IgZGF0YSBpbXBvcnQsIHdyYW5nbGluZyBhbmQgdmlzdWFsaXphdGlvbi4KCmBgYHtyIGxvYWQtcGFja2FnZXMsIHdhcm5pbmc9RkFMU0UsIG1lc3NhZ2U9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCiMjIyBEYXRhCgpUaGUgZGF0YSB3ZSdyZSB1c2luZyB3YXMgZ2VuZXJhdGVkIGJ5IENSVUsgQ0kgc2NpZW50aXN0cyAoW1BhcGFjaHJpc3RvdSBfZXQgYWwuXywgTmF0dXJlIENvbW11bmljYXRpb25zIDk6MjMxMSwgMjAxOF0oaHR0cHM6Ly9wdWJtZWQubmNiaS5ubG0ubmloLmdvdi8yOTg5OTM1MykpLgpJdCBpcyB0aGUgYWJ1bmRhbmNlIG9mIHByb3RlaW5zIGluIGEgYnJlYXN0IGNhbmNlciBjZWxsIGxpbmUgKE1DRi03KSBhdAp2YXJpb3VzIHRpbWUgcG9pbnRzIGFmdGVyIHRyZWF0bWVudCB3aXRoIHRoZSBkcnVnIHRhbW94aWZlbiwgbWVhc3VyZWQgdXNpbmcgbWFzcyBzcGVjdHJvbWV0cnkuIEluIHRoZSBjaHVuayBiZWxvdyB3ZSBpbXBvcnQgdGhlIEV4Y2VsIGZpbGUgY29udGFpbmluZyB0aGUgZGF0YSwgc2tpcHBpbmcgdGhlIGZpcnN0IGhlYWRlciByb3cuCgpgYGB7ciBtZXNzYWdlPUZBTFNFfQpwcm90ZWluX2xldmVscyA8LSByZWFkX2NzdigiaHR0cHM6Ly96ZW5vZG8ub3JnL3JlY29yZC82NDUwMTQ0L2ZpbGVzLzQxNDY3XzIwMThfNDYxOV9NT0VTTTExX0VTTS5jc3YiLCBza2lwID0gMSkKYGBgCgojIyBQcm90ZWluIGxldmVscyBhZnRlciB0cmVhdG1lbnQgd2l0aCB0YW1veGlmZW4KCkxldCdzIGNyZWF0ZSBhIGRhdGEgdmlzdWFsaXNhdGlvbiB0aGF0IGRpc3BsYXlzIHRoZSBsZXZlbHMgZm9yIHByb3RlaW5zIHRoYXQgYXJlIGRlY3JlYXNlZCAobG9nMmZjIDwgLTAuNzUpIGluIHRoZSAyNGggdGFtb3hpZmVuIHRyZWF0ZWQgc2FtcGxlIHZlcnN1cyBjb250cm9sICh2ZWgpLgoKYGBge3IgcGxvdC1wcm90ZWluLWxldmVscywgZmlnLndpZHRoPTEwLCBmaWcuaGVpZ2h0PTYsIG1lc3NhZ2U9RkFMU0V9CnByb3RlaW5fbGV2ZWxzICU+JQogIGZpbHRlcihgbG9nMkZDKDI0aC92ZWgpYCA8IC0wLjc1KSAlPiUKICBzZWxlY3QoYWNjZXNzaW9uID0gYFVuaXByb3QgQWNjZXNzaW9uYCwgZ2VuZSA9IGBHZW5lIE5hbWVgLCB2ZWhpY2xlLnJlcDAxOnRhbS4yNGgucmVwMDQpICU+JQogIHBpdm90X2xvbmdlcih2ZWhpY2xlLnJlcDAxOnRhbS4yNGgucmVwMDQsIG5hbWVzX3RvID0gInNhbXBsZSIsIHZhbHVlc190byA9ICJwcm90ZWluX2xldmVsIikgJT4lCiAgbXV0YXRlKHNhbXBsZSA9IHN0cl9yZXBsYWNlKHNhbXBsZSwgInZlaGljbGUiLCAidmVoaWNsZS4yNGgiKSkgJT4lCiAgc2VwYXJhdGUoc2FtcGxlLCBpbnRvID0gYygidHJlYXRtZW50IiwgInRpbWUiLCAicmVwbGljYXRlIikpICU+JQogIG11dGF0ZShncm91cCA9IHN0cl9zdWIodHJlYXRtZW50LCAxLCAzKSkgJT4lCiAgbXV0YXRlKGdyb3VwID0gc3RyX2MoZ3JvdXAsIHRpbWUpKSAlPiUKICBtdXRhdGUoZ3JvdXAgPSBhc19mYWN0b3IoZ3JvdXApKSAlPiUKICBnZ3Bsb3QobWFwcGluZyA9IGFlcyh4ID0gZ3JvdXAsIHkgPSBwcm90ZWluX2xldmVsLCBmaWxsID0gZ3JvdXApKSArCiAgZ2VvbV9ib3hwbG90KCkgKwogIGdlb21faml0dGVyKHdpZHRoID0gMC4xNSkgKwogIGZhY2V0X3dyYXAodmFycyhnZW5lKSwgc2NhbGVzID0gImZyZWVfeSIsIG5jb2wgPSAzKSArCiAgbGFicygKICAgIHRpdGxlID0gIlByb3RlaW4gbGV2ZWxzIGluIE1DRi03IHRyZWF0ZWQgd2l0aCB0YW1veGlmZW4iLAogICAgeSA9ICJQcm90ZWluIGxldmVsIiwKICAgIHggPSAiIgogICkKYGBgCgoxLiBDbGljayBLbml0IHRvIGdlbmVyYXRlIGEgaHRtbCByZXBvcnQgY29udGFpbmluZyB0aGUgcGxvdC4gIAoyLiBXZSBjYW4gZWFzaWx5IGNoYW5nZSB3aGljaCBwcm90ZWlucyBhcmUgYmVpbmcgcGxvdHRlZCBieSBjaGFuZ2luZyB0aGUgdGhyZXNob2xkIHRoZSBjb2RlIGFib3ZlIGBmaWx0ZXJgcyBmb3IuIFRyeSBjaGFuZ2luZyB0aGUgZmlsdGVyIHRvIGA+IDAuNzVgICB0aGVuIEtuaXQgYWdhaW4uCgojIyBSZWZlcmVuY2VzCgoxLiAgQ2FuY2VyIFJlc2VhcmNoIFVLIENhbWJyaWRnZSBJbnN0aXR1dGUsIFVuaXZlcnNpdHkgb2YgQ2FtYnJpZGdlICJJbnRyb2R1Y3Rpb24gdG8gUiBmb3IgQ2FuY2VyIFNjaWVudGlzdHMiCjIuICBNaW5lIENldGlua2F5YS1SdW5kZWwgIkRhdGEgU2NpZW5jZSBpbiBhIEJveCIgCg==" download="example-report.Rmd">Download example-report.Rmd</a></p>
+<ul>
+<li>Download the example report file in the link above</li>
+<li>In your RStudio top menu go to File &gt; Open File and open the
+example report file</li>
+<li>Click the Knit button to generate the report</li>
+<li>Try out the exercise to edit the file.</li>
+</ul>
+<p>Next we’ll explain some of the things you can see in the file.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -649,14 +655,18 @@ Nottingham prognostic index (whatever that is) using R’s built-in
 <div class="section level3">
 <h3 id="working-directory">Working directory<a class="anchor" aria-label="anchor" href="#working-directory"></a>
 </h3>
-<p>When reading in the METABRIC dataset we specified the file using a
-relative path,
-<code>https://zenodo.org/record/6426303/files/brca_metabric_clinical_data.tsv</code>.
-This is relative to the current working directory and is in the
-<code>data</code> subdirectory within our working directory. The
-<strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code></strong> function will tell you what the
-current working directory is.</p>
+<p>When importing the METABRIC dataset we specified the file using a URL
+<code>https://zenodo.org/record/6426303/files/brca_metabric_clinical_data.tsv</code>
+as it’s located on the web. If you have a file on your computer you can
+specify the path to where it is located. For example, if we paste the
+URL above into our web browser we can download the file and then import
+it.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># assumes file is in our Downloads folder, "~" means our home directory e.g./home/maria</span>
+<span class="va">metabric_downloaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"~/Downloads/"</span><span class="op">)</span></code></pre></div>
+<p>The <strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code></strong> function will tell you what
+the current working directory is.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>If you open RStudio by clicking on its icon in the task bar or its
 entry in the start menu, your working directory will probably be your
@@ -665,21 +675,22 @@ home folder.</p>
 also known as an absolute path.</p>
 <p>You can explicitly set your working directory using
 <strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code></strong>.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">"/Users/matt/projects/20200116_JB_amplicon_sequencing"</span><span class="op">)</span></code></pre></div>
-<p>If you’re running an R script from a terminal window (by typing
-something like <code>Rscript my_script.R</code> at the command prompt)
-your working directory will be the directory in which you run the script
-(i.e. the one in which you issue the Rscript command). In this case you
-will probably want to read files from locations that are relative to the
-directory in which you run the script.</p>
-<p>If you’re writing an R script in RStudio you can set the working
-directory to be the same directory as that which contains your script
-file using the menu: <strong>Session &gt; Set Working Directory &gt; To
+<p>If you’re working with an R Markdown report (Rmd file) your working
+directory will be the directory in which the report is located. In this
+case you will probably want to read files from locations that are
+relative to the directory in which you run the report.</p>
+<p>If you’re writing an R report in RStudio, you can set the working
+directory to be the same directory as that which contains your file
+using the menu: <strong>Session &gt; Set Working Directory &gt; To
 Source File Location</strong>. You can also navigate to the directory of
 your choosing in the Files tab pane and set this to be the working
 directory by clicking on the <strong>More</strong> menu button and
 selecting <strong>Set As Working Directory</strong>.</p>
+<p>Alternatively (and better) you can create an RStudio Project (File
+&gt; New Project) as described <a href="https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects" class="external-link">here</a>
+to automatically keep track of and set the working directory.</p>
 <hr>
 </div>
 </div>
@@ -691,7 +702,7 @@ back to the table we printed out earlier you can see 2 missing values
 for mutation counts within the first 10 rows. We can specified rows of a
 column to view with
 <strong><code>[firstrow:lastrow]</code></strong>.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></code></pre></div>
 <pre><code><span class="co">##  [1] NA  2  2  1  2  4  4 NA  1  5</span></code></pre>
 <div class="rmdblock">
@@ -708,7 +719,7 @@ missing mutation counts. <code><a href="https://rdrr.io/r/base/summary.html" cla
 median values for the remaining observations, i.e. those for which a
 mutation count <em>is</em> available. Not all functions do this
 though.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] NA</span></code></pre>
 <p>The <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code> function, for example, takes a different
@@ -718,20 +729,20 @@ mean for a set of values where some are not available. You can specify
 the argument <code>na.rm = TRUE</code> when calling <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code>
 to instruct it to ignore the missing values and calculate the mean of
 the remaining values.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 5.578702</span></code></pre>
 <p>There are many such functions in R that would be similarly affected
 by missing values and which offer the <code>na.rm</code> argument.</p>
 <p>You can test for missing values using the <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>
 function.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">first_ten_mutation_counts</span> <span class="op">&lt;-</span> <span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">first_ten_mutation_counts</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</span></code></pre>
 <p>One final handy tip: summing the result of <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> will
 count the number of missing values in a vector.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 152</span></code></pre>
 <p>Can you see why this works? <em>(hint: look at what kind of vector
@@ -747,9 +758,6 @@ coerced into such a type)</em>.</p>
 <li>The RStudio environment and the functions associated with each
 pane</li>
 <li>Generating a visualisation and report using R</li>
-<li>Editing code to update visualisations and reports</li>
-<li>How to write R code in scripts that can saved and re-run at a later
-date</li>
 <li>How to install and use packages that extend R’s basic
 functionality</li>
 <li>How to read tabular data into R</li>
