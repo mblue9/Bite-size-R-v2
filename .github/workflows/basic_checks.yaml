@@ -51,7 +51,8 @@ jobs:
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
-        run: rcmdcheck::rcmdcheck(args = c("--no-manual"), error_on = "error", check_dir = "check")
+          # turn off building vignettes 
+        run: rcmdcheck::rcmdcheck(args = c("--no-manual"), build_args = c("--ignore-vignettes"), error_on = "error", check_dir = "check")
         shell: Rscript {0}
       
 
