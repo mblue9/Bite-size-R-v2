@@ -146,7 +146,7 @@ we’ll have to use backticks,
 e.g. <code>metabric$`3-gene_classifier`</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
-<span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6426303/files/metabric_clinical_and_expression_data.csv"</span><span class="op">)</span>
+<span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv"</span><span class="op">)</span>
 <span class="va">metabric</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 32</span></span>
 <span class="co">##    Patient_ID Cohort Age_at_diagnosis Survival_time Survival_status Vital_status</span>
@@ -570,8 +570,8 @@ the help page for <code><a href="https://readxl.tidyverse.org/reference/read_exc
 arguments we’ve used below.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org" class="external-link">readxl</a></span><span class="op">)</span>
-<span class="co"># because it's an Excel file located in the web need to download then import</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6426303/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span>, destfile <span class="op">=</span> <span class="st">"2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span><span class="op">)</span>
+<span class="co"># because it's an Excel file located on the web need to download then import</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span>, destfile <span class="op">=</span> <span class="st">"2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span><span class="op">)</span>
 <span class="va">transport_use</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">read_excel</a></span><span class="op">(</span><span class="st">"2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span>,
                             sheet <span class="op">=</span> <span class="st">"Transport use"</span>,
                             col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="st">"transport_type"</span>, <span class="st">"percentage"</span><span class="op">)</span>,
