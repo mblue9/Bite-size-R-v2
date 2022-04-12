@@ -958,12 +958,12 @@ before printing out a data frame or writing out the table to a file.</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Deceased</span> <span class="op">&lt;-</span> <span class="va">metabric</span><span class="op">$</span><span class="va">Survival_status</span> <span class="op">==</span> <span class="st">"DECEASED"</span></code></pre></div>
 <p>This is an example of a rather common type of data manipulation in
-which we crate a new column based on the values contained in one or more
-other columns. The <code>dplyr</code> package provides the
+which we create a new column based on the values contained in one or
+more other columns. The <code>dplyr</code> package provides the
 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> function for this purpose.</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">metabric</span>, Deceased <span class="op">=</span> <span class="va">Survival_status</span> <span class="op">==</span> <span class="st">"DECEASED"</span><span class="op">)</span></code></pre></div>
-<p>Both of these methods adds the new column to the end.</p>
+<p>Both of these methods add the new column to the end.</p>
 <p>Note that variables names in the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> function call
 do not need to be prefixed by <code>metabric$</code> just as they don’t
 in any of the <code>dplyr</code> functions.</p>

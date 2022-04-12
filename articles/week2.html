@@ -173,10 +173,10 @@ e.g. <code>metabric$`3-gene_classifier`</code>.</p>
 <div class="section level2">
 <h2 id="our-first-ggplot---a-scatter-plot">Our first ggplot - a scatter plot<a class="anchor" aria-label="anchor" href="#our-first-ggplot---a-scatter-plot"></a>
 </h2>
-<p>First we’ll create a simple scatter plot much like the ones we’ve
-created in previous sessions using R’s <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> function.
-We’ll plot the expression of estrogen receptor alpha (ESR1) against that
-of the transcription factor, GATA3.</p>
+<p>First we’ll create a simple scatter plot much like the one we created
+in the previous session using R’s <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> function. We’ll
+plot the expression of estrogen receptor alpha (ESR1) against that of
+the transcription factor, GATA3.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -230,7 +230,7 @@ We’ll use the ER status as an example.</p>
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week2_files/figure-html/scatter_plot_3-1.png" width="700"></p>
-<p>ggplot2 uses a colour scale for a continous variable but discrete
+<p>ggplot2 uses a colour scale for a continuous variable but discrete
 colours for discrete or categorical values.</p>
 <p>Size is not usually a good aesthetic to map to a variable. This is
 particularly the case where we have such a large number of
@@ -557,7 +557,7 @@ we’ll turn our attention to a more topical data set.</p>
 <p>Every day the UK Government presents a series of plots showing data
 relating to the coronavirus (COVID-19) pandemic. Both the plots and the
 data are published on the Government’s <a href="https://www.gov.uk/government/collections/slides-and-datasets-to-accompany-coronavirus-press-conferences" class="external-link">website</a>.</p>
-<p>One of the plots shows the reduction in different types oftransport
+<p>One of the plots shows the reduction in different types of transport
 use over time in the UK in the week leading up to and since the lockdown
 restrictions were introduced in response to the pandemic.</p>
 <p>Reading these data into R from the downloaded Excel spreadsheet
@@ -812,26 +812,40 @@ levels using the <code>levels</code> argument.</p>
 <p><img src="week2_files/figure-html/bar_plot_9-1.png" width="700"></p>
 </div>
 <div class="section level2">
+<h2 id="saving-plot-images">Saving plot images<a class="anchor" aria-label="anchor" href="#saving-plot-images"></a>
+</h2>
+<p>Use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code> to save the last plot you displayed.</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"integrative_cluster.png"</span><span class="op">)</span></code></pre></div>
+<p>You can alter the width and height of the plot and can change the
+image file type.</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"integrative_cluster.pdf"</span>, width <span class="op">=</span> <span class="fl">20</span>, height <span class="op">=</span> <span class="fl">12</span>, units <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span></code></pre></div>
+<p>You can also pass in a plot object you have created instead of using
+the last plot displayed. See the help page (<code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">?ggsave</a></code>) for
+more details.</p>
+</div>
+<div class="section level2">
 <h2 id="the-ggplot-object-a-peek-under-the-hood-advanced">The ggplot object – a peek under the hood (ADVANCED)<a class="anchor" aria-label="anchor" href="#the-ggplot-object-a-peek-under-the-hood-advanced"></a>
 </h2>
 <p>Let’s build a ggplot2 plot up in stages to understand what’s really
 going on.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span></code></pre></div>
 <p>What is the plot object we’ve just created?</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "list"</span></code></pre>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 9</span></code></pre>
 <p>The plot object is a list containing 9 elements. It’s actually a
 special type of list.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "gg"     "ggplot"</span></code></pre>
 <p>What are the 9 things in the list?</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "data"        "layers"      "scales"      "mapping"     "theme"      </span>
 <span class="co">## [6] "coordinates" "facet"       "plot_env"    "labels"</span></code></pre>
@@ -842,7 +856,7 @@ changing the labels, altering the scales of axes, and applying a
 different visual theme.</p>
 <p>The <code>data</code> element is just the metabric tibble that we
 provided to the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot()</a></code> function.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">data</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 32</span></span>
 <span class="co">##    Patient_ID Cohort Age_at_diagnosis Survival_time Survival_status Vital_status</span>
@@ -870,20 +884,20 @@ we ask it to by printing it out to the screen by typing
 <code>print(plot)</code> or simply just <code>plot</code>.</p>
 <p>We haven’t added any layers yet so what does our plot look like at
 this point?</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span></code></pre></div>
 <p><img src="week2_files/figure-html/building_up_plot_1-1.png" width="700"></p>
 <p>ggplot2 doesn’t know what to plot yet as we haven’t added a layer
 (geom).</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">mapping</span></code></pre></div>
 <pre><code><span class="co">## Aesthetic mapping: </span>
 <span class="co">## &lt;empty&gt;</span></code></pre>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">layers</span></code></pre></div>
 <pre><code><span class="co">## list()</span></code></pre>
 <p>Lets add an aesthetic mapping.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span>
 <span class="va">plot</span></code></pre></div>
 <p><img src="week2_files/figure-html/building_up_plot_2-1.png" width="700"></p>
@@ -891,22 +905,22 @@ this point?</p>
 ranges of values for the Nottingham prognostic index and ESR1
 expression. Still nothing has been plotted as we haven’t yet specified
 the type of plot (geom) to add as a layer.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">mapping</span></code></pre></div>
 <pre><code><span class="co">## Aesthetic mapping: </span>
 <span class="co">## * `x`      -&gt; `Nottingham_prognostic_index`</span>
 <span class="co">## * `y`      -&gt; `ESR1`</span>
 <span class="co">## * `colour` -&gt; `ER_status`</span></code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">layers</span></code></pre></div>
 <pre><code><span class="co">## list()</span></code></pre>
 <p>Finally, let’s add a <code>geom_point</code> layer to create a
 scatter plot.</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> <span class="va">plot</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">plot</span></code></pre></div>
 <p><img src="week2_files/figure-html/building_up_plot_3-1.png" width="700"></p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">layers</span></code></pre></div>
 <pre><code><span class="co">## [[1]]</span>
 <span class="co">## geom_point: na.rm = FALSE</span>
@@ -932,7 +946,6 @@ grammar</li>
 and histograms</li>
 <li>Working with dates</li>
 <li>Plotting time series data as line graphs</li>
-<li>How to work with time series data</li>
 <li>Categorical variables and how R handles these with its factor
 type</li>
 </ul>
@@ -941,7 +954,7 @@ type</li>
 <div class="section level2">
 <h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
 </h2>
-<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMiIKLS0tCgpUaGUgd2VlaydzIGFzc2lnbm1lbnQgd2lsbCB0ZXN0IHlvdXIgYWJpbGl0eSB0byBjcmVhdGUgdmFyaW91cyBkaWZmZXJlbnQgdHlwZXMKb2YgcGxvdC4gSXQgaW5jbHVkZXMgc29tZSBleHRlbnNpb24gZXhlcmNpc2VzIHdoaWNoIHlvdSBjYW4gY29uc2lkZXIgb3B0aW9uYWwuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRSwgd2FybmluZyA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbWV0YWJyaWMgPC0gcmVhZF9jc3YoIm1ldGFicmljX2NsaW5pY2FsX2FuZF9leHByZXNzaW9uX2RhdGEuY3N2IikKYGBgCgotLS0KCioqMS4gQ3JlYXRlIGEgYmFyIHBsb3Qgc2hvd2luZyB0aGUgbnVtYmVyIG9mIHBhdGllbnRzIHdpdGggdHVtb3VycyBhdCBlYWNoIG9mIHRoZSBkaWZmZXJlbnQgbmVvcGxhc20gaGlzdG9sb2dpYyBncmFkZXMqKgoKYGBge3J9CgpgYGAKClR1cm4gdGhpcyBpbnRvIGEgc3RhY2tlZCBiYXIgcGxvdCBzaG93aW5nIHRoZSBwcm9wb3J0aW9ucyBvZiBwYXRpZW50cyB3aXRoIGVhY2gKaGlzdG9sb2dpYyBncmFkZSB0aGF0IGhhZCBjaGVtb3RoZXJhcHkKCmBgYHtyfQoKYGBgCgoqKkV4dGVuc2lvbioqCgpnZ3Bsb3QgZ2l2ZXMgYSB3YXJuaW5nIGFib3V0IG5vbi1maW5pdGUgdmFsdWVzLCBpLmUuIHRoZSBtaXNzaW5nIHZhbHVlcy4gRmluZApvdXQgaG93IHRvIGdldCByaWQgb2YgdGhpcyB3YXJuaW5nLgoKYGBge3J9CgpgYGAKCkxldCdzIHNheSB3ZSBhcmUgaW50ZXJlc3RlZCBpbiBkaXNwbGF5aW5nIHRoZSBtaXNzaW5nIHZhbHVlcyBhcyBhIHNlcGFyYXRlCmNhdGVnb3J5IGFuZCByZWNyZWF0ZSB0aGUgYmFyIHBsb3Qgd2l0aCBhbiBhZGRpdGlvbmFsIGNvbHVtbi4KCmBgYHtyfQoKYGBgCgotLS0KCioqMi4gQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIHRoZSBlc3Ryb2dlbiByZWNlcHRvciAoRVNSMSkgZXhwcmVzc2lvbiBsZXZlbCoqCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHRoaXMgaXMgYSBuZXcgcGxvdCB0eXBlIC0tIGxvb2sgdXAgdGhlIGdlb20geW91IG5lZWQgYnkgbG9va2luZyBhdCB0aGUKbGlzdCBvZiBmdW5jdGlvbnMgZm9yIHRoZSBnZ3Bsb3QyIHBhY2thZ2UgaW4gdGhlIFBhY2thZ2VzIHRhYiBpbiBSU3R1ZGlvLl8KCkNyZWF0ZSBzZXBhcmF0ZSBidXQgb3ZlcmxheWluZyBkZW5zaXR5IHBsb3RzIGZvciBFU1IxIGV4cHJlc3Npb24gZm9yIEhFUjIKcG9zaXRpdmUgYW5kIG5lZ2F0aXZlIHBhdGllbnRzLiBUcnkgdG8gZW5zdXJlIHRoYXQgYm90aCBkZW5zaXR5IHBsb3RzIGFyZQp2aXNpYmxlLgoKYGBge3J9CgpgYGAKCi0tLQoKKiozLiBDcmVhdGUgYm94IHBsb3RzIGZvciB0aGUgc3Vydml2YWwgdGltZSBvZiBwYXRpZW50cyB3aXRoIGRpZmZlcmVudCB0dW1vdXIgc3RhZ2VzIG9ubHkgaW5jbHVkaW5nIGRlY2Vhc2VkIHBhdGllbnRzKioKCmBgYHtyfQoKYGBgCgpfSGludDogaWYgeW91IGdldCBhIHdhcm5pbmcgbWVzc2FnZSBhbmQgb25seSBoYXZlIGEgc2luZ2xlIGJveCBkaXNwbGF5ZWQKY29uc2lkZXIgdGhlIHR5cGUgb2YgdGhlIHR1bW91ciBzdGFnZSB2YXJpYWJsZSBhcyByZWFkIGludG8gUiBhbmQgd2hhdCBraW5kIG9mCnZhcmlhYmxlIGlzIGV4cGVjdGVkIGZvciB0aGUgeCBhZXN0aGV0aWMuXwoKQ29udmVydCB0aGlzIGludG8gYSB2aW9saW4gcGxvdCBhbmQgZGlzcGxheSBFUiBuZWdhdGl2ZSBhbmQgRVIgcG9zaXRpdmUgcGF0aWVudHMKc2VwYXJhdGVseS4KCmBgYHtyfQoKYGBgCgpfSGludDogbG9vayBhdCB0aGUgaGVscCBmb3IgZ2VvbV9ib3hwbG90Ll8KCi0tLQoKKio0LiBFeHBsb3JlIHRoZSBjb3JyZWxhdGlvbiBiZXR3ZWVuIEZPWEExIGFuZCBvbmUgb3RoZXIgZ2VuZSoqCgpBIHJlY2VudGx5LXB1Ymxpc2hlZCBwYXBlciBsb29rcyBhdCBhc3NvY2lhdGlvbnMgb2YgZXhwcmVzc2lvbiBhbmQgZ2Vub21pYyBkYXRhCmluIHRoZSBNRVRBQlJJQyBkYXRhIHNldC4gSXQgZm91bmQgYSBzdHJvbmcgY29ycmVsYXRpb24gYmV0d2VlbiBGT1hBMSBhbmQgb25lIG9mCnRoZSBvdGhlciBnZW5lcyBpbmNsdWRlZCBpbiBvdXIgdGFibGUuIENhbiB5b3UgZmluZCB3aGljaCBvbmU/CgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHRoZSBgc3RhdHNgIHBhY2thZ2UgY29udGFpbnMgYSBjb3JyZWxhdGlvbiB0ZXN0Ll8KCkNyZWF0ZSBhIHNjYXR0ZXIgcGxvdCBvZiB0aGUgZXhwcmVzc2lvbiBvZiBGT1hBMSBhbmQgdGhpcyBnZW5lIHdpdGggYSBsaW5lIG9mCmJlc3QgZml0LgoKYGBge3J9CgpgYGAKCkNoYW5nZSB0aGUgbWV0aG9kIHVzZWQgdG8gZHJhdyB0aGUgbGluZSBvZiBiZXN0IGZpdCB0byBiZSBhIHN0cmFpZ2h0IGxpbmUuCgpgYGB7cn0KCmBgYAoKKipFeHRlbnNpb24qKgoKRml0IGEgbGluZWFyIG1vZGVsIHRvIHRoZXNlIGRhdGEgKGFnYWluIHlvdSdsbCBuZWVkIHRvIGxvb2sgdXAgdGhlIGFwcHJvcHJpYXRlCmZ1bmN0aW9uIGluIFIpLgoKYGBge3J9CgpgYGAKClBhc3MgdGhlIHJlc3VsdGluZyBvYmplY3QgdG8gdGhlIGBzdW1tYXJ5KClgIGZ1bmN0aW9uIGZvciBpbmZvcm1hdGlvbiBhYm91dCB0aGUKZml0IGFuZCBjYXB0dXJlIHRoZSByZXN1bHQgaW4gYW5vdGhlciBvYmplY3QgY2FsbGVkIHN1bW1hcnkuIFByaW50IHRoaXMgb3V0LgoKYGBge3J9CgpgYGAKCkV4dHJhY3QgdGhlIFItc3F1YXJlZCB2YWx1ZSBmcm9tIHRoZSBzdW1tYXJ5IGFuZCBhc3NpZ24gdGhpcyB0byBhbm90aGVyCnZhcmlhYmxlIGFuZCBwcmludCBpdCBvdXQuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHdoYXQgdHlwZSBvZiBvYmplY3QgaXMgdGhlIHN1bW1hcnk/XwoKLS0tCgoqKjUuIEV4cGxvcmUgdGhlIEFwcGxlIE1vYmlsaXR5IGRhdGEgb24gdHJhbnNwb3J0IHVzZSBkdXJpbmcgdGhlIGNvcm9uYXZpcnVzIGxvY2tkb3duIHVzaW5nIGxpbmUgcGxvdHMqKgoKT24gdGhlIHdlZWtlbmQgdGhlIEdvdmVybm1lbnQgaW5jbHVkZWQgaW4gdGhlaXIgZGFpbHkgcHJlc3MgY29uZmVyZW5jZSBhIG5ldyBzZXQKb2YgZGF0YSBvZiB0cmFuc3BvcnQgdXNlIGFzIG1lYXN1cmVkIGJ5IGRpcmVjdGlvbiByZXF1ZXN0cyBvbiBBcHBsZSBNYXBzLgoKU2VhcmNoIGZvciBhbmQgZG93bmxvYWQgdGhlIFVLIEdvdmVybm1lbnQgZGF0YSBmb3IgdGhlIFN1bmRheSBicmllZmluZyAoMjYgQXByaWwKMjAyMCkuCgpfSGludDogdXNlIHRoZSBzZWFyY2ggdGVybXMgInVrIGdvdmVybm1lbnQgY29yb25hdmlydXMgcHJlc3MgY29uZmVyZW5jZSBkYXRhIi5fCgpMb2FkIHRoZSAnQXBwbGUgTW9iaWxpdHknIHNoZWV0IGludG8gYSB0aWJibGUgaW4gUi4gWW91IHdpbGwgbmVlZCB0byBzcGVjaWZ5IHRoZQp3b3Jrc2hlZXQgYW5kIGEgZmV3IG90aGVyIGFyZ3VtZW50cyBhcyB0aGUgZGF0YSBhcmUgbm90IGluIHRoZSBtb3N0IGNvbnZlbmllbnQKZm9ybWF0IChzZWUgaG93IHRoZSB0cmFuc3BvcnQgdXNlIHdvcmtzaGVldCB3YXMgcmVhZCBpbnRvIFIgaW4gdGhlIGNvdXJzZQptYXRlcmlhbHMpLgoKYGBge3J9CgpgYGAKClBsb3QgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZSBhZ2FpbnN0IGRhdGUgYXMgYSBsaW5lIGdyYXBoIHdpdGggc2VwYXJhdGUgbGluZXMKZm9yIGVhY2ggbW9kZSBvZiB0cmFuc3BvcnQuCgpgYGB7cn0KCmBgYAoKV2hhdCBpcyB0aGUgbWFpbiAoYW5kIG9idmlvdXMpIGNvbmNsdXNpb24gdG8gZHJhdyBmcm9tIHRoaXMgcGxvdD8KCk5vdyBwbG90IHRoZSBkYWlseSBwZXJjZW50YWdlIGluc3RlYWQgb2YgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZS4KCmBgYHtyfQoKYGBgCgpXaGF0IGRvIHlvdSBub3RpY2UgYWJvdXQgZGFpbHkgZmx1Y3R1YXRpb25zPwoKKipFeHRlbnNpb24qKgoKQ3JlYXRlIGEgbmV3IGNvbHVtbiBmb3IgdGhlIHdlZWtkYXkgKHRha2luZyB2YWx1ZXMgU3VuZGF5LCBNb25kYXksIFR1ZXNkYXksCmV0Yy4pIGluIHRoZSBBcHBsZSBNb2JpbGl0eSB0YWJsZSBhbmQgcGxvdCBqdXN0IHRoZSBkYWlseSBwZXJjZW50YWdlIGZvciB3YWxraW5nCmJ1dCBub3cgYXMgc2VwYXJhdGUgbGluZXMgZm9yIGVhY2ggZGF5IG9mIHRoZSB3ZWVrLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYSBmdW5jdGlvbiBmcm9tIHRoZSBsdWJyaWRhdGUgcGFja2FnZSwgYW5vdGhlciBvZiB0aGUgdGlkeXZlcnNlCnBhY2thZ2VzIChpbnN0YWxsIGlmIG5lY2Vzc2FyeSkuXwo=" download="assignment2.Rmd">Download assignment2.Rmd</a></p>
+<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMiIKLS0tCgpUaGUgd2VlaydzIGFzc2lnbm1lbnQgd2lsbCB0ZXN0IHlvdXIgYWJpbGl0eSB0byBjcmVhdGUgdmFyaW91cyBkaWZmZXJlbnQgdHlwZXMKb2YgcGxvdC4gSXQgaW5jbHVkZXMgc29tZSBleHRlbnNpb24gZXhlcmNpc2VzIHdoaWNoIHlvdSBjYW4gY29uc2lkZXIgb3B0aW9uYWwuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRSwgd2FybmluZyA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbWV0YWJyaWMgPC0gcmVhZF9jc3YoIm1ldGFicmljX2NsaW5pY2FsX2FuZF9leHByZXNzaW9uX2RhdGEuY3N2IikKYGBgCgotLS0KCioqMS4gQ3JlYXRlIGEgYmFyIHBsb3Qgc2hvd2luZyB0aGUgbnVtYmVyIG9mIHBhdGllbnRzIHdpdGggdHVtb3VycyBhdCBlYWNoIG9mIHRoZSBkaWZmZXJlbnQgbmVvcGxhc20gaGlzdG9sb2dpYyBncmFkZXMqKgoKYGBge3J9CgpgYGAKClR1cm4gdGhpcyBpbnRvIGEgc3RhY2tlZCBiYXIgcGxvdCBzaG93aW5nIHRoZSBwcm9wb3J0aW9ucyBvZiBwYXRpZW50cyB3aXRoIGVhY2gKaGlzdG9sb2dpYyBncmFkZSB0aGF0IGhhZCBjaGVtb3RoZXJhcHkKCmBgYHtyfQoKYGBgCgoqKkV4dGVuc2lvbioqCgpnZ3Bsb3QgZ2l2ZXMgYSB3YXJuaW5nIGFib3V0IG5vbi1maW5pdGUgdmFsdWVzLCBpLmUuIHRoZSBtaXNzaW5nIHZhbHVlcy4gRmluZApvdXQgaG93IHRvIGdldCByaWQgb2YgdGhpcyB3YXJuaW5nLgoKYGBge3J9CgpgYGAKCkxldCdzIHNheSB3ZSBhcmUgaW50ZXJlc3RlZCBpbiBkaXNwbGF5aW5nIHRoZSBtaXNzaW5nIHZhbHVlcyBhcyBhIHNlcGFyYXRlCmNhdGVnb3J5IGFuZCByZWNyZWF0ZSB0aGUgYmFyIHBsb3Qgd2l0aCBhbiBhZGRpdGlvbmFsIGNvbHVtbi4KCmBgYHtyfQoKYGBgCgotLS0KCioqMi4gQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIHRoZSBlc3Ryb2dlbiByZWNlcHRvciAoRVNSMSkgZXhwcmVzc2lvbiBsZXZlbCoqCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHRoaXMgaXMgYSBuZXcgcGxvdCB0eXBlIC0tIGxvb2sgdXAgdGhlIGdlb20geW91IG5lZWQgYnkgbG9va2luZyBhdCB0aGUKbGlzdCBvZiBmdW5jdGlvbnMgZm9yIHRoZSBnZ3Bsb3QyIHBhY2thZ2UgaW4gdGhlIFBhY2thZ2VzIHRhYiBpbiBSU3R1ZGlvLl8KCkNyZWF0ZSBzZXBhcmF0ZSBidXQgb3ZlcmxheWluZyBkZW5zaXR5IHBsb3RzIGZvciBFU1IxIGV4cHJlc3Npb24gZm9yIEhFUjIKcG9zaXRpdmUgYW5kIG5lZ2F0aXZlIHBhdGllbnRzLiBUcnkgdG8gZW5zdXJlIHRoYXQgYm90aCBkZW5zaXR5IHBsb3RzIGFyZQp2aXNpYmxlLgoKYGBge3J9CgpgYGAKCi0tLQoKKiozLiBDcmVhdGUgYm94IHBsb3RzIGZvciB0aGUgc3Vydml2YWwgdGltZSBvZiBwYXRpZW50cyB3aXRoIGRpZmZlcmVudCB0dW1vdXIgc3RhZ2VzIG9ubHkgaW5jbHVkaW5nIGRlY2Vhc2VkIHBhdGllbnRzKioKCmBgYHtyfQoKYGBgCgpfSGludDogaWYgeW91IGdldCBhIHdhcm5pbmcgbWVzc2FnZSBhbmQgb25seSBoYXZlIGEgc2luZ2xlIGJveCBkaXNwbGF5ZWQKY29uc2lkZXIgdGhlIHR5cGUgb2YgdGhlIHR1bW91ciBzdGFnZSB2YXJpYWJsZSBhcyByZWFkIGludG8gUiBhbmQgd2hhdCBraW5kIG9mCnZhcmlhYmxlIGlzIGV4cGVjdGVkIGZvciB0aGUgeCBhZXN0aGV0aWMuXwoKQ29udmVydCB0aGlzIGludG8gYSB2aW9saW4gcGxvdCBhbmQgZGlzcGxheSBFUiBuZWdhdGl2ZSBhbmQgRVIgcG9zaXRpdmUgcGF0aWVudHMKc2VwYXJhdGVseS4KCmBgYHtyfQoKYGBgCgpfSGludDogbG9vayBhdCB0aGUgaGVscCBmb3IgZ2VvbV9ib3hwbG90Ll8KCi0tLQoKKio0LiBFeHBsb3JlIHRoZSBjb3JyZWxhdGlvbiBiZXR3ZWVuIEZPWEExIGFuZCBvbmUgb3RoZXIgZ2VuZSoqCgpBIHJlY2VudGx5LXB1Ymxpc2hlZCBwYXBlciBsb29rcyBhdCBhc3NvY2lhdGlvbnMgb2YgZXhwcmVzc2lvbiBhbmQgZ2Vub21pYyBkYXRhCmluIHRoZSBNRVRBQlJJQyBkYXRhIHNldC4gSXQgZm91bmQgYSBzdHJvbmcgY29ycmVsYXRpb24gYmV0d2VlbiBGT1hBMSBhbmQgb25lIG9mCnRoZSBvdGhlciBnZW5lcyBpbmNsdWRlZCBpbiBvdXIgdGFibGUuIENhbiB5b3UgZmluZCB3aGljaCBvbmU/CgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHRoZSBgc3RhdHNgIHBhY2thZ2UgY29udGFpbnMgYSBjb3JyZWxhdGlvbiB0ZXN0Ll8KCkNyZWF0ZSBhIHNjYXR0ZXIgcGxvdCBvZiB0aGUgZXhwcmVzc2lvbiBvZiBGT1hBMSBhbmQgdGhpcyBnZW5lIHdpdGggYSBsaW5lIG9mCmJlc3QgZml0LgoKYGBge3J9CgpgYGAKCkNoYW5nZSB0aGUgbWV0aG9kIHVzZWQgdG8gZHJhdyB0aGUgbGluZSBvZiBiZXN0IGZpdCB0byBiZSBhIHN0cmFpZ2h0IGxpbmUuCgpgYGB7cn0KCmBgYAoKKipFeHRlbnNpb24qKgoKRml0IGEgbGluZWFyIG1vZGVsIHRvIHRoZXNlIGRhdGEgKGFnYWluIHlvdSdsbCBuZWVkIHRvIGxvb2sgdXAgdGhlIGFwcHJvcHJpYXRlCmZ1bmN0aW9uIGluIFIpLgoKYGBge3J9CgpgYGAKClBhc3MgdGhlIHJlc3VsdGluZyBvYmplY3QgdG8gdGhlIGBzdW1tYXJ5KClgIGZ1bmN0aW9uIGZvciBpbmZvcm1hdGlvbiBhYm91dCB0aGUKZml0IGFuZCBjYXB0dXJlIHRoZSByZXN1bHQgaW4gYW5vdGhlciBvYmplY3QgY2FsbGVkIHN1bW1hcnkuIFByaW50IHRoaXMgb3V0LgoKYGBge3J9CgpgYGAKCkV4dHJhY3QgdGhlIFItc3F1YXJlZCB2YWx1ZSBmcm9tIHRoZSBzdW1tYXJ5IGFuZCBhc3NpZ24gdGhpcyB0byBhbm90aGVyCnZhcmlhYmxlIGFuZCBwcmludCBpdCBvdXQuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHdoYXQgdHlwZSBvZiBvYmplY3QgaXMgdGhlIHN1bW1hcnk/XwoKLS0tCgoqKjUuIEV4cGxvcmUgdGhlIEFwcGxlIE1vYmlsaXR5IGRhdGEgb24gdHJhbnNwb3J0IHVzZSBkdXJpbmcgdGhlIGNvcm9uYXZpcnVzIGxvY2tkb3duIHVzaW5nIGxpbmUgcGxvdHMqKgoKVGhlIEdvdmVybm1lbnQgaW5jbHVkZWQgaW4gdGhlaXIgZGFpbHkgcHJlc3MgY29uZmVyZW5jZSBhIG5ldyBzZXQKb2YgZGF0YSBvZiB0cmFuc3BvcnQgdXNlIGFzIG1lYXN1cmVkIGJ5IGRpcmVjdGlvbiByZXF1ZXN0cyBvbiBBcHBsZSBNYXBzLgoKU2VhcmNoIGZvciBhbmQgZG93bmxvYWQgdGhlIFVLIEdvdmVybm1lbnQgZGF0YSBmb3IgdGhlIFN1bmRheSBicmllZmluZyAoMjYgQXByaWwKMjAyMCkuCgpfSGludDogdXNlIHRoZSBzZWFyY2ggdGVybXMgInVrIGdvdmVybm1lbnQgY29yb25hdmlydXMgcHJlc3MgY29uZmVyZW5jZSBkYXRhIi5fCgpMb2FkIHRoZSAnQXBwbGUgTW9iaWxpdHknIHNoZWV0IGludG8gUi4gWW91IHdpbGwgbmVlZCB0byBzcGVjaWZ5IHRoZQp3b3Jrc2hlZXQgYW5kIGEgZmV3IG90aGVyIGFyZ3VtZW50cyBhcyB0aGUgZGF0YSBhcmUgbm90IGluIHRoZSBtb3N0IGNvbnZlbmllbnQKZm9ybWF0IChzZWUgaG93IHRoZSB0cmFuc3BvcnQgdXNlIHdvcmtzaGVldCB3YXMgcmVhZCBpbnRvIFIgaW4gdGhlIGNvdXJzZQptYXRlcmlhbHMpLgoKYGBge3J9CgpgYGAKClBsb3QgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZSBhZ2FpbnN0IGRhdGUgYXMgYSBsaW5lIGdyYXBoIHdpdGggc2VwYXJhdGUgbGluZXMKZm9yIGVhY2ggbW9kZSBvZiB0cmFuc3BvcnQuCgpgYGB7cn0KCmBgYAoKV2hhdCBpcyB0aGUgbWFpbiAoYW5kIG9idmlvdXMpIGNvbmNsdXNpb24gdG8gZHJhdyBmcm9tIHRoaXMgcGxvdD8KCk5vdyBwbG90IHRoZSBkYWlseSBwZXJjZW50YWdlIGluc3RlYWQgb2YgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZS4KCmBgYHtyfQoKYGBgCgpXaGF0IGRvIHlvdSBub3RpY2UgYWJvdXQgZGFpbHkgZmx1Y3R1YXRpb25zPwoKKipFeHRlbnNpb24qKgoKQ3JlYXRlIGEgbmV3IGNvbHVtbiBmb3IgdGhlIHdlZWtkYXkgKHRha2luZyB2YWx1ZXMgU3VuZGF5LCBNb25kYXksIFR1ZXNkYXksCmV0Yy4pIGluIHRoZSBBcHBsZSBNb2JpbGl0eSB0YWJsZSBhbmQgcGxvdCBqdXN0IHRoZSBkYWlseSBwZXJjZW50YWdlIGZvciB3YWxraW5nCmJ1dCBub3cgYXMgc2VwYXJhdGUgbGluZXMgZm9yIGVhY2ggZGF5IG9mIHRoZSB3ZWVrLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYSBmdW5jdGlvbiBmcm9tIHRoZSBsdWJyaWRhdGUgcGFja2FnZSwgYW5vdGhlciBvZiB0aGUgdGlkeXZlcnNlCnBhY2thZ2VzIChpbnN0YWxsIGlmIG5lY2Vzc2FyeSkuXwo=" download="assignment2.Rmd">Download assignment2.Rmd</a></p>
 </div>
   </div>
 

@@ -246,7 +246,8 @@ code to help you use them in your R scripts.</p>
 <p>Our overall goal for this course is to give you the ability to import
 your data into R, format it, select a subset of the data most of
 interest for a given analysis, carry out an analysis to summarize these
-data and create visualizations of the data.</p>
+data, create visualizations of the data and generate a reproducible
+report.</p>
 <p>So let’s see an example of what we’ll be learning and generate our
 first visualisation and report. By the end of this course we should be
 able to explain what each line of the code does.</p>
@@ -663,7 +664,7 @@ URL above into our web browser we can download the file and then import
 it.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># assumes file is in our Downloads folder, "~" means our home directory e.g./home/maria</span>
-<span class="va">metabric_downloaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"~/Downloads/"</span><span class="op">)</span></code></pre></div>
+<span class="va">metabric_downloaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"~/Downloads/brca_metabric_clinical_data.tsv"</span><span class="op">)</span></code></pre></div>
 <p>The <strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code></strong> function will tell you what
 the current working directory is.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">

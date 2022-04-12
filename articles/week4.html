@@ -104,8 +104,6 @@ summary values for groups of observations</li>
 categories</li>
 <li>Combine data from two tables based on a common identifier
 (<code>join</code> operations)</li>
-<li>Customize plots created using ggplot2 by changing labels, scales and
-colours</li>
 <li>Understand what makes a data set ‘tidy’ and why you’d want your data
 to be structured this way</li>
 <li>Use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code>
@@ -115,8 +113,8 @@ operations to restructure data frames</li>
 </li>
 <li>Modify character variables using string manipulation functions from
 the stringr package</li>
-<li>Customize non-data components of plots created using ggplot2 by
-changing the theme</li>
+<li>Customize plots created using ggplot2 by changing labels, scales and
+colours and themes</li>
 </ul>
 </blockquote>
 <hr>
@@ -515,7 +513,7 @@ number and proportion of patients that survived longer than 10 years
 <div class="section level3">
 <h3 id="selecting-or-counting-distinct-things">Selecting or counting distinct things<a class="anchor" aria-label="anchor" href="#selecting-or-counting-distinct-things"></a>
 </h3>
-<p>There are occassions when we want to count the number of distinct
+<p>There are occasions when we want to count the number of distinct
 values in a variable or a combination of variables. In this week’s
 assignment, we introduce another set of data from the METABRIC study
 which contains details of the mutations detected by targeted sequencing
@@ -1002,273 +1000,6 @@ using elements from both data sets.</p>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PAM50</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">PAM50</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="week4_files/figure-html/box_plot-1.png" width="700"></p>
-<hr>
-</div>
-</div>
-<div class="section level2">
-<h2 id="customizing-plots-with-ggplot2">Customizing plots with ggplot2<a class="anchor" aria-label="anchor" href="#customizing-plots-with-ggplot2"></a>
-</h2>
-<p>Finally, we’ll turn our attention back to visualization using ggplot2
-and how we can customize our plots by adding or changing titles and
-labels, changing the scales used on the x and y axes, and choosing
-colours.</p>
-<div class="section level3">
-<h3 id="titles-and-labels">Titles and labels<a class="anchor" aria-label="anchor" href="#titles-and-labels"></a>
-</h3>
-<p>Adding titles and subtitles to a plot and changing the x- and y-axis
-labels is very straightforward using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs()</a></code>
-function.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"mRNA expression in the METABRIC breast cancer data set"</span>,
-    subtitle <span class="op">=</span> <span class="st">"GATA3 and ESR1 mRNA expression measured using Illumina HT-12 bead arrays"</span>,
-    x <span class="op">=</span> <span class="st">"log2 GATA3 expression"</span>,
-    y <span class="op">=</span> <span class="st">"log2 ESR1 expression"</span>,
-    colour <span class="op">=</span> <span class="st">"ER status"</span>
-  <span class="op">)</span>
-<span class="va">plot</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot-1.png" width="700"></p>
-<p>The labels are another component of the plot object that we’ve
-constructed, along with aesthetic mappings and layers (geoms). The plot
-object is a list and contains various elements including those mappings
-and layers and one element named <code>labels</code>.</p>
-<p><code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs()</a></code> is a simple function for creating a list of
-labels you want to specify as name-value pairs as in the above example.
-You can name any aesthetic (in this case x and y) to override the
-default values (the column names) and you can add a title, subtitle and
-caption if you wish. In addition to changing the x- and y-axis labels,
-we also removed the underscore from the legend title by setting the
-label for the colour aesthetic.</p>
-</div>
-<div class="section level3">
-<h3 id="scales">Scales<a class="anchor" aria-label="anchor" href="#scales"></a>
-</h3>
-<p>Take a look at the x and y scales in the above plot. ggplot2 has
-chosen the x and y scales and where to put breaks and ticks.</p>
-<p>Let’s have a look at the elements of the list object we created that
-specifies how the plot should be displayed.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "data"        "layers"      "scales"      "mapping"     "theme"      </span>
-<span class="co">## [6] "coordinates" "facet"       "plot_env"    "labels"</span></code></pre>
-<p>One of the components of the plot is called <code>scales</code>.
-ggplot2 automatically adds default scales behind the scenes equivalent
-to the following:</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html" class="external-link">scale_colour_discrete</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Note that we have three aesthetics and ggplot2 adds a scale for
-each.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">mapping</span></code></pre></div>
-<pre><code><span class="co">## Aesthetic mapping: </span>
-<span class="co">## * `x`      -&gt; `GATA3`</span>
-<span class="co">## * `y`      -&gt; `ESR1`</span>
-<span class="co">## * `colour` -&gt; `ER_status`</span></code></pre>
-<p>The x and y variables (<code>GATA3</code> and <code>ESR1</code>) are
-continuous so ggplot2 adds a continuous scale for each.
-<code>ER_status</code> is a discrete variable in this case so ggplot2
-adds a discrete scale for colour.</p>
-<p>Generalizing, the scales that are required follow the naming
-scheme:</p>
-<pre><code>scale_&lt;NAME_OF_AESTHETIC&gt;_&lt;NAME_OF_SCALE&gt;</code></pre>
-<p>Look at the help page for <code>scale_y_continuous</code> to see what
-we can change about the y-axis scale.</p>
-<p>First we’ll change the breaks, i.e. where ggplot2 puts ticks and
-numeric labels, on the y axis.</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_2-1.png" width="700"></p>
-<p><code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code> is a useful function for generating regular
-sequences of numbers. In this case we wanted numbers from 5 to 15 going
-up in steps of 2.5.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1]  5.0  7.5 10.0 12.5 15.0</span></code></pre>
-<p>We could do the same thing for the x axis using
-<code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous()</a></code>.</p>
-<p>We can also adjust the extents of the x or y axis.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<pre><code><span class="co">## Warning: Removed 160 rows containing non-finite values (stat_smooth).</span></code></pre>
-<pre><code><span class="co">## Warning: Removed 160 rows containing missing values (geom_point).</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_3-1.png" width="700"></p>
-<p>Here, just for demonstration purposes, we set the upper limit to be
-less than the largest values of ESR1 expression and ggplot2 warned us
-that some rows have been removed from the plot.</p>
-<p>We can change the minor breaks, e.g. to add more lines that act as
-guides. These are shown as thin white lines when using the default theme
-(we’ll take a look at alternative themes next week).</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">12.5</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13.5</span>, <span class="fl">0.5</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_4-1.png" width="700"></p>
-<p>Or we can remove the minor breaks entirely.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">14</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="cn">NULL</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_5-1.png" width="700"></p>
-<p>Similarly we could remove all breaks entirely.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_6-1.png" width="700"></p>
-<p>A more typical scenario would be to keep the breaks, because we want
-to display the ticks and their lables, but remove the grid lines.
-Somewhat confusingly the position of grid lines are controlled by a
-scale but preventing these from being displayed requires changing the
-theme. The theme controls the way in which non-data components are
-displayed – we’ll look at how these can be customized next week. For
-now, though, here’s an example of turning off the display of all grid
-lines for major and minor breaks for both axes.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_7-1.png" width="700"></p>
-<p>By default, the scales are expanded by 5% of the range on either
-side. We can add or reduce the space as follows.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expand_scale</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expand_scale</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span>
-
-<span class="co">## Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span></code></pre>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_8-1.png" width="700"></p>
-<p>Here we only added 1% (0.01) of the range of GATA3 expression values
-on either side along the x axis but we added 25% (0.25) of the range of
-ESR1 expression on either side along the y axis.</p>
-<p>We can move the axis to the other side of the plot –- not sure why
-you’d want to do this but with ggplot2 just about anything is
-possible.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_9-1.png" width="700"></p>
-</div>
-<div class="section level3">
-<h3 id="colours">Colours<a class="anchor" aria-label="anchor" href="#colours"></a>
-</h3>
-<p>The colour asthetic is used with a categorical variable,
-<code>ER_status</code>, in the scatter plots we’ve been customizing. The
-default colour scale used by ggplot2 for categorical variables is
-<code>scale_colour_discrete</code>. We can manually set the colours we
-wish to use using <code>scale_colour_manual</code> instead.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dodgerblue2"</span>, <span class="st">"firebrick2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_10-1.png" width="700"></p>
-<p>Setting colours manually is ok when we only have two or three
-categories but when we have a larger number it would be handy to be able
-to choose from a selection of carefully-constructed colour palettes.
-Helpfully, ggplot2 provides access to the <a href="http://colorbrewer2.org" class="external-link">ColorBrewer</a> palettes through the
-functions <code><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_colour_brewer()</a></code> and
-<code><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_fill_brewer()</a></code>.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">`3-gene_classifier`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></code></pre></div>
-<p><img src="week4_files/figure-html/scatter_plot_11-1.png" width="700"></p>
-<p>Look at the help page for <code>scale_colour_brewer</code> to see
-what other colour palettes are available and visit the <a href="http://colorbrewer2.org" class="external-link">ColorBrewer</a> website to see what these
-look like.</p>
-<p>Interestingly, you can set other attributes other than just the
-colours at the same time.</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dodgerblue2"</span>, <span class="st">"firebrick2"</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ER-negative"</span>, <span class="st">"ER-positive"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>  <span class="co"># remove legend title for colour now that the labels are self-explanatory</span></code></pre></div>
-<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
-<p><img src="week4_files/figure-html/scatter_plot_12-1.png" width="700"></p>
-<p>We have applied our own set of mappings from levels in the data to
-aesthetic values.</p>
-<p>For continuous variables we may wish to be able to change the colours
-used in the colour gradient. To demonstrate this we’ll correct the
-Nottingham prognostic index (NPI) values and use this to colour points
-in the scatter plot of ESR1 vs GATA3 expression on a continuous
-scale.</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Nottingham_prognostic_index is incorrectly calculated in the data downloaded from cBioPortal</span>
-<span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">metabric</span>, Nottingham_prognostic_index <span class="op">=</span> <span class="fl">0.02</span> <span class="op">*</span> <span class="va">Tumour_size</span> <span class="op">+</span> <span class="va">Lymph_node_status</span> <span class="op">+</span> <span class="va">Neoplasm_histologic_grade</span><span class="op">)</span>
-<span class="co">#</span>
-<span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
-<p><img src="week4_files/figure-html/scatter_plot_13-1.png" width="700"></p>
-<p>Higher NPI scores correspond to worse prognosis and lower chance of 5
-year survival. We’ll emphasize those points on the scatter plot by
-adjusting our colour scale.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"firebrick2"</span><span class="op">)</span></code></pre></div>
-<p><img src="week4_files/figure-html/scatter_plot_14-1.png" width="700"></p>
-<p>In some cases it might make sense to specify two colour gradients
-either side of a mid-point.</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient2</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"dodgerblue1"</span>, mid <span class="op">=</span> <span class="st">"grey90"</span>, high <span class="op">=</span> <span class="st">"firebrick1"</span>, midpoint <span class="op">=</span> <span class="fl">4.5</span><span class="op">)</span></code></pre></div>
-<p><img src="week4_files/figure-html/scatter_plot_15-1.png" width="700"></p>
-<p>As before we can override the default labels and other aspects of the
-colour scale within the scale function.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient</a></span><span class="op">(</span>
-    low <span class="op">=</span> <span class="st">"lightblue"</span>, high <span class="op">=</span> <span class="st">"darkblue"</span>,
-    name <span class="op">=</span> <span class="st">"NPI"</span>,
-    breaks <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">6</span>,
-    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">6.5</span><span class="op">)</span>
-  <span class="op">)</span></code></pre></div>
-<p><img src="week4_files/figure-html/scatter_plot_16-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level2">
@@ -1281,20 +1012,20 @@ need to be restructured before you can fully make use of it.</p>
 been looking at in this course, which are designed specifically to work
 on data in a format referred to as ‘tidy’. This is where the tidyverse
 gets its name.</p>
-<p>In this session, we will look at what it means for data to be ‘tidy’
-and how you can transform your data, if necessary, into this form. We’ll
-also look at useful functions for handling compound variables, that is
-columns that contain more than one type of measurement or attribute
-(you’d be surprised how common this is) and some of the string
-manipulation functions from the stringr package that can help with
-cleaning up values within a data frame.</p>
+<p>In this part of the session, we will look at what it means for data
+to be ‘tidy’ and how you can transform your data, if necessary, into
+this form. We’ll also look at useful functions for handling compound
+variables, that is columns that contain more than one type of
+measurement or attribute (you’d be surprised how common this is) and
+some of the string manipulation functions from the stringr package that
+can help with cleaning up values within a data frame.</p>
 <p>Finally, we’ll take another look at customizing plots created with
 ggplot2 by changing various non-data components that are largely
 cosmetic.</p>
-<p>The functions we’re mostly focusing on in this session are from the
+<p>The functions we’re mostly focusing on in this part are from the
 <strong>tidyr</strong> and <strong>stringr</strong> packages both of
 which get loaded as part of the tidyverse.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
@@ -1314,7 +1045,7 @@ the populations of those countries.</p>
 <p>Here is the first table, <code>table1</code>, that contains a row for
 every combination of country and year and separate columns containing
 the numbers of TB cases and the population.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table1</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span>
 <span class="co">##   country      year  cases population</span>
@@ -1328,7 +1059,7 @@ the numbers of TB cases and the population.</p>
 <p>Two alternative ways of representing the same information are given
 in <code>table2</code> and <code>table3</code>. We’ll consider each of
 these in turn, shortly.</p>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 12 × 4</span></span>
 <span class="co">##    country      year type            count</span>
@@ -1345,7 +1076,7 @@ these in turn, shortly.</p>
 <span class="co">## <span style="color: #BCBCBC;">10</span> China        <span style="text-decoration: underline;">1</span>999 population <span style="text-decoration: underline;">1</span>272<span style="text-decoration: underline;">915</span>272</span>
 <span class="co">## <span style="color: #BCBCBC;">11</span> China        <span style="text-decoration: underline;">2</span>000 cases          <span style="text-decoration: underline;">213</span>766</span>
 <span class="co">## <span style="color: #BCBCBC;">12</span> China        <span style="text-decoration: underline;">2</span>000 population <span style="text-decoration: underline;">1</span>280<span style="text-decoration: underline;">428</span>583</span></code></pre>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span>
 <span class="co">##   country      year rate             </span>
@@ -1360,7 +1091,7 @@ these in turn, shortly.</p>
 scenario that is actually quite likely given that population data will
 almost certainly have been collected separately from the recording of TB
 cases.</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span>
 <span class="co">##   country     `1999` `2000`</span>
@@ -1368,7 +1099,7 @@ cases.</p>
 <span class="co">## <span style="color: #BCBCBC;">1</span> Afghanistan    745   <span style="text-decoration: underline;">2</span>666</span>
 <span class="co">## <span style="color: #BCBCBC;">2</span> Brazil       <span style="text-decoration: underline;">37</span>737  <span style="text-decoration: underline;">80</span>488</span>
 <span class="co">## <span style="color: #BCBCBC;">3</span> China       <span style="text-decoration: underline;">212</span>258 <span style="text-decoration: underline;">213</span>766</span></code></pre>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4b</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span>
 <span class="co">##   country         `1999`     `2000`</span>
@@ -1467,7 +1198,7 @@ it is the number of TB cases or the population, for each unique
 combination of country and year. Transforming the table in this way is
 known as ‘pivoting’ and the tidyr package provides the
 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> function for just such an operation.</p>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span>
 <span class="co">##   country     `1999` `2000`</span>
@@ -1475,7 +1206,7 @@ known as ‘pivoting’ and the tidyr package provides the
 <span class="co">## <span style="color: #BCBCBC;">1</span> Afghanistan    745   <span style="text-decoration: underline;">2</span>666</span>
 <span class="co">## <span style="color: #BCBCBC;">2</span> Brazil       <span style="text-decoration: underline;">37</span>737  <span style="text-decoration: underline;">80</span>488</span>
 <span class="co">## <span style="color: #BCBCBC;">3</span> China       <span style="text-decoration: underline;">212</span>258 <span style="text-decoration: underline;">213</span>766</span></code></pre>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">table4a</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">`1999`</span>, <span class="va">`2000`</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"year"</span>, values_to <span class="op">=</span> <span class="st">"cases"</span><span class="op">)</span>
 <span class="va">table4a_long</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span>
@@ -1533,7 +1264,7 @@ specified columns and putting these in a new column whose name is given
 by <code>values_to</code>.</p>
 <p>We can do the same with <code>table4b</code> and join the two
 resulting tables together to recreate <code>table1</code>.</p>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4b_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">table4b</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">`1999`</span>, <span class="va">`2000`</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"year"</span>, values_to <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span>
 <span class="va">table4b_long</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span>
@@ -1545,7 +1276,7 @@ resulting tables together to recreate <code>table1</code>.</p>
 <span class="co">## <span style="color: #BCBCBC;">4</span> Brazil      2000   174<span style="text-decoration: underline;">504</span>898</span>
 <span class="co">## <span style="color: #BCBCBC;">5</span> China       1999  <span style="text-decoration: underline;">1</span>272<span style="text-decoration: underline;">915</span>272</span>
 <span class="co">## <span style="color: #BCBCBC;">6</span> China       2000  <span style="text-decoration: underline;">1</span>280<span style="text-decoration: underline;">428</span>583</span></code></pre>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># join the two pivoted tables to recreate table1</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">table4a_long</span>, <span class="va">table4b_long</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span>
@@ -1565,7 +1296,7 @@ resulting tables together to recreate <code>table1</code>.</p>
 <p><code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> has the opposite effect of
 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> and can be used to reverse the pivoting
 operation we just performed on <code>table4a</code>.</p>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a_long</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span>
 <span class="co">##   country     year   cases</span>
@@ -1576,7 +1307,7 @@ operation we just performed on <code>table4a</code>.</p>
 <span class="co">## <span style="color: #BCBCBC;">4</span> Brazil      2000   <span style="text-decoration: underline;">80</span>488</span>
 <span class="co">## <span style="color: #BCBCBC;">5</span> China       1999  <span style="text-decoration: underline;">212</span>258</span>
 <span class="co">## <span style="color: #BCBCBC;">6</span> China       2000  <span style="text-decoration: underline;">213</span>766</span></code></pre>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span><span class="va">table4a_long</span>, names_from <span class="op">=</span> <span class="st">"year"</span>, values_from <span class="op">=</span> <span class="st">"cases"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span>
 <span class="co">##   country     `1999` `2000`</span>
@@ -1591,7 +1322,7 @@ be inserted into the new columns for any instances where there is no
 observation for a given year. That isn’t the case in this example but we
 can show this by removing the last row from
 <code>table4a_long</code>.</p>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table4a_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">table4a_long</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="va">table4a_long</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 5 × 3</span></span>
@@ -1602,7 +1333,7 @@ can show this by removing the last row from
 <span class="co">## <span style="color: #BCBCBC;">3</span> Brazil      1999   <span style="text-decoration: underline;">37</span>737</span>
 <span class="co">## <span style="color: #BCBCBC;">4</span> Brazil      2000   <span style="text-decoration: underline;">80</span>488</span>
 <span class="co">## <span style="color: #BCBCBC;">5</span> China       1999  <span style="text-decoration: underline;">212</span>258</span></code></pre>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span><span class="va">table4a_long</span>, names_from <span class="op">=</span> <span class="st">"year"</span>, values_from <span class="op">=</span> <span class="st">"cases"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span>
 <span class="co">##   country     `1999` `2000`</span>
@@ -1617,7 +1348,7 @@ example, there is no duplication of the year value in the wide format of
 this is much more apparent with larger data tables, e.g. gene expression
 matrices.</p>
 <p>Let’s look again at <code>table2</code>.</p>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 12 × 4</span></span>
 <span class="co">##    country      year type            count</span>
@@ -1657,7 +1388,7 @@ to do with the data structured as they are in <code>table2</code>.</p>
 <code>type</code> column contains the variable names so we’d need to set
 <code>names_from = "type"</code>, while the values will be taken from
 the <code>count</code> column.</p>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2_fixed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span><span class="va">table2</span>, names_from <span class="op">=</span> <span class="st">"type"</span>, values_from <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span>
 <span class="va">table2_fixed</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span>
@@ -1672,7 +1403,7 @@ the <code>count</code> column.</p>
 <p>The resulting table is exactly the same as <code>table1</code> and
 now the rate of infection can be calculated rather
 straightforwardly.</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">table2_fixed</span>, rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 5</span></span>
 <span class="co">##   country      year  cases population      rate</span>
@@ -1692,7 +1423,7 @@ straightforwardly.</p>
 <p>Table 3 contains an example of a column that contains multiple
 values. It is a somewhat convoluted example but occasionally you may
 come across data like this.</p>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span>
 <span class="co">##   country      year rate             </span>
@@ -1713,7 +1444,7 @@ mathematical nature in its current guise.</p>
 </h3>
 <p>The <code><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate()</a></code> function allows us to split a character
 column into multiple columns based on a delimiter or separator.</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3_separated</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">table3</span>, <span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span>
 <span class="va">table3_separated</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span>
@@ -1733,7 +1464,7 @@ case our separator is just the ‘/’ character.</p>
 <p>The resulting data frame is still not quite what we want though. This
 becomes apparent as soon as we try to do anything with the new
 <code>cases</code> and <code>population</code> columns.</p>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">table3_separated</span>, rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `mutate()`:</span></span>
 <span class="co">## <span style="color: #BBBB00;">!</span> Problem while computing `rate = cases/population`.</span>
@@ -1741,7 +1472,7 @@ becomes apparent as soon as we try to do anything with the new
 <span class="co">## <span style="color: #BBBB00;">!</span> non-numeric argument to binary operator</span></code></pre>
 <p>By default the separated values are character types. We could convert
 these using <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code>.</p>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="va">table3_separated</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">cases</span>, <span class="va">population</span><span class="op">)</span>, <span class="va">as.integer</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span>
 <span class="co">##   country      year  cases population</span>
@@ -1756,7 +1487,7 @@ these using <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html
 carrying out the <code><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate()</a></code> operation, in which case it
 will deduce the type of the values and convert the column
 accordingly.</p>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table3_separated</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">table3</span>, <span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"/"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">table3_separated</span>, rate <span class="op">=</span> <span class="va">cases</span> <span class="op">/</span> <span class="va">population</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 5</span></span>
@@ -1781,10 +1512,10 @@ needs to be transformed into a tidier format to open up different
 avenues for exploring the data.</p>
 <p>We’ll first load the table and then select just the columns we’re
 going to need.</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric_selected</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Patient_ID</span>, <span class="va">ER_status</span>, <span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span><span class="op">)</span>
-<span class="va">metabric</span></code></pre></div>
+<span class="va">metabric_selected</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 10</span></span>
 <span class="co">##    Patient_ID ER_status  ESR1 ERBB2   PGR  TP53 PIK3CA GATA3 FOXA1  MLPH</span>
 <span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -1801,8 +1532,8 @@ going to need.</p>
 <span class="co">## <span style="color: #949494;"># … with 1,894 more rows</span></span></code></pre>
 <p>When we first looked at visualization using ggplot2 we created the
 following box plot.</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">metabric_selected</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ER_status</span>, y <span class="op">=</span> <span class="va">GATA3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week4_files/figure-html/box_plot_1-1.png" width="480"></p>
 <p>But what if we would like to create a series of plots using the
@@ -1831,29 +1562,35 @@ very convenient means of converting between tidy and matrix-like
 formats.</p>
 <p>We’ll convert our table of ER status and gene expression data to the
 tidy format.</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span>, names_to <span class="op">=</span> <span class="st">"Gene"</span>, values_to <span class="op">=</span> <span class="st">"Expression"</span><span class="op">)</span>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">metabric_selected</span>, <span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span>, names_to <span class="op">=</span> <span class="st">"Gene"</span>, values_to <span class="op">=</span> <span class="st">"Expression"</span><span class="op">)</span>
 <span class="va">metabric</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 15,232 × 4</span></span>
-<span class="co">##    Patient_ID ER_status Gene   Expression</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> MB-0000    Positive  ESR1         8.93</span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> MB-0000    Positive  ERBB2        9.33</span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> MB-0000    Positive  PGR          5.68</span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> MB-0000    Positive  TP53         6.34</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> MB-0000    Positive  PIK3CA       5.70</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> MB-0000    Positive  GATA3        6.93</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> MB-0000    Positive  FOXA1        7.95</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> MB-0000    Positive  MLPH         9.73</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> MB-0002    Positive  ESR1        10.0 </span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> MB-0002    Positive  ERBB2        9.73</span>
-<span class="co">## <span style="color: #949494;"># … with 15,222 more rows</span></span></code></pre>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 32</span></span>
+<span class="co">##    Patient_ID Cohort Age_at_diagnosis Survival_time Survival_status Vital_status</span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> MB-0000         1             75.6         140.  LIVING          Living      </span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> MB-0002         1             43.2          84.6 LIVING          Living      </span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> MB-0005         1             48.9         164.  DECEASED        Died of Dis…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> MB-0006         1             47.7         165.  LIVING          Living      </span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> MB-0008         1             77.0          41.4 DECEASED        Died of Dis…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> MB-0010         1             78.8           7.8 DECEASED        Died of Dis…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> MB-0014         1             56.4         164.  LIVING          Living      </span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> MB-0022         1             89.1          99.5 DECEASED        Died of Oth…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> MB-0028         1             86.4          36.6 DECEASED        Died of Oth…</span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> MB-0035         1             84.2          36.3 DECEASED        Died of Dis…</span>
+<span class="co">## <span style="color: #949494;"># … with 1,894 more rows, and 26 more variables: Chemotherapy &lt;chr&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   Radiotherapy &lt;chr&gt;, Tumour_size &lt;dbl&gt;, Tumour_stage &lt;dbl&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   Neoplasm_histologic_grade &lt;dbl&gt;, Lymph_nodes_examined_positive &lt;dbl&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   Lymph_node_status &lt;dbl&gt;, Cancer_type &lt;chr&gt;, ER_status &lt;chr&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   PR_status &lt;chr&gt;, HER2_status &lt;chr&gt;, HER2_status_measured_by_SNP6 &lt;chr&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   PAM50 &lt;chr&gt;, `3-gene_classifier` &lt;chr&gt;, Nottingham_prognostic_index &lt;dbl&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   Cellularity &lt;chr&gt;, Integrative_cluster &lt;chr&gt;, Mutation_count &lt;dbl&gt;, …</span></span></code></pre>
 <p>Note how we specified a range of columns between <code>ESR1</code>
 and <code>MLPH</code>, which is a lot easier than naming each column
 individually.</p>
 <p>We’re now in a position to create our faceted box plot chart.</p>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric_long</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ER_status</span>, y <span class="op">=</span> <span class="va">Expression</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Gene</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week4_files/figure-html/box_plot_2-1.png" width="700"></p>
@@ -1868,8 +1605,8 @@ scatter plot comparing the expression of two genes across all the
 samples. For this, the <em>one-row-per-sample</em> representation is the
 more appropriate and being able to convert back to this format allows us
 to create the plot.</p>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"Gene"</span>, values_from <span class="op">=</span> <span class="st">"Expression"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1894,7 +1631,7 @@ Cancer Foundation-7 institute in Detroit. Tamoxifen is a hormone therapy
 used in the treatment of estrogen receptor-positive breast cancer.</p>
 <p>The table in question is <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5998130/bin/41467_2018_4619_MOESM11_ESM.xlsx" class="external-link">supplementary
 data 9</a>.</p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org" class="external-link">readxl</a></span><span class="op">)</span>
 <span class="co"># because it's an Excel file located on the web need to download then import</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/41467_2018_4619_MOESM11_ESM.xlsx"</span>, destfile <span class="op">=</span> <span class="st">"41467_2018_4619_MOESM11_ESM.xlsx"</span><span class="op">)</span>
@@ -1929,7 +1666,7 @@ analyses.</p>
 <p>To simplify matters, we’re going to focus on just a few proteins,
 those whose levels are markedly reduced 24 hours after treatment with
 tamoxifen compared with the vehicle.</p>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">protein_levels</span> <span class="op">&lt;-</span> <span class="va">protein_levels</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">`log2FC(24h/veh)`</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">0.75</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span>accession <span class="op">=</span> <span class="va">`Uniprot Accession`</span>, gene <span class="op">=</span> <span class="va">`Gene Name`</span>, <span class="va">vehicle.rep01</span><span class="op">:</span><span class="va">tam.24h.rep04</span><span class="op">)</span>
@@ -1967,7 +1704,7 @@ the sample name is in a column and protein levels are in another column,
 and then to split the sample name column into its constituent parts.</p>
 <p>For the first part of this transformation we’ll use
 <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>.</p>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">protein_levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="va">protein_levels</span>, <span class="va">vehicle.rep01</span><span class="op">:</span><span class="va">tam.24h.rep04</span>, names_to <span class="op">=</span> <span class="st">"sample"</span>, values_to <span class="op">=</span> <span class="st">"protein_level"</span><span class="op">)</span>
 <span class="va">protein_levels</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 160 × 4</span></span>
@@ -2081,7 +1818,7 @@ positions.
 </div>
 <p><code><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace()</a></code> looks like the function we need so let’s
 see how it works on our sample names.</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="st">"vehicle.rep01"</span>, <span class="st">"vehicle"</span>, <span class="st">"vehicle.24h"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "vehicle.24h.rep01"</span></code></pre>
 <p>The first argument is the character vector we’re working on, in this
@@ -2091,7 +1828,7 @@ replace it with.</p>
 <p>Looking at the help we can see that, like very many R functions, it
 works on a vector of character values (or strings), so let’s try this on
 a few of our sample names, say the first 10.</p>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">protein_levels</span><span class="op">$</span><span class="va">sample</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">"vehicle"</span>, <span class="st">"vehicle.24h"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##  [1] "vehicle.24h.rep01" "tam.2h.rep01"      "tam.6h.rep01"     </span>
 <span class="co">##  [4] "tam.24h.rep01"     "vehicle.24h.rep02" "tam.2h.rep02"     </span>
@@ -2099,7 +1836,7 @@ a few of our sample names, say the first 10.</p>
 <span class="co">## [10] "tam.2h.rep03"</span></code></pre>
 <p>Finally, we can modify the values in our data frame using
 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>.</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">protein_levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">protein_levels</span>, sample <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">sample</span>, <span class="st">"vehicle"</span>, <span class="st">"vehicle.24h"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">protein_levels</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 160 × 4</span></span>
@@ -2118,7 +1855,7 @@ a few of our sample names, say the first 10.</p>
 <span class="co">## <span style="color: #949494;"># … with 150 more rows</span></span></code></pre>
 <p>Now we’re ready to separate the <code>sample</code> column into its
 component parts.</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">protein_levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">protein_levels</span>, <span class="va">sample</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="st">"time"</span>, <span class="st">"replicate"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">protein_levels</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 160 × 6</span></span>
@@ -2143,7 +1880,7 @@ to ‘veh’ so we have similar length treatment labels (‘veh’ and ‘tam’
 the plot we’ll eventually create. For that we’ll use
 <code><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub()</a></code>. Our group variable is categorical so we’ll
 convert this to a factor while we’re at it.</p>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">protein_levels</span> <span class="op">&lt;-</span> <span class="va">protein_levels</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub</a></span><span class="op">(</span><span class="va">treatment</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html" class="external-link">str_c</a></span><span class="op">(</span><span class="va">group</span>, <span class="va">time</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -2165,7 +1902,7 @@ convert this to a factor while we’re at it.</p>
 <span class="co">## <span style="color: #949494;"># … with 150 more rows</span></span></code></pre>
 <p>Computing the mean protein levels within each group is now very
 straightforward.</p>
-<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">protein_levels</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">accession</span>, <span class="va">gene</span>, <span class="va">group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>protein_level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">protein_level</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -2190,7 +1927,7 @@ straightforward.</p>
 point overlaid is only slightly more involved. We can use faceting to
 create separate plots for each of the proteins (we’ll use gene symbols
 as they’re more recognizable).</p>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">protein_levels</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">group</span>, y <span class="op">=</span> <span class="va">protein_level</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"grey60"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.15</span><span class="op">)</span> <span class="op">+</span>
@@ -2199,11 +1936,271 @@ as they’re more recognizable).</p>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="further-customization-of-plots-with-ggplot2">Further customization of plots with ggplot2<a class="anchor" aria-label="anchor" href="#further-customization-of-plots-with-ggplot2"></a>
+<h2 id="customizing-plots-with-ggplot2">Customizing plots with ggplot2<a class="anchor" aria-label="anchor" href="#customizing-plots-with-ggplot2"></a>
 </h2>
 <p>Finally, we’ll turn our attention back to visualization using ggplot2
-and how we can customize our plots by changing the theme and consider
-various other odds and ends.</p>
+and how we can customize our plots by adding or changing titles and
+labels, changing the scales used on the x and y axes, and choosing
+colours.</p>
+<div class="section level3">
+<h3 id="titles-and-labels">Titles and labels<a class="anchor" aria-label="anchor" href="#titles-and-labels"></a>
+</h3>
+<p>Adding titles and subtitles to a plot and changing the x- and y-axis
+labels is very straightforward using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs()</a></code>
+function.</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># use the metabric data we started with</span>
+<span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"mRNA expression in the METABRIC breast cancer data set"</span>,
+    subtitle <span class="op">=</span> <span class="st">"GATA3 and ESR1 mRNA expression measured using Illumina HT-12 bead arrays"</span>,
+    x <span class="op">=</span> <span class="st">"log2 GATA3 expression"</span>,
+    y <span class="op">=</span> <span class="st">"log2 ESR1 expression"</span>,
+    colour <span class="op">=</span> <span class="st">"ER status"</span>
+  <span class="op">)</span>
+<span class="va">plot</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot-1.png" width="700"></p>
+<p>The labels are another component of the plot object that we’ve
+constructed, along with aesthetic mappings and layers (geoms). The plot
+object is a list and contains various elements including those mappings
+and layers and one element named <code>labels</code>.</p>
+<p><code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs()</a></code> is a simple function for creating a list of
+labels you want to specify as name-value pairs as in the above example.
+You can name any aesthetic (in this case x and y) to override the
+default values (the column names) and you can add a title, subtitle and
+caption if you wish. In addition to changing the x- and y-axis labels,
+we also removed the underscore from the legend title by setting the
+label for the colour aesthetic.</p>
+</div>
+<div class="section level3">
+<h3 id="scales">Scales<a class="anchor" aria-label="anchor" href="#scales"></a>
+</h3>
+<p>Take a look at the x and y scales in the above plot. ggplot2 has
+chosen the x and y scales and where to put breaks and ticks.</p>
+<p>Let’s have a look at the elements of the list object we created that
+specifies how the plot should be displayed.</p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "data"        "layers"      "scales"      "mapping"     "theme"      </span>
+<span class="co">## [6] "coordinates" "facet"       "plot_env"    "labels"</span></code></pre>
+<p>One of the components of the plot is called <code>scales</code>.
+ggplot2 automatically adds default scales behind the scenes equivalent
+to the following:</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html" class="external-link">scale_colour_discrete</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Note that we have three aesthetics and ggplot2 adds a scale for
+each.</p>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">plot</span><span class="op">$</span><span class="va">mapping</span></code></pre></div>
+<pre><code><span class="co">## Aesthetic mapping: </span>
+<span class="co">## * `x`      -&gt; `GATA3`</span>
+<span class="co">## * `y`      -&gt; `ESR1`</span>
+<span class="co">## * `colour` -&gt; `ER_status`</span></code></pre>
+<p>The x and y variables (<code>GATA3</code> and <code>ESR1</code>) are
+continuous so ggplot2 adds a continuous scale for each.
+<code>ER_status</code> is a discrete variable in this case so ggplot2
+adds a discrete scale for colour.</p>
+<p>Generalizing, the scales that are required follow the naming
+scheme:</p>
+<pre><code>scale_&lt;NAME_OF_AESTHETIC&gt;_&lt;NAME_OF_SCALE&gt;</code></pre>
+<p>Look at the help page for <code>scale_y_continuous</code> to see what
+we can change about the y-axis scale.</p>
+<p>First we’ll change the breaks, i.e. where ggplot2 puts ticks and
+numeric labels, on the y axis.</p>
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_2-1.png" width="700"></p>
+<p><code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code> is a useful function for generating regular
+sequences of numbers. In this case we wanted numbers from 5 to 15 going
+up in steps of 2.5.</p>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1]  5.0  7.5 10.0 12.5 15.0</span></code></pre>
+<p>We could do the same thing for the x axis using
+<code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous()</a></code>.</p>
+<p>We can also adjust the extents of the x or y axis.</p>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<pre><code><span class="co">## Warning: Removed 160 rows containing non-finite values (stat_smooth).</span></code></pre>
+<pre><code><span class="co">## Warning: Removed 160 rows containing missing values (geom_point).</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_3-1.png" width="700"></p>
+<p>Here, just for demonstration purposes, we set the upper limit to be
+less than the largest values of ESR1 expression and ggplot2 warned us
+that some rows have been removed from the plot.</p>
+<p>We can change the minor breaks, e.g. to add more lines that act as
+guides. These are shown as thin white lines when using the default
+theme.</p>
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">12.5</span>, by <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13.5</span>, <span class="fl">0.5</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_4-1.png" width="700"></p>
+<p>Or we can remove the minor breaks entirely.</p>
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">14</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="cn">NULL</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_5-1.png" width="700"></p>
+<p>Similarly we could remove all breaks entirely.</p>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_6-1.png" width="700"></p>
+<p>A more typical scenario would be to keep the breaks, because we want
+to display the ticks and their lables, but remove the grid lines.
+Somewhat confusingly the position of grid lines are controlled by a
+scale but preventing these from being displayed requires changing the
+theme. The theme controls the way in which non-data components are
+displayed – we’ll look at how these can be customized later. For now,
+though, here’s an example of turning off the display of all grid lines
+for major and minor breaks for both axes.</p>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">14</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_7-1.png" width="700"></p>
+<p>By default, the scales are expanded by 5% of the range on either
+side. We can add or reduce the space as follows.</p>
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expand_scale</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expand_scale</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span>
+
+<span class="co">## Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span></code></pre>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_8-1.png" width="700"></p>
+<p>Here we only added 1% (0.01) of the range of GATA3 expression values
+on either side along the x axis but we added 25% (0.25) of the range of
+ESR1 expression on either side along the y axis.</p>
+<p>We can move the axis to the other side of the plot –- not sure why
+you’d want to do this but with ggplot2 just about anything is
+possible.</p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_9-1.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="colours">Colours<a class="anchor" aria-label="anchor" href="#colours"></a>
+</h3>
+<p>The colour asthetic is used with a categorical variable,
+<code>ER_status</code>, in the scatter plots we’ve been customizing. The
+default colour scale used by ggplot2 for categorical variables is
+<code>scale_colour_discrete</code>. We can manually set the colours we
+wish to use using <code>scale_colour_manual</code> instead.</p>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dodgerblue2"</span>, <span class="st">"firebrick2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_10-1.png" width="700"></p>
+<p>Setting colours manually is ok when we only have two or three
+categories but when we have a larger number it would be handy to be able
+to choose from a selection of carefully-constructed colour palettes.
+Helpfully, ggplot2 provides access to the <a href="http://colorbrewer2.org" class="external-link">ColorBrewer</a> palettes through the
+functions <code><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_colour_brewer()</a></code> and
+<code><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_fill_brewer()</a></code>.</p>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">`3-gene_classifier`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></code></pre></div>
+<p><img src="week4_files/figure-html/scatter_plot_11-1.png" width="700"></p>
+<p>Look at the help page for <code>scale_colour_brewer</code> to see
+what other colour palettes are available and visit the <a href="http://colorbrewer2.org" class="external-link">ColorBrewer</a> website to see what these
+look like.</p>
+<p>Interestingly, you can set other attributes other than just the
+colours at the same time.</p>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">ER_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.6</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dodgerblue2"</span>, <span class="st">"firebrick2"</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ER-negative"</span>, <span class="st">"ER-positive"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>  <span class="co"># remove legend title for colour now that the labels are self-explanatory</span></code></pre></div>
+<pre><code><span class="co">## `geom_smooth()` using formula 'y ~ x'</span></code></pre>
+<p><img src="week4_files/figure-html/scatter_plot_12-1.png" width="700"></p>
+<p>We have applied our own set of mappings from levels in the data to
+aesthetic values.</p>
+<p>For continuous variables we may wish to be able to change the colours
+used in the colour gradient. To demonstrate this we’ll correct the
+Nottingham prognostic index (NPI) values and use this to colour points
+in the scatter plot of ESR1 vs GATA3 expression on a continuous
+scale.</p>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Nottingham_prognostic_index is incorrectly calculated in the data downloaded from cBioPortal</span>
+<span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">metabric</span>, Nottingham_prognostic_index <span class="op">=</span> <span class="fl">0.02</span> <span class="op">*</span> <span class="va">Tumour_size</span> <span class="op">+</span> <span class="va">Lymph_node_status</span> <span class="op">+</span> <span class="va">Neoplasm_histologic_grade</span><span class="op">)</span>
+<span class="co">#</span>
+<span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<p><img src="week4_files/figure-html/scatter_plot_13-1.png" width="700"></p>
+<p>Higher NPI scores correspond to worse prognosis and lower chance of 5
+year survival. We’ll emphasize those points on the scatter plot by
+adjusting our colour scale.</p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"white"</span>, high <span class="op">=</span> <span class="st">"firebrick2"</span><span class="op">)</span></code></pre></div>
+<p><img src="week4_files/figure-html/scatter_plot_14-1.png" width="700"></p>
+<p>In some cases it might make sense to specify two colour gradients
+either side of a mid-point.</p>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient2</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"dodgerblue1"</span>, mid <span class="op">=</span> <span class="st">"grey90"</span>, high <span class="op">=</span> <span class="st">"firebrick1"</span>, midpoint <span class="op">=</span> <span class="fl">4.5</span><span class="op">)</span></code></pre></div>
+<p><img src="week4_files/figure-html/scatter_plot_15-1.png" width="700"></p>
+<p>As before we can override the default labels and other aspects of the
+colour scale within the scale function.</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Nottingham_prognostic_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient</a></span><span class="op">(</span>
+    low <span class="op">=</span> <span class="st">"lightblue"</span>, high <span class="op">=</span> <span class="st">"darkblue"</span>,
+    name <span class="op">=</span> <span class="st">"NPI"</span>,
+    breaks <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">6</span>,
+    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">6.5</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p><img src="week4_files/figure-html/scatter_plot_16-1.png" width="700"></p>
+</div>
 <div class="section level3">
 <h3 id="themes">Themes<a class="anchor" aria-label="anchor" href="#themes"></a>
 </h3>
@@ -2374,20 +2371,6 @@ looking plot.</p>
     axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p><img src="week4_files/figure-html/box_plot_9-1.png" width="700"></p>
-</div>
-<div class="section level3">
-<h3 id="saving-plot-images">Saving plot images<a class="anchor" aria-label="anchor" href="#saving-plot-images"></a>
-</h3>
-<p>Use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code> to save the last plot you displayed.</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"esr1_expression.png"</span><span class="op">)</span></code></pre></div>
-<p>You can alter the width and height of the plot and can change the
-image file type.</p>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"esr1_expression.pdf"</span>, width <span class="op">=</span> <span class="fl">20</span>, height <span class="op">=</span> <span class="fl">12</span>, units <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span></code></pre></div>
-<p>You can also pass in a plot object you have created instead of using
-the last plot displayed. See the help page (<code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">?ggsave</a></code>) for
-more details.</p>
 <hr>
 </div>
 </div>
@@ -2399,24 +2382,20 @@ more details.</p>
 <li>Computing summary values for groups of observations</li>
 <li>Counting the numbers of observations within categories</li>
 <li>Combining data from two tables through join operations</li>
-<li>Customizing plots created with ggplot2 by changing labels, scales
-and colours</li>
 <li>Restructuring data frames using pivoting operations</li>
 <li>Splitting compound variables into separate columns</li>
 <li>Modifying character columns using various string manipulation
 functions</li>
-<li>Customizing plots created with ggplot2 by changing the theme and
-position adjustments</li>
-<li>Saving plots created with ggplot2 as image files</li>
+<li>Customizing plots created with ggplot2 by changing labels, scales
+and colours, theme and position adjustments</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
 </h2>
-<p>Part 1</p>
-<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgNCIKLS0tCgpUaGUgd2VlaydzIGFzc2lnbm1lbnQgd2lsbCB0ZXN0IHlvdXIgYWJpbGl0eSB0byBtYW5pcHVsYXRlIHRoZSBNRVRBQlJJQyBkYXRhIHNldApieSBjaGFuZ2luZyB0aGUgdmFsdWVzIG9mIGV4aXN0aW5nIGNvbHVtbnMgb3IgYWRkaW5nIG5ldyBjb2x1bW5zIGJ5IGNvbXB1dGluZwpuZXcgdmFyaWFibGVzIGZyb20gZXhpc3Rpbmcgb25lcy4KCldlIGFyZSBleHBlY3RpbmcgeW91IHRvIHVzZSB0aGUgNSBtYWluIGRwbHlyICd2ZXJiJyBmdW5jdGlvbnM6IGBzZWxlY3QoKWAsCmBmaWx0ZXIoKWAsIGBhcnJhbmdlKClgLCBgbXV0YXRlKClgIGFuZCBgc3VtbWFyaXplKClgLiBQbGVhc2UgdXNlIHRoZSBwaXBlCm9wZXJhdG9yLCBgJT4lYCwgaW4gY2FzZXMgd2hlcmUgbW9yZSB0aGFuIG9uZSBvcGVyYXRpb24gaXMgcmVxdWlyZWQgdG8gYWNoaWV2ZQp0aGUgb3V0Y29tZSByZXF1ZXN0ZWQuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRSwgd2FybmluZyA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbWV0YWJyaWMgPC0gcmVhZF9jc3YoIm1ldGFicmljX2NsaW5pY2FsX2FuZF9leHByZXNzaW9uX2RhdGEuY3N2IikKYGBgCgotLS0KCioqMS4gSW52ZXN0aWdhdGUgdGhlIHN1YnNldCBvZiBsb25nLXN1cnZpdmluZyBicmVhc3QgY2FuY2VyIHBhdGllbnRzIHRoYXQgZGlkbid0IHJlY2VpdmUgY2hlbW8gb3IgcmFkaW90aGVyYXB5KioKCkZpcnN0IG9idGFpbiB0aGUgc3Vic2V0IG9mIHBhdGllbnRzIHRoYXQgcmVjZWl2ZWQgbmVpdGhlciBjaGVtb3RoZXJhcHkgb3IKcmFkaW90aGVyYXB5IGFuZCBzdXJ2aXZlZCBmb3IgbW9yZSB0aGFuIDIwIHllYXJzLgoKYGBge3J9CgpgYGAKCk5vdyBsb29rIGF0IHRoZSBicmVha2Rvd24gb2YgdGhlc2UgcGF0aWVudHMgaW4gdGVybXMgb2YgRVIgc3RhdHVzLiBDb3VudCB0aGUKbnVtYmVycyBvZiBFUiBwb3NpdGl2ZSBhbmQgRVIgbmVnYXRpdmUgcGF0aWVudHMgaW4gdGhpcyBzdWJzZXQuIENhbGN1bGF0ZSB0aGUKcHJvcG9ydGlvbiB0aGF0IGFyZSBFUiBwb3NpdGl2ZS4KCmBgYHtyfQoKYGBgCgpXaGF0IGRvZXMgdGhpcyB0ZWxsIHVzPyBDYWxjdWxhdGUgdGhlIHByb3BvcnRpb24gb2YgRVIgcG9zaXRpdmUgcGF0aWVudHMgaW4gdGhlCndob2xlIGNvaG9ydCBieSB3YXkgb2YgYSBjb21wYXJpc29uLgoKYGBge3J9CgpgYGAKCioqRXh0ZW5zaW9uKioKCkNyZWF0ZSBhIGNvbnRpbmdlbmN5IHRhYmxlIG9mIHRoZSBudW1iZXJzIG9mIEVSIHBvc2l0aXZlIGFuZCBFUiBuZWdhdGl2ZQpwYXRpZW50cyBpbiB0aGUgdHdvIGdyb3VwcyAodW50cmVhdGVkLCBsb25nLXN1cnZpdmluZyBwYXRpZW50cyBhbmQgYWxsIG90aGVycykKYW5kIHBlcmZvcm0gYSBDaGktc3F1YXJlZCB0ZXN0IG9yIGEgRmlzaGVyJ3MgZXhhY3QgdGVzdCAod2hpY2hldmVyIGlzIG1vc3QKYXBwcm9wcmlhdGUpIHRvIGRldGVybWluZSBpZiB0aGVyZSBpcyBhIHNpZ25pZmljYW50IGRpZmZlcmVuY2UuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IGxvb2sgYXQgdGhlIGhlbHAgcGFnZSBmb3IgdGhlIGZ1bmN0aW9uIGZvciB0aGUgQ2hpLXNxdWFyZWQgb3IgRmlzaGVyJ3MKZXhhY3QgdGVzdCB0byBzZWUgd2hhdCBmb3JtIHRoZSBjb250aW5nZW5jeSB0YWJsZSBuZWVkcyB0byB0YWtlXwoKLS0tCgoqKjIuIFdoaWNoIHBhdGllbnRzIGhhdmUgc3BlbnQgdGhlIGxhcmdlc3QgcHJvcG9ydGlvbiBvZiB0aGVpciBsaXZlcyBkZWFsaW5nIHdpdGggYnJlYXN0IGNhbmNlcj8qKgoKYGBge3J9CgpgYGAKCi0tLQoKKiozLiBDb252ZXJ0IHRoZSBleHByZXNzaW9uIHZhbHVlcyBmb3IgZWFjaCBvZiB0aGUgZ2VuZXMgaW50byBzdGFuZGFyZGl6ZWQgei1zY29yZXMqKgoKU29tZSBnZW5lcyBhcmUgZ2VuZXJhbGx5IGV4cHJlc3NlZCBhdCBoaWdoZXIgbGV2ZWxzIHRoYW4gb3RoZXJzLiBUaGlzIGNhbiBtYWtlCmNvbXBhcmlzb25zIG9mIGNoYW5nZXMgYmV0d2VlbiBncm91cHMgZm9yIGEgc2V0IG9mIGdlbmVzIHNvbWV3aGF0IGRpZmZpY3VsdCwKcGFydGljdWxhcmx5IGlmIHRoZSBleHByZXNzaW9uIGZvciB0aG9zZSBnZW5lcyBhcmUgb24gdmVyeSBkaWZmZXJlbnQgc2NhbGVzLiBUaGUKZXhwcmVzc2lvbiB2YWx1ZXMgaW4gb3VyIE1FVEFCUklDIGFyZSBvbiBhIGxvZ34yfiBzY2FsZSB3aGljaCBoZWxwcyB0byByZWR1Y2UKdGhlIHJhbmdlIG9mIHZhbHVlcyBidXQgYW5vdGhlciBtZXRob2QgZm9yIHJlcHJlc2VudGluZyBleHByZXNzaW9uIG1lYXN1cmVtZW50cwppcyB0byBzdGFuZGFyZGl6ZSB0aGVzZSB0byBwcm9kdWNlIHotc2NvcmVzLgoKU3RhbmRhcmRpemF0aW9uIG9mIGEgc2V0IG9mIG1lYXN1cmVtZW50cyBpbnZvbHZlcyBzdWJ0cmFjdGluZyB0aGUgbWVhbiBmcm9tIGVhY2gKYW5kIGRpdmlkaW5nIGJ5IHRoZSBzdGFuZGFyZCBkZXZpYXRpb24uIFRoaXMgd2lsbCBwcm9kdWNlIHZhbHVlcyB3aXRoIGEgbWVhbiBvZgowIGFuZCBhIHN0YW5kYXJkIGRldmlhdGlvbiBvZiAxLgoKQ3JlYXRlIGEgbW9kaWZpZWQgdmVyc2lvbiBvZiB0aGUgYG1ldGFicmljYCBkYXRhIGZyYW1lIGNvbnRhaW5pbmcgYSBuZXcgY29sdW1uCndpdGggdGhlIHN0YW5kYXJkaXplZCBleHByZXNzaW9uIHZhbHVlcyAoei1zY29yZXMpIGZvciB0aGUgRVNSMSBnZW5lLgoKYGBge3J9CgpgYGAKCkNoZWNrIHRoYXQgeW91J3ZlIGRvbmUgdGhpcyBjb3JyZWN0bHkgYnkgY2FsY3VsYXRpbmcgdGhlIG1lYW4gYW5kIHN0YW5kYXJkCmRldmlhdGlvbiBvZiB5b3VyIG5ldyB6LXNjb3JlIHZhcmlhYmxlLgoKYGBge3J9CgpgYGAKCkFkZCBhbm90aGVyIGNvbHVtbiB0byB5b3VyIG1vZGlmaWVkIGBtZXRhYnJpY2AgZGF0YSBmcmFtZSBjb250YWluaW5nIGEgei1zY29yZQpmb3IgR0FUQTMgYW5kIHRoZW4gY3JlYXRlIGEgc2NhdHRlciBwbG90IG9mIHRoZSB6LXNjb3JlcyBvZiBHQVRBMyBhZ2FpbnN0IEVTUjEuCk1vZGlmeSB5b3VyIHBsb3QgdG8gZmFjZXQgYnkgdGhlIFBBTTUwIGNsYXNzaWZpY2F0aW9uLgoKYGBge3J9CgpgYGAKCioqRXh0ZW5zaW9uIDEqKgoKU3RhbmRhcmRpemUgdGhlIGV4cHJlc3Npb24gdmFsdWVzIGZvciBhbGwgZ2VuZXMgaW4gYSBzaW5nbGUgb3BlcmF0aW9uIHVzaW5nIGFuCmFub255bW91cyBmdW5jdGlvbiwgb3ZlcndyaXRpbmcgdGhlaXIgb3JpZ2luYWwgdmFsdWVzLCBhbmQgcm91bmQgdGhlIHJlc3VsdGluZwp2YWx1ZXMgdG8gMyBzaWduaWZpY2FudCBmaWd1cmVzLgoKYGBge3J9CgpgYGAKCkNoZWNrIHlvdSBoYXZlIGRvbmUgdGhpcyBjb3JyZWN0bHkgYnkgY29tcHV0aW5nIHRoZSBtZWFuIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gZm9yCmVhY2ggY29sdW1uLCBhZ2FpbiB1c2luZyBhIHNpbmdsZSBvcGVyYXRpb24uCgpgYGB7cn0KCmBgYAoKVG8gYmUgZG91Ymx5IGNlcnRhaW4sIHlvdSBjb3VsZCBhbHNvIGRvd25sb2FkIHRoZSBleHByZXNzaW9uIHotc2NvcmUgdmFsdWVzIGZvcgp0aGVzZSBnZW5lcyBmcm9tIGNCaW9Qb3J0YWwuCgoqKkV4dGVuc2lvbiAyKioKCkNyZWF0ZSBhIHBsb3QgY29tcGFyaW5nIHRoZSBkaXN0cmlidXRpb24gb2Ygc3RhbmRhcmRpemVkIGV4cHJlc3Npb24gdmFsdWVzIGZvcgpUUDUzIGFnYWluc3QgYSBub3JtYWwgZGlzdHJpYnV0aW9uLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYHN0YXRfZnVuY3Rpb24oKWBfCgotLS0KCioqNC4gV2hpY2ggU3RhciBXYXJzIGNoYXJhY3RlcnMgbmVlZCB0byBnbyBvbiBhIGRpZXQ/KioKCkNvbXB1dGUgdGhlIGJvZHkgbWFzcyBpbmRleCAoQk1JKSBvZiBjaGFyYWN0ZXJzIGluIHRoZSBgc3RhcndhcnNgIHRpYmJsZS4KCmBgYHtyfQoKYGBgCgpGaWx0ZXIgZm9yIGh1bWFuIGNoYXJhY3RlcnMgdGhhdCBhcmUgb3ZlcndlaWdodCAoQk1JID4gMjUpIGFuZCBkaXNwbGF5IGluCmRlY3JlYXNpbmcgb3JkZXIgb2YgQk1JLgoKYGBge3J9CgpgYGAKCg==" download="assignment4.Rmd">Download assignment4.Rmd</a></p>
-<p>Part 2</p>
-<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgNGIiCi0tLQoKVGhpcyB3ZWVrJ3MgaW52b2x2ZXMgdHJhbnNmb3JtaW5nIHR3byBkYXRhIHNldHMgaW4gb3JkZXIgdG8gYXNrIGEgc3BlY2lmaWMKcXVlc3Rpb24gb2YgZWFjaC4gVGhlIGZpcnN0IGlzIGEgbW9yZSBjb21wbGV0ZSBzZXQgb2YgZGF0YSBvbiB0aGUgbnVtYmVyIG9mIG5ldwp0dWJlcmN1bG9zaXMgY2FzZXMgZWFjaCB5ZWFyIGZyb20gMTk4MCB0byAyMDEzIGluIDIxOSBjb3VudHJpZXMsIHRha2VuIGZyb20gdGhlCltXb3JsZCBIZWFsdGggT3JnYW5pemF0aW9uIEdsb2JhbCBUdWJlcmN1bG9zaXMgUmVwb3J0XShodHRwczovL3d3dy53aG8uaW50L2hlYWx0aC10b3BpY3MvdHViZXJjdWxvc2lzKS4KCkZvciB0aGUgc2Vjb25kICJyZWFsIHdvcmxkIiBleGFtcGxlIHdlIHJldHVybiB0byB0aGUgTUVUQUJSSUMgZGF0YSBzZXQgYW5kCmludHJvZHVjZSB0aGUgb3RoZXIgc2V0IG9mIGFzc2F5IGRhdGEgb2J0YWluZWQgYXMgcGFydCBvZiB0aGUgb3JpZ2luYWwgMjAxMgpzdHVkeSB0aGF0IGNvbmNlcm5zIGdlbm9taWMgY29weSBudW1iZXIuIFdlJ2xsIHRyYW5zZm9ybSB0aGUgY29weSBudW1iZXIgZGF0YQpkb3dubG9hZGVkIGZyb20gW2NCaW9Qb3J0YWxdKGh0dHBzOi8vd3d3LmNiaW9wb3J0YWwub3JnL3N0dWR5L3N1bW1hcnk/aWQ9YnJjYV9tZXRhYnJpYykKc28gdGhhdCB3ZSBjYW4gbG9vayBhdCB0aGUgY29weSBudW1iZXIgc3RhdGVzIGZvciBzb21lIG9mIG91ciBmYXZvdXJpdGUgZ2VuZXMKYW5kIHRoZW4gY29tYmluZSB0aGF0IHdpdGggdGhlIGV4cHJlc3Npb24gZGF0YSB0byBzZWUgaG93IGNvcHkgbnVtYmVyIGluZmx1ZW5jZXMKZ2VuZSBleHByZXNzaW9uLgoKVGhlIGNsaW5pY2FsIGRhdGEsIGdlbmUgZXhwcmVzc2lvbiB2YWx1ZXMgYW5kIG11dGF0aW9uIGRhdGEgd2VyZSBhbGwgZG93bmxvYWRlZApmcm9tIFtjQmlvUG9ydGFsXShodHRwczovL3d3dy5jYmlvcG9ydGFsLm9yZy9zdHVkeS9zdW1tYXJ5P2lkPWJyY2FfbWV0YWJyaWMpLgoKYGBge3IgZXZhbCA9IEZBTFNFLCBtZXNzYWdlID0gRkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCi0tLQoKKioxLiBUaWR5IHRoZSBXSE8gdHViZXJjdWxvc2lzIGRhdGEgc2V0KioKCkluIHRoaXMgd2VlaydzIG1hdGVyaWFscyB3ZSBkZW1vbnN0cmF0ZWQgdGhlIHJlc3RydWN0dXJpbmcgb2YgZGlmZmVyZW50CnJlcHJlc2VudGF0aW9ucyBvZiBhIHZlcnkgc21hbGwgc3Vic2V0IG9mIHRoZSBXSE8gdHViZXJjdWxvc2lzIGRhdGEgc2V0ICh0YWJsZXMKMSB0byA0YSBhbmQgYikuIFRoZSBtb3JlIGNvbXBsZXRlIGRhdGEgc2V0IGlzIGFsc28gYXZhaWxhYmxlIGluIGl0cyBvcmlnaW5hbApmb3JtYXQgaW4gYW5vdGhlciBkYXRhIGZyYW1lIGF2YWlsYWJsZSBhcyBwYXJ0IG9mIHRoZSAqKnRpZHlyKiogcGFja2FnZSwgbmFtZWQKYHdob2AuCgpgYGB7cn0KbGlicmFyeSh0aWR5cikKd2hvCmBgYAoKV2hhdCBhcmUgdGhlIHZhcmlhYmxlcyBpbiB0aGlzIGRhdGEgc2V0PwoKQ3JlYXRlIGEgYnVsbGV0ZWQgbGlzdCB3aXRoIHlvdXIgYW5zd2VyIGhlcmUuCgoKCl9IaW50OiBzZWUgdGhlIGhlbHAgcGFnZSBmb3IgYHdob2AgdG8gdW5kZXJzdGFuZCB0aGUgbWVhbmluZyBvZiB0aGUgY29sdW1uIGhlYWRpbmdzLl8KCl9IaW50OiB0aGUgTWFya2Rvd24gUXVpY2sgUmVmZXJlbmNlIGF2YWlsYWJsZSBmcm9tIHRoZSBIZWxwIG1lbnUgaW4gUlN0dWRpbyBpcyBhIHZlcnkgdXNlZnVsIGd1aWRlIHRvIGZvcm1hdHRpbmcgdGV4dCBpbiBSIG1hcmtkb3duIGRvY3VtZW50cy5fCgpXaHkgaXNuJ3QgdGhpcyBkYXRhIHNldCB0aWR5IGFuZCB3aGF0IGtpbmRzIG9mIGFuYWx5c2lzIGFyZSBub3Qgc3RyYWlnaHRmb3J3YXJkCndpdGggdGhlIGRhdGEgaW4gdGhpcyBmb3JtYXQ/CgpUcmFuc2Zvcm0gdGhlIGRhdGEgaW50byBhIHRpZHkgZm9ybWF0LgoKQ29sdW1ucyBgbmV3X3NwX20wMTRgIHRvIGBuZXdyZWxfZjY1YCBhcmUgdmFsdWVzIGZvciBhIGNvbXBvdW5kIHZhcmlhYmxlLCBpLmUuCm11bHRpcGxlIHZhcmlhYmxlcyBqb2luZWQgdG9nZXRoZXIgLSB0aGUgcmVzdHJ1Y3R1cmVkIGRhdGEgZnJhbWUgc2hvdWxkIGhhdmUKY29sdW1ucyBmb3IgZWFjaCBvZiB0aGUgc2VwYXJhdGVkIHZhbHVlcyBpbiB0aGVzZSBjb2x1bW4gaGVhZGluZ3MuCgpBbHNvIHJlbW92ZSBhbGwgcm93cyB3aXRoIG1pc3NpbmcgdmFsdWVzIGZvciB0aGUgbnVtYmVyIG9mIHR1YmVyY3Vsb3NpcyBjYXNlcy4KCmBgYHtyfQoKYGBgCgoqSGludCAxOiB0aGUgY29sdW1uIGhlYWRlcnMgZnJvbSBuZXdfc3BfbTAxNCBvbndhcmRzIGNvbnRhaW4gYSBzdXBlcmZsdW91cyBwcmVmaXggIm5ldyIgb3IgIm5ld18iIHRoYXQgeW91IHdpbGwgd2FudCB0byByZW1vdmU7IHRoaXMgY2FuIGJlIGRvbmUgdXNpbmcgb25lIG9mIHRoZSBzdHJpbmdyIGZ1bmN0aW9ucyBpbiBhIHNpbmdsZSBzdGVwIGlmIHlvdSBrbm93IGFib3V0IHJlZ3VsYXIgZXhwcmVzc2lvbnMgYnV0IGlzIGFsc28gYWNoaWV2YWJsZSBpbiB0d28gc3RlcHMgaWYgeW91IGRvbid0IHVzZSBhbnkgcmVndWxhciBleHByZXNzaW9uIG1hZ2ljLioKCl9IaW50IDI6IHNlcGFyYXRpbmcgdHdvIG9mIHRoZSB2YXJpYWJsZXMgaXMgYSBiaXQgdHJpY2t5IGJlY2F1c2UgdGhlcmUgaXMgbm8gc2VwYXJhdG9yIGNoYXJhY3RlcjsgdHJ5IGxvb2tpbmcgYXQgdGhlIGhlbHAgZm9yIHRoZSBzZXBhcmF0ZSBmdW5jdGlvbiB0byBzZWUgaG93IHRoaXMgY2FuIGJlIGRvbmUuXwoKLS0tCgoqKjIuIFJlY3JlYXRlIGB0YWJsZTFgIGZyb20geW91ciB0aWR5IHZlcnNpb24gb2YgdGhlIFdITyB0dWJlcmN1bG9zaXMgZGF0YSBzZXQqKgoKUmVjcmVhdGUgdGhlIGZpcnN0IDMgY29sdW1ucyBvZiBgdGFibGUxYCwgY29udGFpbmluZyBhIHNtYWxsIHN1YnNldCBvZiB0aGUgV0hPCnR1YmVyY3Vsb3NpcyBkYXRhIHNldCwgZnJvbSB5b3VyIHRpZHkgdmVyc2lvbiBvZiBgd2hvYC4KCmBgYHtyIGV2YWwgPSBGQUxTRX0Kc2VsZWN0KHRhYmxlMSwgMTozKQpgYGAKCmBgYHtyfQoKYGBgCgpfSGludDogdGhpcyB3aWxsIGludm9sdmUgc29tZSBmaWx0ZXJpbmcsIGdyb3VwaW5nIGFuZCBzdW1tYXJpemF0aW9uLl8KCi0tLQoKKiozLiBDcmVhdGUgdGltZSBzZXJpZXMgcGxvdHMgZm9yIGNhc2VzIG9mIHR1YmVyY3Vsb3NpcyoqCgpDcmVhdGUgYSB0aW1lIHNlcmllcyBwbG90IHNob3dpbmcgdGhlIG51bWJlciBvZiB0dWJlcmN1bG9zaXMgY2FzZXMgaW4gdGhlIFVuaXRlZApLaW5nZG9tIHdpdGggc2VwYXJhdGUgbGluZXMgZm9yIGVhY2ggYWdlIGdyb3VwLiBUaGUgeWVhciBzaG91bGQgYmUgb24gdGhlIHggYXhpcwphbmQgdGhlIG51bWJlciBvZiBjYXNlcyBvbiB0aGUgeSBheGlzLgoKYGBge3J9CgpgYGAKCl9IaW50OiB3ZSdyZSBub3QgZGlzdGluZ3Vpc2hpbmcgYmV0d2VlbiBkaWFnbm9zZXMgYW5kIGdlbmRlcnMgaW4gdGhpcyBwbG90IHNvIHlvdSdsbCBuZWVkIHRvIHN1bSB0aGUgbnVtYmVycyBvZiBjYXNlcyBmb3IgZWFjaCBjb3VudHJ5LCB5ZWFyIGFuZCBhZ2UgZ3JvdXAuXwoKVXNlIGZhY2V0aW5nIGluIGdncGxvdDIgdG8gY3JlYXRlIGEgc2VyaWVzIG9mIHBsb3RzIHNob3dpbmcgdGhlIHNhbWUgaW5mb3JtYXRpb24KZm9yIEZyYW5jZSwgQnJhemlsLCBKYXBhbiBhbmQgVWdhbmRhLgoKVGhlIG51bWJlcnMgb2YgY2FzZXMgaW4gdGhlc2UgY291bnRyaWVzIGFyZSBvbiBxdWl0ZSBkaWZmZXJlbnQgc2NhbGVzLiBMb29rIGF0CmhlbHAgcGFnZSBmb3IgYGZhY2V0X3dyYXAoKWAgYW5kIHRyeSBjaGFuZ2luZyB0aGUgYHNjYWxlc2AgYXJndW1lbnQgc28gd2UgY2FuCm1vcmUgZWFzaWx5IGNvbXBhcmUgdGhlIG92ZXJhbGwgcGF0dGVybnMgYmV0d2VlbiBjb3VudHJpZXMuCgpgYGB7cn0KCmBgYAoKLS0tCgoqKjQuIFJlbGF0ZSBNRVRBQlJJQyBjb3B5IG51bWJlciBhbmQgZXhwcmVzc2lvbiBkYXRhKioKCkZvciB0aGlzIGV4ZXJjaXNlIHdlJ2xsIHJlYWQgaW4gdGhlIE1FVEFCUklDIG1STkEgZXhwcmVzc2lvbiBkYXRhIGFuZCBjb3B5Cm51bWJlciBzdGF0ZXMgaW50byBzZXBhcmF0ZSBkYXRhIGZyYW1lcy4gVGhlIGFpbSBpcyB0byBzZWUgaG93IHRoZSBnZW5lCmV4cHJlc3Npb24gaXMgYWZmZWN0ZWQgYnkgdGhlIGNvcHkgbnVtYmVyIHN0YXRlIG9mIHZhcmlvdXMgZ2VuZXMgdGhyb3VnaCBhCnNlcmllcyBvZiBib3ggcGxvdC4KCmBgYHtyIGV2YWwgPSBGQUxTRSwgbWVzc2FnZSA9IEZBTFNFfQpleHByZXNzaW9uIDwtIHJlYWRfdHN2KCJtZXRhYnJpY19tcm5hX2V4cHJlc3Npb24udHh0IikKYGBgCgpUaGUgZXhwcmVzc2lvbiBkYXRhIGlzIGluIGEgbWF0cml4LWxpa2UgZm9ybWF0IHdpdGggYSByb3cgZm9yIGVhY2ggc2FtcGxlIGFuZCBhCmNvbHVtbiBmb3IgZWFjaCBnZW5lLiBUaGlzIGlzIHRoZSBmb3JtYXQgdXNlZCB3aGVuIGRvd25sb2FkaW5nIGRhdGEgZnJvbQpbY0Jpb1BvcnRhbF0oaHR0cHM6Ly93d3cuY2Jpb3BvcnRhbC5vcmcvc3R1ZHkvc3VtbWFyeT9pZD1icmNhX21ldGFicmljKSBhZnRlcgpzZWxlY3RpbmcgYSBzZXQgb2YgZ2VuZXMuCgpgYGB7cn0KZXhwcmVzc2lvbgpgYGAKCkNvbnZlcnQgdGhpcyBkYXRhIGZyYW1lIGludG8gYSB0aWR5IGZvcm1hdCB3aXRoIGEgcm93LXBlci1zYW1wbGUtcGVyLWdlbmUuClJlbW92ZSB0aGUgcmF0aGVyIHVuaW50ZXJlc3RpbmcgYFNUVURZX0lEYCBjb2x1bW4gYW5kIGZpbHRlciBvdXQgbWlzc2luZwpleHByZXNzaW9uIHZhbHVlcyAoZm9yIHRob3NlIHNhbXBsZXMgdGhhdCB3ZXJlbid0IGFzc2F5ZWQpLgoKYGBge3J9CgpgYGAKClRoZSBjb3B5IG51bWJlciBkYXRhIGFyZSBhbHNvIGluIGEgbWF0cml4LWxpa2UgZm9ybWF0IGJ1dCB0aGlzIHRpbWUgd2UgaGF2ZSBhCnJvdyBmb3IgZWFjaCBnZW5lIGFuZCBhIGNvbHVtbiBmb3IgZWFjaCBzYW1wbGUuIEl0IGlzIGEgdmVyeSB3aWRlIHRhYmxlCmNvbnRhaW5pbmcgMjE3NSBjb2x1bW5zIChvbmx5IHRoZSBmaXJzdCAxMCBkaXNwbGF5ZWQgYmVsb3cpLiBUaGlzIGlzIHRoZSBmb3JtYXQKb2YgdGhlIGNvcHkgbnVtYmVyIHRhYmxlIHlvdSBvYnRhaW4gaWYgeW91IGRvd25sb2FkIHRoZSBjb21wbGV0ZSBNRVRBQlJJQwpkYXRhc2V0IGZyb20gY0Jpb1BvcnRhbC4gVGhlIHRhYmxlIHJlYWQgaW4gaXMgYSBzdWJzZXQgY29udGFpbmluZyByb3dzIGZvcgp0aGUgOCBnZW5lcyB3ZSd2ZSBiZWVuIHVzaW5nIHVwIHRpbGwgbm93LgoKYGBge3IgZXZhbCA9IEZBTFNFLCBtZXNzYWdlID0gRkFMU0V9CmNvcHlfbnVtYmVyX3N0YXRlcyA8LSByZWFkX3RzdigibWV0YWJyaWNfY25hLnR4dCIpCnNlbGVjdChjb3B5X251bWJlcl9zdGF0ZXMsIDE6MTApCmBgYAoKQ29udmVydCB0aGlzIGRhdGEgZnJhbWUgaW50byBhIHRpZHkgZm9ybWF0IHdpdGggYSByb3ctcGVyLXNhbXBsZS1wZXItZ2VuZSB3aGVyZQp0aGUgdmFsdWVzIGFyZSB0aGUgY29weSBudW1iZXIgc3RhdGVzOgoKKiAtMiBkZWxldGlvbgoqIC0xIGxvc3MKKiAgMCBuZXV0cmFsCiogIDEgZ2FpbgoqICAyIGFtcGxpZmljYXRpb24KClJlbW92ZSB0aGUgYEVudHJlel9HZW5lX2lkYCBjb2x1bW4gYW5kIGNvbnZlcnQgdGhlIGNvcHkgbnVtYmVyIHN0YXRlIHZhcmlhYmxlCmludG8gYSBmYWN0b3IgdXNpbmcgdGhlIG1vcmUgaHVtYW4tcmVhZGFibGUgbmFtZXMgZm9yIGVhY2ggc3RhdGUuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IGxvb2sgYXQgdGhlIGhlbHAgcGFnZSBmb3IgYGZhY3RvcigpYCB0byBzZWUgaG93IHRvIHNldCB0aGUgbGFiZWxzIGZvciBlYWNoIGNvcHkgbnVtYmVyIHN0YXRlIG9yIHVzZSBgZmN0X3JlY29kZSgpYCBmcm9tIHRoZSBgZm9yY2F0c2AgcGFja2FnZS5fCgpDb3VudCB0aGUgdG90YWwgbnVtYmVyIG9mIG9jY3VycmVuY2VzIG9mIGVhY2ggY29weSBudW1iZXIgc3RhdGUuCgpgYGB7cn0KCmBgYAoKQ3JlYXRlIGEgY29tYmluZWQgZGF0YSBzZXQgY29udGFpbmluZyB0aGUgZXhwcmVzc2lvbiB2YWx1ZSBhbmQgY29weSBudW1iZXIgc3RhdGUKZm9yIGVhY2ggcGF0aWVudCBhbmQgZ2VuZSBwYWlyaW5nLiBUaGUgZGF0YSBmcmFtZSBzaG91bGQgY29udGFpbiB0aGUgY29sdW1ucwpTYW1wbGUsIEdlbmUsIEV4cHJlc3Npb24gYW5kIENvcHlfbnVtYmVyX3N0YXRlLgoKYGBge3J9CgpgYGAKCkNyZWF0ZSBhIHNlcmllcyBvZiBib3ggcGxvdHMgZm9yIGVhY2ggb2YgdGhlIGdlbmVzIHdpdGggYSBib3gtYW5kLXdoaXNrZXJzCnNob3dpbmcgdGhlIHJhbmdlIG9mIGV4cHJlc3Npb24gdmFsdWVzIGZvciBlYWNoIGNvcHkgbnVtYmVyIHN0YXRlLgoKYGBge3J9CgpgYGAKCkN1c3RvbWl6ZSB0aGlzIHBsb3QgYnkgY2hhbmdpbmcgdGhlIGxhYmVscywgc2NhbGVzLCBjb2xvdXJzIGFuZCB0aGVtZSBhcyB5b3UKbGlrZSAtLSBiZSBjcmVhdGl2ZSEKClNhdmUgdGhlIHBsb3QgYXMgYSBQREYgdXNpbmcgYGdnc2F2ZSgpYCBhbmQgYXR0YWNoIHdpdGggdGhlIGFzc2lnbm1lbnQgd2hlbgpoYW5kaW5nIGluLgoKX1RoZXJlIHdpbGwgYmUgY2hvY29sYXRlLWJhc2VkIHByaXplcyBhd2FyZGVkIHRvIGFueSBhc3NpZ25tZW50IGhhbmRlZCBpbiB3aXRoIGEgcGxvdCB0aGF0IGlzIHByZXR0aWVyIHRoYW4gdGhpcyAoYmVhciBpbiBtaW5kIHRoYXQgSSdtIGFsc28gdGhlIGp1ZGdlIGFuZCBqdXJ5IC0tIE1hcmlhIDotKV8KCmBgYHtyfQoKYGBgCgotLS0KCioqNS4gRXh0ZW5zaW9uOiBNdXR1YWwgZXhjbHVzaXZpdHkgb2YgRVJCQjIgYW1wbGlmaWNhdGlvbnMgYW5kIEFLVDEgbXV0YXRpb25zKioKCl9TZXJpb3VzbHksIHN0b3AgaGVyZSBpZiB5b3UgaGF2ZW4ndCBnb3QgdGhlIHRpbWUgb3IgaW5jbGluYXRpb24gdG8gYXR0ZW1wdCB0aGlzIGZpbmFsLCBib251cyBleHRlbnNpb24gZXhlcmNpc2UgIChidXQgcGxlYXNlIHN0aWxsIGhhbmQgaW4geW91ciBhc3NpZ25tZW50KS5fCgpJbiB0aGUgTUVUQUJSSUMgMjAxNiBwYXBlciwgUGVyZWlyYSBfZXQgYWwuXwooW05hdHVyZSBDb21tdW5pY2F0aW9ucyA3OjExNDc5LCAyMDE2XShodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZC8yNzE2MTQ5MSkpCmNvbnNpZGVyZWQgdGhlIGFzc29jaWF0aW9uIGJldHdlZW4gc29tYXRpYyBtdXRhdGlvbnMsIGV4cGxvcmluZyBwYXR0ZXJucyBvZgpjby1tdXRhdGlvbiBhbmQgbXV0dWFsIGV4Y2x1c2l2aXR5LiBPbmUgb2YgdGhlaXIgZmluZGluZ3Mgd2FzIHRoZSBtdXR1YWwKZXhjbHVzaXZpdHkgYmV0d2VlbiBBS1QxIG11dGF0aW9ucyBhbmQgYW1wbGlmaWNhdGlvbiBvZiBFUkJCMi4gRm9yIHRoZSBmaW5hbApleGVyY2lzZSB3ZSB3aWxsIHJlcHJvZHVjZSB0aGlzIG9ic2VydmF0aW9uLgoKV2UnbGwgZmlyc3QgbmVlZCB0byByZWFkIHRoZSBtdXRhdGlvbiBkYXRhIGludG8gUiBhbmQgd2UncmUgb25seSBpbnRlcmVzdGVkCmluIHRob3NlIGNhc2VzIHdoZXJlIHRoZSBwYXRpZW50IHR1bW91ciBzYW1wbGUgd2FzIHNlcXVlbmNlZCBzbyB3ZSdsbCByZWFkIHRob3NlCmluIGFzIHdlbGwuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRX0KbXV0YXRpb25zIDwtIHJlYWRfY3N2KCJtZXRhYnJpY19tdXRhdGlvbnMuY3N2IikKY2FzZXNfc2VxdWVuY2VkIDwtIHJlYWRfdHN2KCJjYXNlc19uYXRfY29tbV8yMDE2LnR4dCIsIGNvbF9uYW1lcyA9ICJQYXRpZW50X0lEIikKYGBgCgpGaWx0ZXIgdGhlIG11dGF0aW9ucyB0YWJsZSB0byBvbmx5IGNvbnRhaW4gdGhlIG5vbi1zaWxlbnQgbXV0YXRpb25zIGluIEFLVDEuCgpgYGB7cn0KCmBgYAoKQWRkIGEgbG9naWNhbCBjb2x1bW4gdG8gdGhlIGBjYXNlc19zZXF1ZW5jZWRgIGRhdGEgZnJhbWUgY2FsbGVkCmBBS1QxX211dGF0ZWRgIHRoYXQgaW5kaWNhdGVzIHdoZXRoZXIgdGhlcmUgd2FzIGEgbm9uLXNpbGVudCBBS1QxIG11dGF0aW9uCmRldGVjdGVkIGluIGVhY2ggcGF0aWVudCB0dW1vdXIgc2FtcGxlLgoKQ291bnQgdGhlIG51bWJlciBvZiBwYXRpZW50cyB3aXRoIGFuZCB3aXRob3V0IGEgbm9uLXNpbGVudCBBS1QxIG11dGF0aW9uLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYSBgbXV0YXRlKClgIHdpdGggYCVpbiVgLl8KCkZpbHRlciB0aGUgY29weSBudW1iZXIgc3RhdGVzIHRhYmxlIHRvIG9ubHkgaW5jbHVkZSBlbnRyaWVzIGZvciBFUkJCMi4KCkNvdW50IHRoZSBudW1iZXIgb2Ygc2FtcGxlcyBmb3IgZWFjaCBFUkJCMiBjb3B5IG51bWJlciBzdGF0ZS4KCmBgYHtyfQoKYGBgCgpKb2luIHRoZSBFUkJCMiBjb3B5IG51bWJlciBzdGF0ZSB0YWJsZSB0byB0aGUgdGFibGUgd2UgY3JlYXRlZCBiZWZvcmUKaWRlbnRpZnlpbmcgd2hpY2ggcGF0aWVudCBoYXMgYW4gQUtUMSBtdXRhdGlvbi4gVGhlIGNvbWJpbmVkIGRhdGEgZnJhbWUgc2hvdWxkCm9ubHkgY29udGFpbiBlbnRyaWVzIGZvciBwYXRpZW50cyB0aGF0IGhhdmUgYmVlbiBzZXF1ZW5jZWQgYW5kIGZvciB3aGljaCBjb3B5Cm51bWJlciBkYXRhIGFyZSBhdmFpbGFibGUuCgpgYGB7cn0KCmBgYAoKQ291bnQgdGhlIG51bWJlcnMgb2YgcGF0aWVudHMgd2l0aCBkaWZmZXJlbnQgY29tYmluYXRpb25zIG9mIEVSQkIyIGNvcHkgbnVtYmVyCnN0YXRlIGFuZCBtdXRhdGVkIEFLVDEuCgpgYGB7cn0KCmBgYAoKRG9lcyB0aGlzIHJlZmxlY3QgdGhlIG9ic2VydmF0aW9uIG9mIG11dHVhbCBleGNsdXNpdml0eSBvZiBFUkJCMiBhbXBsaWZpY2F0aW9uCmFuZCBBS1QxIG11dGF0aW9ucz8KCkNyZWF0ZSBhIGxvZ2ljYWwgY29sdW1uIGNhbGxlZCBgRVJCQjJfYW1wbGlmaWVkYCBpbmRpY2F0ZWQgd2hpY2ggcGF0aWVudCBzYW1wbGVzCmhhdmUgYW1wbGlmaWNhdGlvbnMgKGNvcHkgbnVtYmVyIHN0YXRlIDIpIGluIEVSQkIyLgoKYGBge3J9CgpgYGAKCkNyZWF0ZSBhIDItYnktMiBjb250aW5nZW5jeSB0YWJsZSB1c2luZyBgdGFibGUoKWAgYW5kIHRoZSBgQUtUMV9tdXRhdGVkYCBhbmQKYEVSQkIyX2FtcGxpZmllZGAgY29sdW1ucy4KCmBgYHtyfQoKYGBgCgpQZXJmb3JtIGEgRmlzaGVyIGV4YWN0IHRlc3Qgb24gdGhpcyBjb250aW5nZW5jeSB0YWJsZS4KCmBgYHtyfQoKYGBgCgo=" download="assignment4b.Rmd">Download assignment4b.Rmd</a></p>
+<p>There are a lot of exercises in this week’s assignment you do not
+have to do all.</p>
+<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgNCIKLS0tCgpUaGUgd2VlaydzIGFzc2lnbm1lbnQgd2lsbCB0ZXN0IHlvdXIgYWJpbGl0eSB0byBtYW5pcHVsYXRlIHRoZSBNRVRBQlJJQyBkYXRhIHNldApieSBjaGFuZ2luZyB0aGUgdmFsdWVzIG9mIGV4aXN0aW5nIGNvbHVtbnMgb3IgYWRkaW5nIG5ldyBjb2x1bW5zIGJ5IGNvbXB1dGluZwpuZXcgdmFyaWFibGVzIGZyb20gZXhpc3Rpbmcgb25lcy4KCldlIGFyZSBleHBlY3RpbmcgeW91IHRvIHVzZSB0aGUgNSBtYWluIGRwbHlyICd2ZXJiJyBmdW5jdGlvbnM6IGBzZWxlY3QoKWAsCmBmaWx0ZXIoKWAsIGBhcnJhbmdlKClgLCBgbXV0YXRlKClgIGFuZCBgc3VtbWFyaXplKClgLiBQbGVhc2UgdXNlIHRoZSBwaXBlCm9wZXJhdG9yLCBgJT4lYCwgaW4gY2FzZXMgd2hlcmUgbW9yZSB0aGFuIG9uZSBvcGVyYXRpb24gaXMgcmVxdWlyZWQgdG8gYWNoaWV2ZQp0aGUgb3V0Y29tZSByZXF1ZXN0ZWQuCgpgYGB7ciBtZXNzYWdlID0gRkFMU0UsIHdhcm5pbmcgPSBGQUxTRX0KbGlicmFyeSh0aWR5dmVyc2UpCmBgYAoKYGBge3IgZXZhbCA9IEZBTFNFLCBtZXNzYWdlID0gRkFMU0UsIHdhcm5pbmcgPSBGQUxTRX0KbWV0YWJyaWMgPC0gcmVhZF9jc3YoIm1ldGFicmljX2NsaW5pY2FsX2FuZF9leHByZXNzaW9uX2RhdGEuY3N2IikKYGBgCgotLS0KCioqMS4gSW52ZXN0aWdhdGUgdGhlIHN1YnNldCBvZiBsb25nLXN1cnZpdmluZyBicmVhc3QgY2FuY2VyIHBhdGllbnRzIHRoYXQgZGlkbid0IHJlY2VpdmUgY2hlbW8gb3IgcmFkaW90aGVyYXB5KioKCkZpcnN0IG9idGFpbiB0aGUgc3Vic2V0IG9mIHBhdGllbnRzIHRoYXQgcmVjZWl2ZWQgbmVpdGhlciBjaGVtb3RoZXJhcHkgb3IKcmFkaW90aGVyYXB5IGFuZCBzdXJ2aXZlZCBmb3IgbW9yZSB0aGFuIDIwIHllYXJzLgoKYGBge3J9CgpgYGAKCk5vdyBsb29rIGF0IHRoZSBicmVha2Rvd24gb2YgdGhlc2UgcGF0aWVudHMgaW4gdGVybXMgb2YgRVIgc3RhdHVzLiBDb3VudCB0aGUKbnVtYmVycyBvZiBFUiBwb3NpdGl2ZSBhbmQgRVIgbmVnYXRpdmUgcGF0aWVudHMgaW4gdGhpcyBzdWJzZXQuIENhbGN1bGF0ZSB0aGUKcHJvcG9ydGlvbiB0aGF0IGFyZSBFUiBwb3NpdGl2ZS4KCmBgYHtyfQoKYGBgCgpXaGF0IGRvZXMgdGhpcyB0ZWxsIHVzPyBDYWxjdWxhdGUgdGhlIHByb3BvcnRpb24gb2YgRVIgcG9zaXRpdmUgcGF0aWVudHMgaW4gdGhlCndob2xlIGNvaG9ydCBieSB3YXkgb2YgYSBjb21wYXJpc29uLgoKYGBge3J9CgpgYGAKCioqRXh0ZW5zaW9uKioKCkNyZWF0ZSBhIGNvbnRpbmdlbmN5IHRhYmxlIG9mIHRoZSBudW1iZXJzIG9mIEVSIHBvc2l0aXZlIGFuZCBFUiBuZWdhdGl2ZQpwYXRpZW50cyBpbiB0aGUgdHdvIGdyb3VwcyAodW50cmVhdGVkLCBsb25nLXN1cnZpdmluZyBwYXRpZW50cyBhbmQgYWxsIG90aGVycykKYW5kIHBlcmZvcm0gYSBDaGktc3F1YXJlZCB0ZXN0IG9yIGEgRmlzaGVyJ3MgZXhhY3QgdGVzdCAod2hpY2hldmVyIGlzIG1vc3QKYXBwcm9wcmlhdGUpIHRvIGRldGVybWluZSBpZiB0aGVyZSBpcyBhIHNpZ25pZmljYW50IGRpZmZlcmVuY2UuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IGxvb2sgYXQgdGhlIGhlbHAgcGFnZSBmb3IgdGhlIGZ1bmN0aW9uIGZvciB0aGUgQ2hpLXNxdWFyZWQgb3IgRmlzaGVyJ3MKZXhhY3QgdGVzdCB0byBzZWUgd2hhdCBmb3JtIHRoZSBjb250aW5nZW5jeSB0YWJsZSBuZWVkcyB0byB0YWtlXwoKLS0tCgoqKjIuIFdoaWNoIHBhdGllbnRzIGhhdmUgc3BlbnQgdGhlIGxhcmdlc3QgcHJvcG9ydGlvbiBvZiB0aGVpciBsaXZlcyBkZWFsaW5nIHdpdGggYnJlYXN0IGNhbmNlcj8qKgoKYGBge3J9CgpgYGAKCi0tLQoKKiozLiBDb252ZXJ0IHRoZSBleHByZXNzaW9uIHZhbHVlcyBmb3IgZWFjaCBvZiB0aGUgZ2VuZXMgaW50byBzdGFuZGFyZGl6ZWQgei1zY29yZXMqKgoKU29tZSBnZW5lcyBhcmUgZ2VuZXJhbGx5IGV4cHJlc3NlZCBhdCBoaWdoZXIgbGV2ZWxzIHRoYW4gb3RoZXJzLiBUaGlzIGNhbiBtYWtlCmNvbXBhcmlzb25zIG9mIGNoYW5nZXMgYmV0d2VlbiBncm91cHMgZm9yIGEgc2V0IG9mIGdlbmVzIHNvbWV3aGF0IGRpZmZpY3VsdCwKcGFydGljdWxhcmx5IGlmIHRoZSBleHByZXNzaW9uIGZvciB0aG9zZSBnZW5lcyBhcmUgb24gdmVyeSBkaWZmZXJlbnQgc2NhbGVzLiBUaGUKZXhwcmVzc2lvbiB2YWx1ZXMgaW4gb3VyIE1FVEFCUklDIGFyZSBvbiBhIGxvZ34yfiBzY2FsZSB3aGljaCBoZWxwcyB0byByZWR1Y2UKdGhlIHJhbmdlIG9mIHZhbHVlcyBidXQgYW5vdGhlciBtZXRob2QgZm9yIHJlcHJlc2VudGluZyBleHByZXNzaW9uIG1lYXN1cmVtZW50cwppcyB0byBzdGFuZGFyZGl6ZSB0aGVzZSB0byBwcm9kdWNlIHotc2NvcmVzLgoKU3RhbmRhcmRpemF0aW9uIG9mIGEgc2V0IG9mIG1lYXN1cmVtZW50cyBpbnZvbHZlcyBzdWJ0cmFjdGluZyB0aGUgbWVhbiBmcm9tIGVhY2gKYW5kIGRpdmlkaW5nIGJ5IHRoZSBzdGFuZGFyZCBkZXZpYXRpb24uIFRoaXMgd2lsbCBwcm9kdWNlIHZhbHVlcyB3aXRoIGEgbWVhbiBvZgowIGFuZCBhIHN0YW5kYXJkIGRldmlhdGlvbiBvZiAxLgoKQ3JlYXRlIGEgbW9kaWZpZWQgdmVyc2lvbiBvZiB0aGUgYG1ldGFicmljYCBkYXRhIGZyYW1lIGNvbnRhaW5pbmcgYSBuZXcgY29sdW1uCndpdGggdGhlIHN0YW5kYXJkaXplZCBleHByZXNzaW9uIHZhbHVlcyAoei1zY29yZXMpIGZvciB0aGUgRVNSMSBnZW5lLgoKYGBge3J9CgpgYGAKCkNoZWNrIHRoYXQgeW91J3ZlIGRvbmUgdGhpcyBjb3JyZWN0bHkgYnkgY2FsY3VsYXRpbmcgdGhlIG1lYW4gYW5kIHN0YW5kYXJkCmRldmlhdGlvbiBvZiB5b3VyIG5ldyB6LXNjb3JlIHZhcmlhYmxlLgoKYGBge3J9CgpgYGAKCkFkZCBhbm90aGVyIGNvbHVtbiB0byB5b3VyIG1vZGlmaWVkIGBtZXRhYnJpY2AgZGF0YSBmcmFtZSBjb250YWluaW5nIGEgei1zY29yZQpmb3IgR0FUQTMgYW5kIHRoZW4gY3JlYXRlIGEgc2NhdHRlciBwbG90IG9mIHRoZSB6LXNjb3JlcyBvZiBHQVRBMyBhZ2FpbnN0IEVTUjEuCk1vZGlmeSB5b3VyIHBsb3QgdG8gZmFjZXQgYnkgdGhlIFBBTTUwIGNsYXNzaWZpY2F0aW9uLgoKYGBge3J9CgpgYGAKCioqRXh0ZW5zaW9uIDEqKgoKU3RhbmRhcmRpemUgdGhlIGV4cHJlc3Npb24gdmFsdWVzIGZvciBhbGwgZ2VuZXMgaW4gYSBzaW5nbGUgb3BlcmF0aW9uIHVzaW5nIGFuCmFub255bW91cyBmdW5jdGlvbiwgb3ZlcndyaXRpbmcgdGhlaXIgb3JpZ2luYWwgdmFsdWVzLCBhbmQgcm91bmQgdGhlIHJlc3VsdGluZwp2YWx1ZXMgdG8gMyBzaWduaWZpY2FudCBmaWd1cmVzLgoKYGBge3J9CgpgYGAKCkNoZWNrIHlvdSBoYXZlIGRvbmUgdGhpcyBjb3JyZWN0bHkgYnkgY29tcHV0aW5nIHRoZSBtZWFuIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gZm9yCmVhY2ggY29sdW1uLCBhZ2FpbiB1c2luZyBhIHNpbmdsZSBvcGVyYXRpb24uCgpgYGB7cn0KCmBgYAoKVG8gYmUgZG91Ymx5IGNlcnRhaW4sIHlvdSBjb3VsZCBhbHNvIGRvd25sb2FkIHRoZSBleHByZXNzaW9uIHotc2NvcmUgdmFsdWVzIGZvcgp0aGVzZSBnZW5lcyBmcm9tIGNCaW9Qb3J0YWwuCgoqKkV4dGVuc2lvbiAyKioKCkNyZWF0ZSBhIHBsb3QgY29tcGFyaW5nIHRoZSBkaXN0cmlidXRpb24gb2Ygc3RhbmRhcmRpemVkIGV4cHJlc3Npb24gdmFsdWVzIGZvcgpUUDUzIGFnYWluc3QgYSBub3JtYWwgZGlzdHJpYnV0aW9uLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYHN0YXRfZnVuY3Rpb24oKWBfCgotLS0KCioqNC4gV2hpY2ggU3RhciBXYXJzIGNoYXJhY3RlcnMgbmVlZCB0byBnbyBvbiBhIGRpZXQ/KioKCkNvbXB1dGUgdGhlIGJvZHkgbWFzcyBpbmRleCAoQk1JKSBvZiBjaGFyYWN0ZXJzIGluIHRoZSBgc3RhcndhcnNgIHRpYmJsZS4KCmBgYHtyfQoKYGBgCgpGaWx0ZXIgZm9yIGh1bWFuIGNoYXJhY3RlcnMgdGhhdCBhcmUgb3ZlcndlaWdodCAoQk1JID4gMjUpIGFuZCBkaXNwbGF5IGluCmRlY3JlYXNpbmcgb3JkZXIgb2YgQk1JLgoKYGBge3J9CgpgYGAKClRoZSBuZXh0IHBhcnQgaW52b2x2ZXMgdHJhbnNmb3JtaW5nIHR3byBkYXRhIHNldHMgaW4gb3JkZXIgdG8gYXNrIGEgc3BlY2lmaWMKcXVlc3Rpb24gb2YgZWFjaC4gVGhlIGZpcnN0IGlzIGEgbW9yZSBjb21wbGV0ZSBzZXQgb2YgZGF0YSBvbiB0aGUgbnVtYmVyIG9mIG5ldwp0dWJlcmN1bG9zaXMgY2FzZXMgZWFjaCB5ZWFyIGZyb20gMTk4MCB0byAyMDEzIGluIDIxOSBjb3VudHJpZXMsIHRha2VuIGZyb20gdGhlCltXb3JsZCBIZWFsdGggT3JnYW5pemF0aW9uIEdsb2JhbCBUdWJlcmN1bG9zaXMgUmVwb3J0XShodHRwczovL3d3dy53aG8uaW50L2hlYWx0aC10b3BpY3MvdHViZXJjdWxvc2lzKS4KCkZvciB0aGUgc2Vjb25kICJyZWFsIHdvcmxkIiBleGFtcGxlIHdlIHJldHVybiB0byB0aGUgTUVUQUJSSUMgZGF0YSBzZXQgYW5kCmludHJvZHVjZSB0aGUgb3RoZXIgc2V0IG9mIGFzc2F5IGRhdGEgb2J0YWluZWQgYXMgcGFydCBvZiB0aGUgb3JpZ2luYWwgMjAxMgpzdHVkeSB0aGF0IGNvbmNlcm5zIGdlbm9taWMgY29weSBudW1iZXIuIFdlJ2xsIHRyYW5zZm9ybSB0aGUgY29weSBudW1iZXIgZGF0YQpkb3dubG9hZGVkIGZyb20gW2NCaW9Qb3J0YWxdKGh0dHBzOi8vd3d3LmNiaW9wb3J0YWwub3JnL3N0dWR5L3N1bW1hcnk/aWQ9YnJjYV9tZXRhYnJpYykKc28gdGhhdCB3ZSBjYW4gbG9vayBhdCB0aGUgY29weSBudW1iZXIgc3RhdGVzIGZvciBzb21lIG9mIG91ciBmYXZvdXJpdGUgZ2VuZXMKYW5kIHRoZW4gY29tYmluZSB0aGF0IHdpdGggdGhlIGV4cHJlc3Npb24gZGF0YSB0byBzZWUgaG93IGNvcHkgbnVtYmVyIGluZmx1ZW5jZXMKZ2VuZSBleHByZXNzaW9uLgoKVGhlIGNsaW5pY2FsIGRhdGEsIGdlbmUgZXhwcmVzc2lvbiB2YWx1ZXMgYW5kIG11dGF0aW9uIGRhdGEgd2VyZSBhbGwgZG93bmxvYWRlZApmcm9tIFtjQmlvUG9ydGFsXShodHRwczovL3d3dy5jYmlvcG9ydGFsLm9yZy9zdHVkeS9zdW1tYXJ5P2lkPWJyY2FfbWV0YWJyaWMpLgoKLS0tCgoqKjUuIFRpZHkgdGhlIFdITyB0dWJlcmN1bG9zaXMgZGF0YSBzZXQqKgoKSW4gdGhpcyB3ZWVrJ3MgbWF0ZXJpYWxzIHdlIGRlbW9uc3RyYXRlZCB0aGUgcmVzdHJ1Y3R1cmluZyBvZiBkaWZmZXJlbnQKcmVwcmVzZW50YXRpb25zIG9mIGEgdmVyeSBzbWFsbCBzdWJzZXQgb2YgdGhlIFdITyB0dWJlcmN1bG9zaXMgZGF0YSBzZXQgKHRhYmxlcwoxIHRvIDRhIGFuZCBiKS4gVGhlIG1vcmUgY29tcGxldGUgZGF0YSBzZXQgaXMgYWxzbyBhdmFpbGFibGUgaW4gaXRzIG9yaWdpbmFsCmZvcm1hdCBpbiBhbm90aGVyIGRhdGEgZnJhbWUgYXZhaWxhYmxlIGFzIHBhcnQgb2YgdGhlICoqdGlkeXIqKiBwYWNrYWdlLCBuYW1lZApgd2hvYC4KCmBgYHtyfQp3aG8KYGBgCgpXaGF0IGFyZSB0aGUgdmFyaWFibGVzIGluIHRoaXMgZGF0YSBzZXQ/CgpDcmVhdGUgYSBidWxsZXRlZCBsaXN0IHdpdGggeW91ciBhbnN3ZXIgaGVyZS4KCgoKX0hpbnQ6IHNlZSB0aGUgaGVscCBwYWdlIGZvciBgd2hvYCB0byB1bmRlcnN0YW5kIHRoZSBtZWFuaW5nIG9mIHRoZSBjb2x1bW4gaGVhZGluZ3MuXwoKX0hpbnQ6IHRoZSBNYXJrZG93biBRdWljayBSZWZlcmVuY2UgYXZhaWxhYmxlIGZyb20gdGhlIEhlbHAgbWVudSBpbiBSU3R1ZGlvIGlzIGEgdmVyeSB1c2VmdWwgZ3VpZGUgdG8gZm9ybWF0dGluZyB0ZXh0IGluIFIgbWFya2Rvd24gZG9jdW1lbnRzLl8KCldoeSBpc24ndCB0aGlzIGRhdGEgc2V0IHRpZHkgYW5kIHdoYXQga2luZHMgb2YgYW5hbHlzaXMgYXJlIG5vdCBzdHJhaWdodGZvcndhcmQKd2l0aCB0aGUgZGF0YSBpbiB0aGlzIGZvcm1hdD8KClRyYW5zZm9ybSB0aGUgZGF0YSBpbnRvIGEgdGlkeSBmb3JtYXQuCgpDb2x1bW5zIGBuZXdfc3BfbTAxNGAgdG8gYG5ld3JlbF9mNjVgIGFyZSB2YWx1ZXMgZm9yIGEgY29tcG91bmQgdmFyaWFibGUsIGkuZS4KbXVsdGlwbGUgdmFyaWFibGVzIGpvaW5lZCB0b2dldGhlciAtIHRoZSByZXN0cnVjdHVyZWQgZGF0YSBmcmFtZSBzaG91bGQgaGF2ZQpjb2x1bW5zIGZvciBlYWNoIG9mIHRoZSBzZXBhcmF0ZWQgdmFsdWVzIGluIHRoZXNlIGNvbHVtbiBoZWFkaW5ncy4KCkFsc28gcmVtb3ZlIGFsbCByb3dzIHdpdGggbWlzc2luZyB2YWx1ZXMgZm9yIHRoZSBudW1iZXIgb2YgdHViZXJjdWxvc2lzIGNhc2VzLgoKYGBge3J9CgpgYGAKCipIaW50IDE6IHRoZSBjb2x1bW4gaGVhZGVycyBmcm9tIG5ld19zcF9tMDE0IG9ud2FyZHMgY29udGFpbiBhIHN1cGVyZmx1b3VzIHByZWZpeCAibmV3IiBvciAibmV3XyIgdGhhdCB5b3Ugd2lsbCB3YW50IHRvIHJlbW92ZTsgdGhpcyBjYW4gYmUgZG9uZSB1c2luZyBvbmUgb2YgdGhlIHN0cmluZ3IgZnVuY3Rpb25zIGluIGEgc2luZ2xlIHN0ZXAgaWYgeW91IGtub3cgYWJvdXQgcmVndWxhciBleHByZXNzaW9ucyBidXQgaXMgYWxzbyBhY2hpZXZhYmxlIGluIHR3byBzdGVwcyBpZiB5b3UgZG9uJ3QgdXNlIGFueSByZWd1bGFyIGV4cHJlc3Npb24gbWFnaWMuKgoKX0hpbnQgMjogc2VwYXJhdGluZyB0d28gb2YgdGhlIHZhcmlhYmxlcyBpcyBhIGJpdCB0cmlja3kgYmVjYXVzZSB0aGVyZSBpcyBubyBzZXBhcmF0b3IgY2hhcmFjdGVyOyB0cnkgbG9va2luZyBhdCB0aGUgaGVscCBmb3IgdGhlIHNlcGFyYXRlIGZ1bmN0aW9uIHRvIHNlZSBob3cgdGhpcyBjYW4gYmUgZG9uZS5fCgotLS0KCioqNi4gUmVjcmVhdGUgYHRhYmxlMWAgZnJvbSB5b3VyIHRpZHkgdmVyc2lvbiBvZiB0aGUgV0hPIHR1YmVyY3Vsb3NpcyBkYXRhIHNldCoqCgpSZWNyZWF0ZSB0aGUgZmlyc3QgMyBjb2x1bW5zIG9mIGB0YWJsZTFgLCBjb250YWluaW5nIGEgc21hbGwgc3Vic2V0IG9mIHRoZSBXSE8KdHViZXJjdWxvc2lzIGRhdGEgc2V0LCBmcm9tIHlvdXIgdGlkeSB2ZXJzaW9uIG9mIGB3aG9gLgoKYGBge3IgZXZhbCA9IEZBTFNFfQpzZWxlY3QodGFibGUxLCAxOjMpCmBgYAoKYGBge3J9CgpgYGAKCl9IaW50OiB0aGlzIHdpbGwgaW52b2x2ZSBzb21lIGZpbHRlcmluZywgZ3JvdXBpbmcgYW5kIHN1bW1hcml6YXRpb24uXwoKLS0tCgoqKjcuIENyZWF0ZSB0aW1lIHNlcmllcyBwbG90cyBmb3IgY2FzZXMgb2YgdHViZXJjdWxvc2lzKioKCkNyZWF0ZSBhIHRpbWUgc2VyaWVzIHBsb3Qgc2hvd2luZyB0aGUgbnVtYmVyIG9mIHR1YmVyY3Vsb3NpcyBjYXNlcyBpbiB0aGUgVW5pdGVkCktpbmdkb20gd2l0aCBzZXBhcmF0ZSBsaW5lcyBmb3IgZWFjaCBhZ2UgZ3JvdXAuIFRoZSB5ZWFyIHNob3VsZCBiZSBvbiB0aGUgeCBheGlzCmFuZCB0aGUgbnVtYmVyIG9mIGNhc2VzIG9uIHRoZSB5IGF4aXMuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHdlJ3JlIG5vdCBkaXN0aW5ndWlzaGluZyBiZXR3ZWVuIGRpYWdub3NlcyBhbmQgZ2VuZGVycyBpbiB0aGlzIHBsb3Qgc28geW91J2xsIG5lZWQgdG8gc3VtIHRoZSBudW1iZXJzIG9mIGNhc2VzIGZvciBlYWNoIGNvdW50cnksIHllYXIgYW5kIGFnZSBncm91cC5fCgpVc2UgZmFjZXRpbmcgaW4gZ2dwbG90MiB0byBjcmVhdGUgYSBzZXJpZXMgb2YgcGxvdHMgc2hvd2luZyB0aGUgc2FtZSBpbmZvcm1hdGlvbgpmb3IgRnJhbmNlLCBCcmF6aWwsIEphcGFuIGFuZCBVZ2FuZGEuCgpUaGUgbnVtYmVycyBvZiBjYXNlcyBpbiB0aGVzZSBjb3VudHJpZXMgYXJlIG9uIHF1aXRlIGRpZmZlcmVudCBzY2FsZXMuIExvb2sgYXQKaGVscCBwYWdlIGZvciBgZmFjZXRfd3JhcCgpYCBhbmQgdHJ5IGNoYW5naW5nIHRoZSBgc2NhbGVzYCBhcmd1bWVudCBzbyB3ZSBjYW4KbW9yZSBlYXNpbHkgY29tcGFyZSB0aGUgb3ZlcmFsbCBwYXR0ZXJucyBiZXR3ZWVuIGNvdW50cmllcy4KCmBgYHtyfQoKYGBgCgotLS0KCioqOC4gUmVsYXRlIE1FVEFCUklDIGNvcHkgbnVtYmVyIGFuZCBleHByZXNzaW9uIGRhdGEqKgoKRm9yIHRoaXMgZXhlcmNpc2Ugd2UnbGwgcmVhZCBpbiB0aGUgTUVUQUJSSUMgbVJOQSBleHByZXNzaW9uIGRhdGEgYW5kIGNvcHkKbnVtYmVyIHN0YXRlcyBpbnRvIHNlcGFyYXRlIGRhdGEgZnJhbWVzLiBUaGUgYWltIGlzIHRvIHNlZSBob3cgdGhlIGdlbmUKZXhwcmVzc2lvbiBpcyBhZmZlY3RlZCBieSB0aGUgY29weSBudW1iZXIgc3RhdGUgb2YgdmFyaW91cyBnZW5lcyB0aHJvdWdoIGEKc2VyaWVzIG9mIGJveCBwbG90LgoKYGBge3IgZXZhbCA9IEZBTFNFLCBtZXNzYWdlID0gRkFMU0V9CmV4cHJlc3Npb24gPC0gcmVhZF90c3YoIm1ldGFicmljX21ybmFfZXhwcmVzc2lvbi50eHQiKQpgYGAKClRoZSBleHByZXNzaW9uIGRhdGEgaXMgaW4gYSBtYXRyaXgtbGlrZSBmb3JtYXQgd2l0aCBhIHJvdyBmb3IgZWFjaCBzYW1wbGUgYW5kIGEKY29sdW1uIGZvciBlYWNoIGdlbmUuIFRoaXMgaXMgdGhlIGZvcm1hdCB1c2VkIHdoZW4gZG93bmxvYWRpbmcgZGF0YSBmcm9tCltjQmlvUG9ydGFsXShodHRwczovL3d3dy5jYmlvcG9ydGFsLm9yZy9zdHVkeS9zdW1tYXJ5P2lkPWJyY2FfbWV0YWJyaWMpIGFmdGVyCnNlbGVjdGluZyBhIHNldCBvZiBnZW5lcy4KCmBgYHtyfQpleHByZXNzaW9uCmBgYAoKQ29udmVydCB0aGlzIGRhdGEgZnJhbWUgaW50byBhIHRpZHkgZm9ybWF0IHdpdGggYSByb3ctcGVyLXNhbXBsZS1wZXItZ2VuZS4KUmVtb3ZlIHRoZSByYXRoZXIgdW5pbnRlcmVzdGluZyBgU1RVRFlfSURgIGNvbHVtbiBhbmQgZmlsdGVyIG91dCBtaXNzaW5nCmV4cHJlc3Npb24gdmFsdWVzIChmb3IgdGhvc2Ugc2FtcGxlcyB0aGF0IHdlcmVuJ3QgYXNzYXllZCkuCgpgYGB7cn0KCmBgYAoKVGhlIGNvcHkgbnVtYmVyIGRhdGEgYXJlIGFsc28gaW4gYSBtYXRyaXgtbGlrZSBmb3JtYXQgYnV0IHRoaXMgdGltZSB3ZSBoYXZlIGEKcm93IGZvciBlYWNoIGdlbmUgYW5kIGEgY29sdW1uIGZvciBlYWNoIHNhbXBsZS4gSXQgaXMgYSB2ZXJ5IHdpZGUgdGFibGUKY29udGFpbmluZyAyMTc1IGNvbHVtbnMgKG9ubHkgdGhlIGZpcnN0IDEwIGRpc3BsYXllZCBiZWxvdykuIFRoaXMgaXMgdGhlIGZvcm1hdApvZiB0aGUgY29weSBudW1iZXIgdGFibGUgeW91IG9idGFpbiBpZiB5b3UgZG93bmxvYWQgdGhlIGNvbXBsZXRlIE1FVEFCUklDCmRhdGFzZXQgZnJvbSBjQmlvUG9ydGFsLiBUaGUgdGFibGUgcmVhZCBpbiBpcyBhIHN1YnNldCBjb250YWluaW5nIHJvd3MgZm9yCnRoZSA4IGdlbmVzIHdlJ3ZlIGJlZW4gdXNpbmcgdXAgdGlsbCBub3cuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRX0KY29weV9udW1iZXJfc3RhdGVzIDwtIHJlYWRfdHN2KCJtZXRhYnJpY19jbmEudHh0IikKc2VsZWN0KGNvcHlfbnVtYmVyX3N0YXRlcywgMToxMCkKYGBgCgpDb252ZXJ0IHRoaXMgZGF0YSBmcmFtZSBpbnRvIGEgdGlkeSBmb3JtYXQgd2l0aCBhIHJvdy1wZXItc2FtcGxlLXBlci1nZW5lIHdoZXJlCnRoZSB2YWx1ZXMgYXJlIHRoZSBjb3B5IG51bWJlciBzdGF0ZXM6CgoqIC0yIGRlbGV0aW9uCiogLTEgbG9zcwoqICAwIG5ldXRyYWwKKiAgMSBnYWluCiogIDIgYW1wbGlmaWNhdGlvbgoKUmVtb3ZlIHRoZSBgRW50cmV6X0dlbmVfaWRgIGNvbHVtbiBhbmQgY29udmVydCB0aGUgY29weSBudW1iZXIgc3RhdGUgdmFyaWFibGUKaW50byBhIGZhY3RvciB1c2luZyB0aGUgbW9yZSBodW1hbi1yZWFkYWJsZSBuYW1lcyBmb3IgZWFjaCBzdGF0ZS4KCmBgYHtyfQoKYGBgCgpfSGludDogbG9vayBhdCB0aGUgaGVscCBwYWdlIGZvciBgZmFjdG9yKClgIHRvIHNlZSBob3cgdG8gc2V0IHRoZSBsYWJlbHMgZm9yIGVhY2ggY29weSBudW1iZXIgc3RhdGUgb3IgdXNlIGBmY3RfcmVjb2RlKClgIGZyb20gdGhlIGBmb3JjYXRzYCBwYWNrYWdlLl8KCkNvdW50IHRoZSB0b3RhbCBudW1iZXIgb2Ygb2NjdXJyZW5jZXMgb2YgZWFjaCBjb3B5IG51bWJlciBzdGF0ZS4KCmBgYHtyfQoKYGBgCgpDcmVhdGUgYSBjb21iaW5lZCBkYXRhIHNldCBjb250YWluaW5nIHRoZSBleHByZXNzaW9uIHZhbHVlIGFuZCBjb3B5IG51bWJlciBzdGF0ZQpmb3IgZWFjaCBwYXRpZW50IGFuZCBnZW5lIHBhaXJpbmcuIFRoZSBkYXRhIGZyYW1lIHNob3VsZCBjb250YWluIHRoZSBjb2x1bW5zClNhbXBsZSwgR2VuZSwgRXhwcmVzc2lvbiBhbmQgQ29weV9udW1iZXJfc3RhdGUuCgpgYGB7cn0KCmBgYAoKQ3JlYXRlIGEgc2VyaWVzIG9mIGJveCBwbG90cyBmb3IgZWFjaCBvZiB0aGUgZ2VuZXMgd2l0aCBhIGJveC1hbmQtd2hpc2tlcnMKc2hvd2luZyB0aGUgcmFuZ2Ugb2YgZXhwcmVzc2lvbiB2YWx1ZXMgZm9yIGVhY2ggY29weSBudW1iZXIgc3RhdGUuCgpgYGB7cn0KCmBgYAoKQ3VzdG9taXplIHRoaXMgcGxvdCBieSBjaGFuZ2luZyB0aGUgbGFiZWxzLCBzY2FsZXMsIGNvbG91cnMgYW5kIHRoZW1lIGFzIHlvdQpsaWtlIC0tIGJlIGNyZWF0aXZlIQoKU2F2ZSB0aGUgcGxvdCBhcyBhIFBERiB1c2luZyBgZ2dzYXZlKClgLgoKYGBge3J9CgpgYGAKCi0tLQoKKio5LiBFeHRlbnNpb246IE11dHVhbCBleGNsdXNpdml0eSBvZiBFUkJCMiBhbXBsaWZpY2F0aW9ucyBhbmQgQUtUMSBtdXRhdGlvbnMqKgoKX1NlcmlvdXNseSwgc3RvcCBoZXJlIGlmIHlvdSBoYXZlbid0IGdvdCB0aGUgdGltZSBvciBpbmNsaW5hdGlvbiB0byBhdHRlbXB0IHRoaXMgZmluYWwsIGJvbnVzIGV4dGVuc2lvbiBleGVyY2lzZS5fCgpJbiB0aGUgTUVUQUJSSUMgMjAxNiBwYXBlciwgUGVyZWlyYSBfZXQgYWwuXwooW05hdHVyZSBDb21tdW5pY2F0aW9ucyA3OjExNDc5LCAyMDE2XShodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZC8yNzE2MTQ5MSkpCmNvbnNpZGVyZWQgdGhlIGFzc29jaWF0aW9uIGJldHdlZW4gc29tYXRpYyBtdXRhdGlvbnMsIGV4cGxvcmluZyBwYXR0ZXJucyBvZgpjby1tdXRhdGlvbiBhbmQgbXV0dWFsIGV4Y2x1c2l2aXR5LiBPbmUgb2YgdGhlaXIgZmluZGluZ3Mgd2FzIHRoZSBtdXR1YWwKZXhjbHVzaXZpdHkgYmV0d2VlbiBBS1QxIG11dGF0aW9ucyBhbmQgYW1wbGlmaWNhdGlvbiBvZiBFUkJCMi4gRm9yIHRoZSBmaW5hbApleGVyY2lzZSB3ZSB3aWxsIHJlcHJvZHVjZSB0aGlzIG9ic2VydmF0aW9uLgoKV2UnbGwgZmlyc3QgbmVlZCB0byByZWFkIHRoZSBtdXRhdGlvbiBkYXRhIGludG8gUiBhbmQgd2UncmUgb25seSBpbnRlcmVzdGVkCmluIHRob3NlIGNhc2VzIHdoZXJlIHRoZSBwYXRpZW50IHR1bW91ciBzYW1wbGUgd2FzIHNlcXVlbmNlZCBzbyB3ZSdsbCByZWFkIHRob3NlCmluIGFzIHdlbGwuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRX0KbXV0YXRpb25zIDwtIHJlYWRfY3N2KCJtZXRhYnJpY19tdXRhdGlvbnMuY3N2IikKY2FzZXNfc2VxdWVuY2VkIDwtIHJlYWRfdHN2KCJjYXNlc19uYXRfY29tbV8yMDE2LnR4dCIsIGNvbF9uYW1lcyA9ICJQYXRpZW50X0lEIikKYGBgCgpGaWx0ZXIgdGhlIG11dGF0aW9ucyB0YWJsZSB0byBvbmx5IGNvbnRhaW4gdGhlIG5vbi1zaWxlbnQgbXV0YXRpb25zIGluIEFLVDEuCgpgYGB7cn0KCmBgYAoKQWRkIGEgbG9naWNhbCBjb2x1bW4gdG8gdGhlIGBjYXNlc19zZXF1ZW5jZWRgIGRhdGEgZnJhbWUgY2FsbGVkCmBBS1QxX211dGF0ZWRgIHRoYXQgaW5kaWNhdGVzIHdoZXRoZXIgdGhlcmUgd2FzIGEgbm9uLXNpbGVudCBBS1QxIG11dGF0aW9uCmRldGVjdGVkIGluIGVhY2ggcGF0aWVudCB0dW1vdXIgc2FtcGxlLgoKQ291bnQgdGhlIG51bWJlciBvZiBwYXRpZW50cyB3aXRoIGFuZCB3aXRob3V0IGEgbm9uLXNpbGVudCBBS1QxIG11dGF0aW9uLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYSBgbXV0YXRlKClgIHdpdGggYCVpbiVgLl8KCkZpbHRlciB0aGUgY29weSBudW1iZXIgc3RhdGVzIHRhYmxlIHRvIG9ubHkgaW5jbHVkZSBlbnRyaWVzIGZvciBFUkJCMi4KCkNvdW50IHRoZSBudW1iZXIgb2Ygc2FtcGxlcyBmb3IgZWFjaCBFUkJCMiBjb3B5IG51bWJlciBzdGF0ZS4KCmBgYHtyfQoKYGBgCgpKb2luIHRoZSBFUkJCMiBjb3B5IG51bWJlciBzdGF0ZSB0YWJsZSB0byB0aGUgdGFibGUgd2UgY3JlYXRlZCBiZWZvcmUKaWRlbnRpZnlpbmcgd2hpY2ggcGF0aWVudCBoYXMgYW4gQUtUMSBtdXRhdGlvbi4gVGhlIGNvbWJpbmVkIGRhdGEgZnJhbWUgc2hvdWxkCm9ubHkgY29udGFpbiBlbnRyaWVzIGZvciBwYXRpZW50cyB0aGF0IGhhdmUgYmVlbiBzZXF1ZW5jZWQgYW5kIGZvciB3aGljaCBjb3B5Cm51bWJlciBkYXRhIGFyZSBhdmFpbGFibGUuCgpgYGB7cn0KCmBgYAoKQ291bnQgdGhlIG51bWJlcnMgb2YgcGF0aWVudHMgd2l0aCBkaWZmZXJlbnQgY29tYmluYXRpb25zIG9mIEVSQkIyIGNvcHkgbnVtYmVyCnN0YXRlIGFuZCBtdXRhdGVkIEFLVDEuCgpgYGB7cn0KCmBgYAoKRG9lcyB0aGlzIHJlZmxlY3QgdGhlIG9ic2VydmF0aW9uIG9mIG11dHVhbCBleGNsdXNpdml0eSBvZiBFUkJCMiBhbXBsaWZpY2F0aW9uCmFuZCBBS1QxIG11dGF0aW9ucz8KCkNyZWF0ZSBhIGxvZ2ljYWwgY29sdW1uIGNhbGxlZCBgRVJCQjJfYW1wbGlmaWVkYCBpbmRpY2F0ZWQgd2hpY2ggcGF0aWVudCBzYW1wbGVzCmhhdmUgYW1wbGlmaWNhdGlvbnMgKGNvcHkgbnVtYmVyIHN0YXRlIDIpIGluIEVSQkIyLgoKYGBge3J9CgpgYGAKCkNyZWF0ZSBhIDItYnktMiBjb250aW5nZW5jeSB0YWJsZSB1c2luZyBgdGFibGUoKWAgYW5kIHRoZSBgQUtUMV9tdXRhdGVkYCBhbmQKYEVSQkIyX2FtcGxpZmllZGAgY29sdW1ucy4KCmBgYHtyfQoKYGBgCgpQZXJmb3JtIGEgRmlzaGVyIGV4YWN0IHRlc3Qgb24gdGhpcyBjb250aW5nZW5jeSB0YWJsZS4KCmBgYHtyfQoKYGBgCgo=" download="assignment4.Rmd">Download assignment4.Rmd</a></p>
 </div>
   </div>
 
