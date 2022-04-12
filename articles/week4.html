@@ -248,12 +248,12 @@ subset of the METABRIC tumour samples to show what’s going on.</p>
 <p><img src="images/group_and_summarise.png"></p>
 <p>As we saw last session, we can summarize multiple observations,
 e.g. the mean expression for other genes of interest, with
-<code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at()</a></code>, this time using the PAM50 classification to
-define the groups.</p>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code>, this time using the
+PAM50 classification to define the groups.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">PAM50</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">ESR1</span>, <span class="va">PGR</span>, <span class="va">ERBB2</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ESR1</span>, <span class="va">PGR</span>, <span class="va">ERBB2</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 7 × 4</span></span>
 <span class="co">##   PAM50        ESR1   PGR ERBB2</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -1471,9 +1471,9 @@ becomes apparent as soon as we try to do anything with the new
 <span class="co">## <span style="font-weight: bold;">Caused by error in `cases / population`:</span></span>
 <span class="co">## <span style="color: #BBBB00;">!</span> non-numeric argument to binary operator</span></code></pre>
 <p>By default the separated values are character types. We could convert
-these using <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code>.</p>
+these using <code>mutate</code> with <code>across</code>.</p>
 <div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="va">table3_separated</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">cases</span>, <span class="va">population</span><span class="op">)</span>, <span class="va">as.integer</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">table3_separated</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">cases</span>, <span class="va">population</span><span class="op">)</span>, <span class="va">as.integer</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span>
 <span class="co">##   country      year  cases population</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>

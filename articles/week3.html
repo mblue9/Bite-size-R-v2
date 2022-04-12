@@ -1076,10 +1076,11 @@ the results in decreasing order of NPI.</p>
 to two different variables. It would be nice to be able to carry out
 just the one <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> but apply it to both
 <code>Tumour_size</code> and <code>NPI</code> columns and we can using
-<strong><code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code></strong>.</p>
+<strong><code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code></strong> inside <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>.
+This allows us to apply a function across multiple columns.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Tumour_size</span>, <span class="va">NPI</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">Tumour_size</span>, <span class="va">NPI</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Patient_ID</span>, <span class="va">Tumour_size</span>, <span class="va">NPI</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 3</span></span>
 <span class="co">##    Patient_ID Tumour_size   NPI</span>
@@ -1095,19 +1096,19 @@ just the one <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" c
 <span class="co">## <span style="color: #BCBCBC;"> 9</span> MB-0028            1.6   5.3</span>
 <span class="co">## <span style="color: #BCBCBC;">10</span> MB-0035            2.8   3.6</span>
 <span class="co">## <span style="color: #949494;"># … with 1,894 more rows</span></span></code></pre>
-<p>This is slightly more complicated. We had to group the variables for
-which we want the function to apply using <code><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars()</a></code>. We then
-gave the function name as the next argument and finally any additional
-arguments that the function needs, in this case the number of
-digits.</p>
+<p>This is slightly more complicated. Inside <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code> we
+had to group the variables for which we want the function to apply using
+<code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>. We then gave the function name as the next argument
+and finally any additional arguments that the function needs, in this
+case the number of digits.</p>
 <p>We can use the range operator and the same helper functions as we did
 for selecting columns using <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> inside
-<code><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars()</a></code>.</p>
+<code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code>.</p>
 <p>For example, we might decide that our expression values are given to
 a much higher degree of precision than is strictly necessary.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Patient_ID</span>, <span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 9</span></span>
 <span class="co">##    Patient_ID  ESR1 ERBB2   PGR  TP53 PIK3CA GATA3 FOXA1  MLPH</span>
@@ -1128,7 +1129,7 @@ a much higher degree of precision than is strictly necessary.</p>
 factors.</p>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_status"</span><span class="op">)</span><span class="op">)</span>, <span class="va">as.factor</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_status"</span><span class="op">)</span>, <span class="va">as.factor</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Patient_ID</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">ends_with</a></span><span class="op">(</span><span class="st">"_status"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 7</span></span>
 <span class="co">##    Patient_ID Survival_status Vital_status  Lymph_node_stat… ER_status PR_status</span>
@@ -1148,9 +1149,8 @@ factors.</p>
 <div class="section level3">
 <h3 id="anonymous-functions">Anonymous functions<a class="anchor" aria-label="anchor" href="#anonymous-functions"></a>
 </h3>
-<p>The <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code> function, and the related
-<code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_if()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_all()</a></code> functions, are
-really very powerful but with that comes additional complexity.</p>
+<p>The <code>mutate</code> function with <code>across</code> is really
+very powerful but with that comes additional complexity.</p>
 <p>For example, we may come across situations where we’d like to apply
 the same operation to multiple columns but where there is no available
 function in R to do what we want.</p>
@@ -1162,11 +1162,12 @@ expression.</p>
 <p>There is no ‘multiply by 10’ function and it seems a bit pointless to
 create one just for this conversion so we’ll use an anonymous function
 instead – anonymous because it has no name, it’s an <em>in situ</em>
-function only used in our <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code> function call.</p>
+function only used in our <code>mutate</code> with <code>across</code>
+function call.</p>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">:</span><span class="va">Petal.Width</span><span class="op">)</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">Sepal.Length</span><span class="op">:</span><span class="va">Petal.Width</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 150 × 5</span></span>
 <span class="co">##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
 <span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
@@ -1188,8 +1189,9 @@ this case, we’re multiplying each of the columns between
 <code>Sepal.Length</code> and <code>Petal.Width</code> inclusive by
 10.</p>
 <p>If you think this is getting fairly complicated you’d be right. We’ll
-leave it there for now but point you to the help page for
-<code>mutate_at</code> if you’re interested in finding out more.</p>
+leave it there for now but point you to vignette(“colwise”) if you’re
+interested in finding out more information on how column-wise operations
+with <code>across</code> work.</p>
 <hr>
 </div>
 </div>
@@ -1293,67 +1295,75 @@ compute the correlation between the expression of FOXA1 and MLPH.</p>
 <div class="section level3">
 <h3 id="summarizing-multiple-columns">Summarizing multiple columns<a class="anchor" aria-label="anchor" href="#summarizing-multiple-columns"></a>
 </h3>
-<p>Much like <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> with its <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code>,
-<code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_if()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_all()</a></code> variants, there
-is a family of <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> functions similarly named for
-applying the same summarization function to multiple columns in a single
-operation. These work in much the same way as their <code>mutate</code>
-cousins.</p>
-<p><strong><code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at()</a></code></strong> allows us to select the
-columns on which to operate using an additional <code><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars()</a></code>
-argument.</p>
+<p>Similar to <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> can be
+used with <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code>for applying the same summarization
+function to multiple columns in a single operation.</p>
+<p>Inside <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code> we give the columns we want the function
+to apply, followed by the function name. Selecting the columns is done
+in the same way as for <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code>,
+whatever works for <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> e.g.<code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>,
+<code>:</code>, <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with()</a></code>.</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">FOXA1</span>, <span class="va">MLPH</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">FOXA1</span>, <span class="va">MLPH</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 2</span></span>
 <span class="co">##   FOXA1  MLPH</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">## <span style="color: #BCBCBC;">1</span>  10.8  11.4</span></code></pre>
-<p>Selecting the columns is done in the same way as for
-<code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code>.</p>
-<p><strong><code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_all()</a></code></strong> summarises values in
-all columns.</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_all</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 8</span></span>
 <span class="co">##    ESR1 ERBB2   PGR  TP53 PIK3CA GATA3 FOXA1  MLPH</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">## <span style="color: #BCBCBC;">1</span>  9.61  10.8  6.24  6.20   5.97  9.50  10.8  11.4</span></code></pre>
-<p>You have to be careful with <code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_all()</a></code> that all
-columns can be summarised with the given summary function. For example,
-what happens if we try to compute an average of a set of character
-values?</p>
+<p>You have to be careful with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> and
+<code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code> that all columns can be summarised with the given
+summary function. For example, what happens if we try to compute an
+average of a set of character values?</p>
+<p>Note we can use <code><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything()</a></code> if we want to use across
+with all columns.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_all</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Warning in mean.default(Patient_ID, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Survival_status, na.rm = TRUE): argument is not numeric</span>
-<span class="co">## or logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Vital_status, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Chemotherapy, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Radiotherapy, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Cancer_type, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(ER_status, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(PR_status, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(HER2_status, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(HER2_status_measured_by_SNP6, na.rm = TRUE): argument is</span>
-<span class="co">## not numeric or logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(PAM50, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(`3-gene_classifier`, na.rm = TRUE): argument is not</span>
-<span class="co">## numeric or logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Cellularity, na.rm = TRUE): argument is not numeric or</span>
-<span class="co">## logical: returning NA</span></code></pre>
-<pre><code><span class="co">## Warning in mean.default(Integrative_cluster, na.rm = TRUE): argument is not</span>
-<span class="co">## numeric or logical: returning NA</span></code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span>
+
+<span class="co">## Warning in mean.default(col, ...): argument is not numeric or logical: returning</span>
+<span class="co">## NA</span></code></pre>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 34</span></span>
 <span class="co">##   Patient_ID Cohort Age_at_diagnosis Survival_time Survival_status Vital_status</span>
 <span class="co">##        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -1367,10 +1377,11 @@ values?</p>
 <span class="co">## <span style="color: #949494;">#   Integrative_cluster &lt;dbl&gt;, Mutation_count &lt;dbl&gt;, ESR1 &lt;dbl&gt;, ERBB2 &lt;dbl&gt;, …</span></span></code></pre>
 <p>We get a lot of warning messages and <code>NA</code> values for those
 columns for which computing an average does not make sense.</p>
-<p><strong><code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_if()</a></code></strong> can be used to select
-those values for which a summarization function is appropriate.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_if</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="va">is.numeric</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p><strong><code>where()</code></strong> can be used to select those
+values for which a summarization function is appropriate, for example,
+where the column is of type numeric.</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 19</span></span>
 <span class="co">##   Cohort Age_at_diagnosis Survival_time Tumour_size Tumour_stage</span>
 <span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -1382,35 +1393,36 @@ those values for which a summarization function is appropriate.</p>
 <span class="co">## <span style="color: #949494;">#   MLPH &lt;dbl&gt;, NPI &lt;dbl&gt;</span></span></code></pre>
 <p>It is possible to summarise using more than one function in which
 case a list of functions needs to be provided.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">ESR1</span>, <span class="va">ERBB2</span>, <span class="va">PGR</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mean</span>, <span class="va">sd</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ESR1</span>, <span class="va">ERBB2</span>, <span class="va">PGR</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mean</span>, <span class="va">sd</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 6</span></span>
-<span class="co">##   ESR1_fn1 ERBB2_fn1 PGR_fn1 ESR1_fn2 ERBB2_fn2 PGR_fn2</span>
-<span class="co">##      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;">1</span>     9.61      10.8    6.24     2.13      1.36    1.02</span></code></pre>
+<span class="co">##   ESR1_1 ESR1_2 ERBB2_1 ERBB2_2 PGR_1 PGR_2</span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;">1</span>   9.61   2.13    10.8    1.36  6.24  1.02</span></code></pre>
 <p>Pretty neat but I’m not sure about those column headings in the
 output – fortunately we have some control over these.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">ESR1</span>, <span class="va">ERBB2</span>, <span class="va">PGR</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>average <span class="op">=</span> <span class="va">mean</span>, stdev <span class="op">=</span> <span class="va">sd</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ESR1</span>, <span class="va">ERBB2</span>, <span class="va">PGR</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>average <span class="op">=</span> <span class="va">mean</span>, stdev <span class="op">=</span> <span class="va">sd</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 6</span></span>
-<span class="co">##   ESR1_average ERBB2_average PGR_average ESR1_stdev ERBB2_stdev PGR_stdev</span>
-<span class="co">##          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;">1</span>         9.61          10.8        6.24       2.13        1.36      1.02</span></code></pre>
+<span class="co">##   ESR1_average ESR1_stdev ERBB2_average ERBB2_stdev PGR_average PGR_stdev</span>
+<span class="co">##          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;">1</span>         9.61       2.13          10.8        1.36        6.24      1.02</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="anonymous-functions-1">Anonymous functions<a class="anchor" aria-label="anchor" href="#anonymous-functions-1"></a>
 </h3>
-<p>The <code>mutate_</code> functions and <code>summarise_</code>
-functions work in a very similar manner, very much in line with the
-coherent and consistent framework provided by <code>dplyr</code> and the
-entire tidyverse. For example, we could use an anonymous function in a
-<code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at()</a></code> operation applied to multiple variables. In
+<p>The <code>mutate</code> and <code>summarise</code> functions with
+<code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code> work in a very similar manner, very much in line
+with the coherent and consistent framework provided by
+<code>dplyr</code> and the entire tidyverse. For example, we could use
+an anonymous function with <code><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across()</a></code> in a
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> operation to apply to multiple variables. In
 the assignment from last week, we asked you to compute the correlation
 of the expression for FOXA1 against all other genes to see which was
 most strongly correlated. Here is how we could do this in a single
-<code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at()</a></code> statement using an anonymous function.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span>, <span class="op">-</span><span class="va">FOXA1</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">FOXA1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> statement using an anonymous function.</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ESR1</span><span class="op">:</span><span class="va">MLPH</span>, <span class="op">-</span><span class="va">FOXA1</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">FOXA1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 7</span></span>
 <span class="co">##    ESR1 ERBB2   PGR    TP53 PIK3CA GATA3  MLPH</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -1437,13 +1449,13 @@ displays a subset of the data.</p>
 we’re displaying the PR positive and PR negative patients using
 different colours. This is a very similar to a plot we created last
 session</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">PR_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <p><img src="week3_files/figure-html/scatter_plot_2-1.png" width="700"></p>
 <p>An alternative is to use faceting with
 <strong><code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap()</a></code></strong>.</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PR_status</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1451,12 +1463,11 @@ session</p>
 <p>This produces two plots, side-by-side, one for each of the categories
 in the <code>PR_status</code> variable, with a banner across the top of
 each for the category.</p>
-<p>The variable(s) used for faceting are specified using
-<code><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars()</a></code> in a similar way to the selection of variables for
-<code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at()</a></code>.</p>
+<p>The variable(s) used for faceting can be specified using
+<code><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars()</a></code>.</p>
 <p>We can still use separate colours if we prefer things to be, well,
 colourful.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">PR_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PR_status</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1466,7 +1477,7 @@ colours when there are more than two or three groups when it can be
 difficult to really tell which points belong to each group. A case in
 point is for the 3-gene classification in the GATA3 vs ESR1 scatter plot
 we created last week. Let’s create a faceted version of that plot.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">`3-gene_classifier`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">`3-gene_classifier`</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1476,12 +1487,12 @@ we created last week. Let’s create a faceted version of that plot.</p>
 the page, it wraps around to another row. We can control how many rows
 or columns to use with the <code>nrow</code> and <code>ncol</code>
 arguments.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">`3-gene_classifier`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">`3-gene_classifier`</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p><img src="week3_files/figure-html/scatter_plot_6-1.png" width="700"></p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">`3-gene_classifier`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">`3-gene_classifier`</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
@@ -1489,13 +1500,13 @@ arguments.</p>
 <p>We can combine faceting on one variable with a colour aesthetic for
 another variable. For example, let’s show the tumour stage status using
 faceting and the HER2 status using colours.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">HER2_status</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Neoplasm_histologic_grade</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week3_files/figure-html/scatter_plot_8-1.png" width="700"></p>
 <p>Instead of this we could facet on more than variable.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Neoplasm_histologic_grade</span>, <span class="va">HER2_status</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1503,14 +1514,14 @@ faceting and the HER2 status using colours.</p>
 <p>Faceting on two variables is usually better done using the other
 faceting function, <strong><code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid()</a></code></strong>. Note the
 change in how the formula is written.</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Neoplasm_histologic_grade</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">HER2_status</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week3_files/figure-html/scatter_plot_10-1.png" width="700"></p>
 <p>Again we can use colour aesthetics alongside faceting to add further
 information to our visualization.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">PAM50</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Neoplasm_histologic_grade</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">HER2_status</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1518,7 +1529,7 @@ information to our visualization.</p>
 <p>Finally, we can use a <code>labeller</code> to change the labels for
 each of the categorical values so that these are more meaningful in the
 context of this plot.</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">grade_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span> <span class="op">=</span> <span class="st">"Grade I"</span>, <span class="st">"2"</span> <span class="op">=</span> <span class="st">"Grade II"</span>, <span class="st">"3"</span> <span class="op">=</span> <span class="st">"Grade III"</span><span class="op">)</span>
 <span class="va">her2_status_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Positive"</span> <span class="op">=</span> <span class="st">"HER2 positive"</span>, <span class="st">"Negative"</span> <span class="op">=</span> <span class="st">"HER2 negative"</span><span class="op">)</span>
 <span class="co">#</span>
@@ -1534,7 +1545,7 @@ context of this plot.</p>
 <p><img src="week3_files/figure-html/scatter_plot_12-1.png" width="700"></p>
 <p>This would certainly be necessary if we were to use ER and HER2
 status on one side of the grid.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">er_status_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Positive"</span> <span class="op">=</span> <span class="st">"ER positive"</span>, <span class="st">"Negative"</span> <span class="op">=</span> <span class="st">"ER negative"</span><span class="op">)</span>
 <span class="co">#</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">PAM50</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
