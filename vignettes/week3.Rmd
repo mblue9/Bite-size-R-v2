@@ -573,14 +573,14 @@ metabric$Deceased <- metabric$Survival_status == "DECEASED"
 ```
 
 This is an example of a rather common type of data manipulation in which we
-crate a new column based on the values contained in one or more other columns.
+create a new column based on the values contained in one or more other columns.
 The `dplyr` package provides the `mutate()` function for this purpose.
 
 ```{r}
 metabric <- mutate(metabric, Deceased = Survival_status == "DECEASED")
 ```
 
-Both of these methods adds the new column to the end.
+Both of these methods add the new column to the end.
 
 Note that variables names in the `mutate()` function call do not need to be
 prefixed by `metabric$` just as they don't in any of the `dplyr` functions.

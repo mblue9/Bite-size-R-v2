@@ -151,8 +151,8 @@ The Help tab is a _massively useful_ tab which enables you to search R help inde
 # Our first look at an R Markdown report
 
 Our overall goal for this course is to give you the ability to import your data into R, format it, select a subset
-of the data most of interest for a given analysis, carry out an analysis to summarize these data and
-create visualizations of the data.
+of the data most of interest for a given analysis, carry out an analysis to summarize these data,
+create visualizations of the data and generate a reproducible report.
 
 So let's see an example of what we'll be learning and generate our first visualisation and report. By the end of this course we should be able to explain what each line of the code does. 
 
@@ -320,7 +320,7 @@ as it's located on the web. If you have a file on your computer you can specify 
 
 ```{r eval = FALSE}
 # assumes file is in our Downloads folder, "~" means our home directory e.g./home/maria
-metabric_downloaded <- read_tsv("~/Downloads/")
+metabric_downloaded <- read_tsv("~/Downloads/brca_metabric_clinical_data.tsv")
 ```
 
 The **`getwd()`** function will tell you what the current working

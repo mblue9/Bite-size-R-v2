@@ -61,8 +61,8 @@ metabric
 
 # Our first ggplot - a scatter plot
 
-First we'll create a simple scatter plot much like the ones we've created in
-previous sessions using R's `plot()` function. We'll plot the expression of
+First we'll create a simple scatter plot much like the one we created in the
+previous session using R's `plot()` function. We'll plot the expression of
 estrogen receptor alpha (ESR1) against that of the transcription factor, GATA3.
 
 ```{r scatter_plot_1}
@@ -121,7 +121,7 @@ ggplot(data = metabric) +
   geom_point(mapping = aes(x = GATA3, y = ESR1, colour = Nottingham_prognostic_index))
 ```
 
-ggplot2 uses a colour scale for a continous variable but discrete colours for
+ggplot2 uses a colour scale for a continuous variable but discrete colours for
 discrete or categorical values.
 
 Size is not usually a good aesthetic to map to a variable. This is particularly
@@ -473,7 +473,7 @@ the coronavirus (COVID-19) pandemic. Both the plots and the data are published
 on the Government's
 [website](https://www.gov.uk/government/collections/slides-and-datasets-to-accompany-coronavirus-press-conferences).
 
-One of the plots shows the reduction in different types oftransport use over
+One of the plots shows the reduction in different types of transport use over
 time in the UK in the week leading up to and since the lockdown restrictions
 were introduced in response to the pandemic.
 
@@ -689,6 +689,25 @@ ggplot(data = metabric) +
   geom_bar(mapping = aes(x = Integrative_cluster, fill = Integrative_cluster))
 ```
 
+
+# Saving plot images
+
+Use `ggsave()` to save the last plot you displayed.
+
+```{r eval = FALSE}
+ggsave("integrative_cluster.png")
+```
+
+You can alter the width and height of the plot and can change the image file type.
+
+```{r eval = FALSE}
+ggsave("integrative_cluster.pdf", width = 20, height = 12, units = "cm")
+```
+
+You can also pass in a plot object you have created instead of using the last
+plot displayed. See the help page (`?ggsave`) for more details.
+
+
 # The ggplot object -- a peek under the hood (ADVANCED)
 
 Let's build a ggplot2 plot up in stages to understand what's really going on.
@@ -793,7 +812,6 @@ In this session we have covered the following concepts:
 * Various types of plot including scatter plots, box plots, bar plots and histograms
 * Working with dates
 * Plotting time series data as line graphs
-* How to work with time series data
 * Categorical variables and how R handles these with its factor type
 
 ---
