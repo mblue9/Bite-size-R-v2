@@ -916,16 +916,16 @@ tidier format to open up different avenues for exploring the data.
 We'll first load the table and then select just the columns we're going to need.
 
 ```{r message = FALSE}
-metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv") %>%
+metabric_selected <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv") %>%
   select(Patient_ID, ER_status, ESR1:MLPH)
-metabric
+metabric_selected
 ```
 
 When we first looked at visualization using ggplot2 we created the following
 box plot.
 
 ```{r box_plot_1, fig.width = 5, fig.height = 4}
-ggplot(metabric) +
+ggplot(metabric_selected) +
   geom_boxplot(mapping = aes(x = ER_status, y = GATA3))
 ```
 
@@ -960,7 +960,7 @@ We'll convert our table of ER status and gene expression data to the tidy
 format.
 
 ```{r}
-metabric <- pivot_longer(metabric, ESR1:MLPH, names_to = "Gene", values_to = "Expression")
+metabric_long <- pivot_longer(metabric_selected, ESR1:MLPH, names_to = "Gene", values_to = "Expression")
 metabric
 ```
 
@@ -970,7 +970,7 @@ lot easier than naming each column individually.
 We're now in a position to create our faceted box plot chart.
 
 ```{r box_plot_2, fig.height = 6}
-ggplot(data = metabric) +
+ggplot(data = metabric_long) +
   geom_boxplot(mapping = aes(x = ER_status, y = Expression)) +
   facet_wrap(vars(Gene))
 ```
@@ -987,7 +987,7 @@ the _one-row-per-sample_ representation is the more appropriate and being able
 to convert back to this format allows us to create the plot.
 
 ```{r scatter_plot_1}
-metabric %>%
+metabric_long %>%
   pivot_wider(names_from = "Gene", values_from = "Expression") %>%
   ggplot() +
   geom_point(mapping = aes(x = GATA3, y = ESR1, colour = ER_status))
@@ -1219,6 +1219,7 @@ Adding titles and subtitles to a plot and changing the x- and y-axis labels is
 very straightforward using the `labs()` function.
 
 ```{r scatter_plot}
+# use the metabric data we started with
 plot <- ggplot(data = metabric, mapping = aes(x = GATA3, y = ESR1, colour = ER_status)) +
   geom_point(size = 0.6, alpha = 0.5) +
   geom_smooth(method = "lm") +
