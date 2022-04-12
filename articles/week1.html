@@ -232,7 +232,7 @@ can move through them using the arrow buttons and the export button will
 convert them to different graphics formats e.g. for publication in a
 paper or for the web.</p>
 <p>The Packages tab shows which R packages are installed (These expand
-R’s functionallity and again will be covered later) and can also install
+R’s functionality and again will be covered later) and can also install
 new packages.</p>
 <p>The Help tab is a <em>massively useful</em> tab which enables you to
 search R help index to get help pages on R functions and provide example
@@ -246,7 +246,7 @@ code to help you use them in your R scripts.</p>
 <p>Our overall goal for this course is to give you the ability to import
 your data into R, format it, select a subset of the data most of
 interest for a given analysis, carry out an analysis to summarize these
-data, create visualizations of the data and generate a reproducible
+data, create visualizations of the data, and generate a reproducible
 report.</p>
 <p>So let’s see an example of what we’ll be learning and generate our
 first visualisation and report. By the end of this course we should be
@@ -307,7 +307,10 @@ tidyverse, then you haven’t yet installed it.</p>
 <pre><code>&gt; library(tidyverse)
 Error in library(tidyverse) : there is no package called ‘tidyverse’</code></pre>
 <p>Installing packages should be relatively straightforward using the
-<code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code> function.</p>
+<code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code> function. Note that you only need to
+install a package once on your computer (unless you want to install a
+newer version), then you use <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> to load it every
+time you start an R session.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></code></pre></div>
 <p>If you’re using R at a regular console within a terminal window,
@@ -328,7 +331,8 @@ C compiler installed on your computer.</p>
 <p>Another of the tidyverse packages loaded when we ran
 <code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code> is the <code>readr</code> package, which
 provides functions for reading tabular data into a tibble and writing
-tibbles to tab-delmited and comma-separated value (CSV) files.</p>
+tibbles to tab-delimited and comma-separated value (CSV) files. A <a href="https://r4ds.had.co.nz/tibbles.html" class="external-link">tibble</a> is tidyverse’s
+table format, a modern version of R’s data frame.</p>
 <p>For example, the clinical data for the METABRIC breast cancer dataset
 generated at CRUK CI can be downloaded as a tab-delimited file from <a href="https://www.cbioportal.org/study/clinicalData?id=brca_metabric" class="external-link">cBioPortal</a>.
 Targeted sequencing was performed for 2509 primary breast tumours, along
@@ -700,7 +704,7 @@ to automatically keep track of and set the working directory.</p>
 </h2>
 <p>The METABRIC clinical dataset has some missing values. If you look
 back to the table we printed out earlier you can see 2 missing values
-for mutation counts within the first 10 rows. We can specified rows of a
+for mutation counts within the first 10 rows. We can specify rows of a
 column to view with
 <strong><code>[firstrow:lastrow]</code></strong>.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
@@ -742,13 +746,16 @@ function.</p>
 <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">first_ten_mutation_counts</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</span></code></pre>
 <p>One final handy tip: summing the result of <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> will
-count the number of missing values in a vector.</p>
+count the number of missing values in a vector. If you don’t recall what
+a vector is, <a href="https://r4ds.had.co.nz/vectors.html" class="external-link">see
+here</a>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 152</span></code></pre>
-<p>Can you see why this works? <em>(hint: look at what kind of vector
-<code><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum()</a></code> expects and think about how a logical vector will be
-coerced into such a type)</em>.</p>
+<p>Can you see why this works? <em>(hint: look at the output of
+<code>is.na(metabric$</code>Mutation Count<code>)</code>, use
+’<code><a href="https://rdrr.io/r/base/sum.html" class="external-link">?sum</a></code> to check what kind of vector <code><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum()</a></code>
+expects and how it handles logical values)</em>.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -764,13 +771,13 @@ functionality</li>
 <li>How to read tabular data into R</li>
 <li>Missing values and how R handles these</li>
 </ul>
-<p>We also cover how to work within an R markdown document and run code
-therein in this week’s assignment.</p>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
 </h2>
+<p>This week’s assignment and the subsequent weeks’ assignments are in R
+Markdown files that you can use to practice working with reports.</p>
 <p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMSIKLS0tCgoKIyMjIFdvcmtpbmcgd2l0aCBkYXRhIGZyb20gYW4gRXhjZWwgc3ByZWFkc2hlZXQKCioqUmVhZCBpbnRvIFIgb25lIG9mIHlvdXIgb3duIEV4Y2VsIHNwcmVhZHNoZWV0cyBhbmQgZXhwbG9yZSB0aGUgZGF0YSB1c2luZyBgc3VtbWFyeSgpYCwgYHRhYmxlKClgIGFuZC9vciBgcGxvdCgpYCoqCgpXZSBoYXZlbid0IHlldCBzaG93ZWQgaG93IHRvIHJlYWQgRXhjZWwgc3ByZWFkc2hlZXRzIGludG8gUi4gVGhlcmUgYXJlIHNldmVyYWwgcGFja2FnZSBwcm92aWRpbmcgdGhpcyBjYXBhYmlsaXR5IGJ1dCBmb3IgdGhpcyBleGVyY2lzZSB1c2UgdGhlIGByZWFkeGxgIHBhY2thZ2UKZnJvbSB0aGUgdGlkeXZlcnNlLgoKYHJlYWR4bGAgc2hvdWxkIGhhdmUgYmVlbiBpbnN0YWxsZWQgYXMgcGFydCBvZiB0aGUgdGlkeXZlcnNlIGJ1dCBpZiB5b3UgZmluZAp0aGF0J3Mgbm90IHRoZSBjYXNlLCB5b3Ugd2lsbCBoYXZlIHRvIGluc3RhbGwgaXQgc2VwYXJhdGVseS4KCmByZWFkeGxgIGlzIG5vdCBsb2FkZWQgYXMgb25lIG9mIHRoZSBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyB3aGVuIHlvdSBydW4KYGxpYnJhcnkodGlkeXZlcnNlKWAgc28geW91J2xsIGhhdmUgdG8gbG9hZCB0aGlzIHNlcGFyYXRlbHkuCgpJZiB5b3UgZG9uJ3QgaGF2ZSBhbiBFeGNlbCBzcHJlYWRzaGVldCB0byBoYW5kLCB5b3UgY2FuIHVzZSB0aGUgY2xpbmljYWwKYW5ub3RhdGlvbiBkYXRhIGZvciB0aGUgTkNJLTYwIGNlbGwgbGluZSBkYXRhIHNldCAoaHR0cHM6Ly9iaW9pbmZvcm1hdGljcy1jb3JlLXNoYXJlZC10cmFpbmluZy5naXRodWIuaW8vci1pbnRyby9kYXRhL2NlbGxsaW5lX25jaTYwX2NsaW5pY2FsX2RhdGEueGxzeCkuCgpgYGB7cn0KCmBgYAoKLS0tCgojIyMgQ3JlYXRlIGEgcmVwb3J0IGZvciB5b3VyIGFzc2lnbm1lbnQKCkNsaWNrIG9uIHRoZSAnS25pdCcgbWVudSBhdCB0aGUgdG9wIG9mIHRoaXMgZmlsZSBhbmQgc2VsZWN0IGVpdGhlciB3aGljaGV2ZXIKb3B0aW9uIHlvdSBwcmVmZXIgdG8gY3JlYXRlIGFuIEhUTUwsIFBERiBvciBXb3JkIGRvY3VtZW50IHZlcnNpb24gb2YgeW91cgphc3NpZ25tZW50LiBUaGlzIHdpbGwgcnVuIGFsbCB0aGUgY29kZSBjaHVua3MgYW5kICJrbml0IiB0aGUgcmVzdWx0aW5nCnJlc3VsdHMgd2l0aCB0aGUgc3Vycm91bmRpbmcgdGV4dCB0byBwcm9kdWNlIGEgcmVwb3J0LgoKIyMjIyBBZGRpdGlvbmFsIG1hcmtkb3duIGZlYXR1cmVzCgoqKl9FbXBoYXNpc18qKgoKQ2FuIHVzZSBlaXRoZXIgdW5kZXJzY29yZXMgb3IgYXN0ZXJpc2tzIGFuZCBjb21iaW5hdGlvbiBvZiBib3RoIGZvciBib3RoIGJvbGQKYW5kIGl0YWxpYyBlbXBoYXNpcy4KCmBgYAoqaXRhbGljKiAgICoqYm9sZCoqCl9pdGFsaWNfICAgX19ib2xkX18KYGBgCgoqKl9JbmxpbmUgQ29kZV8qKgoKVXNlIG9mIGJhY2t0aWNrcyAoYCkuCgpgYGAKYG1lYW4oc3RhcndhciRoZWlnaHQpYApgYGAKCioqX0hvcml6b250YWwgUnVsZV8qKgoKVGhyZWUgb2YgbW9yZSBhc3Rlcmlza3Mgb3IgZGFzaGVzLgoKYGBgCioqKioqKioKCi0tLS0tLS0KYGBgCgoqKl9QbGFpbiBDb2RlIEJsb2Nrc18qKgoKUGxhaW4gY29kZSBibG9ja3MgYXJlIGRpc3BsYXllZCBpbiBhIGZpeGVkLXdpZHRoIGZvbnQgYnV0IG5vdCBldmFsdWF0ZWQuCgpgYGAKVGhpcyB0ZXh0IGlzIGRpc3BsYXllZCB2ZXJiYXRpbSAvIHByZWZvcm1hdHRlZApgYGAKCkhhdmUgYSBsb29rIGF0IGV4YW1wbGVzIG9mIHRoZXNlIGluIHRoZSB0ZXh0IHBhcnRzIG9mIHRoaXMgUiBtYXJrZG93biBkb2N1bWVudAphbmQgaG93IHRoZXNlIGFyZSByZW5kZXJlZCB3aGVuIHlvdSBydW4gdGhlIGtuaXQgb3BlcmF0aW9uLgoKRm9yIG1vcmUgZmVhdHVyZXMsIHNlZSB0aGUgaGVscCBwYWdlIGluIFJTdHVkaW8gdGhhdCBjYW4gYmUgYWNjZXNzZWQgZnJvbSB0aGUKdGhlIGhlbHAgbWVudTogKipIZWxwID4gTWFya2Rvd24gUXVpY2sgUmVmZXJlbmNlKioKCi0tLQoKIyMjIEFkdmFuY2VkOiBDbGluaWNhbCBjYW5jZXIgZGF0YQoKKipIb3cgbWFueSBzYW1wbGVzIGluIHRoZSBNRVRBQlJJQyBkYXRhc2V0IGhhdmUgaGlnaCBjZWxsdWxhcml0eSBidXQgaGF2ZSBubyByZWNvcmRlZCBjbGFzc2lmaWNhdGlvbiB3aXRoIHRoZSAzLWdlbmUgY2xhc3NpZmllcj8qKgoKYGBge3J9CgpgYGAKCipIaW50OiogdGhpcyBpcyBhY3R1YWxseSBxdWl0ZSB0cmlja3kgLS0geW91IG1heSB3YW50IHRvIGNoZWNrIGZvciBtaXNzaW5nCnZhbHVlcyBpbiB0aGUgY2VsbHVsYXJpdHkgY29sdW1uIGFzIHdlbGwgYXMgdGhlIGNvbHVtbiBmb3IgdGhlIDMtZ2VuZQpjbGFzc2lmaWVyLgoKLS0tCg==" download="assignment1.Rmd">Download assignment1.Rmd</a></p>
 </div>
   </div>

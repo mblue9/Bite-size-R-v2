@@ -749,8 +749,9 @@ these are supposed to be a restricted set of values and has used a
 colour scale to show them as if they were continuous. We need to tell R
 that these are categorical.</p>
 <p>R has a special type for categorical variables called a
-<strong>factor</strong>. Let’s convert our tumour stage variable to a
-factor using the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code> function.</p>
+<strong>factor</strong>. You can read more about factors <a href="https://r4ds.had.co.nz/factors.html" class="external-link">here</a>. Let’s convert our
+tumour stage variable to a factor using the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code>
+function.</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span>
 <span class="va">metabric</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Patient_ID"</span>, <span class="st">"Tumour_stage"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
