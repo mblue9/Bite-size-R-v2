@@ -110,13 +110,13 @@ the METABRIC tumour samples to show what's going on.
 ![](images/group_and_summarise.png)
 
 As we saw last session, we can summarize multiple observations, e.g. the mean
-expression for other genes of interest, with `summarise_at()`, this time using
+expression for other genes of interest, with `summarise()` and `across()`, this time using
 the PAM50 classification to define the groups.
 
 ```{r}
 metabric %>%
   group_by(PAM50) %>%
-  summarise_at(vars(ESR1, PGR, ERBB2), mean)
+  summarise(across(c(ESR1, PGR, ERBB2), mean))
 ```
 
 We can also refine our groups by using more than one categorical variable. Let's
@@ -889,10 +889,10 @@ mutate(table3_separated, rate = cases / population)
 ```
 
 By default the separated values are character types. We could convert these
-using `mutate_at()`.
+using `mutate` with `across`.
 
 ```{r}
-mutate_at(table3_separated, vars(cases, population), as.integer)
+mutate(table3_separated, across(c(cases, population), as.integer))
 ```
 
 But another option is to specify `convert = TRUE` when carrying out the
