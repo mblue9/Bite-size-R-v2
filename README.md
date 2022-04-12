@@ -45,7 +45,7 @@ The course will be run over **4 sessions** with the following structure:
 
 # Schedule
 
-i. **Pre-course setup** [Getting set up](https://mblue9.github.io/Bite-size-R-v2/articles/week0.html)  - installing R and RStudio
+**Course setup** [Installing R and RStudio](https://mblue9.github.io/Bite-size-R-v2/articles/week0.html)
 
 1. [Introduction to this course, RStudio, R Markdown](https://mblue9.github.io/Bite-size-R-v2/articles/week1.html) - Interacting with R using RStudio, importing data into R, generating and editing a reproducible report. 
 
@@ -53,5 +53,11 @@ i. **Pre-course setup** [Getting set up](https://mblue9.github.io/Bite-size-R-v2
 
 3. [Data manipulation using dplyr](https://mblue9.github.io/Bite-size-R-v2/articles/week3.html)  - Filtering and modifying tabular data, computing summary values, faceting with ggplot2. 
 
-4. [Grouping, combining,and restructuring data for analysis](https://mblue9.github.io/Bite-size-R-v2/articles/week4.html) - Advanced grouping and summarization operations, joining data from different tables, customizing ggplot2 plots. The concept of 'tidy data', pivoting and separating operations, ggplot2 extras. 
+4. [Grouping, combining,and restructuring data for analysis](https://mblue9.github.io/Bite-size-R-v2/articles/week4.html) - Advanced grouping and summarization operations, joining data from different tables, the concept of 'tidy data', pivoting and separating operations, customizing ggplot2 plots. 
 
+**Competition!** Submit an Rmd report showing some of the skills you've learned, using the course data or your own data, as simple or as complex as you like. Submit after the course ends, by May 24th. Best report will win a small prize.
+
+
+# Resources
+
+Refer to the [R for Data Science book](https://r4ds.had.co.nz/index.html) for more information on the topics covered in this course.

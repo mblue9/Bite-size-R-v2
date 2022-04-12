@@ -639,7 +639,7 @@ Tumour stage has only 5 discrete states but ggplot2 doesn't know these are
 supposed to be a restricted set of values and has used a colour scale to show
 them as if they were continuous. We need to tell R that these are categorical.
 
-R has a special type for categorical variables called a **factor**. Let's
+R has a special type for categorical variables called a **factor**. You can read more about factors [here](https://r4ds.had.co.nz/factors.html). Let's
 convert our tumour stage variable to a factor using the `as.factor()` function.
 
 ```{r}

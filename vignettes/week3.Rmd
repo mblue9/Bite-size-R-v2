@@ -433,6 +433,8 @@ and is available when we load the tidyverse using `library(tidyverse)`.
 Piping in R was motivated by the Unix pipe, `|`, in which the output from one
 process is redirected to be the input for the next. This is so named because the
 flow from one process or operation to the next resembles a pipeline.
+
+Note that since R v4.1 (released May 2021) R now has it's own native pipe `|>`.
 ```
 
 We can rewrite the code for our filtering and column selection operations as

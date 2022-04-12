@@ -142,7 +142,7 @@ knitr::include_graphics("images/Rstudio_filexpl.png")
 
 The Plots tab is where any graphs that we create in R will appear. We can move through them using the arrow buttons and the export button will convert them to different graphics formats e.g. for publication in a paper or for the web.
 
-The Packages tab shows which R packages are installed (These expand R's functionallity and again will be covered later) and can also install new packages.
+The Packages tab shows which R packages are installed (These expand R's functionality and again will be covered later) and can also install new packages.
 
 The Help tab is a _massively useful_ tab which enables you to search R help index to get help pages on R functions and provide example code to help you use them in your R scripts.
 
@@ -152,7 +152,7 @@ The Help tab is a _massively useful_ tab which enables you to search R help inde
 
 Our overall goal for this course is to give you the ability to import your data into R, format it, select a subset
 of the data most of interest for a given analysis, carry out an analysis to summarize these data,
-create visualizations of the data and generate a reproducible report.
+create visualizations of the data, and generate a reproducible report.
 
 So let's see an example of what we'll be learning and generate our first visualisation and report. By the end of this course we should be able to explain what each line of the code does. 
 
@@ -209,7 +209,7 @@ Error in library(tidyverse) : there is no package called ‘tidyverse’
 ```
 
 Installing packages should be relatively straightforward using the
-`install.packages()` function.
+`install.packages()` function. Note that you only need to install a package once on your computer (unless you want to install a newer version), then you use `library()` to load it every time you start an R session.
 
 ```{r eval = FALSE}
 install.packages("tidyverse")
@@ -231,7 +231,7 @@ computer.
 
 Another of the tidyverse packages loaded when we ran `library(tidyverse)` is the
 `readr` package, which provides functions for reading tabular data into a tibble
-and writing tibbles to tab-delmited and comma-separated value (CSV) files.
+and writing tibbles to tab-delimited and comma-separated value (CSV) files. A [tibble](https://r4ds.had.co.nz/tibbles.html) is tidyverse's table format, a modern version of R's data frame.
 
 For example, the clinical data for the METABRIC breast cancer dataset generated
 at CRUK CI can be downloaded as a tab-delimited file from
@@ -354,13 +354,14 @@ be the working directory by clicking on the **More** menu button and selecting
 
 Alternatively (and better) you can create an RStudio Project (File > New Project) as described [here](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) to automatically keep track of and set the working directory.
 
+
 ---
 
 # Missing values
 
 The METABRIC clinical dataset has some missing values. If you look back to the
 table we printed out earlier you can see 2 missing values for mutation counts
-within the first 10 rows. We can specified rows of a column to view with **`[firstrow:lastrow]`**.
+within the first 10 rows. We can specify rows of a column to view with **`[firstrow:lastrow]`**.
 
 ```{r}
 metabric$`Mutation Count`[1:10]
@@ -401,15 +402,14 @@ first_ten_mutation_counts <- metabric$`Mutation Count`[1:10]
 is.na(first_ten_mutation_counts)
 ```
 
-One final handy tip: summing the result of `is.na()` will count the number of
-missing values in a vector.
+One final handy tip: summing the result of `is.na()` will count the number of missing values in a vector. If you don't recall what a vector is, [see here](https://r4ds.had.co.nz/vectors.html).
 
 ```{r}
 sum(is.na(metabric$`Mutation Count`))
 ```
 
-Can you see why this works? *(hint: look at what kind of vector `sum()` expects
-and think about how a logical vector will be coerced into such a type)*.
+Can you see why this works? *(hint: look at the output of `is.na(metabric$`Mutation Count`)`, use '`?sum` to check what kind of vector `sum()` expects
+and how it handles logical values)*.
 
 ---
 
@@ -423,12 +423,12 @@ In this session we have covered the following concepts:
 * How to read tabular data into R
 * Missing values and how R handles these
 
-We also cover how to work within an R markdown document and run code therein in this
-week's assignment.
 
 ---
 
 # Assignment
+
+This week's assignment and the subsequent weeks' assignments are in R Markdown files that you can use to practice working with reports.
 
 ```{r echo = FALSE}
 xfun::embed_file('../assignments/assignment1.Rmd')
