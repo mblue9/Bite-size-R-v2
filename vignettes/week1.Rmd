@@ -7,17 +7,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-> #### Aims
->
-> * To introduce RStudio which we will be using to write R code in this course
-> * To demonstrate generating a visualisation and report
-> * To review some basic R commands
->
 > #### Learning objectives
 >
 > * Describe the main panes in RStudio
-> * Generate a visualisation and report using R
-> * Edit code to update visualisations and reports
+> * Edit a precreated report using R
+> * Import tabular data into R
+> * Inspect data for missing values
 
 
 # Introduction to R and RStudio
@@ -271,6 +266,8 @@ specific character (e.g. "#") or to tell the function what the column types
 are.
 
 patients <- read_csv("patients.csv")
+
+To export a CSV or TSV file from R you can use `write_csv()` or `write_tsv()`.
 ```
 
 We are now in a position to explore these data. We can see all column names with R's built-in **`colnames()`**.
