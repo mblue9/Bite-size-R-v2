@@ -381,7 +381,7 @@ first_ten_mutation_counts <- metabric$`Mutation Count`[1:10]
 is.na(first_ten_mutation_counts)
 ```
 
-One final handy tip: summing the result of `is.na()` will count the number of missing values in a vector. If you don't recall what a vector is, [see here](https://r4ds.had.co.nz/vectors.html).
+One final handy tip: summing the result of `is.na()` will count the number of missing values in a vector. If you don't know what a vector is, [see here](https://r4ds.had.co.nz/vectors.html).
 
 ```{r}
 sum(is.na(metabric$`Mutation Count`))
