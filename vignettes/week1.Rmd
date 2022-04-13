@@ -10,7 +10,7 @@ vignette: >
 > #### Learning objectives
 >
 > * Describe the main panes in RStudio
-> * Edit a precreated report using R
+> * Generate and edit an R report
 > * Import tabular data into R
 > * Inspect data for missing values
 
@@ -165,17 +165,21 @@ xfun::embed_file('../inst/example-report.Rmd')
 ```
 
  * Download the example report (Rmd) file from the link above
- * In your RStudio top menu go to File > Open File and open the file 
- * Click the Knit button at the top of the Editing pane to generate the report
- * Try out the exercise in the Rmd file to edit the file. Knit again to see the changes.
+ * In your RStudio top menu go to File > Open File and open the Rmd file 
+ * Click the Knit button and inspect the report in the Viewer pane (see below)
+ * Try out the exercise in the Rmd file to edit the file. Knit again to see the changes in the report.
  
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/rmarkdown.png")
+```
+
 As described in the [R for Data Science book](https://r4ds.had.co.nz/r-markdown.html), an R Markdown, or .Rmd, document contains three types of content:
 
 * An (optional) YAML header surrounded by ---s.
 * Chunks of R code surrounded by ```.
 * Text mixed with simple text formatting like `# heading` and `_italics_`.
 
-When you open an .Rmd, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code. When you knit the document, R Markdown executes all of the code chunks and creates a document (whichever you specify: HTML/PDF/Word) which includes the code and its output. 
+When you open an .Rmd, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code. When you knit the document, R Markdown executes all of the code chunks and creates a document (whichever you specify: HTML/PDF/Word) which includes the code and its output. Here a HTML file will be generated in the folder where you have the example_report.Rmd file.
 
 Next we'll play around with the R markdown file some more and explain some of the things you can see in it.
 
@@ -427,8 +431,6 @@ In this session we have covered the following concepts:
 * How to read tabular data into R
 * Missing values and how R handles these
 
-
----
 
 # Assignment
 

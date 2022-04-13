@@ -15,6 +15,7 @@ April-May 2022
 
 * Maria Doyle, Research Computing
 * Cassie Litchfield, Bioinformatics Core
+* Miriam Yeung, Dawson Labs
 
 # Description
 
