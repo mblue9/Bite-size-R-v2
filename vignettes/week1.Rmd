@@ -15,7 +15,9 @@ vignette: >
 > * Inspect data for missing values
 
 
-# Introduction to R and RStudio
+# Introduction
+
+As this is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing a general introductory R course, we assume you know some R basics. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good, as you've already started learning, but below are a list of reasons why learning R is useful and worth your time. 
 
 # Why learn R?
 
@@ -53,17 +55,14 @@ knitr::include_graphics("images/Rstudioataglance.png")
 
 ## Editing pane
 
-By default the top left-hand pane is one for creating, editing & running R scripts.
+By default the top left-hand pane is one for creating, editing & running R scripts and reports.
 
 ```{r, echo=FALSE, out.width = "100%"}
 knitr::include_graphics("images/Rstudio_scripting.png")
 ```
 
 A script is an R program that you have written. A good practice is for that script to
-perform only one role in your analysis workflow and so you may have several R scripts which you call, in a particular sequence, to analyse your data.
-
-As you will see, a script is basically a text file that contains R commands and
-(ideally) comments to explain what the codes function is (as a documentation process).
+perform only one role in your analysis workflow and so you may have several R scripts which you call, in a particular sequence, to analyse your data. A script is basically a text file that contains R commands and (ideally) comments to explain what the codes function is (as a documentation process).
 
 As well as R scripts, there are many types of RStudio document including Markdown files which we will use in the teaching of this course. These can provide interactive reports, workbooks or pdf and web documents to name but a few possible outcomes.
 
@@ -143,7 +142,7 @@ The Help tab is a _massively useful_ tab which enables you to search R help inde
 
 ---
 
-# Our first look at an R Markdown report
+# Our first look at an R report
 
 Our overall goal for this course is to give you the ability to import your data into R, format it, select a subset
 of the data most of interest for a given analysis, carry out an analysis to summarize these data,
