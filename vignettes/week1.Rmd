@@ -19,7 +19,7 @@ vignette: >
 
 This is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing DataCamp's Introduction to the Tidyverse (or another general introductory R course). Therefore, we assume you know some R basics already, at least the content of the DataCamp course. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good (as you've already started `r emo::ji("smile")`) but below are a list of reasons why learning R is useful and worth your time. 
 
-# Why learn R?
+## Why learn R?
 
 * R involves creating & using code documents which makes the steps you used in your analysis clear and can be inspected by someone else for feedback and error-checking.
 
@@ -184,7 +184,7 @@ When you open an .Rmd, you get a notebook interface where code and output are in
 
 Next we'll play around with the R markdown file some more and explain some of the things you can see in it.
 
-# Packages
+## Packages
 
 There are thousands of R packages that extend R's core functionality to provide
 specialized functions for doing all kinds of things. There are R packages that
@@ -213,7 +213,7 @@ in the warning are now masked; to use these instead of their `dplyr` namesakes
 you need to specify them fully by adding the package name and `::` as shown in
 the warning message.
 
-## Installing packages
+### Installing packages
 
 If you got the following error message when trying to load the tidyverse, then
 you haven't yet installed it.
@@ -389,7 +389,6 @@ sum(is.na(metabric$`Mutation Count`))
 
 Can you see why this works? *(hint: look at the output of `is.na(metabric$`Mutation Count`)`, use '`?sum` to check what kind of vector `sum()` expects
 and how it handles logical values)*.
-
 
 ## Working directory
 
