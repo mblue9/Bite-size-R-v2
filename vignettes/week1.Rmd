@@ -10,23 +10,20 @@ vignette: >
 > #### Learning objectives
 >
 > * Describe the main panes in RStudio
-> * Generate and edit an R report
+> * Generate and edit an R Markdown report
 > * Import tabular data into R
 > * Inspect data for missing values
 
 
 # Introduction
 
-As this is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing DataCamp's Introduction to the Tidyverse (or another general introductory R course), we assume you know some R basics already. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good, as you've already started, but below are a list of reasons why learning R is useful and worth your time. 
+This is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing DataCamp's Introduction to the Tidyverse (or another general introductory R course). Therefore, we assume you know some R basics already, at least the content of the DataCamp course. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good (as you've already started `r emo::ji("smile")`) but below are a list of reasons why learning R is useful and worth your time. 
 
 # Why learn R?
 
-* R involves creating & using scripts which makes the steps you used in your analysis clear and can be inspected by someone else for feedback and error-checking.
+* R involves creating & using code documents which makes the steps you used in your analysis clear and can be inspected by someone else for feedback and error-checking.
 
-* R code is great for reproducibility. An increasing number of journals and funding agencies expect analyses to be reproducible, so knowing R will give you an edge with these requirements.
-
-* R integrates with other tools to generate manuscripts from your code.
-This document (R Markdown a .Rmd file) is a case in point. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). 
+* R produces high-quality graphics suitable for publication in journals or the web.
 
 * R is interdisciplinary and extensible and has thousands of installable packages to extend its capabilities. R has packages for image analysis, GIS, time series, population genetics, and a lot more.
 
@@ -34,11 +31,15 @@ This document (R Markdown a .Rmd file) is a case in point. Information on creati
 
 * R can connect to spreadsheets, databases, and many other data formats, on your computer or on the web.
 
-* R produces high-quality graphics suitable for publication in journals or the web.
-
 * R has a large and welcoming community - Thousands use R daily and many of them are willing to help you through websites such as Stack Overflow or the RStudio community.
 
 * Not only is R free, but it is also open-source and cross-platform.
+
+* R code is great for reproducibility. An increasing number of journals and funding agencies expect analyses to be reproducible, so knowing R will give you an edge with these requirements.
+
+* R integrates with other tools to generate manuscripts from your code. This document (R Markdown, a .Rmd file) is a case in point. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). 
+  * An example Rmd for figures for a Peter Mac bioinformatics paper can be found [here](https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd). 
+  * An example using Rmd files for a PhD thesis can be found [here](https://masiraji.github.io/monashthesisdown/).
 
 ---
 

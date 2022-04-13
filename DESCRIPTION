@@ -27,9 +27,12 @@ Suggests:
     lubridate,
     ggthemes,
     xfun,
+    emo,
     knitr,
     rmarkdown,
     pkgdown
+Remotes:  
+    hadley/emo
 URL: https://R4CancerSci.github.io/R4CancerSci/
 BugReports: https://github.com/R4CancerSci/R4CancerSci/issues/new/choose
 VignetteBuilder: knitr
