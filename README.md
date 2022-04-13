@@ -1,5 +1,5 @@
 <!-- badges: start -->
-[![.github/workflows/basic_checks.yaml](https://github.com/mblue9/Bite-size-R-v2/actions/workflows/basic_checks.yaml/badge.svg?branch=master)](https://github.com/mblue9/Bite-size-R-v2/actions/workflows/basic_checks.yaml)
+[![.github/workflows/basic_checks.yaml](https://github.com/R4CancerSci/R4CancerSci/actions/workflows/basic_checks.yaml/badge.svg?branch=master)](https://github.com/R4CancerSci/R4CancerSci/actions/workflows/basic_checks.yaml)
 <!-- badges: end -->
 
 # Introduction
@@ -46,25 +46,25 @@ The course will be run over **4 sessions** with the following structure:
 
 # Schedule
 
-**Course setup** [Installing R and RStudio](https://mblue9.github.io/Bite-size-R-v2/articles/week0.html)
+**Course setup** [Installing R and RStudio](https://R4CancerSci.github.io/R4CancerSci/articles/week0.html)
 
 **Week 1**. 
-[Introduction to working with data in RStudio](https://mblue9.github.io/Bite-size-R-v2/articles/week1.html)  
+[Introduction to working with data in RStudio](https://R4CancerSci.github.io/R4CancerSci/articles/week1.html)  
 Interacting with R using RStudio, importing and viewing data, generating and editing a reproducible report.  
 Live recap/Q&A session Tuesday April 26th 3.30-4.30pm
 
 **Week 2**. 
-[Data visualization with ggplot2](https://mblue9.github.io/Bite-size-R-v2/articles/week2.html)  
+[Data visualization with ggplot2](https://R4CancerSci.github.io/R4CancerSci/articles/week2.html)  
 A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data.  
 Live recap/Q&A session Tuesday May 3rd 3.30-4.30pm
 
 **Week 3**. 
-[Data manipulation using dplyr](https://mblue9.github.io/Bite-size-R-v2/articles/week3.html)  
+[Data manipulation using dplyr](https://R4CancerSci.github.io/R4CancerSci/articles/week3.html)  
 Filtering and modifying tabular data, computing summary values, faceting with ggplot2.  
 Live recap/Q&A session Tuesday May 10th 3.30-4.30pm
 
 **Week 4**. 
-[Grouping, combining,and restructuring data for analysis](https://mblue9.github.io/Bite-size-R-v2/articles/week4.html)  
+[Grouping, combining,and restructuring data for analysis](https://R4CancerSci.github.io/R4CancerSci/articles/week4.html)  
 Advanced grouping and summarization operations, joining data from different tables, the concept of 'tidy data', pivoting and separating operations, customizing ggplot2 plots.  
 Live recap/Q&A session Tuesday May 17th 3.30-4.30pm
 
