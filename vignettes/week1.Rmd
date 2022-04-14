@@ -17,7 +17,7 @@ vignette: >
 
 # Introduction
 
-This is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing DataCamp's Introduction to the Tidyverse (or another general introductory R course). Therefore, we assume you know some R basics already, at least the content of the DataCamp course. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good (as you've already started `r emo::ji("smile")`) but below are a list of reasons why learning R is useful and worth your time. 
+This is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing DataCamp's [Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (or another general introductory R course). Therefore, we assume you know some R basics already, at least the content of the DataCamp course. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good (as you've already started `r emo::ji("smile")`) but below are a list of reasons why learning R is useful and worth your time. 
 
 ## Why learn R?
 
@@ -31,15 +31,16 @@ This is a 'next-steps' course, designed for follow-on practice with cancer datas
 
 * R can connect to spreadsheets, databases, and many other data formats, on your computer or on the web.
 
-* R has a large and welcoming community - Thousands use R daily and many of them are willing to help you through websites such as Stack Overflow or the RStudio community.
+* R has a large and welcoming community - Thousands use R daily and many of them are willing to help you through websites such as [Stack Overflow](https://stackoverflow.com/) or the [RStudio community](https://community.rstudio.com/).
 
 * Not only is R free, but it is also open-source and cross-platform.
 
 * R code is great for reproducibility. An increasing number of journals and funding agencies expect analyses to be reproducible, so knowing R will give you an edge with these requirements.
 
-* R integrates with other tools to generate manuscripts from your code. This document (R Markdown, a .Rmd file) is a case in point. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). 
-  * An example Rmd for figures for a Peter Mac bioinformatics paper can be found [here](https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd). 
-  * An example using Rmd files for a PhD thesis can be found [here](https://masiraji.github.io/monashthesisdown/).
+* R integrates with other tools to generate manuscripts from your code. This document ([R Markdown](https://rmarkdown.rstudio.com/), a .Rmd file) is a case in point. We will be using R Markdown in this course. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). Some examples of R Markdown in action:
+  * [PhD thesis](https://sa-lee.github.io/thesis/preface.html)
+  * [Figures](https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd) for a Peter Mac bioinformatics paper
+  * [Analysis results](http://oshlacklab.com/combes-organoid-paper/) using [workflowr](https://workflowr.github.io/workflowr/index.html) (used by a few groups at Peter Mac to share/collaborate)
 
 ---
 
@@ -74,7 +75,7 @@ knitr::include_graphics("images/Rstudio_scripting.png")
 
 A script is an R program that you have written. A good practice is for that script to perform only one role in your analysis workflow and so you may have several R scripts which you call, in a particular sequence, to analyse your data. A script is basically a text file that contains R commands and (ideally) comments to explain what the codes function is (as a documentation process).
 
-As well as R scripts, there are many types of RStudio document including [R Markdown files](https://r4ds.had.co.nz/r-markdown.html). We will use R Markdown in the teaching of this course so you can learn how to generate reports summarising your analysis that you can use when collaborating with others.
+As well as R scripts, there are many types of RStudio document including [R Markdown files](https://r4ds.had.co.nz/r-markdown.html). We will use R Markdown in the teaching of this course. This is so you can learn how to generate reports summarising your analysis for collaborating or sharing your work with others.
 
 
 ## Console
@@ -176,9 +177,9 @@ knitr::include_graphics("images/rmarkdown.png")
 
 As described in the [R for Data Science book](https://r4ds.had.co.nz/r-markdown.html), an R Markdown, or .Rmd, document contains three types of content:
 
-* An (optional) YAML header surrounded by ---s.
-* Chunks of R code surrounded by ```.
-* Text mixed with simple text formatting like `# heading` and `_italics_`.
+* An (optional) YAML header surrounded by `---`.
+* Chunks of R code surrounded by ```` ``` ````.
+* Text mixed with simple text formatting like `# heading` and `**bold**`.
 
 When you open an .Rmd, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code. When you knit the document, R Markdown executes all of the code chunks and creates a document (whichever you specify: HTML/PDF/Word) which includes the code and its output. Here a HTML file will be generated in the folder where you have the example_report.Rmd file.
 
@@ -415,7 +416,7 @@ getwd()
 If you open RStudio by clicking on its icon in the task bar or its entry in the
 start menu, your working directory will probably be your home folder. You can explicitly set your working directory using **`setwd("/path/to/your/working/directory")`** (or in the RStudio Files pane More > Set As Working Directory). However, the path will be specific to your computer and won't work if you have it in a script that you share with someone else.
 
-Alternatively (and better) you can create an RStudio Project as described in more detail[here](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) to keep track of and set the working directory.
+Alternatively (and better) you can create an RStudio Project as described in more detail [here](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects) to keep track of and set the working directory.
 
 Create an RStudio project for this course (File > New Project > New Directory > Project Type: New Project > Name: r-skills-course) and store your files (assignment Rmds etc) from the course in that r-skills-course folder. When you want to open the project, in RStudio menu you can use File > Open Project or click on the .Rproj file. This will automatically set the working directory to where the .Rproj file is located.
 
@@ -426,8 +427,7 @@ Create an RStudio project for this course (File > New Project > New Directory > 
 In this session we have covered the following concepts:
 
 * The RStudio environment and the functions associated with each pane
-* Generating a visualisation and report using R
-* How to install and use packages that extend R's basic functionality
+* Generating a visualisation and R Markdown report
 * How to read tabular data into R
 * Missing values and how R handles these
 
