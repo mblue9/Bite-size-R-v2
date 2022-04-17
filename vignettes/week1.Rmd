@@ -37,10 +37,14 @@ This is a 'next-steps' course, designed for follow-on practice with cancer datas
 
 * R code is great for reproducibility. An increasing number of journals and funding agencies expect analyses to be reproducible, so knowing R will give you an edge with these requirements.
 
-* R integrates with other tools to generate manuscripts from your code. This document ([R Markdown](https://rmarkdown.rstudio.com/), a .Rmd file) is a case in point. We will be using R Markdown in this course. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). Some examples of R Markdown in action:
+* R integrates with other tools to generate manuscripts from your code. This document ([R Markdown](https://rmarkdown.rstudio.com/), a .Rmd file) is a case in point. 
+
+```{block type = "rmdblock"}
+We will be using R Markdown for the assignments in this course to help you learn how to use it. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). Some examples of R Markdown in action:
   * [PhD thesis](https://sa-lee.github.io/thesis/preface.html)
   * [Figures](https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd) for a Peter Mac bioinformatics paper
   * [Analysis results](http://oshlacklab.com/combes-organoid-paper/) using [workflowr](https://workflowr.github.io/workflowr/index.html) (used by a few groups at Peter Mac to share/collaborate)
+```
 
 ---
 
@@ -322,7 +326,7 @@ summary(metabric$`Mutation Count`)
 ```
 
 Note that several of the column names have multiple words separated by spaces.
-We have to use backticks ( **`** ) to refer to column names such as these. Tip: if you have lots of columns with spaces or special characters you could use the popular janitor package's [clean_names](https://albert-rapp.de/post/2022-01-12-janitor-showcase/) function to format in a nicer way.
+We have to use backticks ( **`** ) to refer to column names such as these. Tip: if you have lots of columns with spaces or special characters you could use the popular janitor package's [clean_names](https://albert-rapp.de/post/2022-01-12-janitor-showcase/) function to format the column names in a nicer way.
 
 We can create a scatter plot to see if there is any relationship between the age
 of the patient at diagnosis of breast cancer and the Nottingham prognostic index

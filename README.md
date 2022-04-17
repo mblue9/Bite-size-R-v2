@@ -47,29 +47,34 @@ The course will be run over **4 sessions** with the following structure:
 
 # Schedule
 
-**Course setup** [Installing R and RStudio](https://pmacdasci.github.io/R4CancerSci/articles/week0.html)
+**Course setup**  
+[Installing R and RStudio](https://pmacdasci.github.io/R4CancerSci/articles/week0.html)
 
-**Week 1**. 
+**Week 1**  
 [Introduction to working with data in RStudio](https://pmacdasci.github.io/R4CancerSci/articles/week1.html)  
 Interacting with R using RStudio, importing and viewing data, generating and editing a reproducible report.  
+
 Live recap/Q&A session Tuesday April 26th 3.30-4.30pm
 
-**Week 2**. 
+**Week 2**  
 [Data visualization with ggplot2](https://pmacdasci.github.io/R4CancerSci/articles/week2.html)  
 A common grammar to create scatter plots, bar charts, boxplots, histograms and line graphs for time series data.  
+
 Live recap/Q&A session Tuesday May 3rd 3.30-4.30pm
 
-**Week 3**. 
+**Week 3**  
 [Data manipulation using dplyr](https://pmacdasci.github.io/R4CancerSci/articles/week3.html)  
 Filtering and modifying tabular data, computing summary values, faceting with ggplot2.  
+
 Live recap/Q&A session Tuesday May 10th 3.30-4.30pm
 
-**Week 4**. 
+**Week 4**  
 [Grouping, combining,and restructuring data for analysis](https://pmacdasci.github.io/R4CancerSci/articles/week4.html)  
 Advanced grouping and summarization operations, joining data from different tables, the concept of 'tidy data', pivoting and separating operations, customizing ggplot2 plots.  
+
 Live recap/Q&A session Tuesday May 17th 3.30-4.30pm
 
-**Competition!** 
+**Competition!**  
 Submit an Rmd report showing some of the skills you've learned, using the course data or your own data, as simple or as complex as you like. Submit after the course ends, by May 24th. Best report will win a small prize.
 
 # Resources
