@@ -40,9 +40,9 @@ This is a 'next-steps' course, designed for follow-on practice with cancer datas
 * R integrates with other tools to generate manuscripts from your code. This document ([R Markdown](https://rmarkdown.rstudio.com/), a .Rmd file) is a case in point. 
 
 ```{block type = "rmdblock"}
-We will be using R Markdown for the assignments in this course to help you learn how to use it. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). Some examples of R Markdown in action:
-  * [PhD thesis](https://sa-lee.github.io/thesis/preface.html)
-  * [Figures](https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd) for a Peter Mac bioinformatics paper
+We will be using R Markdown for the assignments in this course to help you learn how to use it. Information on creating R Markdown manuscripts for journals can be found [here](https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles) and in [this paper](https://www.sciencedirect.com/science/article/pii/S2667145X21000171). Some examples of R Markdown in action:  
+  * [PhD thesis](https://sa-lee.github.io/thesis/preface.html)  
+  * [Figures](https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd) for a Peter Mac bioinformatics paper  
   * [Analysis results](http://oshlacklab.com/combes-organoid-paper/) using [workflowr](https://workflowr.github.io/workflowr/index.html) (used by a few groups at Peter Mac to share/collaborate)
 ```
 
