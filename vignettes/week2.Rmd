@@ -511,10 +511,11 @@ included and how many observations do we have for each?
 table(transport_use$transport_type)
 ```
 
-We'll focus solely on rail use to start with.
+We'll focus solely on rail use to start with. You should already have seen `filter()` in the Introduction to Tidyverse course and we will discuss it in more detail next week.
 
 ```{r}
-rail_use <- transport_use[transport_use$transport_type == "National rail", ]
+rail_use <- filter(transport_use, transport_type == "National rail")
+
 rail_use
 ```
 
@@ -639,12 +640,12 @@ Tumour stage has only 5 discrete states but ggplot2 doesn't know these are
 supposed to be a restricted set of values and has used a colour scale to show
 them as if they were continuous. We need to tell R that these are categorical.
 
-R has a special type for categorical variables called a **factor**. You can read more about factors [here](https://r4ds.had.co.nz/factors.html). Let's
-convert our tumour stage variable to a factor using the `as.factor()` function.
+R has a special type for categorical variables called a **factor**. You can read more about factors [here](https://r4ds.had.co.nz/factors.html). The other R main data types are numeric (numbers), character (text) and logical (TRUE/FALSE), which you can read more about in the R for Data Science section on vectors we mentioned before [here](https://r4ds.had.co.nz/vectors.html?#important-types-of-atomic-vector).
+Let's convert our tumour stage variable to a factor using the `as.factor()` function. You should already have seen `select()` in the Introduction to Tidyverse course and we will discuss it in more detail next week.
 
 ```{r}
 metabric$Tumour_stage <- as.factor(metabric$Tumour_stage)
-metabric[, c("Patient_ID", "Tumour_stage")]
+select(metabric, Patient_ID, Tumour_stage)
 ```
 
 R actually stores categorical variables as integers but with some additional

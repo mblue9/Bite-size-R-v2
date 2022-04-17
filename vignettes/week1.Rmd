@@ -152,6 +152,7 @@ The Packages tab shows which R packages are installed (These expand R's function
 
 The Help tab is a _massively useful_ tab which enables you to search R help index to get help pages on R functions and provide example code to help you use them in your R scripts.
 
+The Viewer tab is where we can preview an R markdown report after we Knit, more on that shortly. 
 ---
 
 # Our first look at an R Markdown report
@@ -181,9 +182,9 @@ As described in the [R for Data Science book](https://r4ds.had.co.nz/r-markdown.
 * Chunks of R code surrounded by ```` ``` ````.
 * Text mixed with simple text formatting like `# heading` and `**bold**`.
 
-When you open an .Rmd, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code. When you knit the document, R Markdown executes all of the code chunks and creates a document (whichever you specify: HTML/PDF/Word) which includes the code and its output. Here a HTML file will be generated in the folder where you have the example_report.Rmd file.
+When you open an .Rmd, you get a notebook interface where code and output are interleaved. You can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and displays the results inline with the code. When you knit the document, R Markdown executes all of the code chunks and creates a document (whichever you specify: HTML/PDF/Word) which includes the code and its output. Here a HTML file will be generated in the folder where you have the example_report.Rmd file. To create an R Markdown file in RStudio you can use File > New File > R Markdown.
 
-Next we'll play around with the R markdown file some more and explain some of the things you can see in it.
+Next we'll play around with the example R Markdown file some more and explain some of the things you can see in it.
 
 ## Packages
 
@@ -196,7 +197,7 @@ developed by bioinformaticians at Peter Mac, mainly focusing on
 genomic and transcriptomic analysis methods.
 
 You need to load a package using the **`library()`** function in order to be
-able to use the functions and data sets that the package provides. We can load the core tidyverse packages in one go as follows.
+able to use the functions and data sets that the package provides. We can load the core tidyverse packages in one go, as you can see in the example_report.Rmd, as follows.
 
 ```{r}
 library(tidyverse)
@@ -321,7 +322,7 @@ summary(metabric$`Mutation Count`)
 ```
 
 Note that several of the column names have multiple words separated by spaces.
-We have to use backticks ( **`** ) to refer to column names such as these.
+We have to use backticks ( **`** ) to refer to column names such as these. Tip: if you have lots of columns with spaces or special characters you could use the popular janitor package's [clean_names](https://albert-rapp.de/post/2022-01-12-janitor-showcase/) function to format in a nicer way.
 
 We can create a scatter plot to see if there is any relationship between the age
 of the patient at diagnosis of breast cancer and the Nottingham prognostic index
@@ -388,19 +389,19 @@ One final handy tip: summing the result of `is.na()` will count the number of mi
 sum(is.na(metabric$`Mutation Count`))
 ```
 
-Can you see why this works? *(hint: look at the output of `is.na(metabric$`Mutation Count`)`, use '`?sum` to check what kind of vector `sum()` expects
+Can you see why this works? *(hint: look at the output of `is.na(metabric$`Mutation Count`)`, use the help page which you can get by typing '`?sum` to check what kind of vector `sum()` expects
 and how it handles logical values)*.
 
 ## Working directory
 
 By default, R looks for (and saves) files in the working directory. When importing the METABRIC dataset we specified where the file was located using a URL `https://zenodo.org/record/6450144/files/brca_metabric_clinical_data.tsv`
-as it's located on the web. If you have a file on your computer you can specify the path to where it is located. For example, if we paste the URL above into our web browser to download the file we can then import it from our computer using either the absolute path
+as it's located on the web. If you have a file on your computer you can specify the path to where it is located. For example, if we paste the URL above into our web browser to download the file we can then import it from our computer using the absolute path, which starts with `/`.
 
 ```{r eval = FALSE}
 metabric_downloaded <- read_tsv("/home/maria/Downloads/brca_metabric_clinical_data.tsv")
 ```
 
-Or if we were working inside the Downloads directory we could use the relative path:
+Or if we were working inside the Downloads directory we could use the relative path.
 
 ```{r eval = FALSE}
 metabric_downloaded <- read_tsv("brca_metabric_clinical_data.tsv")
