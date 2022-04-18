@@ -15,6 +15,11 @@ vignette: >
 > * Inspect data for missing values
 
 
+```{block type = "rmdblock"}
+A video that goes through this session's material can be found [here](https://www.youtube.com/watch?v=NpQKqHsUmfk).
+```
+
+
 # Introduction
 
 This is a 'next-steps' course, designed for follow-on practice with cancer datasets after completing DataCamp's [Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (or another general introductory R course). Therefore, we assume you know some R basics already, at least the content of the DataCamp course. [R for Data Science book](https://r4ds.had.co.nz/index.html) is an excellent reference book if you want to look up anything you don't recall or are not very familiar with. We also assume you know some reasons why learning R is good (as you've already started `r emo::ji("smile")`) but below are a list of reasons why learning R is useful and worth your time. 
