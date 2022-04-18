@@ -154,7 +154,6 @@ Our final bottom right-hand pane also has several tabs. The Files tab is a file 
 knitr::include_graphics("images/Rstudio_filexpl.png")
 ```
 
-
 The Plots tab is where any graphs that we create in R will appear. We can move through them using the arrow buttons and the export button will convert them to different graphics formats e.g. for publication in a paper or for the web.
 
 The Packages tab shows which R packages are installed (These expand R's functionality and again will be covered later) and can also install new packages.
@@ -162,7 +161,6 @@ The Packages tab shows which R packages are installed (These expand R's function
 The Help tab is a _massively useful_ tab which enables you to search R help index to get help pages on R functions and provide example code to help you use them in your R scripts.
 
 The Viewer tab is where we can preview an R markdown report after we Knit, more on that shortly. 
----
 
 # Our first look at an R Markdown report
 
@@ -407,7 +405,7 @@ By default, R looks for (and saves) files in the working directory. When importi
 as it's located on the web. If you have a file on your computer you can specify the path to where it is located. For example, if we paste the URL above into our web browser to download the file we can then import it from our computer using the absolute path, which starts with `/`.
 
 ```{r eval = FALSE}
-metabric_downloaded <- read_tsv("/home/maria/Downloads/brca_metabric_clinical_data.tsv")
+metabric_downloaded <- read_tsv("/Users/doylemaria/Downloads/brca_metabric_clinical_data.tsv")
 ```
 
 Or if we were working inside the Downloads directory we could use the relative path.
