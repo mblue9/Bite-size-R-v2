@@ -591,9 +591,29 @@ ggsave("integrative_cluster.pdf", width = 20, height = 12, units = "cm")
 You can also pass in a plot object you have created instead of using the last
 plot displayed. See the help page (`?ggsave`) for more details.
 
+# Summary
+
+In this session we have covered the following concepts:
+
+* How to use ggplot2 to create different types of plot using a common grammar
+* How to map variables to aesthetic features of a plot
+* How to construct a plot with multiple layers (geoms)
+* Various types of plot including scatter plots, box plots, bar plots and histograms
+* Categorical variables and how R handles these with its factor type
+
+---
+
+# Assignment
+
+```{r echo = FALSE}
+xfun::embed_file('../assignments/assignment2.Rmd')
+```
+
+---
+
 # Time series data (EXTRA)
 
-Optional section. Do this if you've completed the previous sections and the Assignment below and want more. In this section we're going to look a **line plot**. These are created using similar ggplot grammar to what we've already seen. Line plots are
+Optional section. Do this if you've completed the previous sections and the Assignment and want more. In this section we're going to look a **line plot**. These are created using similar ggplot grammar to what we've already seen. Line plots are
 a common visualization for time series data but we don't have data of this kind
 in the METABRIC data set so we'll turn our attention to a more topical data set.
 
@@ -802,24 +822,3 @@ We touched on statistical transformations earlier. The `stat` associated with a
 `geom_point` is `stat_identity` which leaves values unchanged. In the case of a
 scatter plot, we already have the x and y values -- they don't need to be
 transformed, just plotted on the x and y axes.
-
----
-
-# Summary
-
-In this session we have covered the following concepts:
-
-* How to use ggplot2 to create different types of plot using a common grammar
-* How to map variables to aesthetic features of a plot
-* How to construct a plot with multiple layers (geoms)
-* Various types of plot including scatter plots, box plots, bar plots and histograms
-* Categorical variables and how R handles these with its factor type
-* Plotting time series data as line graphs and working with dates
-
----
-
-# Assignment
-
-```{r echo = FALSE}
-xfun::embed_file('../assignments/assignment2.Rmd')
-```
