@@ -136,7 +136,7 @@ _Hint: what type of object is the summary?_
 
 ---
 
-**5. Explore the Apple Mobility data on transport use during the coronavirus lockdown using line plots**
+**Extra. Explore the Apple Mobility data on transport use during the coronavirus lockdown using line plots**
 
 The Government included in their daily press conference a new set
 of data of transport use as measured by direction requests on Apple Maps.
