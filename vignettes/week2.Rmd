@@ -13,6 +13,12 @@ vignette: >
 > * Apply the grammar to create a variety of plots including scatter plots, box plots and histograms
 > * Learn about how R handles categorical data
 
+
+```{block type = "rmdblock"}
+A video that goes through this session's material can be found [here](https://www.youtube.com/watch?v=pVkdTcrCj9M).
+```
+
+
 # Visualizing data with ggplot2
 
 In this session we will focus our attention on the popular **ggplot2** package
