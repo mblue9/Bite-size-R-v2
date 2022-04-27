@@ -9,16 +9,18 @@ vignette: >
 
 > #### Learning objectives
 >
-> * Learn the five key **dplyr** functions for manipulating your data
+> * Recall the five key **dplyr** functions for manipulating your data
 >     * **`select()`** for selecting a subset of variables, i.e. selecting columns in your table
 >     * **`filter()`** for selecting observations based on their values, i.e. selecting rows in your table
 >     * **`arrange()`** for sorting the observations in your table 
 >     * **`mutate()`** for creating a new variable or modifying an existing variable
 >     * **`summarise()`** for collapsing values in one of more columns to a single summary value
 > * Chain operations together into a workflow using pipes
-> * Learn about faceting in ggplot2 to split your data into separate categories and create a series of sub-plots arranged in a grid
+> * Review faceting in ggplot2 to split your data into separate categories and create a series of sub-plots arranged in a grid
 
 ---
+
+In this session we review functions from the DataCamp Introduction to Tidyverse course in more detail.
 
 # Data manipulation with dplyr
 
@@ -33,11 +35,11 @@ for manipulating tabular data in data frames or tibbles. We're going to look at
 the key functions for filtering our data, modifying the contents and computing
 summary statistics.
 
-We'll also introduce the pipe operator, **`%>%`**, for chaining operations
+We'll also use the pipe operator, **`%>%`**, for chaining operations
 together into mini workflows in a way that makes for more readable and
 maintainable code.
 
-Finally, we'll return to plotting and look at a powerful feature of ggplot2,
+Finally, we'll return to plotting and look at the powerful feature of ggplot2,
 **faceting**, that allows you to divide your plots into subplots by splitting
 the observations based on one or more categorical variables.
 
@@ -46,34 +48,6 @@ We'll again use the METABRIC data set to illustrate how these operations work.
 ```{r message = FALSE}
 metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv")
 metabric
-```
-
----
-
-# Data semantics
-
-We use the terms 'observation' and 'variable' a lot in this course. As a
-reminder from session 2, when we talk about an observation, we're talking about a
-set of values measured for the same unit or thing, e.g. a person or a date, and
-when we talk about a variable we are really talking about the attribute that we
-are measuring or recording, e.g. height, temperature or expression value.
-
-**Observations are represented as rows** in our data frames or tibbles, while
-the **columns correspond to variables**.
-
-```{block type = "rmdblock"}
-From **"Tidy Data"** by **Hadley Wickham**, [*The Journal of Statistical
-Software*, vol. 59, 2014](https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf).
-
-A data set is a collection of **values**, usually either numbers (if
-quantitative) or character strings (if qualitative). Values are organised in
-two ways. Every value belongs to a variable and an observation.
-
-A **variable** contains all values that measure the same underlying attribute
-(like height, temperature, duration) across units.
-
-An **observation** contains all values measured on the same unit (like a person
-or a day) across attributes.
 ```
 
 ---
@@ -125,20 +99,6 @@ deceased
 Remember that the **`==`** operator tests for equality, i.e. is the value for
 `Vital_status` for each patient (observation) equal to "Died of Disease".
 
-This filtering operation is equivalent to subsetting the rows based on a logical
-vector resulting from our comparison of vital status values with "Died of
-Disease".
-
-```{r eval = FALSE}
-filter(metabric, Vital_status == "Died of Disease")
-# is equivalent to
-metabric[metabric$Vital_status == "Died of Disease", ]
-```
-
-Both achieve the same result but the dplyr filter method is arguably a little
-easier to read. We haven't had to write `metabric` twice for one thing; we just
-referred to the variable name as it is, unquoted and without any fuss.
-
 Let's have a look at the various categories in the `Vital_status` variable.
 
 ```{r}
@@ -173,9 +133,6 @@ deceased <- filter(metabric, str_starts(Vital_status, "Died"))
 nrow(deceased)
 ```
 
-Note that `str_starts()` returns a logical vector - this is important since the
-filtering condition must evaluate to `TRUE` or `FALSE` values for each row.
-
 Unsurprisingly there is an equivalent function, `str_ends()`, for matching the
 end of text (character) values and `str_detect()` is another useful function
 that determines whether values match a regular expression. Regular expressions
@@ -195,7 +152,7 @@ metabric$Deceased <- metabric$Survival_status == "DECEASED"
 deceased <- filter(metabric, Deceased)
 #
 # only display those columns we're interested in
-deceased[, c("Patient_ID", "Survival_status", "Vital_status", "Deceased")]
+select(deceased, Patient_ID, Survival_status, Vital_status, Deceased)
 ```
 
 We can use the **`!`** operator to filter those patients who are not
@@ -214,7 +171,8 @@ can filter for this using the **`is.na()`** function.
 
 ```{r}
 missing_vital_status <- filter(metabric, is.na(Vital_status))
-missing_vital_status[, c("Patient_ID", "Survival_status", "Vital_status", "Deceased")]
+
+select(missing_vital_status, Patient_ID, Survival_status, Vital_status, Deceased)
 ```
 
 `filter()` only retains rows where the condition if `TRUE`; both `FALSE` and
@@ -228,17 +186,7 @@ survived for more than 10 years (120 months).
 filter(metabric, Survival_status == "LIVING", Survival_time > 120)
 ```
 
-The equivalent using R's usual subsetting is slightly less readable.
-
-```{r eval = FALSE}
-metabric[metabric$Survival_status == "LIVING" & metabric$Survival_time > 120, ]
-```
-
-We can add as many conditions as we like separating each with a comma. Note that
-filtering using R subsetting gets more unreadable, and more cumbersome to code,
-the more conditions you add.
-
-Adding conditions in this way is equivalent to combining the conditions using
+We can add as many conditions as we like separating each with a comma. Adding conditions in this way is equivalent to combining the conditions using
 the **`&`** (Boolean AND) operator.
 
 ```{r eval = FALSE}
@@ -278,18 +226,7 @@ possible to display all the columns; we only get the first few and then a long
 list of the additional ones that weren't displayed.
 
 Using the `$` operator is quite convenient for selecting a single column and
-extracting the values as a vector. Selecting several columns using the `[]`
-subsetting operator is a bit more cumbersome. For example, in our look at
-filtering rows, we considered two different variables in our data set that
-are concerned with the living/deceased status of patients. When printing out
-the results we selected just those columns along with the patient identifier
-and the newly created `Deceased` column.
-
-```{r}
-deceased[, c("Patient_ID", "Survival_status", "Vital_status", "Deceased")]
-```
-
-The **`select()`** function from dplyr is simpler.
+extracting the values as a vector. However, for selecting multiple columns, the **`select()`** function from dplyr is simpler. We have already seen it a little when we used it above to view just a few columns in the dataset.
 
 ```{r}
 select(metabric, Patient_ID, Survival_status, Vital_status, Deceased)
@@ -401,8 +338,7 @@ nrow(patients_of_interest)
 ```
 
 However, there is another way chaining together a series of operations into a
-mini workflow that is elegant, intuitive and makes for very readable R code.
-For that we need to introduce a new operator, the **pipe** operator, **`%>%`**.
+mini workflow that is elegant, intuitive and makes for very readable R code. We can use the **pipe** operator, **`%>%`**.
 
 ```{block type = "rmdblock"}
 **The pipe operator `%>%`**
@@ -621,6 +557,7 @@ our METABRIC data frame.
 
 ```{r}
 metabric <- mutate(metabric, NPI = 0.2 * Tumour_size + Lymph_node_status + Neoplasm_histologic_grade)
+
 select(metabric, Tumour_size, Lymph_node_status, Neoplasm_histologic_grade, NPI, Nottingham_prognostic_index)
 ```
 
@@ -695,7 +632,7 @@ metabric %>%
   select(Patient_ID, ends_with("_status"))
 ```
 
-## Anonymous functions
+## Anonymous functions (ADVANCED)
 
 The `mutate` function with `across` is really very powerful but with that comes additional complexity.
 
@@ -855,7 +792,7 @@ fortunately we have some control over these.
 summarise(metabric, across(c(ESR1, ERBB2, PGR), list(average = mean, stdev = sd)))
 ```
 
-## Anonymous functions
+## Anonymous functions (ADVANCED)
 
 The `mutate` and `summarise` functions with `across()` work in a very similar
 manner, very much in line with the coherent and consistent framework provided
@@ -1023,7 +960,7 @@ ggplot(data = metabric, mapping = aes(x = GATA3, y = ESR1, colour = PAM50)) +
 
 # Summary
 
-In this session we have covered the following concepts:
+In this session we have reviewed the following concepts:
 
 * Filtering rows in a data frame based on their values
 * Selecting and reordering of columns
