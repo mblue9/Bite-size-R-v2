@@ -3,252 +3,74 @@
 title: "Assignment 4"
 ---
 
-The week's assignment will test your ability to manipulate the METABRIC data set
-by changing the values of existing columns or adding new columns by computing
-new variables from existing ones.
+This week's assignment will involve summarizing values for groups of
+observations in the METABRIC data set and combining clinical and mutation data
+to perform exploratory analysis involving both.
 
-We are expecting you to use the 5 main dplyr 'verb' functions: `select()`,
-`filter()`, `arrange()`, `mutate()` and `summarize()`. Please use the pipe
-operator, `%>%`, in cases where more than one operation is required to achieve
-the outcome requested.
+The mutation data come from targeted sequencing of 2433 primary tumours from the
+METABRIC study using a panel of 173 of the most frequently mutated breast cancer
+genes.
 
-```{r message = FALSE, warning = FALSE}
-library(tidyverse)
-```
+[Pereira *et al.*, Nature Communications 7:11479, 2016](https://www.ncbi.nlm.nih.gov/pubmed/27161491)
+
+We'll start by loading the two tables we're going to need. The first is the
+clinical data that you should by now be quite familiar with. This table does not
+contain the additional mRNA expression columns we've used in previous
+assignments.
 
 ```{r eval = FALSE, message = FALSE, warning = FALSE}
-metabric <- read_csv("metabric_clinical_and_expression_data.csv")
+library(tidyverse)
+metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_data.csv")
+# convert the Integrative_cluster variable into a categorical variable with
+# levels in the correct order
+metabric <- mutate(metabric, Integrative_cluster = factor(Integrative_cluster, levels = c("1", "2", "3", "4ER-", "4ER+", "5", "6", "7", "8", "9", "10")))
 ```
 
----
+The second table contains the mutations that were detected in each patient
+tumour sample.
 
-**1. Investigate the subset of long-surviving breast cancer patients that didn't receive chemo or radiotherapy**
-
-First obtain the subset of patients that received neither chemotherapy or
-radiotherapy and survived for more than 20 years.
-
-```{r}
-
+```{r eval = FALSE}
+mutations <- read_csv("https://zenodo.org/record/6450144/files/metabric_mutations.csv")
+mutations
 ```
 
-Now look at the breakdown of these patients in terms of ER status. Count the
-numbers of ER positive and ER negative patients in this subset. Calculate the
-proportion that are ER positive.
+The METABRIC cohort contains 2509 patients but not all patient tumour samples
+were sequenced and for some patient samples that were sequenced, no mutations
+were detected. For one of the exercises we need to know which patients were
+sequenced, so we'll also read the case list of samples that were sequenced and
+add a column indicating this in the clinical data table.
 
-```{r}
-
+```{r eval = FALSE}
+cases_sequenced <- read_tsv("https://zenodo.org/record/6450144/files/cases_nat_comm_2016.txt", col_names = "Patient_ID")
+metabric <- mutate(metabric, Sequenced = Patient_ID %in% cases_sequenced$Patient_ID)
+count(metabric, Sequenced)
 ```
-
-What does this tell us? Calculate the proportion of ER positive patients in the
-whole cohort by way of a comparison.
-
-```{r}
-
-```
-
-**Extension**
-
-Create a contingency table of the numbers of ER positive and ER negative
-patients in the two groups (untreated, long-surviving patients and all others)
-and perform a Chi-squared test or a Fisher's exact test (whichever is most
-appropriate) to determine if there is a significant difference.
-
-```{r}
-
-```
-
-_Hint: look at the help page for the function for the Chi-squared or Fisher's
-exact test to see what form the contingency table needs to take_
-
----
-
-**2. Which patients have spent the largest proportion of their lives dealing with breast cancer?**
-
-```{r}
-
-```
-
----
-
-**3. Convert the expression values for each of the genes into standardized z-scores**
-
-Some genes are generally expressed at higher levels than others. This can make
-comparisons of changes between groups for a set of genes somewhat difficult,
-particularly if the expression for those genes are on very different scales. The
-expression values in our METABRIC are on a log~2~ scale which helps to reduce
-the range of values but another method for representing expression measurements
-is to standardize these to produce z-scores.
-
-Standardization of a set of measurements involves subtracting the mean from each
-and dividing by the standard deviation. This will produce values with a mean of
-0 and a standard deviation of 1.
-
-Create a modified version of the `metabric` data frame containing a new column
-with the standardized expression values (z-scores) for the ESR1 gene.
-
-```{r}
-
-```
-
-Check that you've done this correctly by calculating the mean and standard
-deviation of your new z-score variable.
-
-```{r}
-
-```
-
-Add another column to your modified `metabric` data frame containing a z-score
-for GATA3 and then create a scatter plot of the z-scores of GATA3 against ESR1.
-Modify your plot to facet by the PAM50 classification.
-
-```{r}
-
-```
-
-**Extension 1**
-
-Standardize the expression values for all genes in a single operation using an
-anonymous function, overwriting their original values, and round the resulting
-values to 3 significant figures.
-
-```{r}
-
-```
-
-Check you have done this correctly by computing the mean and standard deviation for
-each column, again using a single operation.
-
-```{r}
-
-```
-
-To be doubly certain, you could also download the expression z-score values for
-these genes from cBioPortal.
-
-**Extension 2**
-
-Create a plot comparing the distribution of standardized expression values for
-TP53 against a normal distribution.
-
-```{r}
-
-```
-
-_Hint: use `stat_function()`_
-
----
-
-**4. Which Star Wars characters need to go on a diet?**
-
-Compute the body mass index (BMI) of characters in the `starwars` tibble.
-
-```{r}
-
-```
-
-Filter for human characters that are overweight (BMI > 25) and display in
-decreasing order of BMI.
-
-```{r}
-
-```
-
-The next part involves transforming two data sets in order to ask a specific
-question of each. The first is a more complete set of data on the number of new
-tuberculosis cases each year from 1980 to 2013 in 219 countries, taken from the
-[World Health Organization Global Tuberculosis Report](https://www.who.int/health-topics/tuberculosis).
-
-For the second "real world" example we return to the METABRIC data set and
-introduce the other set of assay data obtained as part of the original 2012
-study that concerns genomic copy number. We'll transform the copy number data
-downloaded from [cBioPortal](https://www.cbioportal.org/study/summary?id=brca_metabric)
-so that we can look at the copy number states for some of our favourite genes
-and then combine that with the expression data to see how copy number influences
-gene expression.
 
 The clinical data, gene expression values and mutation data were all downloaded
 from [cBioPortal](https://www.cbioportal.org/study/summary?id=brca_metabric).
 
 ---
 
-**5. Tidy the WHO tuberculosis data set**
+**1. Compare the average survival time and other attributes between ER-negative and ER-positive patients**
 
-In this week's materials we demonstrated the restructuring of different
-representations of a very small subset of the WHO tuberculosis data set (tables
-1 to 4a and b). The more complete data set is also available in its original
-format in another data frame available as part of the **tidyr** package, named
-`who`.
-
-```{r}
-who
-```
-
-What are the variables in this data set?
-
-Create a bulleted list with your answer here.
-
-
-
-_Hint: see the help page for `who` to understand the meaning of the column headings._
-
-_Hint: the Markdown Quick Reference available from the Help menu in RStudio is a very useful guide to formatting text in R markdown documents._
-
-Why isn't this data set tidy and what kinds of analysis are not straightforward
-with the data in this format?
-
-Transform the data into a tidy format.
-
-Columns `new_sp_m014` to `newrel_f65` are values for a compound variable, i.e.
-multiple variables joined together - the restructured data frame should have
-columns for each of the separated values in these column headings.
-
-Also remove all rows with missing values for the number of tuberculosis cases.
+Compute the average survival time for the ER-negative and ER-positive groups.
+Note that such a comparison only makes sense for those patients that are
+deceased so apply the appropriate filter first. Add a column for the number
+of patients in each group.
 
 ```{r}
 
 ```
 
-*Hint 1: the column headers from new_sp_m014 onwards contain a superfluous prefix "new" or "new_" that you will want to remove; this can be done using one of the stringr functions in a single step if you know about regular expressions but is also achievable in two steps if you don't use any regular expression magic.*
-
-_Hint 2: separating two of the variables is a bit tricky because there is no separator character; try looking at the help for the separate function to see how this can be done._
-
----
-
-**6. Recreate `table1` from your tidy version of the WHO tuberculosis data set**
-
-Recreate the first 3 columns of `table1`, containing a small subset of the WHO
-tuberculosis data set, from your tidy version of `who`.
-
-```{r eval = FALSE}
-select(table1, 1:3)
-```
+Compute the average tumour size, number of positive lymph nodes and Nottingham
+prognostic index within ER-negative and ER-positive patients.
 
 ```{r}
 
 ```
 
-_Hint: this will involve some filtering, grouping and summarization._
-
----
-
-**7. Create time series plots for cases of tuberculosis**
-
-Create a time series plot showing the number of tuberculosis cases in the United
-Kingdom with separate lines for each age group. The year should be on the x axis
-and the number of cases on the y axis.
-
-```{r}
-
-```
-
-_Hint: we're not distinguishing between diagnoses and genders in this plot so you'll need to sum the numbers of cases for each country, year and age group._
-
-Use faceting in ggplot2 to create a series of plots showing the same information
-for France, Brazil, Japan and Uganda.
-
-The numbers of cases in these countries are on quite different scales. Look at
-help page for `facet_wrap()` and try changing the `scales` argument so we can
-more easily compare the overall patterns between countries.
+Compute the proportion of tumour samples that are ER positive within each of
+PAM50 groups.
 
 ```{r}
 
@@ -256,89 +78,35 @@ more easily compare the overall patterns between countries.
 
 ---
 
-**8. Relate METABRIC copy number and expression data**
+**2. Find the top 10 most frequently mutated genes**
 
-For this exercise we'll read in the METABRIC mRNA expression data and copy
-number states into separate data frames. The aim is to see how the gene
-expression is affected by the copy number state of various genes through a
-series of box plot.
-
-```{r eval = FALSE, message = FALSE}
-expression <- read_tsv("metabric_mrna_expression.txt")
-```
-
-The expression data is in a matrix-like format with a row for each sample and a
-column for each gene. This is the format used when downloading data from
-[cBioPortal](https://www.cbioportal.org/study/summary?id=brca_metabric) after
-selecting a set of genes.
-
-```{r}
-expression
-```
-
-Convert this data frame into a tidy format with a row-per-sample-per-gene.
-Remove the rather uninteresting `STUDY_ID` column and filter out missing
-expression values (for those samples that weren't assayed).
+Count the numbers of mutations for each gene and display the top 10 most
+frequently mutated genes.
 
 ```{r}
 
 ```
 
-The copy number data are also in a matrix-like format but this time we have a
-row for each gene and a column for each sample. It is a very wide table
-containing 2175 columns (only the first 10 displayed below). This is the format
-of the copy number table you obtain if you download the complete METABRIC
-dataset from cBioPortal. The table read in is a subset containing rows for
-the 8 genes we've been using up till now.
-
-```{r eval = FALSE, message = FALSE}
-copy_number_states <- read_tsv("metabric_cna.txt")
-select(copy_number_states, 1:10)
-```
-
-Convert this data frame into a tidy format with a row-per-sample-per-gene where
-the values are the copy number states:
-
-* -2 deletion
-* -1 loss
-*  0 neutral
-*  1 gain
-*  2 amplification
-
-Remove the `Entrez_Gene_id` column and convert the copy number state variable
-into a factor using the more human-readable names for each state.
+Some genes contain multiple mutations within a single tumour sample so we will
+be over-counting the numbers of samples containing a mutated gene. Modify your
+calculation to prevent this. The count should be the number of patient samples
+in which the gene is mutated.
 
 ```{r}
 
 ```
 
-_Hint: look at the help page for `factor()` to see how to set the labels for each copy number state or use `fct_recode()` from the `forcats` package._
+_Hint: use the `distinct()` function_
 
-Count the total number of occurrences of each copy number state.
+We're usually only interested in non-silent mutations, i.e. those that may have
+some functional effect. One of the findings of the METABRIC study is that 7
+genes harbour coding mutations in at least 10% of the samples. A total of 2433
+patient samples were sequenced.
 
-```{r}
-
-```
-
-Create a combined data set containing the expression value and copy number state
-for each patient and gene pairing. The data frame should contain the columns
-Sample, Gene, Expression and Copy_number_state.
-
-```{r}
-
-```
-
-Create a series of box plots for each of the genes with a box-and-whiskers
-showing the range of expression values for each copy number state.
-
-```{r}
-
-```
-
-Customize this plot by changing the labels, scales, colours and theme as you
-like -- be creative!
-
-Save the plot as a PDF using `ggsave()`.
+Calculate the percentages of samples containing non-silent mutations for each
+gene and filter those genes mutated in more than 10% of samples. Compare your
+gene list and percentages with those given in the METABRIC 2016 publication
+(second paragraph in the Results section).
 
 ```{r}
 
@@ -346,88 +114,128 @@ Save the plot as a PDF using `ggsave()`.
 
 ---
 
-**9. Extension: Mutual exclusivity of ERBB2 amplifications and AKT1 mutations**
+**3. Find mutation hotspots in PIK3CA**
 
-_Seriously, stop here if you haven't got the time or inclination to attempt this final, bonus extension exercise._
+PIK3CA and TP53 are the most frequently mutated genes in breast cancers. But do
+the mutations occur randomly within these genes or are they usually found in
+specific locations?
 
-In the METABRIC 2016 paper, Pereira _et al._
-([Nature Communications 7:11479, 2016](https://www.ncbi.nlm.nih.gov/pubmed/27161491))
-considered the association between somatic mutations, exploring patterns of
-co-mutation and mutual exclusivity. One of their findings was the mutual
-exclusivity between AKT1 mutations and amplification of ERBB2. For the final
-exercise we will reproduce this observation.
-
-We'll first need to read the mutation data into R and we're only interested
-in those cases where the patient tumour sample was sequenced so we'll read those
-in as well.
-
-```{r eval = FALSE, message = FALSE}
-mutations <- read_csv("metabric_mutations.csv")
-cases_sequenced <- read_tsv("cases_nat_comm_2016.txt", col_names = "Patient_ID")
-```
-
-Filter the mutations table to only contain the non-silent mutations in AKT1.
+Find the most frequently mutated codons in PIK3CA.
 
 ```{r}
 
 ```
 
-Add a logical column to the `cases_sequenced` data frame called
-`AKT1_mutated` that indicates whether there was a non-silent AKT1 mutation
-detected in each patient tumour sample.
+These frequently mutated loci are known as "hotspots".
 
-Count the number of patients with and without a non-silent AKT1 mutation.
-
-```{r}
-
-```
-
-_Hint: use a `mutate()` with `%in%`._
-
-Filter the copy number states table to only include entries for ERBB2.
-
-Count the number of samples for each ERBB2 copy number state.
+What type of mutations are found at the most prevalent hotspot in PIK3CA, codon
+1047? What changes are occurring at the DNA and protein level?
 
 ```{r}
 
 ```
 
-Join the ERBB2 copy number state table to the table we created before
-identifying which patient has an AKT1 mutation. The combined data frame should
-only contain entries for patients that have been sequenced and for which copy
-number data are available.
+_Hint: take a look at what columns are available in the `mutations` table and count the values_
+
+---
+
+**4. Compare the prevalance of TP53 mutations across the Integrative Cluster breast cancer subtypes**
+
+Figure 5a from the METABRIC 2016 paper compares the percentage of samples that
+have non-silent mutations for various genes within each of the Integrative
+Clusters. In this exercise, we'll reproduce a version of one of these bar charts
+for the TP53 gene.
+
+First, we'll need to distinguish between those patients that have a non-silent
+TP53 mutation and those that don't. Create a data frame containing the number
+of non-silent TP53 mutations in each patient sample. It should have two columns,
+`Patient_ID` and `TP53_mutation_count`.
 
 ```{r}
 
 ```
 
-Count the numbers of patients with different combinations of ERBB2 copy number
-state and mutated AKT1.
+Now join this table to the `metabric` data frame so that the latter has the
+added `TP53_mutation_count` column.
 
 ```{r}
 
 ```
 
-Does this reflect the observation of mutual exclusivity of ERBB2 amplification
-and AKT1 mutations?
-
-Create a logical column called `ERBB2_amplified` indicated which patient samples
-have amplifications (copy number state 2) in ERBB2.
+Create a new column called `Has_TP53_mutation` containing just `TRUE` or `FALSE`
+values, i.e. a logical variable.
 
 ```{r}
 
 ```
 
-Create a 2-by-2 contingency table using `table()` and the `AKT1_mutated` and
-`ERBB2_amplified` columns.
+_Hint: use `is.na()` function_
+
+Compute the proportion of patient samples within each Integrative Cluster with a
+TP53 mutation. Exclude those samples that have not been sequenced and those that
+have not been classified into one of the Integrative Cluster subtypes.
 
 ```{r}
 
 ```
 
-Perform a Fisher exact test on this contingency table.
+Finally, plot these percentages as a bar chart using `geom_col()`. Look at the
+help page for `geom_bar` and `geom_col` to see why we'd want to use the latter
+in this case.
 
 ```{r}
 
 ```
 
+Customize your plot in the following ways:
+
+* add a title
+* change the axis labels so they don't contain underscores
+* set the limits on the y axis so that the entire 0 - 100% range is displayed
+* set breaks on the y axis to be at 20% intervals
+* reduce the amount of space between the bottom of the bars and the tick marks for each integrative cluster
+* apply the Viridis colour scheme for the bars (`scale_colour_viridis_d`)
+* choose the black and white theme by appending `+ theme_bw()` to the plot
+* remove the vertical grid lines by appending `+ theme(panel.grid.major.x = element_blank())`
+
+The final two touches make stylistic changes to the theme using customizations
+that we'll cover next week.
+
+```{r}
+
+```
+
+Compare the plot with the equivalent plot in figure 5a from the METABRIC
+mutation paper. Do the bars look in roughly the correct proportions? Note that
+only 9 of the integrative clusters are shown in figure 5a.
+
+---
+
+**5. Compute the tumour suppressor gene (TSG) score for each gene**
+
+The tumour suppressor gene (TSG) score is the proportion of inactivating
+mutations for each gene out of the total number of mutations for that gene.
+
+Inactivating mutations are nonsense SNVs, frameshift substitutions and variants
+that affected splice sites.
+
+Compute the TSG score for each gene and find the top 10 tumour suppressor genes,
+i.e. those with the highest TSG scores.
+
+```{r}
+inactivating_mutation_types <- c("Nonsense_Mutation", "Frame_Shift_Del", "Frame_Shift_Ins", "Splice_Region", "Splice_Site")
+
+```
+
+_Hint: use `%in%` to determine if a mutation is an inactivating mutation_
+
+**Extension**
+
+Download Supplementary Data 3 and create a scatter plot comparing the TSG
+scores in the `allSamples_TSGScore` column with those you've calculated.
+
+```{r}
+
+```
+
+If you want more exercises, see here https://raw.githubusercontent.com/PMacDaSci/R4CancerSci/master/assignments/assignment4_extra.Rmd
