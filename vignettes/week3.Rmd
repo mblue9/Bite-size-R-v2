@@ -20,7 +20,11 @@ vignette: >
 
 ---
 
-In this session we review functions from the DataCamp Introduction to Tidyverse course in more detail.
+
+```{block type = "rmdblock"}
+A video that goes through this session's material can be found [here](https://www.youtube.com/watch?v=YHGi1iduQ18).
+```
+
 
 # Data manipulation with dplyr
 
