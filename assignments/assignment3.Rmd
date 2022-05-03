@@ -126,7 +126,7 @@ _Hint: use `stat_function()`_
 
 **4. Which Star Wars characters need to go on a diet?**
 
-Compute the body mass index (BMI) of characters in the `starwars` tibble. The starwars dataset is part of the dplyr package and is available when you use `library(tidyverse)` or `library(dplyr)`.
+Compute the body mass index (BMI) of characters in the `starwars` tibble. The starwars dataset is part of the dplyr package and is available when you use `library(tidyverse)` or `library(dplyr)`. The formula for BMI is kg/m2 where kg is a person's weight in kilograms and m2 is their height in metres squared.
 
 ```{r}
 
