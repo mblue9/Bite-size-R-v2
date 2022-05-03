@@ -46,20 +46,6 @@ whole cohort by way of a comparison.
 
 ```
 
-**Extension**
-
-Create a contingency table of the numbers of ER positive and ER negative
-patients in the two groups (untreated, long-surviving patients and all others)
-and perform a Chi-squared test or a Fisher's exact test (whichever is most
-appropriate) to determine if there is a significant difference.
-
-```{r}
-
-```
-
-_Hint: look at the help page for the function for the Chi-squared or Fisher's
-exact test to see what form the contingency table needs to take_
-
 ---
 
 **2. Which patients have spent the largest proportion of their lives dealing with breast cancer?**
@@ -140,7 +126,7 @@ _Hint: use `stat_function()`_
 
 **4. Which Star Wars characters need to go on a diet?**
 
-Compute the body mass index (BMI) of characters in the `starwars` tibble.
+Compute the body mass index (BMI) of characters in the `starwars` tibble. The starwars dataset is part of the dplyr package and is available when you use `library(tidyverse)` or `library(dplyr)`.
 
 ```{r}
 
