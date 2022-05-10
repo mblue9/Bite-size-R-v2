@@ -20,6 +20,11 @@ vignette: >
 
 ---
 
+```{block type = "rmdblock"}
+A video that goes through this session's material can be found [here](https://www.youtube.com/watch?v=6IOxhJIbiA8).
+```
+
+
 # Grouping and combining data
 
 In this session, we'll look at some more useful functions provided by the
