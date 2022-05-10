@@ -1206,10 +1206,28 @@ ggplot(data = protein_levels, mapping = aes(x = group, y = protein_level)) +
 
 ---
 
+# Summary
 
-# Customizing plots with ggplot2
+In this session we have covered the following:
 
-Finally, we'll turn our attention back to visualization using ggplot2 and how
+* Computing summary values for groups of observations
+* Counting the numbers of observations within categories
+* Combining data from two tables through join operations
+* Restructuring data frames using pivoting operations
+* Splitting compound variables into separate columns
+* Modifying character columns using various string manipulation functions
+
+# Assignment
+
+```{r echo = FALSE}
+xfun::embed_file('../assignments/assignment4.Rmd')
+```
+
+---
+
+# Customizing plots with ggplot2 (EXTRA)
+
+Optional section. Do this if you’ve completed the previous sections and the Assignment and want more. In this section, we'll turn our attention back to visualization using ggplot2 and how
 we can customize our plots by adding or changing titles and labels, changing the
 scales used on the x and y axes, and choosing colours.
 
@@ -1651,24 +1669,3 @@ metabric %>%
   )
 ```
 
----
-
-# Summary
-
-In this session we have covered the following:
-
-* Computing summary values for groups of observations
-* Counting the numbers of observations within categories
-* Combining data from two tables through join operations
-* Restructuring data frames using pivoting operations
-* Splitting compound variables into separate columns
-* Modifying character columns using various string manipulation functions
-* Customizing plots created with ggplot2 by changing labels, scales and colours, theme and position adjustments
-
-# Assignment
-
-There are a lot of exercises in this week's assignment you do not have to do all.
-
-```{r echo = FALSE}
-xfun::embed_file('../assignments/assignment4.Rmd')
-```

@@ -187,23 +187,6 @@ in this case.
 
 ```
 
-Customize your plot in the following ways:
-
-* add a title
-* change the axis labels so they don't contain underscores
-* set the limits on the y axis so that the entire 0 - 100% range is displayed
-* set breaks on the y axis to be at 20% intervals
-* reduce the amount of space between the bottom of the bars and the tick marks for each integrative cluster
-* apply the Viridis colour scheme for the bars (`scale_colour_viridis_d`)
-* choose the black and white theme by appending `+ theme_bw()` to the plot
-* remove the vertical grid lines by appending `+ theme(panel.grid.major.x = element_blank())`
-
-The final two touches make stylistic changes to the theme using customizations
-that we'll cover next week.
-
-```{r}
-
-```
 
 Compare the plot with the equivalent plot in figure 5a from the METABRIC
 mutation paper. Do the bars look in roughly the correct proportions? Note that
@@ -237,5 +220,6 @@ scores in the `allSamples_TSGScore` column with those you've calculated.
 ```{r}
 
 ```
+
 
 If you want more exercises, see here https://raw.githubusercontent.com/PMacDaSci/R4CancerSci/master/assignments/assignment4_extra.Rmd
