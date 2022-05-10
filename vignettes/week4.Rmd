@@ -606,12 +606,6 @@ changing various non-data components that are largely cosmetic.
 The functions we're mostly focusing on in this part are from the **tidyr**
 and **stringr** packages both of which get loaded as part of the tidyverse.
 
-```{r}
-library(tidyverse)
-```
-
----
-
 # Tidy data
 
 So what is 'tidy data' and why should we care about it?
