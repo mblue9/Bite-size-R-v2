@@ -27,9 +27,12 @@ Suggests:
     lubridate,
     ggthemes,
     xfun,
+    emo,
     knitr,
     rmarkdown,
     pkgdown
-URL: https://mblue9.github.io/Bite-size-R-v2/
-BugReports: https://github.com/mblue9/Bite-size-R-v2/issues/new/choose
+Remotes:  
+    hadley/emo
+URL: https://R4CancerSci.github.io/R4CancerSci/
+BugReports: https://github.com/R4CancerSci/R4CancerSci/issues/new/choose
 VignetteBuilder: knitr

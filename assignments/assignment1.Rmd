@@ -75,20 +75,5 @@ Have a look at examples of these in the text parts of this R markdown document
 and how these are rendered when you run the knit operation.
 
 For more features, see the help page in RStudio that can be accessed from the
-the help menu: **Help > Markdown Quick Reference**
+the help menu: **Help > Markdown Quick Reference**.
 
----
-
-### Advanced: Clinical cancer data
-
-**How many samples in the METABRIC dataset have high cellularity but have no recorded classification with the 3-gene classifier?**
-
-```{r}
-
-```
-
-*Hint:* this is actually quite tricky -- you may want to check for missing
-values in the cellularity column as well as the column for the 3-gene
-classifier.
-
----

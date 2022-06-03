@@ -8,7 +8,7 @@ of plot. It includes some extension exercises which you can consider optional.
 
 ```{r eval = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
-metabric <- read_csv("metabric_clinical_and_expression_data.csv")
+metabric <- read_csv("https://zenodo.org/record/6450144/files/metabric_clinical_and_expression_data.csv")
 ```
 
 ---
@@ -84,20 +84,13 @@ _Hint: look at the help for geom_boxplot._
 
 ---
 
-**4. Explore the correlation between FOXA1 and one other gene**
+**4. Explore the correlation between FOXA1 and MLPH**
 
 A recently-published paper looks at associations of expression and genomic data
-in the METABRIC data set. It found a strong correlation between FOXA1 and one of
-the other genes included in our table. Can you find which one?
+in the METABRIC data set. It found a strong correlation between FOXA1 and one of the other genes included in our table, MLPH (see the output of `cor.test(metabric$FOXA1,  metabric$MLPH)`).
 
-```{r}
 
-```
-
-_Hint: the `stats` package contains a correlation test._
-
-Create a scatter plot of the expression of FOXA1 and this gene with a line of
-best fit.
+Create a scatter plot of the expression of FOXA1 and MLPH with a line of best fit.
 
 ```{r}
 
@@ -109,34 +102,10 @@ Change the method used to draw the line of best fit to be a straight line.
 
 ```
 
-**Extension**
-
-Fit a linear model to these data (again you'll need to look up the appropriate
-function in R).
-
-```{r}
-
-```
-
-Pass the resulting object to the `summary()` function for information about the
-fit and capture the result in another object called summary. Print this out.
-
-```{r}
-
-```
-
-Extract the R-squared value from the summary and assign this to another
-variable and print it out.
-
-```{r}
-
-```
-
-_Hint: what type of object is the summary?_
 
 ---
 
-**5. Explore the Apple Mobility data on transport use during the coronavirus lockdown using line plots**
+**EXTRA. If you did the optional EXTRA part in the material. Explore the Apple Mobility data on transport use during the coronavirus lockdown using line plots**
 
 The Government included in their daily press conference a new set
 of data of transport use as measured by direction requests on Apple Maps.
