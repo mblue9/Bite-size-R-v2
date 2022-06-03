@@ -11,7 +11,8 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Session 1 -- Introduction to RStudio">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Session 1 -- Introduction to RStudio">
 <meta property="og:description" content="R4CancerSci">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -66,7 +67,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/mblue9/Bite-size-R-v2" class="external-link">
+  <a href="https://github.com/pmacdasci/R4CancerSci" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -87,7 +88,7 @@
       <h1 data-toc-skip>Session 1 – Introduction to RStudio</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/mblue9/Bite-size-R-v2/blob/HEAD/vignettes/week1.Rmd" class="external-link"><code>vignettes/week1.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/R4CancerSci/R4CancerSci/blob/HEAD/vignettes/week1.Rmd" class="external-link"><code>vignettes/week1.Rmd</code></a></small>
       <div class="hidden name"><code>week1.Rmd</code></div>
 
     </div>
@@ -95,36 +96,40 @@
     
     
 <blockquote>
-<h4 id="aims">Aims</h4>
-<ul>
-<li>To introduce RStudio which we will be using to write R code in this
-course</li>
-<li>To demonstrate generating a visualisation and report</li>
-<li>To review some basic R commands</li>
-</ul>
 <h4 id="learning-objectives">Learning objectives</h4>
 <ul>
 <li>Describe the main panes in RStudio</li>
-<li>Generate a visualisation and report using R</li>
-<li>Edit code to update visualisations and reports</li>
+<li>Generate and edit an R Markdown report</li>
+<li>Import tabular data into R</li>
+<li>Inspect data for missing values</li>
 </ul>
 </blockquote>
-<div class="section level2">
-<h2 id="introduction-to-r-and-rstudio">Introduction to R and RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-r-and-rstudio"></a>
-</h2>
+<div class="rmdblock">
+<p>
+A video that goes through this session’s material can be found <a href="https://www.youtube.com/watch?v=NpQKqHsUmfk" class="external-link">here</a>.
+</p>
 </div>
 <div class="section level2">
-<h2 id="why-learn-r">Why learn R?<a class="anchor" aria-label="anchor" href="#why-learn-r"></a>
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
+<p>This is a ‘next-steps’ course, designed for follow-on practice with
+cancer datasets after completing DataCamp’s <a href="https://www.datacamp.com/courses/introduction-to-the-tidyverse" class="external-link">Introduction
+to the Tidyverse</a> (or another general introductory R course).
+Therefore, we assume you know some R basics already, at least the
+content of the DataCamp course. <a href="https://r4ds.had.co.nz/index.html" class="external-link">R for Data Science book</a> is
+an excellent reference book if you want to look up anything you don’t
+recall or are not very familiar with. We also assume you know some
+reasons why learning R is good (as you’ve already started 😄) but below
+are a list of reasons why learning R is useful and worth your time.</p>
+<div class="section level3">
+<h3 id="why-learn-r">Why learn R?<a class="anchor" aria-label="anchor" href="#why-learn-r"></a>
+</h3>
 <ul>
-<li><p>R involves creating &amp; using scripts which makes the steps you
-used in your analysis clear and can be inspected by someone else for
-feedback and error-checking.</p></li>
-<li><p>R code is great for reproducibility. An increasing number of
-journals and funding agencies expect analyses to be reproducible, so
-knowing R will give you an edge with these requirements.</p></li>
-<li><p>R integrates with other tools to generate manuscripts from your
-code. This document (RMarkdown a .Rmd file) is a case in point.</p></li>
+<li><p>R involves creating &amp; using code documents which makes the
+steps you used in your analysis clear and can be inspected by someone
+else for feedback and error-checking.</p></li>
+<li><p>R produces high-quality graphics suitable for publication in
+journals or the web.</p></li>
 <li><p>R is interdisciplinary and extensible and has thousands of
 installable packages to extend its capabilities. R has packages for
 image analysis, GIS, time series, population genetics, and a lot
@@ -132,40 +137,73 @@ more.</p></li>
 <li><p>R scales well to work on data of all shapes and sizes.</p></li>
 <li><p>R can connect to spreadsheets, databases, and many other data
 formats, on your computer or on the web.</p></li>
-<li><p>R produces high-quality graphics suitable for publication in
-journals or the web.</p></li>
 <li><p>R has a large and welcoming community - Thousands use R daily and
-many of them are willing to help you through websites such as Stack
-Overflow or the RStudio community.</p></li>
+many of them are willing to help you through websites such as <a href="https://stackoverflow.com/" class="external-link">Stack Overflow</a> or the <a href="https://community.rstudio.com/" class="external-link">RStudio community</a>.</p></li>
 <li><p>Not only is R free, but it is also open-source and
 cross-platform.</p></li>
+<li><p>R code is great for reproducibility. An increasing number of
+journals and funding agencies expect analyses to be reproducible, so
+knowing R will give you an edge with these requirements.</p></li>
+<li><p>R integrates with other tools to generate manuscripts from your
+code. This document (<a href="https://rmarkdown.rstudio.com/" class="external-link">R
+Markdown</a>, a .Rmd file) is a case in point.</p></li>
 </ul>
+<div class="rmdblock">
+<p>
+We will be using R Markdown for the assignments in this course to help
+you learn how to use it. Information on creating R Markdown manuscripts
+for journals can be found <a href="https://bookdown.org/yihui/rmarkdown/journals.html#ref-R-rticles" class="external-link">here</a>
+and in <a href="https://www.sciencedirect.com/science/article/pii/S2667145X21000171" class="external-link">this
+paper</a>. Some examples of R Markdown in action:<br> *
+<a href="https://sa-lee.github.io/thesis/preface.html" class="external-link">PhD
+thesis</a><br> * <a href="https://atlassian.petermac.org.au/bitbucket/projects/DAW/repos/multisamplevariantcalling/browse/plotting/PaperFigures.Rmd" class="external-link">Figures</a>
+for a Peter Mac bioinformatics paper<br> *
+<a href="http://oshlacklab.com/combes-organoid-paper/" class="external-link">Analysis
+results</a> using <a href="https://workflowr.github.io/workflowr/index.html" class="external-link">workflowr</a>
+(used by a few groups at Peter Mac to share/collaborate)
+</p>
+</div>
 <hr>
+</div>
 </div>
 <div class="section level2">
 <h2 id="rstudio-a-brief-tour">RStudio a brief tour<a class="anchor" aria-label="anchor" href="#rstudio-a-brief-tour"></a>
 </h2>
 <p>RStudio provides us with a friendly interface to the R statistical
-programming language. It consists of four main “Panes”. These can be
-re-sized and moved around to suit how you like to work.</p>
+programming language.</p>
 <p><img src="images/Rstudioataglance.png" width="100%"></p>
+<p>It consists of four main “Panes”:</p>
+<ul>
+<li>the Editing Pane (Source) for your scripts and documents (top-left,
+in the default layout)</li>
+<li>the R Console (bottom-left).</li>
+<li>your Environment/History (top-right),</li>
+<li>your Files/Plots/Packages/Help/Viewer (bottom-right)</li>
+</ul>
+<p>These can be re-sized and moved around to suit how you like to work
+(see menu, Tools -&gt; Global Options -&gt; Pane Layout)</p>
+<p>One of the advantages of using RStudio is that all the information
+you need to write code is available in a single window. Additionally,
+with many shortcuts, autocompletion, and highlighting for the major file
+types you use while developing in R, RStudio will make typing easier and
+less error-prone.</p>
 <div class="section level3">
 <h3 id="editing-pane">Editing pane<a class="anchor" aria-label="anchor" href="#editing-pane"></a>
 </h3>
 <p>By default the top left-hand pane is one for creating, editing &amp;
-running R scripts.</p>
+running R files e.g. scripts and reports.</p>
 <p><img src="images/Rstudio_scripting.png" width="100%"></p>
 <p>A script is an R program that you have written. A good practice is
 for that script to perform only one role in your analysis workflow and
 so you may have several R scripts which you call, in a particular
-sequence, to analyse your data.</p>
-<p>As you will see, a script is basically a text file that contains R
-commands and (ideally) comments to explain what the codes function is
-(as a documentation process).</p>
+sequence, to analyse your data. A script is basically a text file that
+contains R commands and (ideally) comments to explain what the codes
+function is (as a documentation process).</p>
 <p>As well as R scripts, there are many types of RStudio document
-including Markdown files which we will use in the teaching of this
-course. These can provide interactive reports, workbooks or pdf and web
-documents to name but a few possible outcomes.</p>
+including <a href="https://r4ds.had.co.nz/r-markdown.html" class="external-link">R Markdown
+files</a>. We will use R Markdown in the teaching of this course. This
+is so you can learn how to generate reports summarising your analysis
+for collaborating or sharing your work with others.</p>
 </div>
 <div class="section level3">
 <h3 id="console">Console<a class="anchor" aria-label="anchor" href="#console"></a>
@@ -214,7 +252,7 @@ on this course.</p>
 <p>Next we move to the top right-hand corner pane. Here we have even
 more tabs (of which we will only consider two Environment and
 History).</p>
-<p><img src="images/Rstudio_console.png" width="100%"></p>
+<p><img src="images/Rstudio_env.png" width="100%"></p>
 <p>Environment keeps track on R variables which we create (more on those
 later) and their contents. History is like a tally role of all the R
 commands we have entered in our session.</p>
@@ -237,7 +275,8 @@ new packages.</p>
 <p>The Help tab is a <em>massively useful</em> tab which enables you to
 search R help index to get help pages on R functions and provide example
 code to help you use them in your R scripts.</p>
-<hr>
+<p>The Viewer tab is where we can preview an R markdown report after we
+Knit, more on that shortly.</p>
 </div>
 </div>
 <div class="section level2">
@@ -251,20 +290,41 @@ report.</p>
 <p>So let’s see an example of what we’ll be learning and generate our
 first visualisation and report. By the end of this course we should be
 able to explain what each line of the code does.</p>
-<p><a href="data:text/x-markdown;base64,LS0tCnRpdGxlOiAiUHJvdGVpbiBsZXZlbHMgaW4gYnJlYXN0IGNhbmNlciBjZWxscyB0cmVhdGVkIHdpdGggdGFtb3hpZmVuIgphdXRob3I6ICJNYXJpYSBEb3lsZSIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgSW50cm9kdWN0aW9uCgpXaGljaCBwcm90ZWlucyBjaGFuZ2UgaW4gYWJ1bmRhbmNlIGluIHRoZSBicmVhc3QgY2FuY2VyIGNlbGwgbGluZSwgTUNGLTcsIHdpdGggdGFtb3hpZmVuIHRyZWF0bWVudD8gSG93IGRvIHRoZWlyIGxldmVscyBjaGFuZ2Ugd2l0aCB0cmVhdG1lbnQgdGltZT8gQW5zd2VyaW5nIHRoZXNlIHF1ZXN0aW9ucyAoYXQgYSBoaWdoIGxldmVsKSBpcyB0aGUgZm9jdXMgb2YgdGhpcyBhbmFseXNpcy4KCiMjIyBQYWNrYWdlcwoKV2Ugd2lsbCB1c2UgdGhlICoqdGlkeXZlcnNlKiogY29sbGVjdGlvbiBvZiBwYWNrYWdlcyBmb3IgZGF0YSBpbXBvcnQsIHdyYW5nbGluZyBhbmQgdmlzdWFsaXphdGlvbi4KCmBgYHtyIGxvYWQtcGFja2FnZXMsIHdhcm5pbmc9RkFMU0UsIG1lc3NhZ2U9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCiMjIyBEYXRhCgpUaGUgZGF0YSB3ZSdyZSB1c2luZyB3YXMgZ2VuZXJhdGVkIGJ5IENSVUsgQ0kgc2NpZW50aXN0cyAoW1BhcGFjaHJpc3RvdSBfZXQgYWwuXywgTmF0dXJlIENvbW11bmljYXRpb25zIDk6MjMxMSwgMjAxOF0oaHR0cHM6Ly9wdWJtZWQubmNiaS5ubG0ubmloLmdvdi8yOTg5OTM1MykpLgpJdCBpcyB0aGUgYWJ1bmRhbmNlIG9mIHByb3RlaW5zIGluIGEgYnJlYXN0IGNhbmNlciBjZWxsIGxpbmUgKE1DRi03KSBhdAp2YXJpb3VzIHRpbWUgcG9pbnRzIGFmdGVyIHRyZWF0bWVudCB3aXRoIHRoZSBkcnVnIHRhbW94aWZlbiwgbWVhc3VyZWQgdXNpbmcgbWFzcyBzcGVjdHJvbWV0cnkuIEluIHRoZSBjaHVuayBiZWxvdyB3ZSBpbXBvcnQgdGhlIEV4Y2VsIGZpbGUgY29udGFpbmluZyB0aGUgZGF0YSwgc2tpcHBpbmcgdGhlIGZpcnN0IGhlYWRlciByb3cuCgpgYGB7ciBtZXNzYWdlPUZBTFNFfQpwcm90ZWluX2xldmVscyA8LSByZWFkX2NzdigiaHR0cHM6Ly96ZW5vZG8ub3JnL3JlY29yZC82NDUwMTQ0L2ZpbGVzLzQxNDY3XzIwMThfNDYxOV9NT0VTTTExX0VTTS5jc3YiLCBza2lwID0gMSkKYGBgCgojIyBQcm90ZWluIGxldmVscyBhZnRlciB0cmVhdG1lbnQgd2l0aCB0YW1veGlmZW4KCkxldCdzIGNyZWF0ZSBhIGRhdGEgdmlzdWFsaXNhdGlvbiB0aGF0IGRpc3BsYXlzIHRoZSBsZXZlbHMgZm9yIHByb3RlaW5zIHRoYXQgYXJlIGRlY3JlYXNlZCAobG9nMmZjIDwgLTAuNzUpIGluIHRoZSAyNGggdGFtb3hpZmVuIHRyZWF0ZWQgc2FtcGxlIHZlcnN1cyBjb250cm9sICh2ZWgpLgoKYGBge3IgcGxvdC1wcm90ZWluLWxldmVscywgZmlnLndpZHRoPTEwLCBmaWcuaGVpZ2h0PTYsIG1lc3NhZ2U9RkFMU0V9CnByb3RlaW5fbGV2ZWxzICU+JQogIGZpbHRlcihgbG9nMkZDKDI0aC92ZWgpYCA8IC0wLjc1KSAlPiUKICBzZWxlY3QoYWNjZXNzaW9uID0gYFVuaXByb3QgQWNjZXNzaW9uYCwgZ2VuZSA9IGBHZW5lIE5hbWVgLCB2ZWhpY2xlLnJlcDAxOnRhbS4yNGgucmVwMDQpICU+JQogIHBpdm90X2xvbmdlcih2ZWhpY2xlLnJlcDAxOnRhbS4yNGgucmVwMDQsIG5hbWVzX3RvID0gInNhbXBsZSIsIHZhbHVlc190byA9ICJwcm90ZWluX2xldmVsIikgJT4lCiAgbXV0YXRlKHNhbXBsZSA9IHN0cl9yZXBsYWNlKHNhbXBsZSwgInZlaGljbGUiLCAidmVoaWNsZS4yNGgiKSkgJT4lCiAgc2VwYXJhdGUoc2FtcGxlLCBpbnRvID0gYygidHJlYXRtZW50IiwgInRpbWUiLCAicmVwbGljYXRlIikpICU+JQogIG11dGF0ZShncm91cCA9IHN0cl9zdWIodHJlYXRtZW50LCAxLCAzKSkgJT4lCiAgbXV0YXRlKGdyb3VwID0gc3RyX2MoZ3JvdXAsIHRpbWUpKSAlPiUKICBtdXRhdGUoZ3JvdXAgPSBhc19mYWN0b3IoZ3JvdXApKSAlPiUKICBnZ3Bsb3QobWFwcGluZyA9IGFlcyh4ID0gZ3JvdXAsIHkgPSBwcm90ZWluX2xldmVsLCBmaWxsID0gZ3JvdXApKSArCiAgZ2VvbV9ib3hwbG90KCkgKwogIGdlb21faml0dGVyKHdpZHRoID0gMC4xNSkgKwogIGZhY2V0X3dyYXAodmFycyhnZW5lKSwgc2NhbGVzID0gImZyZWVfeSIsIG5jb2wgPSAzKSArCiAgbGFicygKICAgIHRpdGxlID0gIlByb3RlaW4gbGV2ZWxzIGluIE1DRi03IHRyZWF0ZWQgd2l0aCB0YW1veGlmZW4iLAogICAgeSA9ICJQcm90ZWluIGxldmVsIiwKICAgIHggPSAiIgogICkKYGBgCgoxLiBDbGljayBLbml0IHRvIGdlbmVyYXRlIGEgaHRtbCByZXBvcnQgY29udGFpbmluZyB0aGUgcGxvdC4gIAoyLiBXZSBjYW4gZWFzaWx5IGNoYW5nZSB3aGljaCBwcm90ZWlucyBhcmUgYmVpbmcgcGxvdHRlZCBieSBjaGFuZ2luZyB0aGUgdGhyZXNob2xkIHRoZSBjb2RlIGFib3ZlIGBmaWx0ZXJgcyBmb3IuIFRyeSBjaGFuZ2luZyB0aGUgZmlsdGVyIHRvIGA+IDAuNzVgICB0aGVuIEtuaXQgYWdhaW4uCgojIyBSZWZlcmVuY2VzCgoxLiAgQ2FuY2VyIFJlc2VhcmNoIFVLIENhbWJyaWRnZSBJbnN0aXR1dGUsIFVuaXZlcnNpdHkgb2YgQ2FtYnJpZGdlICJJbnRyb2R1Y3Rpb24gdG8gUiBmb3IgQ2FuY2VyIFNjaWVudGlzdHMiCjIuICBNaW5lIENldGlua2F5YS1SdW5kZWwgIkRhdGEgU2NpZW5jZSBpbiBhIEJveCIgCg==" download="example-report.Rmd">Download example-report.Rmd</a></p>
+<p><a href="data:text/x-markdown;base64,LS0tCnRpdGxlOiAiUHJvdGVpbiBsZXZlbHMgaW4gYnJlYXN0IGNhbmNlciBjZWxscyB0cmVhdGVkIHdpdGggdGFtb3hpZmVuIgphdXRob3I6ICJNYXJpYSBEb3lsZSIKb3V0cHV0OiBodG1sX2RvY3VtZW50Ci0tLQoKIyMgSW50cm9kdWN0aW9uCgpXaGljaCBwcm90ZWlucyBjaGFuZ2UgaW4gYWJ1bmRhbmNlIGluIHRoZSBicmVhc3QgY2FuY2VyIGNlbGwgbGluZSwgTUNGLTcsIHdpdGggdGFtb3hpZmVuIHRyZWF0bWVudD8gSG93IGRvIHRoZWlyIGxldmVscyBjaGFuZ2Ugd2l0aCB0cmVhdG1lbnQgdGltZT8gQW5zd2VyaW5nIHRoZXNlIHF1ZXN0aW9ucyAoYXQgYSBoaWdoIGxldmVsKSBpcyB0aGUgZm9jdXMgb2YgdGhpcyBhbmFseXNpcy4KCiMjIyBQYWNrYWdlcwoKV2Ugd2lsbCB1c2UgdGhlICoqdGlkeXZlcnNlKiogY29sbGVjdGlvbiBvZiBwYWNrYWdlcyBmb3IgZGF0YSBpbXBvcnQsIHdyYW5nbGluZyBhbmQgdmlzdWFsaXphdGlvbi4KCmBgYHtyIGxvYWQtcGFja2FnZXMsIHdhcm5pbmc9RkFMU0UsIG1lc3NhZ2U9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCiMjIyBEYXRhCgpUaGUgZGF0YSB3ZSdyZSB1c2luZyB3YXMgZ2VuZXJhdGVkIGJ5IENSVUsgQ0kgc2NpZW50aXN0cyAoW1BhcGFjaHJpc3RvdSBfZXQgYWwuXywgTmF0dXJlIENvbW11bmljYXRpb25zIDk6MjMxMSwgMjAxOF0oaHR0cHM6Ly9wdWJtZWQubmNiaS5ubG0ubmloLmdvdi8yOTg5OTM1MykpLgpJdCBpcyB0aGUgYWJ1bmRhbmNlIG9mIHByb3RlaW5zIGluIGEgYnJlYXN0IGNhbmNlciBjZWxsIGxpbmUgKE1DRi03KSBhdAp2YXJpb3VzIHRpbWUgcG9pbnRzIGFmdGVyIHRyZWF0bWVudCB3aXRoIHRoZSBkcnVnIHRhbW94aWZlbiwgbWVhc3VyZWQgdXNpbmcgbWFzcyBzcGVjdHJvbWV0cnkuIEluIHRoZSBjaHVuayBiZWxvdyB3ZSBpbXBvcnQgdGhlIENTViBmaWxlIGNvbnRhaW5pbmcgdGhlIGRhdGEsIHNraXBwaW5nIHRoZSBmaXJzdCBoZWFkZXIgcm93LgoKYGBge3IgbWVzc2FnZT1GQUxTRX0KcHJvdGVpbl9sZXZlbHMgPC0gcmVhZF9jc3YoImh0dHBzOi8vemVub2RvLm9yZy9yZWNvcmQvNjQ1MDE0NC9maWxlcy80MTQ2N18yMDE4XzQ2MTlfTU9FU00xMV9FU00uY3N2Iiwgc2tpcCA9IDEpCmBgYAoKIyMgUHJvdGVpbiBsZXZlbHMgYWZ0ZXIgdHJlYXRtZW50IHdpdGggdGFtb3hpZmVuCgpMZXQncyBjcmVhdGUgYSBkYXRhIHZpc3VhbGlzYXRpb24gdGhhdCBkaXNwbGF5cyB0aGUgbGV2ZWxzIGZvciBwcm90ZWlucyB0aGF0IGFyZSBkZWNyZWFzZWQgKGxvZzJmYyA8IC0wLjc1KSBpbiB0aGUgMjRoIHRhbW94aWZlbiB0cmVhdGVkIHNhbXBsZSB2ZXJzdXMgY29udHJvbCAodmVoKS4KCmBgYHtyIHBsb3QtcHJvdGVpbi1sZXZlbHMsIGZpZy53aWR0aD0xMCwgZmlnLmhlaWdodD02LCBtZXNzYWdlPUZBTFNFfQpwcm90ZWluX2xldmVscyAlPiUKICBmaWx0ZXIoYGxvZzJGQygyNGgvdmVoKWAgPCAtMC43NSkgJT4lCiAgc2VsZWN0KGFjY2Vzc2lvbiA9IGBVbmlwcm90IEFjY2Vzc2lvbmAsIGdlbmUgPSBgR2VuZSBOYW1lYCwgdmVoaWNsZS5yZXAwMTp0YW0uMjRoLnJlcDA0KSAlPiUKICBwaXZvdF9sb25nZXIodmVoaWNsZS5yZXAwMTp0YW0uMjRoLnJlcDA0LCBuYW1lc190byA9ICJzYW1wbGUiLCB2YWx1ZXNfdG8gPSAicHJvdGVpbl9sZXZlbCIpICU+JQogIG11dGF0ZShzYW1wbGUgPSBzdHJfcmVwbGFjZShzYW1wbGUsICJ2ZWhpY2xlIiwgInZlaGljbGUuMjRoIikpICU+JQogIHNlcGFyYXRlKHNhbXBsZSwgaW50byA9IGMoInRyZWF0bWVudCIsICJ0aW1lIiwgInJlcGxpY2F0ZSIpKSAlPiUKICBtdXRhdGUoZ3JvdXAgPSBzdHJfc3ViKHRyZWF0bWVudCwgMSwgMykpICU+JQogIG11dGF0ZShncm91cCA9IHN0cl9jKGdyb3VwLCB0aW1lKSkgJT4lCiAgbXV0YXRlKGdyb3VwID0gYXNfZmFjdG9yKGdyb3VwKSkgJT4lCiAgZ2dwbG90KG1hcHBpbmcgPSBhZXMoeCA9IGdyb3VwLCB5ID0gcHJvdGVpbl9sZXZlbCwgZmlsbCA9IGdyb3VwKSkgKwogIGdlb21fYm94cGxvdCgpICsKICBnZW9tX2ppdHRlcih3aWR0aCA9IDAuMTUpICsKICBmYWNldF93cmFwKHZhcnMoZ2VuZSksIHNjYWxlcyA9ICJmcmVlX3kiLCBuY29sID0gMykgKwogIGxhYnMoCiAgICB0aXRsZSA9ICJQcm90ZWluIGxldmVscyBpbiBNQ0YtNyB0cmVhdGVkIHdpdGggdGFtb3hpZmVuIiwKICAgIHkgPSAiUHJvdGVpbiBsZXZlbCIsCiAgICB4ID0gIiIKICApCmBgYAoKMS4gQ2xpY2sgS25pdCB0byBnZW5lcmF0ZSBhIGh0bWwgcmVwb3J0IGNvbnRhaW5pbmcgdGhlIHBsb3QuICAKMi4gV2UgY2FuIGVhc2lseSBjaGFuZ2Ugd2hpY2ggcHJvdGVpbnMgYXJlIGJlaW5nIHBsb3R0ZWQgYnkgY2hhbmdpbmcgdGhlIHRocmVzaG9sZCB0aGUgY29kZSBhYm92ZSBgZmlsdGVyYHMgZm9yLiBUcnkgY2hhbmdpbmcgdGhlIGZpbHRlciB0byBgPiAwLjc1YCAgdGhlbiBLbml0IGFnYWluLgoKIyMgUmVmZXJlbmNlcwoKMS4gIENhbmNlciBSZXNlYXJjaCBVSyBDYW1icmlkZ2UgSW5zdGl0dXRlLCBVbml2ZXJzaXR5IG9mIENhbWJyaWRnZSAiSW50cm9kdWN0aW9uIHRvIFIgZm9yIENhbmNlciBTY2llbnRpc3RzIgoyLiAgTWluZSBDZXRpbmtheWEtUnVuZGVsICJEYXRhIFNjaWVuY2UgaW4gYSBCb3giIAo=" download="example-report.Rmd">Download example-report.Rmd</a></p>
 <ul>
-<li>Download the example report file in the link above</li>
-<li>In your RStudio top menu go to File &gt; Open File and open the
-example report file</li>
-<li>Click the Knit button to generate the report</li>
-<li>Try out the exercise to edit the file.</li>
+<li>Download the example report (Rmd) file from the link above</li>
+<li>In your RStudio top menu go to File &gt; Open File and open the Rmd
+file</li>
+<li>Click the Knit button and inspect the report in the Viewer pane (see
+below)</li>
+<li>Try out the exercise in the Rmd file to edit the file. Knit again to
+see the changes in the report.</li>
 </ul>
-<p>Next we’ll explain some of the things you can see in the file.</p>
-<hr>
-</div>
-<div class="section level2">
-<h2 id="packages">Packages<a class="anchor" aria-label="anchor" href="#packages"></a>
-</h2>
+<p><img src="images/rmarkdown.png" width="100%"></p>
+<p>As described in the <a href="https://r4ds.had.co.nz/r-markdown.html" class="external-link">R for Data Science
+book</a>, an R Markdown, or .Rmd, document contains three types of
+content:</p>
+<ul>
+<li>An (optional) YAML header surrounded by <code>---</code>.</li>
+<li>Chunks of R code surrounded by <code>```</code>.</li>
+<li>Text mixed with simple text formatting like <code># heading</code>
+and <code>**bold**</code>.</li>
+</ul>
+<p>When you open an .Rmd, you get a notebook interface where code and
+output are interleaved. You can run each code chunk by clicking the Run
+icon (it looks like a play button at the top of the chunk), or by
+pressing Cmd/Ctrl + Shift + Enter. RStudio executes the code and
+displays the results inline with the code. When you knit the document, R
+Markdown executes all of the code chunks and creates a document
+(whichever you specify: HTML/PDF/Word) which includes the code and its
+output. Here a HTML file will be generated in the folder where you have
+the example_report.Rmd file. To create an R Markdown file in RStudio you
+can use File &gt; New File &gt; R Markdown.</p>
+<p>Next we’ll play around with the example R Markdown file some more and
+explain some of the things you can see in it.</p>
+<div class="section level3">
+<h3 id="packages">Packages<a class="anchor" aria-label="anchor" href="#packages"></a>
+</h3>
 <p>There are thousands of R packages that extend R’s core functionality
 to provide specialized functions for doing all kinds of things. There
 are R packages that provide various kinds of visualizations and plotting
@@ -276,12 +336,13 @@ transcriptomic analysis methods.</p>
 <p>You need to load a package using the
 <strong><code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code></strong> function in order to be able to
 use the functions and data sets that the package provides. We can load
-the core tidyverse packages in one go as follows.</p>
+the core tidyverse packages in one go, as you can see in the
+example_report.Rmd, as follows.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## ── <span style="font-weight: bold;">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.1 ──</span></code></pre>
-<pre><code><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2</span> 3.3.5     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr  </span> 0.3.4</span>
-<span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble </span> 3.1.6     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr  </span> 1.0.8</span>
+<pre><code><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2</span> 3.3.6     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr  </span> 0.3.4</span>
+<span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble </span> 3.1.7     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr  </span> 1.0.9</span>
 <span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr  </span> 1.2.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr</span> 1.4.0</span>
 <span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr  </span> 2.1.2     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats</span> 0.5.1</span></code></pre>
 <pre><code><span class="co">## ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span>
@@ -299,9 +360,9 @@ started our R session, and the functions referred to in the warning are
 now masked; to use these instead of their <code>dplyr</code> namesakes
 you need to specify them fully by adding the package name and
 <code>::</code> as shown in the warning message.</p>
-<div class="section level3">
-<h3 id="installing-packages">Installing packages<a class="anchor" aria-label="anchor" href="#installing-packages"></a>
-</h3>
+<div class="section level4">
+<h4 id="installing-packages">Installing packages<a class="anchor" aria-label="anchor" href="#installing-packages"></a>
+</h4>
 <p>If you got the following error message when trying to load the
 tidyverse, then you haven’t yet installed it.</p>
 <pre><code>&gt; library(tidyverse)
@@ -325,6 +386,7 @@ C compiler installed on your computer.</p>
 <hr>
 </div>
 </div>
+</div>
 <div class="section level2">
 <h2 id="importing-data-into-r">Importing data into R<a class="anchor" aria-label="anchor" href="#importing-data-into-r"></a>
 </h2>
@@ -342,6 +404,11 @@ al.</em>, Nature Communications 7:11479, 2016</a>).</p>
 <p>This file contains information in tabular form in which values are
 separated by tab characters so we’ll use the
 <strong><code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv()</a></code></strong> to read these data.</p>
+<p>Create a new chunk in the Rmd file you downloaded above. You can
+insert an R code chunk either using the RStudio toolbar (the Insert
+button) or the keyboard shortcut Ctrl + Alt + I (Cmd + Option + I on
+macOS). Copy/paste the line of code below into the chunk and then click
+the chunk’s Run button.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/brca_metabric_clinical_data.tsv"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">2509</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">20</span></span>
@@ -356,7 +423,10 @@ separated by tab characters so we’ll use the
 has assigned to each of the columns it has read, although in this case
 the table has quite a lot of columns and it only outputs details about
 the first few.</p>
-<p>If we print the clinical data set we can see that
+<p>To try out the rest of the code shown in this document below, for
+each line or code section, insert a chunk, copy/paste or type the
+commands and Run.</p>
+<p>Run the line below to print the clinical data set. We can see that
 <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv()</a></code> created a tibble.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span></code></pre></div>
@@ -399,6 +469,10 @@ what the column types are.
 </p>
 <p>
 patients &lt;- read_csv(“patients.csv”)
+</p>
+<p>
+To export a CSV or TSV file from R you can use <code><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv()</a></code>
+or <code><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_tsv()</a></code>.
 </p>
 </div>
 <p>We are now in a position to explore these data. We can see all column
@@ -646,7 +720,9 @@ built-in <strong><code><a href="https://rdrr.io/r/base/summary.html" class="exte
 <span class="co">##   1.000   3.000   5.000   5.579   7.000  80.000     152</span></code></pre>
 <p>Note that several of the column names have multiple words separated
 by spaces. We have to use backticks ( <strong>`</strong> ) to refer to
-column names such as these.</p>
+column names such as these. Tip: if you have lots of columns with spaces
+or special characters you could use the popular janitor package’s <a href="https://albert-rapp.de/post/2022-01-12-janitor-showcase/" class="external-link">clean_names</a>
+function to format the column names in a nicer way.</p>
 <p>We can create a scatter plot to see if there is any relationship
 between the age of the patient at diagnosis of breast cancer and the
 Nottingham prognostic index (whatever that is) using R’s built-in
@@ -657,47 +733,7 @@ Nottingham prognostic index (whatever that is) using R’s built-in
 <p><img src="week1_files/figure-html/metabric_plot-1.png" width="700"></p>
 <p>Hmm, what a horrible looking plot. Thank goodness we’re moving on to
 <strong><code>ggplot2</code></strong> next week.</p>
-<div class="section level3">
-<h3 id="working-directory">Working directory<a class="anchor" aria-label="anchor" href="#working-directory"></a>
-</h3>
-<p>When importing the METABRIC dataset we specified the file using a URL
-<code>https://zenodo.org/record/6450144/files/brca_metabric_clinical_data.tsv</code>
-as it’s located on the web. If you have a file on your computer you can
-specify the path to where it is located. For example, if we paste the
-URL above into our web browser we can download the file and then import
-it.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># assumes file is in our Downloads folder, "~" means our home directory e.g./home/maria</span>
-<span class="va">metabric_downloaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"~/Downloads/brca_metabric_clinical_data.tsv"</span><span class="op">)</span></code></pre></div>
-<p>The <strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code></strong> function will tell you what
-the current working directory is.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>If you open RStudio by clicking on its icon in the task bar or its
-entry in the start menu, your working directory will probably be your
-home folder.</p>
-<p>You can specify a full path for the file you want to read, which is
-also known as an absolute path.</p>
-<p>You can explicitly set your working directory using
-<strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code></strong>.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">"/Users/matt/projects/20200116_JB_amplicon_sequencing"</span><span class="op">)</span></code></pre></div>
-<p>If you’re working with an R Markdown report (Rmd file) your working
-directory will be the directory in which the report is located. In this
-case you will probably want to read files from locations that are
-relative to the directory in which you run the report.</p>
-<p>If you’re writing an R report in RStudio, you can set the working
-directory to be the same directory as that which contains your file
-using the menu: <strong>Session &gt; Set Working Directory &gt; To
-Source File Location</strong>. You can also navigate to the directory of
-your choosing in the Files tab pane and set this to be the working
-directory by clicking on the <strong>More</strong> menu button and
-selecting <strong>Set As Working Directory</strong>.</p>
-<p>Alternatively (and better) you can create an RStudio Project (File
-&gt; New Project) as described <a href="https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects" class="external-link">here</a>
-to automatically keep track of and set the working directory.</p>
 <hr>
-</div>
 </div>
 <div class="section level2">
 <h2 id="missing-values">Missing values<a class="anchor" aria-label="anchor" href="#missing-values"></a>
@@ -707,7 +743,7 @@ back to the table we printed out earlier you can see 2 missing values
 for mutation counts within the first 10 rows. We can specify rows of a
 column to view with
 <strong><code>[firstrow:lastrow]</code></strong>.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></code></pre></div>
 <pre><code><span class="co">##  [1] NA  2  2  1  2  4  4 NA  1  5</span></code></pre>
 <div class="rmdblock">
@@ -724,7 +760,7 @@ missing mutation counts. <code><a href="https://rdrr.io/r/base/summary.html" cla
 median values for the remaining observations, i.e. those for which a
 mutation count <em>is</em> available. Not all functions do this
 though.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] NA</span></code></pre>
 <p>The <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code> function, for example, takes a different
@@ -734,29 +770,70 @@ mean for a set of values where some are not available. You can specify
 the argument <code>na.rm = TRUE</code> when calling <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code>
 to instruct it to ignore the missing values and calculate the mean of
 the remaining values.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 5.578702</span></code></pre>
 <p>There are many such functions in R that would be similarly affected
 by missing values and which offer the <code>na.rm</code> argument.</p>
 <p>You can test for missing values using the <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>
 function.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">first_ten_mutation_counts</span> <span class="op">&lt;-</span> <span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">first_ten_mutation_counts</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</span></code></pre>
 <p>One final handy tip: summing the result of <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> will
-count the number of missing values in a vector. If you don’t recall what
-a vector is, <a href="https://r4ds.had.co.nz/vectors.html" class="external-link">see
+count the number of missing values in a vector. If you don’t know what a
+vector is, <a href="https://r4ds.had.co.nz/vectors.html" class="external-link">see
 here</a>.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">`Mutation Count`</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 152</span></code></pre>
 <p>Can you see why this works? <em>(hint: look at the output of
-<code>is.na(metabric$</code>Mutation Count<code>)</code>, use
-’<code><a href="https://rdrr.io/r/base/sum.html" class="external-link">?sum</a></code> to check what kind of vector <code><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum()</a></code>
-expects and how it handles logical values)</em>.</p>
+<code>is.na(metabric$</code>Mutation Count<code>)</code>, use the help
+page which you can get by typing ’<code><a href="https://rdrr.io/r/base/sum.html" class="external-link">?sum</a></code> to check what kind
+of vector <code><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum()</a></code> expects and how it handles logical
+values)</em>.</p>
+<div class="section level3">
+<h3 id="working-directory">Working directory<a class="anchor" aria-label="anchor" href="#working-directory"></a>
+</h3>
+<p>By default, R looks for (and saves) files in the working directory.
+When importing the METABRIC dataset we specified where the file was
+located using a URL
+<code>https://zenodo.org/record/6450144/files/brca_metabric_clinical_data.tsv</code>
+as it’s located on the web. If you have a file on your computer you can
+specify the path to where it is located. For example, if we paste the
+URL above into our web browser to download the file we can then import
+it from our computer using the absolute path, which starts with
+<code>/</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric_downloaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"/Users/doylemaria/Downloads/brca_metabric_clinical_data.tsv"</span><span class="op">)</span></code></pre></div>
+<p>Or if we were working inside the Downloads directory we could use the
+relative path.</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric_downloaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_tsv</a></span><span class="op">(</span><span class="st">"brca_metabric_clinical_data.tsv"</span><span class="op">)</span></code></pre></div>
+<p>The <strong><code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code></strong> function will tell you what
+the current working directory is.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>If you open RStudio by clicking on its icon in the task bar or its
+entry in the start menu, your working directory will probably be your
+home folder. You can explicitly set your working directory using
+<strong><code>setwd("/path/to/your/working/directory")</code></strong>
+(or in the RStudio Files pane More &gt; Set As Working Directory).
+However, the path will be specific to your computer and won’t work if
+you have it in a script that you share with someone else.</p>
+<p>Alternatively (and better) you can create an RStudio Project as
+described in more detail <a href="https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects" class="external-link">here</a>
+to keep track of and set the working directory.</p>
+<p>Create an RStudio project for this course (File &gt; New Project &gt;
+New Directory &gt; Project Type: New Project &gt; Name: r-skills-course)
+and store your files (assignment Rmds etc) from the course in that
+r-skills-course folder. When you want to open the project, in RStudio
+menu you can use File &gt; Open Project or click on the .Rproj file.
+This will automatically set the working directory to where the .Rproj
+file is located.</p>
 <hr>
+</div>
 </div>
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
@@ -765,20 +842,17 @@ expects and how it handles logical values)</em>.</p>
 <ul>
 <li>The RStudio environment and the functions associated with each
 pane</li>
-<li>Generating a visualisation and report using R</li>
-<li>How to install and use packages that extend R’s basic
-functionality</li>
+<li>Generating a visualisation and R Markdown report</li>
 <li>How to read tabular data into R</li>
 <li>Missing values and how R handles these</li>
 </ul>
-<hr>
 </div>
 <div class="section level2">
 <h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
 </h2>
 <p>This week’s assignment and the subsequent weeks’ assignments are in R
 Markdown files that you can use to practice working with reports.</p>
-<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMSIKLS0tCgoKIyMjIFdvcmtpbmcgd2l0aCBkYXRhIGZyb20gYW4gRXhjZWwgc3ByZWFkc2hlZXQKCioqUmVhZCBpbnRvIFIgb25lIG9mIHlvdXIgb3duIEV4Y2VsIHNwcmVhZHNoZWV0cyBhbmQgZXhwbG9yZSB0aGUgZGF0YSB1c2luZyBgc3VtbWFyeSgpYCwgYHRhYmxlKClgIGFuZC9vciBgcGxvdCgpYCoqCgpXZSBoYXZlbid0IHlldCBzaG93ZWQgaG93IHRvIHJlYWQgRXhjZWwgc3ByZWFkc2hlZXRzIGludG8gUi4gVGhlcmUgYXJlIHNldmVyYWwgcGFja2FnZSBwcm92aWRpbmcgdGhpcyBjYXBhYmlsaXR5IGJ1dCBmb3IgdGhpcyBleGVyY2lzZSB1c2UgdGhlIGByZWFkeGxgIHBhY2thZ2UKZnJvbSB0aGUgdGlkeXZlcnNlLgoKYHJlYWR4bGAgc2hvdWxkIGhhdmUgYmVlbiBpbnN0YWxsZWQgYXMgcGFydCBvZiB0aGUgdGlkeXZlcnNlIGJ1dCBpZiB5b3UgZmluZAp0aGF0J3Mgbm90IHRoZSBjYXNlLCB5b3Ugd2lsbCBoYXZlIHRvIGluc3RhbGwgaXQgc2VwYXJhdGVseS4KCmByZWFkeGxgIGlzIG5vdCBsb2FkZWQgYXMgb25lIG9mIHRoZSBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyB3aGVuIHlvdSBydW4KYGxpYnJhcnkodGlkeXZlcnNlKWAgc28geW91J2xsIGhhdmUgdG8gbG9hZCB0aGlzIHNlcGFyYXRlbHkuCgpJZiB5b3UgZG9uJ3QgaGF2ZSBhbiBFeGNlbCBzcHJlYWRzaGVldCB0byBoYW5kLCB5b3UgY2FuIHVzZSB0aGUgY2xpbmljYWwKYW5ub3RhdGlvbiBkYXRhIGZvciB0aGUgTkNJLTYwIGNlbGwgbGluZSBkYXRhIHNldCAoaHR0cHM6Ly9iaW9pbmZvcm1hdGljcy1jb3JlLXNoYXJlZC10cmFpbmluZy5naXRodWIuaW8vci1pbnRyby9kYXRhL2NlbGxsaW5lX25jaTYwX2NsaW5pY2FsX2RhdGEueGxzeCkuCgpgYGB7cn0KCmBgYAoKLS0tCgojIyMgQ3JlYXRlIGEgcmVwb3J0IGZvciB5b3VyIGFzc2lnbm1lbnQKCkNsaWNrIG9uIHRoZSAnS25pdCcgbWVudSBhdCB0aGUgdG9wIG9mIHRoaXMgZmlsZSBhbmQgc2VsZWN0IGVpdGhlciB3aGljaGV2ZXIKb3B0aW9uIHlvdSBwcmVmZXIgdG8gY3JlYXRlIGFuIEhUTUwsIFBERiBvciBXb3JkIGRvY3VtZW50IHZlcnNpb24gb2YgeW91cgphc3NpZ25tZW50LiBUaGlzIHdpbGwgcnVuIGFsbCB0aGUgY29kZSBjaHVua3MgYW5kICJrbml0IiB0aGUgcmVzdWx0aW5nCnJlc3VsdHMgd2l0aCB0aGUgc3Vycm91bmRpbmcgdGV4dCB0byBwcm9kdWNlIGEgcmVwb3J0LgoKIyMjIyBBZGRpdGlvbmFsIG1hcmtkb3duIGZlYXR1cmVzCgoqKl9FbXBoYXNpc18qKgoKQ2FuIHVzZSBlaXRoZXIgdW5kZXJzY29yZXMgb3IgYXN0ZXJpc2tzIGFuZCBjb21iaW5hdGlvbiBvZiBib3RoIGZvciBib3RoIGJvbGQKYW5kIGl0YWxpYyBlbXBoYXNpcy4KCmBgYAoqaXRhbGljKiAgICoqYm9sZCoqCl9pdGFsaWNfICAgX19ib2xkX18KYGBgCgoqKl9JbmxpbmUgQ29kZV8qKgoKVXNlIG9mIGJhY2t0aWNrcyAoYCkuCgpgYGAKYG1lYW4oc3RhcndhciRoZWlnaHQpYApgYGAKCioqX0hvcml6b250YWwgUnVsZV8qKgoKVGhyZWUgb2YgbW9yZSBhc3Rlcmlza3Mgb3IgZGFzaGVzLgoKYGBgCioqKioqKioKCi0tLS0tLS0KYGBgCgoqKl9QbGFpbiBDb2RlIEJsb2Nrc18qKgoKUGxhaW4gY29kZSBibG9ja3MgYXJlIGRpc3BsYXllZCBpbiBhIGZpeGVkLXdpZHRoIGZvbnQgYnV0IG5vdCBldmFsdWF0ZWQuCgpgYGAKVGhpcyB0ZXh0IGlzIGRpc3BsYXllZCB2ZXJiYXRpbSAvIHByZWZvcm1hdHRlZApgYGAKCkhhdmUgYSBsb29rIGF0IGV4YW1wbGVzIG9mIHRoZXNlIGluIHRoZSB0ZXh0IHBhcnRzIG9mIHRoaXMgUiBtYXJrZG93biBkb2N1bWVudAphbmQgaG93IHRoZXNlIGFyZSByZW5kZXJlZCB3aGVuIHlvdSBydW4gdGhlIGtuaXQgb3BlcmF0aW9uLgoKRm9yIG1vcmUgZmVhdHVyZXMsIHNlZSB0aGUgaGVscCBwYWdlIGluIFJTdHVkaW8gdGhhdCBjYW4gYmUgYWNjZXNzZWQgZnJvbSB0aGUKdGhlIGhlbHAgbWVudTogKipIZWxwID4gTWFya2Rvd24gUXVpY2sgUmVmZXJlbmNlKioKCi0tLQoKIyMjIEFkdmFuY2VkOiBDbGluaWNhbCBjYW5jZXIgZGF0YQoKKipIb3cgbWFueSBzYW1wbGVzIGluIHRoZSBNRVRBQlJJQyBkYXRhc2V0IGhhdmUgaGlnaCBjZWxsdWxhcml0eSBidXQgaGF2ZSBubyByZWNvcmRlZCBjbGFzc2lmaWNhdGlvbiB3aXRoIHRoZSAzLWdlbmUgY2xhc3NpZmllcj8qKgoKYGBge3J9CgpgYGAKCipIaW50OiogdGhpcyBpcyBhY3R1YWxseSBxdWl0ZSB0cmlja3kgLS0geW91IG1heSB3YW50IHRvIGNoZWNrIGZvciBtaXNzaW5nCnZhbHVlcyBpbiB0aGUgY2VsbHVsYXJpdHkgY29sdW1uIGFzIHdlbGwgYXMgdGhlIGNvbHVtbiBmb3IgdGhlIDMtZ2VuZQpjbGFzc2lmaWVyLgoKLS0tCg==" download="assignment1.Rmd">Download assignment1.Rmd</a></p>
+<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMSIKLS0tCgoKIyMjIFdvcmtpbmcgd2l0aCBkYXRhIGZyb20gYW4gRXhjZWwgc3ByZWFkc2hlZXQKCioqUmVhZCBpbnRvIFIgb25lIG9mIHlvdXIgb3duIEV4Y2VsIHNwcmVhZHNoZWV0cyBhbmQgZXhwbG9yZSB0aGUgZGF0YSB1c2luZyBgc3VtbWFyeSgpYCwgYHRhYmxlKClgIGFuZC9vciBgcGxvdCgpYCoqCgpXZSBoYXZlbid0IHlldCBzaG93ZWQgaG93IHRvIHJlYWQgRXhjZWwgc3ByZWFkc2hlZXRzIGludG8gUi4gVGhlcmUgYXJlIHNldmVyYWwgcGFja2FnZSBwcm92aWRpbmcgdGhpcyBjYXBhYmlsaXR5IGJ1dCBmb3IgdGhpcyBleGVyY2lzZSB1c2UgdGhlIGByZWFkeGxgIHBhY2thZ2UKZnJvbSB0aGUgdGlkeXZlcnNlLgoKYHJlYWR4bGAgc2hvdWxkIGhhdmUgYmVlbiBpbnN0YWxsZWQgYXMgcGFydCBvZiB0aGUgdGlkeXZlcnNlIGJ1dCBpZiB5b3UgZmluZAp0aGF0J3Mgbm90IHRoZSBjYXNlLCB5b3Ugd2lsbCBoYXZlIHRvIGluc3RhbGwgaXQgc2VwYXJhdGVseS4KCmByZWFkeGxgIGlzIG5vdCBsb2FkZWQgYXMgb25lIG9mIHRoZSBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyB3aGVuIHlvdSBydW4KYGxpYnJhcnkodGlkeXZlcnNlKWAgc28geW91J2xsIGhhdmUgdG8gbG9hZCB0aGlzIHNlcGFyYXRlbHkuCgpJZiB5b3UgZG9uJ3QgaGF2ZSBhbiBFeGNlbCBzcHJlYWRzaGVldCB0byBoYW5kLCB5b3UgY2FuIHVzZSB0aGUgY2xpbmljYWwKYW5ub3RhdGlvbiBkYXRhIGZvciB0aGUgTkNJLTYwIGNlbGwgbGluZSBkYXRhIHNldCAoaHR0cHM6Ly9iaW9pbmZvcm1hdGljcy1jb3JlLXNoYXJlZC10cmFpbmluZy5naXRodWIuaW8vci1pbnRyby9kYXRhL2NlbGxsaW5lX25jaTYwX2NsaW5pY2FsX2RhdGEueGxzeCkuCgpgYGB7cn0KCmBgYAoKLS0tCgojIyMgQ3JlYXRlIGEgcmVwb3J0IGZvciB5b3VyIGFzc2lnbm1lbnQKCkNsaWNrIG9uIHRoZSAnS25pdCcgbWVudSBhdCB0aGUgdG9wIG9mIHRoaXMgZmlsZSBhbmQgc2VsZWN0IGVpdGhlciB3aGljaGV2ZXIKb3B0aW9uIHlvdSBwcmVmZXIgdG8gY3JlYXRlIGFuIEhUTUwsIFBERiBvciBXb3JkIGRvY3VtZW50IHZlcnNpb24gb2YgeW91cgphc3NpZ25tZW50LiBUaGlzIHdpbGwgcnVuIGFsbCB0aGUgY29kZSBjaHVua3MgYW5kICJrbml0IiB0aGUgcmVzdWx0aW5nCnJlc3VsdHMgd2l0aCB0aGUgc3Vycm91bmRpbmcgdGV4dCB0byBwcm9kdWNlIGEgcmVwb3J0LgoKIyMjIyBBZGRpdGlvbmFsIG1hcmtkb3duIGZlYXR1cmVzCgoqKl9FbXBoYXNpc18qKgoKQ2FuIHVzZSBlaXRoZXIgdW5kZXJzY29yZXMgb3IgYXN0ZXJpc2tzIGFuZCBjb21iaW5hdGlvbiBvZiBib3RoIGZvciBib3RoIGJvbGQKYW5kIGl0YWxpYyBlbXBoYXNpcy4KCmBgYAoqaXRhbGljKiAgICoqYm9sZCoqCl9pdGFsaWNfICAgX19ib2xkX18KYGBgCgoqKl9JbmxpbmUgQ29kZV8qKgoKVXNlIG9mIGJhY2t0aWNrcyAoYCkuCgpgYGAKYG1lYW4oc3RhcndhciRoZWlnaHQpYApgYGAKCioqX0hvcml6b250YWwgUnVsZV8qKgoKVGhyZWUgb2YgbW9yZSBhc3Rlcmlza3Mgb3IgZGFzaGVzLgoKYGBgCioqKioqKioKCi0tLS0tLS0KYGBgCgoqKl9QbGFpbiBDb2RlIEJsb2Nrc18qKgoKUGxhaW4gY29kZSBibG9ja3MgYXJlIGRpc3BsYXllZCBpbiBhIGZpeGVkLXdpZHRoIGZvbnQgYnV0IG5vdCBldmFsdWF0ZWQuCgpgYGAKVGhpcyB0ZXh0IGlzIGRpc3BsYXllZCB2ZXJiYXRpbSAvIHByZWZvcm1hdHRlZApgYGAKCkhhdmUgYSBsb29rIGF0IGV4YW1wbGVzIG9mIHRoZXNlIGluIHRoZSB0ZXh0IHBhcnRzIG9mIHRoaXMgUiBtYXJrZG93biBkb2N1bWVudAphbmQgaG93IHRoZXNlIGFyZSByZW5kZXJlZCB3aGVuIHlvdSBydW4gdGhlIGtuaXQgb3BlcmF0aW9uLgoKRm9yIG1vcmUgZmVhdHVyZXMsIHNlZSB0aGUgaGVscCBwYWdlIGluIFJTdHVkaW8gdGhhdCBjYW4gYmUgYWNjZXNzZWQgZnJvbSB0aGUKdGhlIGhlbHAgbWVudTogKipIZWxwID4gTWFya2Rvd24gUXVpY2sgUmVmZXJlbmNlKiouCgo=" download="assignment1.Rmd">Download assignment1.Rmd</a></p>
 </div>
   </div>
 
@@ -799,8 +873,7 @@ Markdown files that you can use to practice working with reports.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

@@ -11,7 +11,8 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Session 2 -- Visualizing tabular data with ggplot2">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Session 2 -- Visualizing tabular data with ggplot2">
 <meta property="og:description" content="R4CancerSci">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -66,7 +67,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/mblue9/Bite-size-R-v2" class="external-link">
+  <a href="https://github.com/pmacdasci/R4CancerSci" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -88,7 +89,7 @@
 ggplot2</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/mblue9/Bite-size-R-v2/blob/HEAD/vignettes/week2.Rmd" class="external-link"><code>vignettes/week2.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/R4CancerSci/R4CancerSci/blob/HEAD/vignettes/week2.Rmd" class="external-link"><code>vignettes/week2.Rmd</code></a></small>
       <div class="hidden name"><code>week2.Rmd</code></div>
 
     </div>
@@ -104,6 +105,11 @@ plots, box plots and histograms</li>
 <li>Learn about how R handles categorical data</li>
 </ul>
 </blockquote>
+<div class="rmdblock">
+<p>
+A video that goes through this session’s material can be found <a href="https://www.youtube.com/watch?v=pVkdTcrCj9M" class="external-link">here</a>.
+</p>
+</div>
 <div class="section level2">
 <h2 id="visualizing-data-with-ggplot2">Visualizing data with ggplot2<a class="anchor" aria-label="anchor" href="#visualizing-data-with-ggplot2"></a>
 </h2>
@@ -545,12 +551,179 @@ expression differs between HER2 positive and negative tumours.</p>
 <p><img src="week2_files/figure-html/box_plot_5-1.png" width="700"></p>
 </div>
 <div class="section level2">
-<h2 id="time-series-data">Time series data<a class="anchor" aria-label="anchor" href="#time-series-data"></a>
+<h2 id="histograms">Histograms<a class="anchor" aria-label="anchor" href="#histograms"></a>
 </h2>
-<p>The next type of plot we’re going to look at is a <strong>line
-plot</strong>. Line plots are a common visualization for time series
-data but we don’t have data of this kind in the METABRIC data set so
-we’ll turn our attention to a more topical data set.</p>
+<p>The geom for creating histograms is, rather unsurprisingly,
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram()</a></code>.</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre>
+<p><img src="week2_files/figure-html/histogram_plot_1-1.png" width="700"></p>
+<p>The warning message hints at picking a more optimal number of bins by
+specifying the <code>binwidth</code> argument.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<p><img src="week2_files/figure-html/histogram_plot_2-1.png" width="700"></p>
+<p>Or we can set the number of bins.</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
+<p><img src="week2_files/figure-html/histogram_plot_3-1.png" width="700"></p>
+<p>These histograms are not very pleasing, aesthetically speaking - how
+about some better aesthetics?</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">20</span>, colour <span class="op">=</span> <span class="st">"darkblue"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span></code></pre></div>
+<p><img src="week2_files/figure-html/histogram_plot_4-1.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="categorical-variables-factors">Categorical variables – factors<a class="anchor" aria-label="anchor" href="#categorical-variables-factors"></a>
+</h2>
+<p>Several of the variables in the METABRIC data set are categorical,
+i.e. they can take one of a limited set of values. Some of these have
+been read into R as character types (e.g. the 3-gene classifier), other
+as numerical values, e.g. tumour stage. We also have some binary
+variables that are essentially categorical variables but with only 2
+possible values, e.g. ER status.</p>
+<p>In many of the plots given above, ggplot2 has treated character
+variables as categorical in situtations where a categorical variable is
+expected. For example, when we displayed points on a scatter plot using
+different colours for each 3-gene classification, or when we created
+separate box plots in the same graph for ER positive and negative
+patients.</p>
+<p>But what about when our categorical variable has been read into R as
+a continuous variable, e.g. <code>Tumour_stage</code>, which is read in
+as a double type.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Tumour_stage</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p><img src="week2_files/figure-html/scatter_plot_9-1.png" width="700"></p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## </span>
+<span class="co">##   0   1   2   3   4 </span>
+<span class="co">##   4 475 800 115   9</span></code></pre>
+<p>Tumour stage has only 5 discrete states but ggplot2 doesn’t know
+these are supposed to be a restricted set of values and has used a
+colour scale to show them as if they were continuous. We need to tell R
+that these are categorical.</p>
+<p>R has a special type for categorical variables called a
+<strong>factor</strong>. You can read more about factors <a href="https://r4ds.had.co.nz/factors.html" class="external-link">here</a>. The other R main
+data types are numeric (numbers), character (text) and logical
+(TRUE/FALSE), which you can read more about in the R for Data Science
+section on vectors we mentioned before <a href="https://r4ds.had.co.nz/vectors.html?#important-types-of-atomic-vector" class="external-link">here</a>.
+Let’s convert our tumour stage variable to a factor using the
+<code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code> function. You should already have seen
+<code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> in the Introduction to Tidyverse course and we
+will discuss it in more detail next week.</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">metabric</span>, <span class="va">Patient_ID</span>, <span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 2</span></span>
+<span class="co">##    Patient_ID Tumour_stage</span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       </span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> MB-0000    2           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> MB-0002    1           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> MB-0005    2           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> MB-0006    2           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> MB-0008    2           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> MB-0010    4           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> MB-0014    2           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> MB-0022    2           </span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> MB-0028    2           </span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> MB-0035    2           </span>
+<span class="co">## <span style="color: #949494;"># … with 1,894 more rows</span></span></code></pre>
+<p>R actually stores categorical variables as integers but with some
+additional metadata about which of the integer values, or ‘levels’,
+corresponds to each category.</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "integer"</span></code></pre>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "factor"</span></code></pre>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "0" "1" "2" "3" "4"</span></code></pre>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Tumour_stage</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p><img src="week2_files/figure-html/scatter_plot_10-1.png" width="700"></p>
+<p>In this case the order of the levels makes sense but for other
+variables you may wish for more control over the ordering. Take the
+integrative cluster variable for example. We created a bar plot of the
+numbers of patients in the METABRIC cohort within each integrative
+cluster. Did you notice the ordering of the clusters? 10 came just after
+1 and before 2. That looked a bit odd as we’d have naturally expected it
+to come last of all. R, on the other hand, is treating this vector as a
+character vector (mainly because of the ‘ER-’ and ‘ER+’ subtypes of
+cluster 4, and sorts the values into alphanumerical order.</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "1"    "10"   "2"    "3"    "4ER-" "4ER+" "5"    "6"    "7"    "8"   </span>
+<span class="co">## [11] "9"</span></code></pre>
+<p>A look at the help page for <code>as.factor</code> shows that we can
+create a factor using the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code> function and specify the
+levels using the <code>levels</code> argument.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4ER-"</span>, <span class="st">"4ER+"</span>, <span class="st">"5"</span>, <span class="st">"6"</span>, <span class="st">"7"</span>, <span class="st">"8"</span>, <span class="st">"9"</span>, <span class="st">"10"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "1"    "2"    "3"    "4ER-" "4ER+" "5"    "6"    "7"    "8"    "9"   </span>
+<span class="co">## [11] "10"</span></code></pre>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Integrative_cluster</span>, fill <span class="op">=</span> <span class="va">Integrative_cluster</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p><img src="week2_files/figure-html/bar_plot_9-1.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="saving-plot-images">Saving plot images<a class="anchor" aria-label="anchor" href="#saving-plot-images"></a>
+</h2>
+<p>Use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code> to save the last plot you displayed.</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"integrative_cluster.png"</span><span class="op">)</span></code></pre></div>
+<p>You can alter the width and height of the plot and can change the
+image file type.</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"integrative_cluster.pdf"</span>, width <span class="op">=</span> <span class="fl">20</span>, height <span class="op">=</span> <span class="fl">12</span>, units <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span></code></pre></div>
+<p>You can also pass in a plot object you have created instead of using
+the last plot displayed. See the help page (<code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">?ggsave</a></code>) for
+more details.</p>
+</div>
+<div class="section level2">
+<h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
+</h2>
+<p>In this session we have covered the following concepts:</p>
+<ul>
+<li>How to use ggplot2 to create different types of plot using a common
+grammar</li>
+<li>How to map variables to aesthetic features of a plot</li>
+<li>How to construct a plot with multiple layers (geoms)</li>
+<li>Various types of plot including scatter plots, box plots, bar plots
+and histograms</li>
+<li>Categorical variables and how R handles these with its factor
+type</li>
+</ul>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
+</h2>
+<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMiIKLS0tCgpUaGUgd2VlaydzIGFzc2lnbm1lbnQgd2lsbCB0ZXN0IHlvdXIgYWJpbGl0eSB0byBjcmVhdGUgdmFyaW91cyBkaWZmZXJlbnQgdHlwZXMKb2YgcGxvdC4gSXQgaW5jbHVkZXMgc29tZSBleHRlbnNpb24gZXhlcmNpc2VzIHdoaWNoIHlvdSBjYW4gY29uc2lkZXIgb3B0aW9uYWwuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRSwgd2FybmluZyA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbWV0YWJyaWMgPC0gcmVhZF9jc3YoImh0dHBzOi8vemVub2RvLm9yZy9yZWNvcmQvNjQ1MDE0NC9maWxlcy9tZXRhYnJpY19jbGluaWNhbF9hbmRfZXhwcmVzc2lvbl9kYXRhLmNzdiIpCmBgYAoKLS0tCgoqKjEuIENyZWF0ZSBhIGJhciBwbG90IHNob3dpbmcgdGhlIG51bWJlciBvZiBwYXRpZW50cyB3aXRoIHR1bW91cnMgYXQgZWFjaCBvZiB0aGUgZGlmZmVyZW50IG5lb3BsYXNtIGhpc3RvbG9naWMgZ3JhZGVzKioKCmBgYHtyfQoKYGBgCgpUdXJuIHRoaXMgaW50byBhIHN0YWNrZWQgYmFyIHBsb3Qgc2hvd2luZyB0aGUgcHJvcG9ydGlvbnMgb2YgcGF0aWVudHMgd2l0aCBlYWNoCmhpc3RvbG9naWMgZ3JhZGUgdGhhdCBoYWQgY2hlbW90aGVyYXB5CgpgYGB7cn0KCmBgYAoKKipFeHRlbnNpb24qKgoKZ2dwbG90IGdpdmVzIGEgd2FybmluZyBhYm91dCBub24tZmluaXRlIHZhbHVlcywgaS5lLiB0aGUgbWlzc2luZyB2YWx1ZXMuIEZpbmQKb3V0IGhvdyB0byBnZXQgcmlkIG9mIHRoaXMgd2FybmluZy4KCmBgYHtyfQoKYGBgCgpMZXQncyBzYXkgd2UgYXJlIGludGVyZXN0ZWQgaW4gZGlzcGxheWluZyB0aGUgbWlzc2luZyB2YWx1ZXMgYXMgYSBzZXBhcmF0ZQpjYXRlZ29yeSBhbmQgcmVjcmVhdGUgdGhlIGJhciBwbG90IHdpdGggYW4gYWRkaXRpb25hbCBjb2x1bW4uCgpgYGB7cn0KCmBgYAoKLS0tCgoqKjIuIENyZWF0ZSBhIGRlbnNpdHkgcGxvdCBvZiB0aGUgZXN0cm9nZW4gcmVjZXB0b3IgKEVTUjEpIGV4cHJlc3Npb24gbGV2ZWwqKgoKYGBge3J9CgpgYGAKCl9IaW50OiB0aGlzIGlzIGEgbmV3IHBsb3QgdHlwZSAtLSBsb29rIHVwIHRoZSBnZW9tIHlvdSBuZWVkIGJ5IGxvb2tpbmcgYXQgdGhlCmxpc3Qgb2YgZnVuY3Rpb25zIGZvciB0aGUgZ2dwbG90MiBwYWNrYWdlIGluIHRoZSBQYWNrYWdlcyB0YWIgaW4gUlN0dWRpby5fCgpDcmVhdGUgc2VwYXJhdGUgYnV0IG92ZXJsYXlpbmcgZGVuc2l0eSBwbG90cyBmb3IgRVNSMSBleHByZXNzaW9uIGZvciBIRVIyCnBvc2l0aXZlIGFuZCBuZWdhdGl2ZSBwYXRpZW50cy4gVHJ5IHRvIGVuc3VyZSB0aGF0IGJvdGggZGVuc2l0eSBwbG90cyBhcmUKdmlzaWJsZS4KCmBgYHtyfQoKYGBgCgotLS0KCioqMy4gQ3JlYXRlIGJveCBwbG90cyBmb3IgdGhlIHN1cnZpdmFsIHRpbWUgb2YgcGF0aWVudHMgd2l0aCBkaWZmZXJlbnQgdHVtb3VyIHN0YWdlcyBvbmx5IGluY2x1ZGluZyBkZWNlYXNlZCBwYXRpZW50cyoqCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IGlmIHlvdSBnZXQgYSB3YXJuaW5nIG1lc3NhZ2UgYW5kIG9ubHkgaGF2ZSBhIHNpbmdsZSBib3ggZGlzcGxheWVkCmNvbnNpZGVyIHRoZSB0eXBlIG9mIHRoZSB0dW1vdXIgc3RhZ2UgdmFyaWFibGUgYXMgcmVhZCBpbnRvIFIgYW5kIHdoYXQga2luZCBvZgp2YXJpYWJsZSBpcyBleHBlY3RlZCBmb3IgdGhlIHggYWVzdGhldGljLl8KCkNvbnZlcnQgdGhpcyBpbnRvIGEgdmlvbGluIHBsb3QgYW5kIGRpc3BsYXkgRVIgbmVnYXRpdmUgYW5kIEVSIHBvc2l0aXZlIHBhdGllbnRzCnNlcGFyYXRlbHkuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IGxvb2sgYXQgdGhlIGhlbHAgZm9yIGdlb21fYm94cGxvdC5fCgotLS0KCioqNC4gRXhwbG9yZSB0aGUgY29ycmVsYXRpb24gYmV0d2VlbiBGT1hBMSBhbmQgTUxQSCoqCgpBIHJlY2VudGx5LXB1Ymxpc2hlZCBwYXBlciBsb29rcyBhdCBhc3NvY2lhdGlvbnMgb2YgZXhwcmVzc2lvbiBhbmQgZ2Vub21pYyBkYXRhCmluIHRoZSBNRVRBQlJJQyBkYXRhIHNldC4gSXQgZm91bmQgYSBzdHJvbmcgY29ycmVsYXRpb24gYmV0d2VlbiBGT1hBMSBhbmQgb25lIG9mIHRoZSBvdGhlciBnZW5lcyBpbmNsdWRlZCBpbiBvdXIgdGFibGUsIE1MUEggKHNlZSB0aGUgb3V0cHV0IG9mIGBjb3IudGVzdChtZXRhYnJpYyRGT1hBMSwgIG1ldGFicmljJE1MUEgpYCkuCgoKQ3JlYXRlIGEgc2NhdHRlciBwbG90IG9mIHRoZSBleHByZXNzaW9uIG9mIEZPWEExIGFuZCBNTFBIIHdpdGggYSBsaW5lIG9mIGJlc3QgZml0LgoKYGBge3J9CgpgYGAKCkNoYW5nZSB0aGUgbWV0aG9kIHVzZWQgdG8gZHJhdyB0aGUgbGluZSBvZiBiZXN0IGZpdCB0byBiZSBhIHN0cmFpZ2h0IGxpbmUuCgpgYGB7cn0KCmBgYAoKCi0tLQoKKipFWFRSQS4gSWYgeW91IGRpZCB0aGUgb3B0aW9uYWwgRVhUUkEgcGFydCBpbiB0aGUgbWF0ZXJpYWwuIEV4cGxvcmUgdGhlIEFwcGxlIE1vYmlsaXR5IGRhdGEgb24gdHJhbnNwb3J0IHVzZSBkdXJpbmcgdGhlIGNvcm9uYXZpcnVzIGxvY2tkb3duIHVzaW5nIGxpbmUgcGxvdHMqKgoKVGhlIEdvdmVybm1lbnQgaW5jbHVkZWQgaW4gdGhlaXIgZGFpbHkgcHJlc3MgY29uZmVyZW5jZSBhIG5ldyBzZXQKb2YgZGF0YSBvZiB0cmFuc3BvcnQgdXNlIGFzIG1lYXN1cmVkIGJ5IGRpcmVjdGlvbiByZXF1ZXN0cyBvbiBBcHBsZSBNYXBzLgoKU2VhcmNoIGZvciBhbmQgZG93bmxvYWQgdGhlIFVLIEdvdmVybm1lbnQgZGF0YSBmb3IgdGhlIFN1bmRheSBicmllZmluZyAoMjYgQXByaWwKMjAyMCkuCgpfSGludDogdXNlIHRoZSBzZWFyY2ggdGVybXMgInVrIGdvdmVybm1lbnQgY29yb25hdmlydXMgcHJlc3MgY29uZmVyZW5jZSBkYXRhIi5fCgpMb2FkIHRoZSAnQXBwbGUgTW9iaWxpdHknIHNoZWV0IGludG8gUi4gWW91IHdpbGwgbmVlZCB0byBzcGVjaWZ5IHRoZQp3b3Jrc2hlZXQgYW5kIGEgZmV3IG90aGVyIGFyZ3VtZW50cyBhcyB0aGUgZGF0YSBhcmUgbm90IGluIHRoZSBtb3N0IGNvbnZlbmllbnQKZm9ybWF0IChzZWUgaG93IHRoZSB0cmFuc3BvcnQgdXNlIHdvcmtzaGVldCB3YXMgcmVhZCBpbnRvIFIgaW4gdGhlIGNvdXJzZQptYXRlcmlhbHMpLgoKYGBge3J9CgpgYGAKClBsb3QgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZSBhZ2FpbnN0IGRhdGUgYXMgYSBsaW5lIGdyYXBoIHdpdGggc2VwYXJhdGUgbGluZXMKZm9yIGVhY2ggbW9kZSBvZiB0cmFuc3BvcnQuCgpgYGB7cn0KCmBgYAoKV2hhdCBpcyB0aGUgbWFpbiAoYW5kIG9idmlvdXMpIGNvbmNsdXNpb24gdG8gZHJhdyBmcm9tIHRoaXMgcGxvdD8KCk5vdyBwbG90IHRoZSBkYWlseSBwZXJjZW50YWdlIGluc3RlYWQgb2YgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZS4KCmBgYHtyfQoKYGBgCgpXaGF0IGRvIHlvdSBub3RpY2UgYWJvdXQgZGFpbHkgZmx1Y3R1YXRpb25zPwoKKipFeHRlbnNpb24qKgoKQ3JlYXRlIGEgbmV3IGNvbHVtbiBmb3IgdGhlIHdlZWtkYXkgKHRha2luZyB2YWx1ZXMgU3VuZGF5LCBNb25kYXksIFR1ZXNkYXksCmV0Yy4pIGluIHRoZSBBcHBsZSBNb2JpbGl0eSB0YWJsZSBhbmQgcGxvdCBqdXN0IHRoZSBkYWlseSBwZXJjZW50YWdlIGZvciB3YWxraW5nCmJ1dCBub3cgYXMgc2VwYXJhdGUgbGluZXMgZm9yIGVhY2ggZGF5IG9mIHRoZSB3ZWVrLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYSBmdW5jdGlvbiBmcm9tIHRoZSBsdWJyaWRhdGUgcGFja2FnZSwgYW5vdGhlciBvZiB0aGUgdGlkeXZlcnNlCnBhY2thZ2VzIChpbnN0YWxsIGlmIG5lY2Vzc2FyeSkuXwo=" download="assignment2.Rmd">Download assignment2.Rmd</a></p>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="time-series-data-extra">Time series data (EXTRA)<a class="anchor" aria-label="anchor" href="#time-series-data-extra"></a>
+</h2>
+<p>Optional section. Do this if you’ve completed the previous sections
+and the Assignment and want more. In this section we’re going to look a
+<strong>line plot</strong>. These are created using similar ggplot
+grammar to what we’ve already seen. Line plots are a common
+visualization for time series data but we don’t have data of this kind
+in the METABRIC data set so we’ll turn our attention to a more topical
+data set.</p>
 <div class="section level3">
 <h3 id="covid-19-data-set">COVID-19 data set<a class="anchor" aria-label="anchor" href="#covid-19-data-set"></a>
 </h3>
@@ -568,7 +741,7 @@ and told <code><a href="https://readxl.tidyverse.org/reference/read_excel.html" 
 given it a heads-up about which type of data are in each column. Look up
 the help page for <code><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">read_excel()</a></code> for more details about the
 arguments we’ve used below.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org" class="external-link">readxl</a></span><span class="op">)</span>
 <span class="co"># because it's an Excel file located on the web need to download then import</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://zenodo.org/record/6450144/files/2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span>, destfile <span class="op">=</span> <span class="st">"2020-04-26_COVID-19_Press_Conference_Data.xlsx"</span><span class="op">)</span>
@@ -601,16 +774,19 @@ during the first week of February.</p>
 <p>So let’s get a feel for this data set. Firstly, what modes of
 transport are included and how many observations do we have for
 each?</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">transport_use</span><span class="op">$</span><span class="va">transport_type</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## </span>
 <span class="co">## All motor vehicles Bus (excl. London)      National rail          TfL - Bus </span>
 <span class="co">##                 40                 40                 40                 34 </span>
 <span class="co">##         TfL - Tube </span>
 <span class="co">##                 32</span></code></pre>
-<p>We’ll focus solely on rail use to start with.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rail_use</span> <span class="op">&lt;-</span> <span class="va">transport_use</span><span class="op">[</span><span class="va">transport_use</span><span class="op">$</span><span class="va">transport_type</span> <span class="op">==</span> <span class="st">"National rail"</span>, <span class="op">]</span>
+<p>We’ll focus solely on rail use to start with. You should already have
+seen <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> in the Introduction to Tidyverse course and
+we will discuss it in more detail next week.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rail_use</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">transport_use</span>, <span class="va">transport_type</span> <span class="op">==</span> <span class="st">"National rail"</span><span class="op">)</span>
+
 <span class="va">rail_use</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 40 × 3</span></span>
 <span class="co">##    date                transport_type percentage</span>
@@ -633,10 +809,10 @@ each?</p>
 <p>There is something unfamiliar about the <code>date</code> column that
 needs some explanation. Let’s check the type and class of
 <code>date</code>.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">rail_use</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "double"</span></code></pre>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">rail_use</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "POSIXct" "POSIXt"</span></code></pre>
 <p>So the <code>date</code> column is stored as a double and is a
@@ -650,10 +826,10 @@ part stands for calendar time. We won’t go into the details here but
 note that the numeric representation of a date, i.e. the
 <code>double</code> value, is the number of seconds since 1 January
 1970. For example, the date in our first row is:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rail_use</span><span class="op">$</span><span class="va">date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code><span class="co">## [1] "2020-03-16 UTC"</span></code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="va">rail_use</span><span class="op">$</span><span class="va">date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 1584316800</span></code></pre>
 </div>
@@ -670,165 +846,30 @@ to the ggplot2 package in the Packages tab in RStudio), it looks like
 tells us we need an x and y mapping. Our x aesthetic will be
 <code>date</code> and the y aesthetic will be
 <code>percentage</code>.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rail_use</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">percentage</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week2_files/figure-html/line_plot_1-1.png" width="700"></p>
 <p>We can return to our original <code>transport_use</code> table
 containing data for all transport modes and use another aesthetic,
 e.g. colour, to plot a line for each.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">transport_use</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">percentage</span>, colour <span class="op">=</span> <span class="va">transport_type</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week2_files/figure-html/line_plot_2-1.png" width="700"></p>
 <p>Another aesthetic available for <code>geom_line</code> is
 <code>linetype</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">transport_use</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">percentage</span>, linetype <span class="op">=</span> <span class="va">transport_type</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="week2_files/figure-html/line_plot_3-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="histograms">Histograms<a class="anchor" aria-label="anchor" href="#histograms"></a>
-</h2>
-<p>The geom for creating histograms is, rather unsurprisingly,
-<code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram()</a></code>.</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre>
-<p><img src="week2_files/figure-html/histogram_plot_1-1.png" width="700"></p>
-<p>The warning message hints at picking a more optimal number of bins by
-specifying the <code>binwidth</code> argument.</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
-<p><img src="week2_files/figure-html/histogram_plot_2-1.png" width="700"></p>
-<p>Or we can set the number of bins.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
-<p><img src="week2_files/figure-html/histogram_plot_3-1.png" width="700"></p>
-<p>These histograms are not very pleasing, aesthetically speaking - how
-about some better aesthetics?</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Age_at_diagnosis</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">20</span>, colour <span class="op">=</span> <span class="st">"darkblue"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span></code></pre></div>
-<p><img src="week2_files/figure-html/histogram_plot_4-1.png" width="700"></p>
-</div>
-<div class="section level2">
-<h2 id="categorical-variables-factors">Categorical variables – factors<a class="anchor" aria-label="anchor" href="#categorical-variables-factors"></a>
-</h2>
-<p>Several of the variables in the METABRIC data set are categorical,
-i.e. they can take one of a limited set of values. Some of these have
-been read into R as character types (e.g. the 3-gene classifier), other
-as numerical values, e.g. tumour stage. We also have some binary
-variables that are essentially categorical variables but with only 2
-possible values, e.g. ER status.</p>
-<p>In many of the plots given above, ggplot2 has treated character
-variables as categorical in situtations where a categorical variable is
-expected. For example, when we displayed points on a scatter plot using
-different colours for each 3-gene classification, or when we created
-separate box plots in the same graph for ER positive and negative
-patients.</p>
-<p>But what about when our categorical variable has been read into R as
-a continuous variable, e.g. <code>Tumour_stage</code>, which is read in
-as a double type.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Tumour_stage</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="week2_files/figure-html/scatter_plot_9-1.png" width="700"></p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## </span>
-<span class="co">##   0   1   2   3   4 </span>
-<span class="co">##   4 475 800 115   9</span></code></pre>
-<p>Tumour stage has only 5 discrete states but ggplot2 doesn’t know
-these are supposed to be a restricted set of values and has used a
-colour scale to show them as if they were continuous. We need to tell R
-that these are categorical.</p>
-<p>R has a special type for categorical variables called a
-<strong>factor</strong>. You can read more about factors <a href="https://r4ds.had.co.nz/factors.html" class="external-link">here</a>. Let’s convert our
-tumour stage variable to a factor using the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code>
-function.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span>
-<span class="va">metabric</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Patient_ID"</span>, <span class="st">"Tumour_stage"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1,904 × 2</span></span>
-<span class="co">##    Patient_ID Tumour_stage</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       </span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> MB-0000    2           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> MB-0002    1           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> MB-0005    2           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> MB-0006    2           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> MB-0008    2           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> MB-0010    4           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> MB-0014    2           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> MB-0022    2           </span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> MB-0028    2           </span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> MB-0035    2           </span>
-<span class="co">## <span style="color: #949494;"># … with 1,894 more rows</span></span></code></pre>
-<p>R actually stores categorical variables as integers but with some
-additional metadata about which of the integer values, or ‘levels’,
-corresponds to each category.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "integer"</span></code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "factor"</span></code></pre>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Tumour_stage</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "0" "1" "2" "3" "4"</span></code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">GATA3</span>, y <span class="op">=</span> <span class="va">ESR1</span>, colour <span class="op">=</span> <span class="va">Tumour_stage</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="week2_files/figure-html/scatter_plot_10-1.png" width="700"></p>
-<p>In this case the order of the levels makes sense but for other
-variables you may wish for more control over the ordering. Take the
-integrative cluster variable for example. We created a bar plot of the
-numbers of patients in the METABRIC cohort within each integrative
-cluster. Did you notice the ordering of the clusters? 10 came just after
-1 and before 2. That looked a bit odd as we’d have naturally expected it
-to come last of all. R, on the other hand, is treating this vector as a
-character vector (mainly because of the ‘ER-’ and ‘ER+’ subtypes of
-cluster 4, and sorts the values into alphanumerical order.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##  [1] "1"    "10"   "2"    "3"    "4ER-" "4ER+" "5"    "6"    "7"    "8"   </span>
-<span class="co">## [11] "9"</span></code></pre>
-<p>A look at the help page for <code>as.factor</code> shows that we can
-create a factor using the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code> function and specify the
-levels using the <code>levels</code> argument.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4ER-"</span>, <span class="st">"4ER+"</span>, <span class="st">"5"</span>, <span class="st">"6"</span>, <span class="st">"7"</span>, <span class="st">"8"</span>, <span class="st">"9"</span>, <span class="st">"10"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">metabric</span><span class="op">$</span><span class="va">Integrative_cluster</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##  [1] "1"    "2"    "3"    "4ER-" "4ER+" "5"    "6"    "7"    "8"    "9"   </span>
-<span class="co">## [11] "10"</span></code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">metabric</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Integrative_cluster</span>, fill <span class="op">=</span> <span class="va">Integrative_cluster</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="week2_files/figure-html/bar_plot_9-1.png" width="700"></p>
-</div>
-<div class="section level2">
-<h2 id="saving-plot-images">Saving plot images<a class="anchor" aria-label="anchor" href="#saving-plot-images"></a>
-</h2>
-<p>Use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave()</a></code> to save the last plot you displayed.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"integrative_cluster.png"</span><span class="op">)</span></code></pre></div>
-<p>You can alter the width and height of the plot and can change the
-image file type.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"integrative_cluster.pdf"</span>, width <span class="op">=</span> <span class="fl">20</span>, height <span class="op">=</span> <span class="fl">12</span>, units <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span></code></pre></div>
-<p>You can also pass in a plot object you have created instead of using
-the last plot displayed. See the help page (<code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">?ggsave</a></code>) for
-more details.</p>
-</div>
-<div class="section level2">
 <h2 id="the-ggplot-object-a-peek-under-the-hood-advanced">The ggplot object – a peek under the hood (ADVANCED)<a class="anchor" aria-label="anchor" href="#the-ggplot-object-a-peek-under-the-hood-advanced"></a>
 </h2>
+<p>Optional section. Do this if you’d like to understand more about how
+ggplot works.</p>
 <p>Let’s build a ggplot2 plot up in stages to understand what’s really
 going on.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
@@ -932,30 +973,6 @@ scatter plot.</p>
 <code>stat_identity</code> which leaves values unchanged. In the case of
 a scatter plot, we already have the x and y values – they don’t need to
 be transformed, just plotted on the x and y axes.</p>
-<hr>
-</div>
-<div class="section level2">
-<h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
-</h2>
-<p>In this session we have covered the following concepts:</p>
-<ul>
-<li>How to use ggplot2 to create different types of plot using a common
-grammar</li>
-<li>How to map variables to aesthetic features of a plot</li>
-<li>How to construct a plot with multiple layers (geoms)</li>
-<li>Various types of plot including scatter plots, box plots, bar plots
-and histograms</li>
-<li>Working with dates</li>
-<li>Plotting time series data as line graphs</li>
-<li>Categorical variables and how R handles these with its factor
-type</li>
-</ul>
-<hr>
-</div>
-<div class="section level2">
-<h2 id="assignment">Assignment<a class="anchor" aria-label="anchor" href="#assignment"></a>
-</h2>
-<p><a href="data:text/x-markdown;base64,Ci0tLQp0aXRsZTogIkFzc2lnbm1lbnQgMiIKLS0tCgpUaGUgd2VlaydzIGFzc2lnbm1lbnQgd2lsbCB0ZXN0IHlvdXIgYWJpbGl0eSB0byBjcmVhdGUgdmFyaW91cyBkaWZmZXJlbnQgdHlwZXMKb2YgcGxvdC4gSXQgaW5jbHVkZXMgc29tZSBleHRlbnNpb24gZXhlcmNpc2VzIHdoaWNoIHlvdSBjYW4gY29uc2lkZXIgb3B0aW9uYWwuCgpgYGB7ciBldmFsID0gRkFMU0UsIG1lc3NhZ2UgPSBGQUxTRSwgd2FybmluZyA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbWV0YWJyaWMgPC0gcmVhZF9jc3YoIm1ldGFicmljX2NsaW5pY2FsX2FuZF9leHByZXNzaW9uX2RhdGEuY3N2IikKYGBgCgotLS0KCioqMS4gQ3JlYXRlIGEgYmFyIHBsb3Qgc2hvd2luZyB0aGUgbnVtYmVyIG9mIHBhdGllbnRzIHdpdGggdHVtb3VycyBhdCBlYWNoIG9mIHRoZSBkaWZmZXJlbnQgbmVvcGxhc20gaGlzdG9sb2dpYyBncmFkZXMqKgoKYGBge3J9CgpgYGAKClR1cm4gdGhpcyBpbnRvIGEgc3RhY2tlZCBiYXIgcGxvdCBzaG93aW5nIHRoZSBwcm9wb3J0aW9ucyBvZiBwYXRpZW50cyB3aXRoIGVhY2gKaGlzdG9sb2dpYyBncmFkZSB0aGF0IGhhZCBjaGVtb3RoZXJhcHkKCmBgYHtyfQoKYGBgCgoqKkV4dGVuc2lvbioqCgpnZ3Bsb3QgZ2l2ZXMgYSB3YXJuaW5nIGFib3V0IG5vbi1maW5pdGUgdmFsdWVzLCBpLmUuIHRoZSBtaXNzaW5nIHZhbHVlcy4gRmluZApvdXQgaG93IHRvIGdldCByaWQgb2YgdGhpcyB3YXJuaW5nLgoKYGBge3J9CgpgYGAKCkxldCdzIHNheSB3ZSBhcmUgaW50ZXJlc3RlZCBpbiBkaXNwbGF5aW5nIHRoZSBtaXNzaW5nIHZhbHVlcyBhcyBhIHNlcGFyYXRlCmNhdGVnb3J5IGFuZCByZWNyZWF0ZSB0aGUgYmFyIHBsb3Qgd2l0aCBhbiBhZGRpdGlvbmFsIGNvbHVtbi4KCmBgYHtyfQoKYGBgCgotLS0KCioqMi4gQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIHRoZSBlc3Ryb2dlbiByZWNlcHRvciAoRVNSMSkgZXhwcmVzc2lvbiBsZXZlbCoqCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHRoaXMgaXMgYSBuZXcgcGxvdCB0eXBlIC0tIGxvb2sgdXAgdGhlIGdlb20geW91IG5lZWQgYnkgbG9va2luZyBhdCB0aGUKbGlzdCBvZiBmdW5jdGlvbnMgZm9yIHRoZSBnZ3Bsb3QyIHBhY2thZ2UgaW4gdGhlIFBhY2thZ2VzIHRhYiBpbiBSU3R1ZGlvLl8KCkNyZWF0ZSBzZXBhcmF0ZSBidXQgb3ZlcmxheWluZyBkZW5zaXR5IHBsb3RzIGZvciBFU1IxIGV4cHJlc3Npb24gZm9yIEhFUjIKcG9zaXRpdmUgYW5kIG5lZ2F0aXZlIHBhdGllbnRzLiBUcnkgdG8gZW5zdXJlIHRoYXQgYm90aCBkZW5zaXR5IHBsb3RzIGFyZQp2aXNpYmxlLgoKYGBge3J9CgpgYGAKCi0tLQoKKiozLiBDcmVhdGUgYm94IHBsb3RzIGZvciB0aGUgc3Vydml2YWwgdGltZSBvZiBwYXRpZW50cyB3aXRoIGRpZmZlcmVudCB0dW1vdXIgc3RhZ2VzIG9ubHkgaW5jbHVkaW5nIGRlY2Vhc2VkIHBhdGllbnRzKioKCmBgYHtyfQoKYGBgCgpfSGludDogaWYgeW91IGdldCBhIHdhcm5pbmcgbWVzc2FnZSBhbmQgb25seSBoYXZlIGEgc2luZ2xlIGJveCBkaXNwbGF5ZWQKY29uc2lkZXIgdGhlIHR5cGUgb2YgdGhlIHR1bW91ciBzdGFnZSB2YXJpYWJsZSBhcyByZWFkIGludG8gUiBhbmQgd2hhdCBraW5kIG9mCnZhcmlhYmxlIGlzIGV4cGVjdGVkIGZvciB0aGUgeCBhZXN0aGV0aWMuXwoKQ29udmVydCB0aGlzIGludG8gYSB2aW9saW4gcGxvdCBhbmQgZGlzcGxheSBFUiBuZWdhdGl2ZSBhbmQgRVIgcG9zaXRpdmUgcGF0aWVudHMKc2VwYXJhdGVseS4KCmBgYHtyfQoKYGBgCgpfSGludDogbG9vayBhdCB0aGUgaGVscCBmb3IgZ2VvbV9ib3hwbG90Ll8KCi0tLQoKKio0LiBFeHBsb3JlIHRoZSBjb3JyZWxhdGlvbiBiZXR3ZWVuIEZPWEExIGFuZCBvbmUgb3RoZXIgZ2VuZSoqCgpBIHJlY2VudGx5LXB1Ymxpc2hlZCBwYXBlciBsb29rcyBhdCBhc3NvY2lhdGlvbnMgb2YgZXhwcmVzc2lvbiBhbmQgZ2Vub21pYyBkYXRhCmluIHRoZSBNRVRBQlJJQyBkYXRhIHNldC4gSXQgZm91bmQgYSBzdHJvbmcgY29ycmVsYXRpb24gYmV0d2VlbiBGT1hBMSBhbmQgb25lIG9mCnRoZSBvdGhlciBnZW5lcyBpbmNsdWRlZCBpbiBvdXIgdGFibGUuIENhbiB5b3UgZmluZCB3aGljaCBvbmU/CgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHRoZSBgc3RhdHNgIHBhY2thZ2UgY29udGFpbnMgYSBjb3JyZWxhdGlvbiB0ZXN0Ll8KCkNyZWF0ZSBhIHNjYXR0ZXIgcGxvdCBvZiB0aGUgZXhwcmVzc2lvbiBvZiBGT1hBMSBhbmQgdGhpcyBnZW5lIHdpdGggYSBsaW5lIG9mCmJlc3QgZml0LgoKYGBge3J9CgpgYGAKCkNoYW5nZSB0aGUgbWV0aG9kIHVzZWQgdG8gZHJhdyB0aGUgbGluZSBvZiBiZXN0IGZpdCB0byBiZSBhIHN0cmFpZ2h0IGxpbmUuCgpgYGB7cn0KCmBgYAoKKipFeHRlbnNpb24qKgoKRml0IGEgbGluZWFyIG1vZGVsIHRvIHRoZXNlIGRhdGEgKGFnYWluIHlvdSdsbCBuZWVkIHRvIGxvb2sgdXAgdGhlIGFwcHJvcHJpYXRlCmZ1bmN0aW9uIGluIFIpLgoKYGBge3J9CgpgYGAKClBhc3MgdGhlIHJlc3VsdGluZyBvYmplY3QgdG8gdGhlIGBzdW1tYXJ5KClgIGZ1bmN0aW9uIGZvciBpbmZvcm1hdGlvbiBhYm91dCB0aGUKZml0IGFuZCBjYXB0dXJlIHRoZSByZXN1bHQgaW4gYW5vdGhlciBvYmplY3QgY2FsbGVkIHN1bW1hcnkuIFByaW50IHRoaXMgb3V0LgoKYGBge3J9CgpgYGAKCkV4dHJhY3QgdGhlIFItc3F1YXJlZCB2YWx1ZSBmcm9tIHRoZSBzdW1tYXJ5IGFuZCBhc3NpZ24gdGhpcyB0byBhbm90aGVyCnZhcmlhYmxlIGFuZCBwcmludCBpdCBvdXQuCgpgYGB7cn0KCmBgYAoKX0hpbnQ6IHdoYXQgdHlwZSBvZiBvYmplY3QgaXMgdGhlIHN1bW1hcnk/XwoKLS0tCgoqKjUuIEV4cGxvcmUgdGhlIEFwcGxlIE1vYmlsaXR5IGRhdGEgb24gdHJhbnNwb3J0IHVzZSBkdXJpbmcgdGhlIGNvcm9uYXZpcnVzIGxvY2tkb3duIHVzaW5nIGxpbmUgcGxvdHMqKgoKVGhlIEdvdmVybm1lbnQgaW5jbHVkZWQgaW4gdGhlaXIgZGFpbHkgcHJlc3MgY29uZmVyZW5jZSBhIG5ldyBzZXQKb2YgZGF0YSBvZiB0cmFuc3BvcnQgdXNlIGFzIG1lYXN1cmVkIGJ5IGRpcmVjdGlvbiByZXF1ZXN0cyBvbiBBcHBsZSBNYXBzLgoKU2VhcmNoIGZvciBhbmQgZG93bmxvYWQgdGhlIFVLIEdvdmVybm1lbnQgZGF0YSBmb3IgdGhlIFN1bmRheSBicmllZmluZyAoMjYgQXByaWwKMjAyMCkuCgpfSGludDogdXNlIHRoZSBzZWFyY2ggdGVybXMgInVrIGdvdmVybm1lbnQgY29yb25hdmlydXMgcHJlc3MgY29uZmVyZW5jZSBkYXRhIi5fCgpMb2FkIHRoZSAnQXBwbGUgTW9iaWxpdHknIHNoZWV0IGludG8gUi4gWW91IHdpbGwgbmVlZCB0byBzcGVjaWZ5IHRoZQp3b3Jrc2hlZXQgYW5kIGEgZmV3IG90aGVyIGFyZ3VtZW50cyBhcyB0aGUgZGF0YSBhcmUgbm90IGluIHRoZSBtb3N0IGNvbnZlbmllbnQKZm9ybWF0IChzZWUgaG93IHRoZSB0cmFuc3BvcnQgdXNlIHdvcmtzaGVldCB3YXMgcmVhZCBpbnRvIFIgaW4gdGhlIGNvdXJzZQptYXRlcmlhbHMpLgoKYGBge3J9CgpgYGAKClBsb3QgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZSBhZ2FpbnN0IGRhdGUgYXMgYSBsaW5lIGdyYXBoIHdpdGggc2VwYXJhdGUgbGluZXMKZm9yIGVhY2ggbW9kZSBvZiB0cmFuc3BvcnQuCgpgYGB7cn0KCmBgYAoKV2hhdCBpcyB0aGUgbWFpbiAoYW5kIG9idmlvdXMpIGNvbmNsdXNpb24gdG8gZHJhdyBmcm9tIHRoaXMgcGxvdD8KCk5vdyBwbG90IHRoZSBkYWlseSBwZXJjZW50YWdlIGluc3RlYWQgb2YgdGhlIDctZGF5IHJvbGxpbmcgYXZlcmFnZS4KCmBgYHtyfQoKYGBgCgpXaGF0IGRvIHlvdSBub3RpY2UgYWJvdXQgZGFpbHkgZmx1Y3R1YXRpb25zPwoKKipFeHRlbnNpb24qKgoKQ3JlYXRlIGEgbmV3IGNvbHVtbiBmb3IgdGhlIHdlZWtkYXkgKHRha2luZyB2YWx1ZXMgU3VuZGF5LCBNb25kYXksIFR1ZXNkYXksCmV0Yy4pIGluIHRoZSBBcHBsZSBNb2JpbGl0eSB0YWJsZSBhbmQgcGxvdCBqdXN0IHRoZSBkYWlseSBwZXJjZW50YWdlIGZvciB3YWxraW5nCmJ1dCBub3cgYXMgc2VwYXJhdGUgbGluZXMgZm9yIGVhY2ggZGF5IG9mIHRoZSB3ZWVrLgoKYGBge3J9CgpgYGAKCl9IaW50OiB1c2UgYSBmdW5jdGlvbiBmcm9tIHRoZSBsdWJyaWRhdGUgcGFja2FnZSwgYW5vdGhlciBvZiB0aGUgdGlkeXZlcnNlCnBhY2thZ2VzIChpbnN0YWxsIGlmIG5lY2Vzc2FyeSkuXwo=" download="assignment2.Rmd">Download assignment2.Rmd</a></p>
 </div>
   </div>
 
@@ -976,8 +993,7 @@ type</li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
